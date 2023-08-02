@@ -1,1 +1,6 @@
 -----------------------------------------Note--------------------------------------------------
+Date:o2/08/23
+Name:Shekhar P
+story:
+1)Material UI library installed [npm install @mui/material @emotion/react @emotion/styled]
+2)Material icon Library installed[npm install @mui/icons-material]

@@ -1,0 +1,16 @@
+{
+  "students": [
+    {
+      "students": [],
+      "id": 1,
+      "firstname": "susdldjfklsdjkl",
+      "lastname": "jsdhkjsdhfjksdl",
+      "email": "sujitg1313@gmail.com",
+      "contact": "666666666",
+      "dob": "2023-08-17",
+      "gender": "Male",
+      "organization": "Hematite",
+      "term": false
+    }
+  ]
+}

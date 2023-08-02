@@ -26,7 +26,7 @@ import { Link } from '@mui/material';
 import axios from 'axios';
 // import Nav from './Nav'
 
-class StudentRegistration extends Component {
+class NewStudentRegistration extends Component {
   constructor(props) {
     super(props)
 
@@ -67,13 +67,16 @@ class StudentRegistration extends Component {
     const { id, firstname, lastname, email, contact, dob, gender, organization, term } = this.state;
     return (
       <Box sx={{
-        marginTop: 8,
+        marginTop: 10,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         maxWidth: "600px",
-        margin: "auto"
-
+        margin: "auto",
+        border:"2px solid white",
+        backgroundColor:"whitesmoke",
+        height:"700px",
+        padding:"10px"
       }}  >
         <div >
         <Typography variant="h6" gutterBottom>
@@ -105,6 +108,7 @@ class StudentRegistration extends Component {
                 required
               />
             </Stack>
+            <br />
             <TextField
               type="email"
               variant='outlined'
@@ -142,9 +146,22 @@ class StudentRegistration extends Component {
               sx={{ mb: 4 }}
             />
          
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Gender</InputLabel>
-              <Select
+            <FormControl fullWidth >
+              <p style={{marginLeft: "-490px"}}>Select Gender</p>
+                <InputLabel id="demo-simple-select-label"></InputLabel>
+                {/* <br /> */}
+              <RadioGroup
+                    row
+                    // value={gender}
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    // name="row-radio-buttons-group"
+                  >
+                   <br /><br />
+                    <FormControlLabel value="male" control={<Radio />} label="Male" />
+                    <FormControlLabel value="female" control={<Radio />} label="Female" />
+                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+              </RadioGroup>
+              {/* <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={gender}
@@ -152,15 +169,27 @@ class StudentRegistration extends Component {
                 name='gender'
                 onChange={this.handleChange}
               >
-                <MenuItem value='Male'>Male</MenuItem>
+                {/* <MenuItem value='Male'>Male</MenuItem>
                 <MenuItem value='Female'>Female</MenuItem>
-                <MenuItem value='Other'>Other</MenuItem>
-              </Select>
+                <MenuItem value='Other'>Other</MenuItem> 
+              </Select> */}
+              <br />
             </FormControl>
-            
+            {/* <br /> */}
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">organization</InputLabel>
-              <Select
+            <p style={{marginLeft: "-450px"}}>Select Organization</p>
+              <InputLabel id="demo-simple-select-label"></InputLabel>
+              <RadioGroup
+                    row
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    // name="row-radio-buttons-group"
+                  >
+                   <br /><br />
+                    <FormControlLabel value="hemaitite" control={<Radio />} label="Hemaitie" />
+                    <FormControlLabel value="lighthouse" control={<Radio />} label="Lighthouse" />
+                    <FormControlLabel value="cdac" control={<Radio />} label="Cdac" />
+              </RadioGroup>
+              {/* <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={organization}
@@ -171,12 +200,13 @@ class StudentRegistration extends Component {
                 <MenuItem value='Hematite'>Hematite</MenuItem>
                 <MenuItem value='CDAC'>CDAC</MenuItem>
                 <MenuItem value='Branch'>Branch</MenuItem>
-              </Select>
+              </Select> */}
             </FormControl>
 
-            <Button style={{ marginTop: "20px" }} variant="contained" color="primary" type="submit">Register</Button>
+            <Button style={{ marginTop: "20px", marginRight:"15px" }} variant="contained" color="primary" type="submit">Submit</Button>
+            <Button style={{ marginTop: "20px",marginRight: "-352px" }} variant="contained" color="secondary" type="resrt">Clear</Button>
           </form>
-          <small>Already have an account? <Link to="/">Login Here</Link></small>
+          
         </div>
       </Box>
 
@@ -185,5 +215,5 @@ class StudentRegistration extends Component {
   }
 }
 
-export default  StudentRegistration ;
+export default NewStudentRegistration ;
 // sx={{ marginBottom: 4 }}

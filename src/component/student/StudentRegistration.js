@@ -50,6 +50,15 @@ class StudentRegistration extends Component {
     axios.post("http://localhost:8888/students", this.state).then(() => {
       window.alert("Student Registered Successfully ")
     })
+       if(this.state.firstname===""){
+           window.alert("fname is required");
+           return false
+       }
+       if(!this.state.fname.match("^[a-zA-Z]{2,15}$")){
+        window.alert("fname must contain only character ,min-2 and max-15");
+        return false;
+    }
+       window.alert(JSON.stringify(this.state));
   }
   handleDropdownChange = (event) => {
     this.setState({

@@ -74,7 +74,7 @@ class NewStudentRegistration extends Component {
         maxWidth: "600px",
         margin: "auto",
         border:"2px solid white",
-        backgroundColor:"whitesmoke",
+        // backgroundColor:"whitesmoke",
         height:"700px",
         padding:"10px"
       }}  >

@@ -66,6 +66,26 @@ export class StudentDashboard extends Component {
     this.setState({ rowsPerPage: +event.target.value, page: 0 });
   };
 
+  
+  deleteRecord = (id) => {
+    if (window.confirm(`Are you sure? you want to remove product: `)) {
+        let url = `${"http://localhost:8888/students"}/${id}`
+        axios.delete(url).then(() => {
+            window.alert("Product Deleted successfully")
+            this.fetchData()
+           
+        })
+
+        // this.props.initProductRequest()
+        // this.props.deleteProductRequest(id)
+        window.alert("Student Deleted successfully")
+
+    }
+
+
+}
+
+
   render() {
     const { page, rowsPerPage,students,gender} = this.state;
 
@@ -91,17 +111,17 @@ export class StudentDashboard extends Component {
                          {students.map((val) => {
                                 return <TableRow>
                                     <TableCell component="th" scope="row">{val.id}</TableCell>
-                                     <TableCell>{val.firstname}</TableCell >
-                                     <TableCell>{val.lastname}</TableCell >
-                                     <TableCell  >{val.email}</TableCell>
-                                     <TableCell  >{val.contact}</TableCell>
-                                     <TableCell  >{val.dob}</TableCell>
-                                     <TableCell  >{val.gender}</TableCell>
-                                     <TableCell  >{val.organization}</TableCell>
+                                     <TableCell align='center' >{val.firstname}</TableCell >
+                                     <TableCell align='center'>{val.lastname}</TableCell >
+                                     <TableCell align='center'>{val.email}</TableCell>
+                                     <TableCell align='center'>{val.contact}</TableCell>
+                                     <TableCell align='center' >{val.dob}</TableCell>
+                                     <TableCell align='center' >{val.gender}</TableCell>
+                                     <TableCell align='center' >{val.organization}</TableCell>
                                      {/* <TableCell align="right">{val.Grade}</TableCell>
                                      <TableCell align="right">{val.Date}</TableCell>  */}
                                      <TableCell align="right">
-                                      <button onClick={()=>this.deletedata(val.id)} className='btn btn-outline-danger btn-lg'
+                                      <button onClick={()=>this.deleteRecord(val.id)} className='btn btn-outline-danger btn-lg'
                                        ><i class="fa fa-ban" aria-hidden="true"></i>Delete</button>
                                        </TableCell> 
                             </TableRow>                   

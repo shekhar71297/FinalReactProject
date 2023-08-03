@@ -24,7 +24,7 @@ const defaultTheme = createTheme();
 
 
 const StudentLogin = () => {
-//   const navigate=useNavigate();
+  // const navigate=useNavigate();
   const[user,setUser]=useState({
       semail:"",
       sdob:""
@@ -97,7 +97,7 @@ const StudentLogin = () => {
               value={user.semail}
               onChange={inputChangeHandler}
             />
-            <TextField
+            <TextField  
               margin="normal"
               required
               fullWidth
@@ -119,7 +119,7 @@ const StudentLogin = () => {
             </Button>
             <Grid container style={{ textAlign: 'left' }}>
               <Grid item xs>
-                <Link to='register' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
+                <Link to='/Register' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
                   New Student ? Register Here
                 </Link><br />
                 <Link href="#" variant="body2" style={{ color: 'red', textDecoration: 'none' }}>

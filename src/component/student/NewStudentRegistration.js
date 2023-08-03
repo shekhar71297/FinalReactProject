@@ -12,9 +12,9 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 // import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
+// import MenuItem from '@mui/material/MenuItem';
 // import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+// import Select, { SelectChangeEvent } from '@mui/material/Select';
 // import Button from '@mui/material/FormLabel';
 import Form from 'react'
 // import Button from '@mui/material/Button';
@@ -24,6 +24,10 @@ import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import { Link } from '@mui/material';
 import axios from 'axios';
+import MenuItem from '@mui/material/MenuItem';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+// import MenuItem from '@mui/material';
+// import Select from '@mui/material';
 // import Nav from './Nav'
 
 class NewStudentRegistration extends Component {
@@ -31,7 +35,7 @@ class NewStudentRegistration extends Component {
     super(props)
 
     this.state = {
-      students: [],
+      
       id: null,
       firstname: '',
       lastname: '',
@@ -46,7 +50,16 @@ class NewStudentRegistration extends Component {
 
   addResgisterStudent = (event) => {
     event.preventDefault();
-
+    this.setState({
+      firstname: '',
+      lastname: '',
+      email: '',
+      contact: '',
+      dob: '',
+      gender: '',
+      organization: '',
+      term: false
+    })
     axios.post("http://localhost:8888/students", this.state).then(() => {
       window.alert("Student Registered Successfully ")
     })
@@ -62,24 +75,43 @@ class NewStudentRegistration extends Component {
       [event.target.name]: event.target.value
     });
   };
+   handleClearForm = () => {
+    this.setState({
+      firstname: (''),
+      lastname: (''),
+      email: (''),
+      contact: (''),
+      dob: (''),
+      gender:(''),
+      organization: (''),
+      
+    })
+
+  
+
+
+  }
 
   render() {
     const { id, firstname, lastname, email, contact, dob, gender, organization, term } = this.state;
     return (
       <Box sx={{
-        marginTop: 10,
+        marginTop: 13,
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         maxWidth: "600px",
         margin: "auto",
-        border:"2px solid white",
+        // border:"2px solid white",
         // backgroundColor:"whitesmoke",
         height:"700px",
         padding:"10px"
+        //
+        
+
       }}  >
         <div >
-        <Typography variant="h6" gutterBottom>
+        <Typography component="h1" variant="h5" gutterBottom >
                 New Register
               </Typography>
           <form onSubmit={this.addResgisterStudent} action={<Link to="" />}>
@@ -122,7 +154,7 @@ class NewStudentRegistration extends Component {
               sx={{ mb: 4 }}
             />
             <TextField
-              type="number"
+              type="tel"
               variant='outlined'
               color='secondary'
               label="+91 contact number"
@@ -146,65 +178,64 @@ class NewStudentRegistration extends Component {
               sx={{ mb: 4 }}
             />
          
-            <FormControl fullWidth >
+            {/* <FormControl fullWidth > */}
               <p style={{marginLeft: "-490px"}}>Select Gender</p>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
                 {/* <br /> */}
-              <RadioGroup
-                    row
-                    // value={gender}
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    // name="row-radio-buttons-group"
-                  >
-                   <br /><br />
-                    <FormControlLabel value="male" control={<Radio />} label="Male" />
-                    <FormControlLabel value="female" control={<Radio />} label="Female" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
-              </RadioGroup>
-              {/* <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={gender}
-                label="organization"
-                name='gender'
-                onChange={this.handleChange}
-              >
-                {/* <MenuItem value='Male'>Male</MenuItem>
-                <MenuItem value='Female'>Female</MenuItem>
-                <MenuItem value='Other'>Other</MenuItem> 
-              </Select> */}
-              <br />
-            </FormControl>
-            {/* <br /> */}
+
+                <label className='form-label '>Select Gender </label>
+                        <input type="radio" name="gender" value="Male" id="r1" onChange={(e) => this.handleChange(e)} 
+                         />Male
+                        <input type="radio" name="gender" id="r1" value="Female" onChange={(e) => this.handleChange(e)} 
+                         />Female 
+                        <input type="radio" name="gender" id="r1" value= "Other" onChange={(e) => this.handleChange(e)} 
+                         />Other
+           
+              
             <FormControl fullWidth>
             <p style={{marginLeft: "-450px"}}>Select Organization</p>
               <InputLabel id="demo-simple-select-label"></InputLabel>
               <RadioGroup
                     row
                     aria-labelledby="demo-row-radio-buttons-group-label"
-                    // name="row-radio-buttons-group"
+                    name="organization"
                   >
                    <br /><br />
-                    <FormControlLabel value="hemaitite" control={<Radio />} label="Hemaitie" />
-                    <FormControlLabel value="lighthouse" control={<Radio />} label="Lighthouse" />
-                    <FormControlLabel value="cdac" control={<Radio />} label="Cdac" />
-              </RadioGroup>
-              {/* <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={organization}
-                label="organization"
-                name='organization'
-                onChange={this.handleChange}
-              >
-                <MenuItem value='Hematite'>Hematite</MenuItem>
-                <MenuItem value='CDAC'>CDAC</MenuItem>
-                <MenuItem value='Branch'>Branch</MenuItem>
-              </Select> */}
-            </FormControl>
+                    <FormControlLabel value="hemaitite" onChange={(e) => this.handleChange(e)} control={<Radio />} label="Hemaitie" />
+                    <FormControlLabel
+                    value="lighthouse"
+                    control={<Radio />}
+                    label={
+                      <>
+                      lighthouse
+                      {this.state.value==='lighthouse' && (
+                        <Select
+                        name='organization'
+                        value={organization}
+                        onChange={this.handleChange}
+                        >
+                          <MenuItem value='Male'>Male</MenuItem>
+                <MenuItem value='Female'>Female</MenuItem>
+                <MenuItem value='Other'>Other</MenuItem>
+                        </Select>
+                      )}
+                      </>
+                    } />
+
+                    
+              
+
+                    
+
+                    <FormControlLabel value="cdac" onChange={(e) => this.handleChange(e)} control={<Radio />} label="Cdac" />
+              </RadioGroup> 
+              </FormControl>
+             
+             
+          
 
             <Button style={{ marginTop: "20px", marginRight:"15px" }} variant="contained" color="primary" type="submit">Submit</Button>
-            <Button style={{ marginTop: "20px",marginRight: "-352px" }} variant="contained" color="secondary" type="resrt">Clear</Button>
+            <Button onClick={this.handleClearForm} style={{ marginTop: "20px",marginRight: "-352px" }} variant="contained" color="secondary" type="resrt">Clear</Button>
           </form>
           
         </div>

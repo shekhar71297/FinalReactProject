@@ -1,0 +1,82 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "fname": "Renuka Kahane",
+      "email": "renukakahane9@gmail.com\n",
+      "contact": "9897656543",
+      "org": "Hematite Infotech Pvt. Ltd.",
+      "queOne": "Environment is very friendly.",
+      "queTwo": "HTML, CSS, REACT",
+      "queThree": "Yes, I have little confusion in Redux.",
+      "queFour": "How to work with team.",
+      "queFive": "All the staff is very supportive.",
+      "queSix": "Hematite Infotech is a nice institute. I will suggest to my friends."
+    },
+    {
+      "id": 2,
+      "fname": "Rutuja G Sawant",
+      "email": "rutujasawant1011@gmail.com",
+      "contact": "7083650523",
+      "org": "Hematite Infotech ",
+      "queOne": "Good Staff ",
+      "queTwo": "Html,Css,bootstrap,SASS",
+      "queThree": "React-Redux,React-Material",
+      "queFour": "HTml,Css,Bootstrap,Sass, ",
+      "queFive": "Add more another Staff,and more upcoming courses.",
+      "queSix": "Staff is too good and knowledgeable."
+    },
+    {
+      "id": 3,
+      "fname": "abc",
+      "email": "dfsf",
+      "contact": "234534",
+      "org": "dfsd",
+      "queOne": "fdfd",
+      "queTwo": "fdfdf",
+      "queThree": "fdf",
+      "queFour": "fdfd",
+      "queFive": "fdfd",
+      "queSix": "fdfd"
+    },
+    {
+      "id": 4,
+      "fname": "fdfdfd",
+      "email": "dgdgddfd",
+      "contact": "dfdfd",
+      "org": "dfdfd",
+      "queOne": "fdfdfd",
+      "queTwo": "dfdfd",
+      "queThree": "dfdfd",
+      "queFour": "dfdfd",
+      "queFive": "dfdfd",
+      "queSix": "dfdfd"
+    },
+    {
+      "id": 5,
+      "fname": "fdfd",
+      "email": "fdfd",
+      "contact": "dfdfd",
+      "org": "gfg",
+      "queOne": "dfdfd",
+      "queTwo": "fdfd",
+      "queThree": "dfdf",
+      "queFour": "fdfd",
+      "queFive": "dfdfd",
+      "queSix": "dfdf"
+    },
+    {
+      "id": 6,
+      "fname": "fsds",
+      "email": "vxvxcvcv",
+      "contact": "54654",
+      "org": "gdgfds",
+      "queOne": "fgdf",
+      "queTwo": "fg",
+      "queThree": "fgd",
+      "queFour": "fgfg",
+      "queFive": "fgfg",
+      "queSix": "fgfg"
+    }
+  ]
+}

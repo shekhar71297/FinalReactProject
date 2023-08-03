@@ -54,16 +54,6 @@ const StudentLogin = () => {
           });
       
   }
-
-  // const handleSubmit = (event) => {
-  
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     dob: data.get('dob'),
-  //     // password: data.get('dob'),
-  //   });
   
   return (
     <div>

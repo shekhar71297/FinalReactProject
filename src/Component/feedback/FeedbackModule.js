@@ -55,10 +55,11 @@ export class FeedbackModule extends Component {
             queSix:''
         })
 
-        axios.post("http://localhost:8888/feedback",this.state).then(()=>{   //submit data on server
-            window.alert('Feedback Added Successfully');
+
+        // axios.post("http://localhost:8888/feedback",this.state).then(()=>{   //submit data on server
+        //     window.alert('Feedback Added Successfully');
             // navigate('/login')  
-        })
+        // })
     }
 
     render() {

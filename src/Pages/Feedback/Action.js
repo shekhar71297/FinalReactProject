@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * as constant from './Constant'
+import * as constant from './Constant.js'
 
 //get feedback
 export function getAllFeedback() {

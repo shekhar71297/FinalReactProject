@@ -1,4 +1,4 @@
-import * as constant from '../feedback/Constant'
+import * as constant from '../feedback/Constant.js'
 
 export const initialState = {
     allFeedback: [],

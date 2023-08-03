@@ -12,6 +12,8 @@ import { Button } from 'react-bootstrap';
 import { Modal } from 'react-bootstrap';
 import Stack from '@mui/material/Stack';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import * as Action from '../../pages/feedback/Action'
 
 
 export class FeedDash extends Component {
@@ -33,16 +35,21 @@ export class FeedDash extends Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        this.props.initFeedbackRequest()
+        console.log(this.props.initFeedbackRequest);
+        // this.fetchData();
     }
 
     //to get data from server
-    fetchData = () => {
-        axios.get('http://localhost:8888/feedback').then((res) => {
-            console.log(res.data);
-            this.setState({ feedback: res.data });
-        })
-    };
+    // fetchData = () => {
+    //         // e.preventDefault()
+    //         this.props.addFeedBack(this.state)
+    //         Window.alert("data added successfully")
+        // axios.get('http://localhost:8888/feedback').then((res) => {
+        //     console.log(res.data);
+        //     this.setState({ feedback: res.data });
+        // })
+    // };
     handleClose = () => {
         this.setState({ selectedFeedback: null, show: false });
     };
@@ -50,7 +57,7 @@ export class FeedDash extends Component {
     handleShow = (data) => {
         this.setState({ selectedFeedback: data, show: true });
         this.fetchData()
-    };
+    }
 
     handleChangePage = (event, newPage) => {
         this.setState({ page: newPage });
@@ -174,4 +181,16 @@ export class FeedDash extends Component {
         );
     }
 }
-export default FeedDash
+const mapStateToProps = (state) => ({
+    allFeedback: state.feedbackStore.allFeedback
+
+})
+const mapDispatchToProps = (dispatch) => ({
+    initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
+    addFeedbackRequest:(data)=> dispatch(Action.addFeedBack(data))
+    // deleteProductRequest: (id) => dispatch(productAction.deleteProduct(id)),
+    // getSingleProductRequest: (id) => dispatch(productAction.getSingleProduct(id)),
+    // updateProductRequest: (id) => dispatch(productAction.updateProduct(id))
+
+})
+export default connect(mapStateToProps,mapDispatchToProps)(FeedDash)

@@ -1,0 +1,1 @@
+export const student_result = "http://localhost:8888/StudentResult"

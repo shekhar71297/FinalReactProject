@@ -1,0 +1,52 @@
+.tablehead{
+    border: 1px solid black;
+   background-color: whitesmoke;
+  
+}
+.tablebody{
+    border:1px solid black; 
+}
+
+.searchinput{
+    position: relative;
+    right: 30%;
+    padding: 8px;
+    margin: 8px;
+    border: 2px solid;
+    border-radius: 5px;
+}
+.table{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.table-wrapper {
+    overflow-x: auto;
+  }
+  
+  /* Make the table responsive */
+  .table-wrapper table {
+    min-width: 100%;
+  }
+  
+  /* Adjust table header cells on smaller screens */
+  @media screen and (max-width: 600px) {
+    .table-wrapper table {
+      font-size: 12px;
+    }
+    .table-wrapper .tablehead {
+      font-size: 14px;
+    }
+    .table-wrapper .tablebody {
+      font-size: 13px;
+    }
+  }
+  
+  /* Hide table action button on smaller screens */
+  @media screen and (max-width: 400px) {
+    .table-wrapper .tablebody .tableaction {
+      display: none;
+    }
+  }
+  

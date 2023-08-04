@@ -1,5 +1,4 @@
 import React from 'react'
-// import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -24,47 +23,36 @@ const defaultTheme = createTheme();
 
 
 const StudentLogin = () => {
-  // const navigate=useNavigate();
-  const[user,setUser]=useState({
-      semail:"",
-      sdob:""
+  const navigate=useNavigate();
+  const[students,setStudent]=useState({
+      email:"",
+      dob:""
     });
 
 
     const inputChangeHandler=(event)=>{
-      setUser({...user,[event.target.name]:event.target.value});
+      setStudent({...students,[event.target.name]:event.target.value});
   }
   
   const checkData =(event)=>{
       event.preventDefault();
-      console.log(user.semail);
-      console.log(user.sdob);
       axios.get("http://localhost:8888/students").then((res) => {
-                  // console.log(res.data);  
-                  const data =res.data.filter((item)=>{return item.semail===user.semail && item.sdob===user.sdob})
+  
+                  const data =res.data.filter((item)=>{return item.email===students.email && item.dob===students.dob})
 
                   if(data.length > 0){
-                      console.log(user.semail,user.sdob);                                   
-                      sessionStorage.setItem("islogin",user.semail);
-                    //   navigate("/voucher");
+                      console.log(students.email,students.dob);                                   
+                      sessionStorage.setItem("islogin",students.email);
+                      navigate("/Register");
                   }else{
                       window.alert("wrong credential");
-                      setUser({semail:"",sdob:""});
+                      setStudent({email:"",dob:""});
                   }
           });
       
   }
 
-  // const handleSubmit = (event) => {
-  
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     dob: data.get('dob'),
-  //     // password: data.get('dob'),
-  //   });
-  
+ 
   return (
     <div>
     <ThemeProvider theme={defaultTheme}>
@@ -91,20 +79,20 @@ const StudentLogin = () => {
               fullWidth
               id="email"
               label="Enter Email/Username"
-              name="semail"
+              name="email"
               autoComplete="email"
               autoFocus
-              value={user.semail}
+              value={students.email}
               onChange={inputChangeHandler}
             />
             <TextField  
               margin="normal"
               required
               fullWidth
-              name="sdob"
+              name="dob"
               type="date"
               id="dob"
-              value={user.sdob}
+              value={students.dob}
               onChange={inputChangeHandler}
               
             />

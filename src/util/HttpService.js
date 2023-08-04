@@ -12,13 +12,13 @@ export function AddData(url,data){
     );
  }
 
- export function DeleteData(url){
+ export function Delete(url){
     return(
      axios.delete(url)
     );
  }
 
- export function UpdateData(url,data){
+ export function Update(url,data){
     return(
      axios.put(url,data)
     );

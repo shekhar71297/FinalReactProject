@@ -1,5 +1,8 @@
 import { BrowserRouter,Routes, Route } from 'react-router-dom';
 import './App.css';
+import Sidenav from './pages/Sidenav';
+import Sidenavbar from './pages/Sidenavbar';
+
 import Student from './pages/student/container/Student';
 import NewStudentRegistration from './component/student/NewStudentRegistration'
 import StudentDashboard from './component/student/StudentDashboard';
@@ -8,6 +11,7 @@ import NavBar from './component/student/NavBar';
 function App() {
   return (
     <div className="App">
+<<<<<<< HEAD
     <BrowserRouter>
     {/* <Student/> */}
     
@@ -18,6 +22,10 @@ function App() {
     <NewStudentRegistration/>
     <StudentDashboard/>
     </BrowserRouter>
+=======
+    {/* <Student /> */}
+   
+>>>>>>> b7d7da84c75356492a2d3b98ef8d15070dd781a0
     </div>
   );
 }

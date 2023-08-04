@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export function getData(url){
+export function Get(url){
    return(
     axios.get(url)
    );
 }
 
-export function AddData(url,data){
+export function Post(url,data){
     return(
      axios.post(url,data)
     );

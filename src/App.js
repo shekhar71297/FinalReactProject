@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom/dist';
 import './App.css';
-import FeedbackModule from './Component/feedback/FeedbackModule';
-import FeedDash from './Component/feedback/FeedDash';
-import StudentLogin from './Component/student/StudentLogin';
+import FeedbackModule from './components/feedback/FeedbackModule';
+import FeedDash from './components/feedback/FeedDash';
+import StudentLogin from './components/student/StudentLogin';
 import { Provider } from 'react-redux';
 import store from './store/store'
 

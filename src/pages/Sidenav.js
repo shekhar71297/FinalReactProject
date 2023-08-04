@@ -25,12 +25,12 @@ import { MdGeneratingTokens } from 'react-icons/md';
 import { GiPapers } from 'react-icons/gi';
 import { MdFeedback } from 'react-icons/md';
 import { RiNewspaperFill } from 'react-icons/ri';
-import VoucherModule from './VoucherModule';
-import ExamModule from './ExamModule';
-import UserModule from './UserModule';
-import ResultModule from './ResultModule';
-import FeedbackModule from './FeedbackModule';
-import QuestionModule from './QuestionModule';
+// import VoucherModule from './VoucherModule';
+// import ExamModule from './ExamModule';
+// import UserModule from './UserModule';
+// import ResultModule from './ResultModule';
+// import FeedbackModule from './FeedbackModule';
+// import QuestionModule from './QuestionModule';
 import {IoMdLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
@@ -107,7 +107,7 @@ export default function Sidenav() {
   const [open, setOpen] = React.useState(true);
   const [menuData, setMenuData] = React.useState('');
 
-  const navigate=useNavigate()
+  // const navigate=useNavigate()
  
   const handleDrawerClose = () => {
     setOpen(false);
@@ -125,17 +125,18 @@ export default function Sidenav() {
     if(isAdminLog){
       sessionStorage.removeItem("Admin")
       window.alert("logout successfully")
-      navigate('/')
+      // navigate('/')
     } else if(isTrainerLog)
     sessionStorage.removeItem("Trainer")
     window.alert("logout successfully")
-    navigate('/')
+    // navigate('/')
   };
 
   if(isAdminLog){
     return (
-
+   
       <>
+       {  console.log("yhis is sidenav")}
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed">
@@ -308,12 +309,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher' && <VoucherModule />}
-          {menuData === 'Exam' && <ExamModule />}
-          {menuData === 'User' && <UserModule />}
-          {menuData === 'Result' && <ResultModule />}
-          {menuData === 'Feedback' && <FeedbackModule />}
-          {menuData === 'Question' && <QuestionModule />}
+          {menuData === 'Voucher' }
+          {menuData === 'Exam' }
+          {menuData === 'User' }
+          {menuData === 'Result'}
+          {menuData === 'Feedback' }
+          {menuData === 'Question' }
   
         </Box>
       </Box>
@@ -472,12 +473,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher' && <VoucherModule />}
-          {menuData === 'Exam' && <ExamModule />}
+          {menuData === 'Voucher'  }
+          {menuData === 'Exam' }
           {/* {menuData === 'User' && <UserModule />} */}
-          {menuData === 'Result' && <ResultModule />}
-          {menuData === 'Feedback' && <FeedbackModule />}
-          {menuData === 'Question' && <QuestionModule />}
+          {menuData === 'Result' }
+          {menuData === 'Feedback'}
+          {menuData === 'Question'}
   
         </Box>
       </Box>

@@ -1,24 +1,24 @@
 import axios from "axios";
 
-export function getData(url){
+export function Get(url){
    return(
     axios.get(url)
    );
 }
 
-export function AddData(url,data){
+export function Post(url,data){
     return(
      axios.post(url,data)
     );
  }
 
- export function DeleteData(url){
+ export function Delete(url){
     return(
      axios.delete(url)
     );
  }
 
- export function UpdateData(url,data){
+ export function Update(url,data){
     return(
      axios.put(url,data)
     );

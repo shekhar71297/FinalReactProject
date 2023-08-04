@@ -1,15 +1,12 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom/dist';
 import './App.css';
-import FeedbackModule from './components/feedback/FeedbackModule';
-import FeedDash from './components/feedback/FeedDash';
-import StudentLogin from './components/student/StudentLogin';
+import FeedbackModule from './component/feedback/FeedbackModule';
+import FeedDash from '../src/component/feedback/FeedDash'
+import StudentLogin from './component/student/StudentLogin';
 import { Provider } from 'react-redux';
 import store from './store/store'
 
-import Sidenav from './pages/Sidenav';
-import Sidenavbar from './pages/Sidenavbar';
 
-import Student from './pages/student/container/Student';
 
 function App() {
   return (
@@ -24,7 +21,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     {/* <Student/> */}
-    {/* <Student /> */}
+    
    
     </div>
     </Provider>

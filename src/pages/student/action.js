@@ -1,5 +1,8 @@
 import axios from 'axios'
 import * as constant from './contsant'
+import * as Constant from '../../util/Constant'
+import { Delete, Get, Post, Update } from '../../util/HttpService'
+import { url } from 'inspector'
 
 
 
@@ -7,7 +10,8 @@ import * as constant from './contsant'
 export function getAllStudent(){
 
     return (dispatch)=>{  
-       axios.get("http://localhost:8888/students").then(response => dispatch(getStudentsuccess(response.data)))
+        const url=`${Constant.baseURL}/students`
+       Get().then(response => dispatch(getStudentsuccess(response.data)))
        .catch(error => dispatch(getStudenterror(error.response.data)) )
    
     }
@@ -26,8 +30,9 @@ export function getStudenterror(payload){
 
 export function addAllStudent(data){
 
-    return (dispatch)=>{  
-       axios.post("http://localhost:8888/students", data).then(response => dispatch(addStudentsuccess(data)))
+    return (dispatch)=>{ 
+        const url=`${Constant.baseURL}/students` 
+       Post(url,data).then(response => dispatch(addStudentsuccess(data)))
        .catch(error => dispatch(addStudenterror(error.response.data)) )
    
     }
@@ -47,7 +52,8 @@ export function addStudenterror(payload){
 export function updateAllStudent(data){
 
     return (dispatch)=>{  
-       axios.put(`http://localhost:8888/students/${data.id}`, data)
+        const url=`${Constant.baseURL}/students/${data.id}`
+       Update(url)
        .then(response => dispatch(updateStudentsuccess(data)))
        .catch(error => dispatch(updateStudenterror(error.response.data)) )
     }
@@ -62,7 +68,8 @@ export function updateStudenterror(payload){
 export function deleteAllStudent(id){
 
     return (dispatch)=>{  
-       axios.delete(`http://localhost:8888/students/${id}`)
+        const url=`${Constant.baseURL}/students/${id}`
+       Delete(url)
        .then(response => dispatch(deleteStudentsuccess(id)))
        .catch(error => dispatch(deleteStudenterror(error.response.data)) )
    

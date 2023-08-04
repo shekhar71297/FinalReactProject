@@ -9,6 +9,8 @@ import TablePagination from '@mui/material/TablePagination'; // Import TablePagi
 import './StudentResult.css'
 import * as resultaction from '../../pages/result/Action';
 import { connect } from 'react-redux';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Box, Button, Paper } from '@mui/material';
 
 
 export class StudentResult extends Component {
@@ -74,7 +76,9 @@ export class StudentResult extends Component {
           onChange={this.handleSearchChange}
           placeholder="Search by Student Name"
         />
-        {/* start taable */}
+        {/* start table */}
+        <Box sx={{height:100}}>
+        <Paper sx={{width:"100%" , overflow:"hidden", position:"relative", right:"30px" ,top:"50px"} }>
         <TableContainer style={{ border: '2px solid black' }}>
           <Table aria-label="simple table" className=''>
             <TableHead>
@@ -111,9 +115,11 @@ export class StudentResult extends Component {
 
                                    
                                     <TableCell className="tablebody" align="center">{val.Date}</TableCell>
-                                    <TableCell className="tablebody" align="cnter"><button
-                                        onClick={() => this.deletedata(val.id)} align="cnter"
-                                    ><i className="fa fa-trash-o" aria-hidden="true"></i></button></TableCell>
+                                    <TableCell className="tablebody" align="cnter"><Button
+                                        onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />
+
+                                      </Button>
+                                      </TableCell>
                     </TableRow>
                   );
                 })}
@@ -130,6 +136,8 @@ export class StudentResult extends Component {
           onPageChange={this.handleChangePage}
           onRowsPerPageChange={this.handleChangeRowsPerPage}
         />
+        </Paper>
+        </Box>
       </div>
     );
   }

@@ -49,18 +49,6 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 8,
-      "StudentName": "sujit gaikwad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 26,
-      "Status": "pass",
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 9,
       "StudentName": "Mayuri kakde",
       "Orgnization": "Hematite",

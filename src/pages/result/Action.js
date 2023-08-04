@@ -1,10 +1,13 @@
-import axios from 'axios'
+// import axios from 'axios'
 import * as constant from "./Constant"
+import * as constants from '../../util/Constant';
+import {getData,DeleteData} from '../../util/HttpService'
 
 export function getAllResult(){
 
     return (dispatch)=>{  
-       axios.get("http://localhost:8888/StudentResult").then(response => dispatch(getResultsuccess(response.data)))
+        const url =`${constants.baseURL}/StudentResult`
+       getData(url).then(response => dispatch(getResultsuccess(response.data)))
        .catch(error => dispatch(getResulterror(error.response.data)) )
     
     }
@@ -22,9 +25,9 @@ export function getResulterror(payload){
 
 
 export function deleteAllResult(id){
-
+const url =`${constants.baseURL}/StudentResult/${id}`
     return (dispatch)=>{  
-       axios.delete(`http://localhost:8888/StudentResult/${id}`)
+       DeleteData(url)
        .then(response => dispatch(deleteResultsuccess(id)))
        .catch(error => dispatch(deleteResulterror(error.response.data)) )
    

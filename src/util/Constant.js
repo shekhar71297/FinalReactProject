@@ -1,1 +1,1 @@
-export const student_result = "http://localhost:8888/StudentResult"
+export  const baseURL = "http://localhost:8888"

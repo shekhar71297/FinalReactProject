@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function getData(url){
    return(
-    axios.get("http://localhost:8888/StudentResult")
+    axios.get(url)
    );
 }
 

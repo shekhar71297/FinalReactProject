@@ -5,6 +5,10 @@ import './App.css';
 import store from './store/store'
 import Sidenav from './pages/Sidenav';
 import { Route, Routes } from 'react-router-dom';
+import Sidenav from './pages/Sidenav';
+import Sidenavbar from './pages/Sidenavbar';
+
+import Student from './pages/student/container/Student';
 
 function App() {
   return (
@@ -22,6 +26,8 @@ function App() {
 
     
 
+    {/* <Student /> */}
+   
     </div>
   );
 }

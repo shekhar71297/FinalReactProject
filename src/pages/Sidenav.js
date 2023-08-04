@@ -108,7 +108,7 @@ export default function Sidenav() {
   const [open, setOpen] = React.useState(true);
   const [menuData, setMenuData] = React.useState('');
 
-  const navigate=useNavigate()
+  // const navigate=useNavigate()
  
   const handleDrawerClose = () => {
     setOpen(false);
@@ -126,17 +126,18 @@ export default function Sidenav() {
     if(isAdminLog){
       sessionStorage.removeItem("Admin")
       window.alert("logout successfully")
-      navigate('/')
+      // navigate('/')
     } else if(isTrainerLog)
     sessionStorage.removeItem("Trainer")
     window.alert("logout successfully")
-    navigate('/')
+    // navigate('/')
   };
 
   if(isAdminLog){
     return (
-
+   
       <>
+       {  console.log("yhis is sidenav")}
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed">
@@ -315,6 +316,12 @@ export default function Sidenav() {
           {menuData === 'Result' && <Result/>}
           {/* {menuData === 'Feedback' && <FeedbackModule />} */}
           {/* {menuData === 'Question' && <QuestionModule />} */}
+          {menuData === 'Voucher' }
+          {menuData === 'Exam' }
+          {menuData === 'User' }
+          {menuData === 'Result'}
+          {menuData === 'Feedback' }
+          {menuData === 'Question' }
   
         </Box>
       </Box>
@@ -480,6 +487,13 @@ export default function Sidenav() {
           {/* {menuData === 'Feedback' && <FeedbackModule />} */}
           {/* {menuData === 'Question' && <QuestionModule />} */}
   {/* <Link to='/Admin'>Admin</Link> */}
+          {menuData === 'Voucher'  }
+          {menuData === 'Exam' }
+          {/* {menuData === 'User' && <UserModule />} */}
+          {menuData === 'Result' }
+          {menuData === 'Feedback'}
+          {menuData === 'Question'}
+  
         </Box>
       </Box>
       </>

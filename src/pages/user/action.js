@@ -1,14 +1,14 @@
 import axios from 'axios';
 import * as constant from './constant'
 import * as constants from '../../util/Constant'
-import {getData, DeleteData, AddData, UpdateData} from '../../util/HttpService'
+import { Delete, Get, Post, Put } from '../../util/HttpService'
 
 // GET products
 export function getAlluser() {
     return (dispatch) => {
         // axios.get("http://localhost:8888/user")
         const url =`${constants.baseURL}/user`
-           getData(url).then(response => dispatch(getusersuccess(response.data)))
+           Get(url).then(response => dispatch(getusersuccess(response.data)))
             .catch(error => dispatch(getuserError(error.response.data)))
     }
 }
@@ -26,7 +26,7 @@ export function addUser(data) {
     return (dispatch) => {
         const url =`${constants.baseURL}/user`
         // axios.post("http://localhost:8888/user",data)
-            AddData(url,data).then(response => dispatch(addusersuccess(data)))
+            Post(url,data).then(response => dispatch(addusersuccess(data)))
             .catch(error => dispatch(adduserError( error.response.data)))
     }
 }
@@ -45,7 +45,7 @@ export function updateUser(data) {
     return (dispatch) => {
         const url =`${constants.baseURL}/user/${data.id}`
         // axios.put(`http://localhost:8888/user/${data.id}`,data)
-          UpdateData(url,data).then(response => dispatch(updateusersuccess(data)))
+          Put(url,data).then(response => dispatch(updateusersuccess(data)))
             .catch(error => dispatch(updateuserrror( error.response.data)))
     }
 }
@@ -63,7 +63,7 @@ export function deleteUser(id) {
     return (dispatch) => {
         const url =`${constants.baseURL}/user/${id}`
         // axios.delete(`http://localhost:8888/user/${id}`)
-        DeleteData(url).then(response => dispatch(deleteusersuccess(id)))
+        Delete(url).then(response => dispatch(deleteusersuccess(id)))
         .catch(error => dispatch(deleteuserError( error.response.data)))
     }
 }

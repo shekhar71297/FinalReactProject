@@ -1,5 +1,4 @@
 {
-<<<<<<< HEAD
   "user": [
     {
       "email": "anmol123@gmail.com",
@@ -50,7 +49,8 @@
       "gender": "female",
       "contact": "8907654322",
       "id": 5
-=======
+    }
+    ],
   "students": [
     {
       "id": 1,
@@ -181,7 +181,6 @@
       "organization": "lighthouse",
       "term": false,
       "showDropdown": false
->>>>>>> f43f2f7e8a3d628aeb58c0ccd931530278e6a0cc
     }
   ]
 }

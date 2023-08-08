@@ -11,7 +11,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import InputLabel from '@mui/material/InputLabel';
-import * as Student from '../../pages/student/Action'
+import * as Student from '../../pages/student/action'
 import Form from 'react'
 import { Button } from '@mui/material'
 import Stack from '@mui/material/Stack';

@@ -1,12 +1,11 @@
 import React from 'react'
-// import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
+// import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
@@ -17,54 +16,43 @@ import { hover } from '@testing-library/user-event/dist/hover';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 
 const defaultTheme = createTheme();
 
 
 const StudentLogin = () => {
-//   const navigate=useNavigate();
-  const[user,setUser]=useState({
-      semail:"",
-      sdob:""
+  const navigate=useNavigate();
+  const[students,setStudent]=useState({
+      email:"",
+      dob:""
     });
 
 
     const inputChangeHandler=(event)=>{
-      setUser({...user,[event.target.name]:event.target.value});
+      setStudent({...students,[event.target.name]:event.target.value});
   }
   
   const checkData =(event)=>{
       event.preventDefault();
-      console.log(user.semail);
-      console.log(user.sdob);
       axios.get("http://localhost:8888/students").then((res) => {
-                  // console.log(res.data);  
-                  const data =res.data.filter((item)=>{return item.semail===user.semail && item.sdob===user.sdob})
+  
+                  const data =res.data.filter((item)=>{return item.email===students.email && item.dob===students.dob})
 
                   if(data.length > 0){
-                      console.log(user.semail,user.sdob);                                   
-                      sessionStorage.setItem("islogin",user.semail);
-                    //   navigate("/voucher");
+                      console.log(students.email,students.dob);                                   
+                      sessionStorage.setItem("islogin",students.email);
+                      navigate("/Register");
                   }else{
                       window.alert("wrong credential");
-                      setUser({semail:"",sdob:""});
+                      setStudent({email:"",dob:""});
                   }
           });
       
   }
 
-  // const handleSubmit = (event) => {
-  
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     dob: data.get('dob'),
-  //     // password: data.get('dob'),
-  //   });
-  
+ 
   return (
     <div>
     <ThemeProvider theme={defaultTheme}>
@@ -91,22 +79,20 @@ const StudentLogin = () => {
               fullWidth
               id="email"
               label="Enter Email/Username"
-              name="semail"
+              name="email"
               autoComplete="email"
               autoFocus
-              value={user.semail}
+              value={students.email}
               onChange={inputChangeHandler}
-
             />
-            <TextField
+            <TextField  
               margin="normal"
               required
               fullWidth
-              label="Dob"
-              name="sdob"
+              name="dob"
               type="date"
               id="dob"
-              value={user.sdob}
+              value={students.dob}
               onChange={inputChangeHandler}
               
             />
@@ -121,7 +107,7 @@ const StudentLogin = () => {
             </Button>
             <Grid container style={{ textAlign: 'left' }}>
               <Grid item xs>
-                <Link href='#' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
+                <Link to='/Register' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
                   New Student ? Register Here
                 </Link><br />
                 <Link href="#" variant="body2" style={{ color: 'red', textDecoration: 'none' }}>

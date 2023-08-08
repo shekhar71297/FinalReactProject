@@ -1,0 +1,134 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujit18gaikwad@gmail.com",
+      "contact": "9743552443",
+      "dob": "2023-08-04",
+      "gender": "Male",
+      "organization": "hematite",
+      "term": false
+    },
+    {
+      "id": 2,
+      "firstname": "Vishakha",
+      "lastname": "Mankar",
+      "email": "vish24mankar@gmail.com",
+      "contact": "9765223448",
+      "dob": "2023-08-10",
+      "gender": "Female",
+      "organization": "Lighthouse"
+    },
+    {
+      "id": 3,
+      "firstname": "Samrudhi",
+      "lastname": "Vaidya",
+      "email": "samrudhi24vaidya@gmail.com",
+      "contact": "8754632245",
+      "dob": "2023-08-02",
+      "gender": "Female",
+      "organization": "hematite",
+      "term": false
+    },
+    {
+      "id": 4,
+      "firstname": "Rutuja",
+      "lastname": "Sawant",
+      "email": "rutuja32sawant@gmail.com",
+      "contact": "8865442314",
+      "dob": "2023-08-01",
+      "gender": "Female",
+      "organization": "Lighthouse"
+    },
+    {
+      "id": 5,
+      "firstname": "Shekhar ",
+      "lastname": "Patil",
+      "email": "shwkhar32paril@gmail.com",
+      "contact": "7897564324",
+      "dob": "2023-08-04",
+      "gender": "Male",
+      "organization": "hematite",
+      "term": false
+    },
+    {
+      "id": 6,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "4564754678",
+      "dob": "2023-08-31",
+      "gender": "Female",
+      "organization": "cdac",
+      "term": false
+    },
+    {
+      "id": 7,
+      "firstname": "Rushikesh",
+      "lastname": "Kakde",
+      "email": "rushi26kakade@gmail.com",
+      "contact": "7798788970",
+      "dob": "2023-08-06",
+      "gender": "Male",
+      "organization": "hematite",
+      "term": false
+    },
+    {
+      "id": 8,
+      "firstname": "Renuka",
+      "lastname": "Kahane",
+      "email": "renukakahane@gmail.com",
+      "contact": "7686796770",
+      "dob": "2023-08-04",
+      "gender": "Female",
+      "organization": "cdac",
+      "term": false
+    },
+    {
+      "id": 9,
+      "firstname": "Oma ",
+      "lastname": "Pachane",
+      "email": "ompachane@gmail.com",
+      "contact": "8878906788",
+      "dob": "2023-08-03",
+      "gender": "Male",
+      "organization": "Lighthouse"
+    },
+    {
+      "id": 10,
+      "firstname": "Ravi",
+      "lastname": "patil",
+      "email": "ravipatiol@gmail.com",
+      "contact": "7576787577",
+      "dob": "2023-08-05",
+      "gender": "Male",
+      "organization": "",
+      "term": false
+    },
+    {
+      "id": 11,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "admin@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-10",
+      "gender": "Male",
+      "organization": "hematite",
+      "term": false
+    },
+    {
+      "id": 12,
+      "firstname": "gfdfch",
+      "lastname": "xdgfhkj",
+      "email": "cvfyg@gmail.com",
+      "contact": "8657875556",
+      "dob": "2023-08-04",
+      "gender": "Female",
+      "organization": "lighthouse",
+      "term": false,
+      "showDropdown": false
+    }
+  ]
+}

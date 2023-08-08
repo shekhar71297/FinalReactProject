@@ -27,9 +27,10 @@ export default function NavBar() {
           </Typography>
         </Toolbar>
       </AppBar>
+      
         <StudentLogin/>
         
-      <Box sx={{ flexGrow: 1 , marginTop:40}}>
+      <Box sx={{ flexGrow: 1 , marginTop:8}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton

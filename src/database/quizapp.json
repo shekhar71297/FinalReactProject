@@ -1,0 +1,54 @@
+{
+  "user": [
+    {
+      "email": "anmol123@gmail.com",
+      "fname": "anmol",
+      "lname": "chaure",
+      "password": "anmol123",
+      "role": "admin",
+      "gender": "male",
+      "contact": 9283567048,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "role": "trainer",
+      "password": "panchshil45",
+      "fname": "panchashil",
+      "lname": "wankhade",
+      "contact": 8735412345,
+      "gender": "male",
+      "email": "panchashil145@gmail.com"
+    },
+    {
+      "id": 3,
+      "email": "sam24@gmail.com",
+      "fname": "samruddhi",
+      "lname": "vaidya",
+      "password": "sam24",
+      "role": "trainer",
+      "gender": "female",
+      "contact": "8976453213"
+    },
+    {
+      "email": "abc@gmail.com",
+      "fname": "abc",
+      "lname": "abc",
+      "password": "123",
+      "role": "admin",
+      "gender": "male",
+      "contact": "12344",
+      "id": 4
+    },
+    {
+      "email": "sa@gmail.com",
+      "fname": "sam",
+      "lname": "vaidya",
+      "password": "212352",
+      "role": "admin",
+      "gender": "female",
+      "contact": "8907654322",
+      "id": 5
+    }
+  ]
+}

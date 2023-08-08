@@ -25,15 +25,15 @@ import { MdGeneratingTokens } from 'react-icons/md';
 import { GiPapers } from 'react-icons/gi';
 import { MdFeedback } from 'react-icons/md';
 import { RiNewspaperFill } from 'react-icons/ri';
-import VoucherModule from './VoucherModule';
-import ExamModule from './ExamModule';
-import UserModule from './UserModule';
-import ResultModule from './ResultModule';
-import FeedbackModule from './FeedbackModule';
-import QuestionModule from './QuestionModule';
+// import VoucherModule from './VoucherModule';
+// import ExamModule from './ExamModule';
+// import UserModule from './UserModule';
+// import ResultModule from './ResultModule';
+// import FeedbackModule from './FeedbackModule';
+// import QuestionModule from './QuestionModule';
 import {IoMdLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
-
+import User from './user/container/User';
 
 const drawerWidth = 240;
 
@@ -308,12 +308,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher' && <VoucherModule />}
-          {menuData === 'Exam' && <ExamModule />}
-          {menuData === 'User' && <UserModule />}
-          {menuData === 'Result' && <ResultModule />}
-          {menuData === 'Feedback' && <FeedbackModule />}
-          {menuData === 'Question' && <QuestionModule />}
+          {/* {menuData === 'Voucher' && <VoucherModule />} */}
+          {/* {menuData === 'Exam' && <ExamModule />} */}
+          {menuData === 'User' && <User />}
+          {/* {menuData === 'Result' && <ResultModule />} */}
+          {/* {menuData === 'Feedback' && <FeedbackModule />} */}
+          {/* {menuData === 'Question' && <QuestionModule />} */}
   
         </Box>
       </Box>
@@ -472,12 +472,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher' && <VoucherModule />}
-          {menuData === 'Exam' && <ExamModule />}
-          {/* {menuData === 'User' && <UserModule />} */}
-          {menuData === 'Result' && <ResultModule />}
-          {menuData === 'Feedback' && <FeedbackModule />}
-          {menuData === 'Question' && <QuestionModule />}
+          {/* {menuData === 'Voucher' && <VoucherModule />} */}
+          {/* {menuData === 'Exam' && <ExamModule />} */}
+          {menuData === 'User' && <User/>}
+          {/* {menuData === 'Result' && <ResultModule />} */}
+          {/* {menuData === 'Feedback' && <FeedbackModule />} */}
+          {/* {menuData === 'Question' && <QuestionModule />} */}
   
         </Box>
       </Box>

@@ -18,7 +18,7 @@ export function Post(url,data){
     );
  }
 
- export function Update(url,data){
+ export function Put(url,data){
     return(
      axios.put(url,data)
     );

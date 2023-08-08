@@ -10,6 +10,8 @@ import { Route, Routes } from 'react-router-dom';
 
 // import Student from './pages/student/container/Student';
 
+import './App.css';
+
 function App() {
   return (
     <div className="App">

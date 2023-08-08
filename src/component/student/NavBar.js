@@ -42,8 +42,8 @@ export default function NavBar() {
           >
             {/* <MenuIcon /> */}
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{textAlign:'right',fontWeight:'bold',width:'100px'}}>
-            Designed And Developed By  
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{textAlign:'right',fontWeight:'bold',width:'100px',fontSize:'15px'}}>
+            Designed And Developed By  Sujit Gaikwad
           </Typography>
         </Toolbar>
       </AppBar>

@@ -1,4 +1,4 @@
-import *  as constant from './Constant';
+import *  as constant from './constant';
 export const initialstate = {
     allstudent: [],
     student: {},
@@ -50,8 +50,8 @@ export default function StudentReducer(state = initialstate, action) {
             case constant.GET_SINGLE_STUDENT:{
           
             const index = state.allstudent.findIndex(d=> d.id === action.payload);
-            const STUDENT = state.allstudent[index];
-            return {...state,STUDENT:STUDENT}
+            const student = state.allstudent[index];
+            return {...state,student:student}
             }
 
 

@@ -79,24 +79,7 @@ class NewStudentRegistration extends Component {
     })
 
   }
-  //  handleDropdownChange = (event) => {
-  //   setSelectedOption(this.state.organization)
-  //    selectedValue = this.state.organization;
-
-  //   if (organization==='lighthouse') {
-  //     <Select
-  //     name='organization'
-  //     value={organization}
-  //     onChange={this.handleDropdownChange}
-  //   >
-  //     <MenuItem value='Hadapsar'>Hadapsar</MenuItem>
-  //     <MenuItem value='Warje'>Warje</MenuItem>
-  //     <MenuItem value='Vadgoansheri'>Vadgoansheri</MenuItem>
-  //   </Select>
-  //   } else {
-        
-  //  };
-
+ 
   render() {
     const { id, firstname, lastname, email, contact, dob, gender, organization, term } = this.state;
     return (

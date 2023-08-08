@@ -11,7 +11,6 @@ import NavBar from './component/student/NavBar';
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
     <BrowserRouter>
     {/* <Student/> */}
     
@@ -22,10 +21,8 @@ function App() {
     <NewStudentRegistration/>
     <StudentDashboard/>
     </BrowserRouter>
-=======
     {/* <Student /> */}
    
->>>>>>> b7d7da84c75356492a2d3b98ef8d15070dd781a0
     </div>
   );
 }

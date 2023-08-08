@@ -5,9 +5,6 @@ export const initialstate = {
     error: null
 }
 
-
-
-
 export default function resultreducer(state = initialstate, action) {
     switch (action.type) {
         case constant.GET_RESULT_SUCCESS:{

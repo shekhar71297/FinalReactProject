@@ -32,7 +32,7 @@ import { RiNewspaperFill } from 'react-icons/ri';
 // import FeedbackModule from './FeedbackModule';
 // import QuestionModule from './QuestionModule';
 import {IoMdLogOut } from 'react-icons/io';
-import { Link, useNavigate } from 'react-router-dom';
+// import { Link, useNavigate } from 'react-router-dom';
 import Result from './result/container/Result';
 
 

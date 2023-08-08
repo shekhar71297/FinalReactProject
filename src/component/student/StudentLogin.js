@@ -55,13 +55,13 @@ const StudentLogin = () => {
       
   }
 
-  // const handleSubmit = (event) => {
+   // const handleSubmit = (event) => {
   
-  //   event.preventDefault();
-  //   const data = new FormData(event.currentTarget);
-  //   console.log({
-  //     email: data.get('email'),
-  //     dob: data.get('dob'),
+   //   event.preventDefault();
+   //   const data = new FormData(event.currentTarget);
+   //   console.log({
+   //     email: data.get('email'),
+   //     dob: data.get('dob'),
   //     // password: data.get('dob'),
   //   });
   
@@ -108,7 +108,7 @@ const StudentLogin = () => {
               id="dob"
               value={user.sdob}
               onChange={inputChangeHandler}
-              
+        
             />
             <Button
               type="submit"

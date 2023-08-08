@@ -1,13 +1,13 @@
 
 
-.tablehead{
+/* .tablehead{
     border: 1px solid black;
    background-color: whitesmoke;
   
 }
 .tablebody{
     border:1px solid black; 
-}
+} */
 
 .searchinput{
     position: relative;
@@ -16,7 +16,8 @@
     margin: 8px;
     border: 2px solid;
     border-radius: 5px;
-    top: 40px;
+    top: 50px;
+   
 }
 .table{
     display: flex;
@@ -33,6 +34,18 @@
     min-width: 100%;
   }
   
+.paper{
+  width: 100%;
+  overflow: auto;
+    position:relative;
+     right:30px ;
+     top:50px
+}
+
+.popup{
+  width: 250px;
+  /* text-align: center; */
+}
   /* Adjust table header cells on smaller screens */
   /* @media screen and (max-width: 600px) {
     .table-wrapper table {
@@ -47,10 +60,10 @@
   }
   
   /* Hide table action button on smaller screens */
-  @media screen and (max-width: 400px) {
+  /* @media screen and (max-width: 400px) {
     .table-wrapper .tablebody .tableaction {
       display: none;
     }
   }
 
-   
+    */

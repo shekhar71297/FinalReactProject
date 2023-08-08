@@ -33,6 +33,7 @@ import { RiNewspaperFill } from 'react-icons/ri';
 // import QuestionModule from './QuestionModule';
 import {IoMdLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import FeedbackModule from '../component/feedback/FeedbackModule';
 
 
 const drawerWidth = 240;
@@ -473,12 +474,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher'  }
-          {menuData === 'Exam' }
+          {/* {menuData === 'Voucher'  }
+          {menuData === 'Exam' } */}
           {/* {menuData === 'User' && <UserModule />} */}
-          {menuData === 'Result' }
-          {menuData === 'Feedback'}
-          {menuData === 'Question'}
+          {/* {menuData === 'Result' } */}
+          {menuData === 'Feedback' && <FeedbackModule/>}
+          {/* {menuData === 'Question'} */}
   
         </Box>
       </Box>

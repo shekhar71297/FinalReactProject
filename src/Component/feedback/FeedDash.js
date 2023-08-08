@@ -14,7 +14,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Action from '../../pages/feedback/Action'
 import { Typography, Box, Modal } from '@mui/material';
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CloseIcon from '@mui/icons-material/Close';
@@ -53,8 +52,6 @@ export class FeedDash extends Component {
 
     componentDidMount() {
         this.props.initFeedbackRequest()
-        // console.log(this.props.initFeedbackRequest);
-        // this.fetchData();
     }
 
     //to get data from server
@@ -97,11 +94,11 @@ export class FeedDash extends Component {
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center">SrNo</TableCell>
-                                <TableCell align="center">Name</TableCell>
-                                <TableCell align="center">Contact</TableCell>
-                                <TableCell align="center">Organization</TableCell>
-                                <TableCell align="center">Action</TableCell>
+                                <TableCell align="center" style={{fontWeight:'600'}}>SrNo</TableCell>
+                                <TableCell align="center" style={{fontWeight:'600'}}>Name</TableCell>
+                                <TableCell align="center" style={{fontWeight:'600'}} >Contact</TableCell>
+                                <TableCell align="center" style={{fontWeight:'600'}}>Organization</TableCell>
+                                <TableCell style={{fontWeight:'600'}}>Action</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -115,13 +112,12 @@ export class FeedDash extends Component {
                                     <TableCell align="center" >{val.contact}</TableCell>
                                     <TableCell align="center" >{val.org}</TableCell>
                                     <TableCell align="center">
-                                        <Stack spacing={2} direction="row">
+                                        <Stack spacing={2} direction="row" >
                                             <Button onClick={() => this.handleShow(val)} type="button" variant="contained" color="primary"><RemoveRedEyeIcon style={{ color: 'blue' }} /></Button>
                                         </Stack>
                                     </TableCell>
                                 </TableRow>
                             })}
-
                         </TableBody>
                     </Table>
 
@@ -143,9 +139,6 @@ export class FeedDash extends Component {
                             {selectedFeedback && (
                                 <Table>
                                     <TableRow>
-                                        <TableCell>Student Id: </TableCell><TableCell>{selectedFeedback.id}</TableCell>
-                                    </TableRow>
-                                    <TableRow>
                                         <TableCell>Student Name: </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
                                     </TableRow>
                                     <TableRow>
@@ -155,22 +148,22 @@ export class FeedDash extends Component {
                                         <TableCell>Organization: </TableCell><TableCell>{selectedFeedback.org}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>1.What did you enjoy the most about the tranning?: </TableCell><TableCell>{selectedFeedback.queOne}</TableCell>
+                                        <TableCell>1.What did you enjoy the most about the tranning?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queOne}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>2.How would you rate the quality of instruction provided by the faculty? </TableCell><TableCell>{selectedFeedback.queTwo}</TableCell>
+                                        <TableCell>2.How would you rate the quality of instruction provided by the faculty? </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queTwo}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>3. Was there any subject matter that you found confusing? If so, please provide specific examples.: </TableCell><TableCell>{selectedFeedback.queThree}</TableCell>
+                                        <TableCell>3. Was there any subject matter that you found confusing? If so, please provide specific examples.: </TableCell><TableCell> <strong>Ans:  &nbsp;</strong>{selectedFeedback.queThree}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>4. What is the most valuable thing you learned in course (knowledge or skills)?: </TableCell><TableCell>{selectedFeedback.queFour}</TableCell>
+                                        <TableCell>4. What is the most valuable thing you learned in course (knowledge or skills)?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queFour}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>5. Overall how is the faculty feedback? Any specific comments about faculty?: </TableCell><TableCell>{selectedFeedback.queFive}</TableCell>
+                                        <TableCell>5. Overall how is the faculty feedback? Any specific comments about faculty?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queFive}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>6. Any additional comments you wish to share?: </TableCell><TableCell>{selectedFeedback.queSix}</TableCell>
+                                        <TableCell>6. Any additional comments you wish to share?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queSix}</TableCell>
                                     </TableRow>
                                 </Table>
                             )}
@@ -185,7 +178,6 @@ export class FeedDash extends Component {
 
                 </TableContainer>
 
-
                 <TablePagination
                     rowsPerPageOptions={[5, 10, 25, 50]}
                     component="div"
@@ -196,13 +188,12 @@ export class FeedDash extends Component {
                     onRowsPerPageChange={this.handleChangeRowsPerPage}
                 />
             </div>
-
         );
     }
 }
+
 const mapStateToProps = (state) => ({
     allFeedback: state.feedbackStore.allFeedback
-
 })
 const mapDispatchToProps = (dispatch) => ({
     initFeedbackRequest: () => dispatch(Action.getAllFeedback()),

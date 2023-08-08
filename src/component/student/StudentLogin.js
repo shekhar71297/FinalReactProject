@@ -44,7 +44,7 @@ const StudentLogin = () => {
                   const data =res.data.filter((item)=>{return item.semail===user.semail && item.sdob===user.sdob})
 
                   if(data.length > 0){
-                      console.log(user.semail,user.sdob);                                   
+                      // console.log(user.semail,user.sdob);                                   
                       sessionStorage.setItem("islogin",user.semail);
                     //   navigate("/voucher");
                   }else{

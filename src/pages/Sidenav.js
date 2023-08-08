@@ -107,7 +107,7 @@ export default function Sidenav() {
   const [open, setOpen] = React.useState(true);
   const [menuData, setMenuData] = React.useState('');
 
-  const navigate=useNavigate()
+  // const navigate=useNavigate()
  
   const handleDrawerClose = () => {
     setOpen(false);
@@ -125,17 +125,18 @@ export default function Sidenav() {
     if(isAdminLog){
       sessionStorage.removeItem("Admin")
       window.alert("logout successfully")
-      navigate('/')
+      // navigate('/')
     } else if(isTrainerLog)
     sessionStorage.removeItem("Trainer")
     window.alert("logout successfully")
-    navigate('/')
+    // navigate('/')
   };
 
   if(isAdminLog){
     return (
-
+   
       <>
+       {  console.log("yhis is sidenav")}
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="fixed">

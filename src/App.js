@@ -1,4 +1,11 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom/dist';
+import { Provider } from 'react-redux';
+import './App.css';
+
+import store from './store/store'
+// import Sidenav from './pages/Sidenav';
+
+
+
 import './App.css';
 import FeedbackModule from './component/feedback/FeedbackModule';
 import FeedDash from '../src/component/feedback/FeedDash'
@@ -9,22 +16,34 @@ import Sidenav from './pages/Sidenav';
 
 
 
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Dashboard from './pages/dashboard/Dashboard';
+import Result from './pages/result/container/Result';
+
 function App() {
   return (
     <Provider store={store}>
     <div className="App">
+     
+      <Provider  store={store}>
+      
       <BrowserRouter>
-        <Routes>
-          <Route path='/' element={<FeedbackModule/>}/>
-          <Route path='feedback' element={<FeedbackModule/>}/>
-          <Route path='dash' element={<FeedDash/>}/>
-          <Route path='login' element={<StudentLogin/>}></Route>
-          {/* <Route path='dashboard' element={<Sidenav/>}/> */}
-        </Routes>
+      <Routes>
+        <Route path='/dashboard' element={<Dashboard />}>
+          <Route path='result' element={<Result/>}/>
+        </Route>
+      </Routes>
       </BrowserRouter>
-      <Sidenav/>
-    {/* <Student/> */}
+       
+        
+       
+    </Provider>
+
     
+
+    {/* <Student /> */}
+   
     </div>
     </Provider>
   );

@@ -12,6 +12,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
 import Result from './pages/result/container/Result';
+import Student from './component/student/StudentDashboard';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path='/dashboard' element={<Dashboard />}>
           <Route path='result' element={<Result/>}/>
+          <Route path='student' element={<Student />}/>
         </Route>
       </Routes>
       </BrowserRouter>

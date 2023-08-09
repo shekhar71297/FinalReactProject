@@ -9,15 +9,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-
-
 import { FaUsers } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { PiExamFill } from 'react-icons/pi';
@@ -25,14 +22,9 @@ import { MdGeneratingTokens } from 'react-icons/md';
 import { GiPapers } from 'react-icons/gi';
 import { MdFeedback } from 'react-icons/md';
 import { RiNewspaperFill } from 'react-icons/ri';
-import VoucherModule from './VoucherModule';
-import ExamModule from './ExamModule';
-import UserModule from './UserModule';
-import ResultModule from './ResultModule';
-import FeedbackModule from './FeedbackModule';
-import QuestionModule from './QuestionModule';
 import {IoMdLogOut } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import Vouchermodule from './voucher/container/Vouchermodule';
 
 
 const drawerWidth = 240;
@@ -308,12 +300,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher' && <VoucherModule />}
-          {menuData === 'Exam' && <ExamModule />}
+          {menuData === 'Voucher' && <Vouchermodule />}
+          {/* {menuData === 'Exam' && <ExamModule />}
           {menuData === 'User' && <UserModule />}
           {menuData === 'Result' && <ResultModule />}
           {menuData === 'Feedback' && <FeedbackModule />}
-          {menuData === 'Question' && <QuestionModule />}
+          {menuData === 'Question' && <QuestionModule />} */}
   
         </Box>
       </Box>
@@ -472,12 +464,12 @@ export default function Sidenav() {
   
         </Drawer>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          {menuData === 'Voucher' && <VoucherModule />}
-          {menuData === 'Exam' && <ExamModule />}
+          {menuData === 'Voucher' && <Vouchermodule/>}
+          {/* {menuData === 'Exam' && <ExamModule />} */}
           {/* {menuData === 'User' && <UserModule />} */}
-          {menuData === 'Result' && <ResultModule />}
-          {menuData === 'Feedback' && <FeedbackModule />}
-          {menuData === 'Question' && <QuestionModule />}
+          {/* {menuData === 'Result' && <ResultModule />} */}
+          {/* {menuData === 'Feedback' && <FeedbackModule />} */}
+          {/* {menuData === 'Question' && <QuestionModule />} */}
   
         </Box>
       </Box>

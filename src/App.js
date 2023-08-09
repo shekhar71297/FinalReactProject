@@ -23,7 +23,6 @@ function App() {
 
     {/* <Student /> */}
    
->>>>>>> 7a841e6cca319c909ca50f7a805618b3773128e9
     </div>
   );
 }

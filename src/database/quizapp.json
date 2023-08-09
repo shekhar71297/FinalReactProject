@@ -201,17 +201,6 @@
       "TotalMark": 50,
       "ObtainedMark": 37,
       "Date": "26/06/2023"
-    },
-    
-    {
-      "id": 22,
-      "StudentName": "sai patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "Angular",
-      "TotalMark": 50,
-      "ObtainedMark": 48,
-      "Date": "26/06/2023"
     }
   ]
 }

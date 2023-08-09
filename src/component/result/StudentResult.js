@@ -7,8 +7,7 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TablePagination from '@mui/material/TablePagination'; // Import TablePagination
 import './StudentResult.css'
-import * as resultaction from '../../pages/result/Action';
-import { connect } from 'react-redux';
+
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Button, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -80,7 +79,7 @@ export class StudentResult extends Component {
   }
 
   calculateGrade = (totalMark, obtainedMark) => {
-    const percentage = (obtainedMark / totalMark) * 50;
+    const percentage = (obtainedMark / totalMark) * 100;
 
     if (percentage >= 40) {
       return 'A';
@@ -219,6 +218,7 @@ export class StudentResult extends Component {
                             </TableCell>
                           </TableRow>
                         )
+                        
                       })
                   )}
                 </TableBody>
@@ -260,14 +260,6 @@ export class StudentResult extends Component {
     );
   }
 }
-// redux code
-const mapStateToProps = (state) => ({
-  allresult: state.resultStore.allresult,
-});
 
-const mapDispatchToprops = (dispatch) => ({
-  initresultRequest: () => dispatch(resultaction.getAllResult()),
-  deleteResultRequest: (id) => dispatch(resultaction.deleteAllResult(id)),
-});
 
-export default connect(mapStateToProps, mapDispatchToprops)(StudentResult);
+export default StudentResult

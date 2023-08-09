@@ -28,7 +28,11 @@
   "scripts": {
     "start": "react-scripts start",
     "json-server": "cd src/database && json-server --watch -p 8888 quizapp.json",
+<<<<<<< HEAD
     "start:dev": "concurrently \" npm start\" \"npm run json-server\" ",
+=======
+    "start:dev": "concurrently \"npm start\" \"npm run json-server\"",
+>>>>>>> 7a841e6cca319c909ca50f7a805618b3773128e9
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

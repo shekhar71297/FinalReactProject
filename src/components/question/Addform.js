@@ -3,9 +3,11 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Container } from 'react-bootstrap';
 import { useState } from 'react';
-import axios from 'axios';
 import Popup from './Popup';
 import { Modal } from 'react-bootstrap';
+import { addAllQuestions } from '../../Pages/question/Action';
+
+
 
 const Addform = () => {
   const [isFormVisible, setFormVisible] = useState(false);
@@ -20,7 +22,7 @@ const Addform = () => {
 
   
 
-  const handleClearForm = () => {
+  const handleClearForm = ({addAllQuestions}) => {
 
     setQuestion('');
     setOption1('');
@@ -38,37 +40,34 @@ const Addform = () => {
     Answer,
   };
 
-  const handleSignup = (e) => {
+  const handleAdd = (e) => {
+    
     setShowPopup(true);
     e.preventDefault();
-    console.log('Add:', { Question, Option1, Option2, Option3, Option4, Answer});
-    axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
-      console.log(res.data);
-      setQuestion({question: res.data})
+    addAllQuestions(newQuestion)
+    // axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
+    //   console.log(res.data);
+    //   setQuestion({question: res.data})
       
-    })
-    
-    
-  };
-  const handleAddQuestion = () => {
+    // })
     
     setFormVisible(false);
-    
   };
+  
   const handleClosePopup = () => {
     setShowPopup(false);
   };
   return (
+    
     <div>
-
-
+      
     {!isFormVisible && (
-      <div className='float-start ms-5'>
+      <div className='float-center ms-5'>
       <button type='button' onClick={() => setFormVisible(true)}   className='btn btn-outline-dark  mt-5 ' >Add Question +</button>
       </div>
+      
     )}
     
-  
     <Container>
     <Modal show={isFormVisible} onHide={() => setFormVisible(false)}>
           <Modal.Header closeButton>
@@ -95,6 +94,7 @@ const Addform = () => {
           fullWidth
           label="Question"
           id="fullwidth"
+          focused
           value={Question}
           onChange={(e) => setQuestion(e.target.value)}
           
@@ -104,6 +104,7 @@ const Addform = () => {
          fullWidth
           id="fullwidth"
           label="Option1"
+          focused
           value={Option1}
             onChange={(e) => setOption1(e.target.value)}
          
@@ -115,7 +116,8 @@ const Addform = () => {
           id="outlined-password-input"
           label="Option2"
           value={Option2}
-            onChange={(e) => setOption2(e.target.value)}
+          focused
+          onChange={(e) => setOption2(e.target.value)}
         />
         </div><br/>
         <div>
@@ -123,6 +125,7 @@ const Addform = () => {
           fullWidth
           id="outlined-password-input"
           label="Option3"
+          focused
           value={Option3}
             onChange={(e) => setOption3(e.target.value)}
          
@@ -134,6 +137,7 @@ const Addform = () => {
           id="outlined-password-input"
           label="Option4"
           value={Option4}
+          focused
           onChange={(e) => setOption4(e.target.value)}
          
         />
@@ -143,30 +147,29 @@ const Addform = () => {
           id="outlined-password-input"
           label="Answer"
           value={Answer}
+          focused
           onChange={(e) => setAnswer(e.target.value)}
         />
         
         <div className='pull-left mb-3'><br/>
-        <button type='button' onClick={handleSignup} className='btn btn-outline-success ml-5 btn-lg ' >Add</button>
+        <button type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</button>
         </div>
         <div className='text-right'>
-        <button type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg' >Clear</button>
+        <button type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-4' >Clear</button>
         </div> 
         <Popup show={showPopup} handleClose={handleClosePopup} />
-
-        
-        
-        
-        
       </div>
+      
       )}
       
       </Box>
       </Modal.Body>
       </Modal>
       </Container>
+      
       </div>
+      
   );
 }
- 
-export default Addform;
+
+export default  Addform;

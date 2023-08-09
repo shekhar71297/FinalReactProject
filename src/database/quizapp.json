@@ -54,8 +54,62 @@
         "Object"
       ],
       "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+    },
+    {
+      "id": 6,
+      "question": "Using which of the following command can prevent default behaviour at in react?",
+      "options": [
+        "preventDefault()",
+        "avoidDefault()",
+        "revokeDefault()",
+        "Non of the above"
+      ],
+      "answer": "preventDefault()"
+    },
+    {
+      "id": 7,
+      "question": "Identify the command used to create a react app?.",
+      "options": [
+        "npm install create-react-app",
+        "npm install -g create-react-app",
+        "install -g create-react-app",
+        "Non of the above"
+      ],
+      "answer": "npm install -g create-react-app"
+    },
+    {
+      "id": 8,
+      "question": " Which of the following keyword is used to create a class inheritance?",
+      "options": [
+        "Create",
+        "Inherits",
+        "Extends",
+        "This"
+      ],
+      "answer": "Extends"
+    },
+    {
+      "id": 9,
+      "question": "  What is a state in React?",
+      "options": [
+        "A permanent storage.",
+        "Internal storage of the component.",
+        "External storage of the component.",
+        "None of the above."
+      ],
+      "answer": "Internal storage of the component."
+    },
+    {
+      "id": 10,
+      "question": "What is the use of webpack command in React.js?",
+      "options": [
+        "The webpack command is used to transpile all the JavaScript down into one file.",
+        "It runs React local development server.",
+        "It is a module bundler.",
+        "None of the above."
+      ],
+      "answer": "C is the correct answer. The webpack command is a module bundler."
     }
-    
   ],
   "python": [
     {

@@ -6,5 +6,4 @@ const rootReducer = combineReducers({
    resultStore:resultreducer,
 });
 
-
 export default rootReducer;

@@ -12,15 +12,6 @@ function App() {
       <Addform/>
       <Questiontable/>
       <Sidenav/>
-      
-      
-      
-      
-      
-      
-      
-      
-    
     </div>
   );
 }

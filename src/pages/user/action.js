@@ -3,15 +3,21 @@ import * as constant from './constant'
 import * as constants from '../../util/Constant'
 import { Delete, Get, Post, Put } from '../../util/HttpService'
 
-// GET products
+ 
+//GET User
 export function getAlluser() {
     return (dispatch) => {
-        // axios.get("http://localhost:8888/user")
-        const url =`${constants.baseURL}/user`
-           Get(url).then(response => dispatch(getusersuccess(response.data)))
-            .catch(error => dispatch(getuserError(error.response.data)))
-    }
+        const url = `${constants.baseURL}/user`;
+
+        Get(url)
+            .then(response => {
+                const reversedUsers = response.data.reverse(); // Reverse the array of users
+                dispatch(getusersuccess(reversedUsers));
+            })
+            .catch(error => dispatch(getuserError(error.response.data)));
+    };
 }
+
 
 export function getusersuccess(payload) {
     return { type: constant.GET_USER_SUCCESS, payload }//action object
@@ -21,13 +27,12 @@ export function getuserError(payload) {
     return { type: constant.GET_USER_ERROR, payload }
 }
 
-// POST products
+// POST User
 export function addUser(data) {
     return (dispatch) => {
-        const url =`${constants.baseURL}/user`
-        // axios.post("http://localhost:8888/user",data)
-            Post(url,data).then(response => dispatch(addusersuccess(data)))
-            .catch(error => dispatch(adduserError( error.response.data)))
+        const url = `${constants.baseURL}/user`
+         Post(url, data).then(response => dispatch(addusersuccess(data)))
+            .catch(error => dispatch(adduserError(error.response.data)))
     }
 }
 
@@ -39,14 +44,13 @@ export function adduserError(payload) {
     return { type: constant.ADD_USER_ERROR, payload }
 }
 
-// UPDATE products
+// UPDATE User
 export function updateUser(data) {
 
     return (dispatch) => {
-        const url =`${constants.baseURL}/user/${data.id}`
-        // axios.put(`http://localhost:8888/user/${data.id}`,data)
-          Put(url,data).then(response => dispatch(updateusersuccess(data)))
-            .catch(error => dispatch(updateuserrror( error.response.data)))
+        const url = `${constants.baseURL}/user/${data.id}`
+         Put(url, data).then(response => dispatch(updateusersuccess(data)))
+            .catch(error => dispatch(updateuserrror(error.response.data)))
     }
 }
 
@@ -55,16 +59,15 @@ export function updateusersuccess(payload) {
 }
 
 export function updateuserrror(payload) {
-    return { type: constant.UPDATE_USER_ERROR, payload}
+    return { type: constant.UPDATE_USER_ERROR, payload }
 }
 
-// DELETE products
+// DELETE User
 export function deleteUser(id) {
     return (dispatch) => {
-        const url =`${constants.baseURL}/user/${id}`
-        // axios.delete(`http://localhost:8888/user/${id}`)
-        Delete(url).then(response => dispatch(deleteusersuccess(id)))
-        .catch(error => dispatch(deleteuserError( error.response.data)))
+        const url = `${constants.baseURL}/user/${id}`
+         Delete(url).then(response => dispatch(deleteusersuccess(id)))
+            .catch(error => dispatch(deleteuserError(error.response.data)))
     }
 }
 
@@ -77,5 +80,5 @@ export function deleteuserError(payload) {
 }
 
 export function getSingleuser(id) {
-    return { type: constant.SINGLE_USER_SUCCESS, payload:id }//action object
+    return { type: constant.SINGLE_USER_SUCCESS, payload: id }//action object
 }

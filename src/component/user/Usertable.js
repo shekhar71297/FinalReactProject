@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import axios from 'axios';
+
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,19 +9,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { getData, DeleteData, UpdateData, AddData } from '../../util/HttpService';
-import * as constants from '../../util/Constant';
 import { TextField, Button, Grid, Container, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import Box from '@mui/material/Box';
-// import Button from '@mui/material';
-// import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import * as useraction from '../../pages/user/action'
-import { connect } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
-
 
 const style = {
   position: 'absolute',
@@ -71,23 +64,12 @@ class Usertable extends Component {
     }
   }
   componentDidMount() {
-    // this.fetchData();
-
     this.props.initUserRequest();
-    console.log(this.props.singleUser)
-
   }
-  handleSearchQueryChange = (event) => {
-    this.setState({ searchQuery: event.target.value, page:0 });
-  };
 
-  // fetchData = () => {
-  //   const url = `${constants.baseURL}/user`;
-  //   getData(url).then((res) => {
-  //     console.log(res.data);
-  //     this.setState({ user: res.data });
-  //   })
-  // }
+  handleSearchQueryChange = (event) => {
+    this.setState({ searchQuery: event.target.value, page: 0 });
+  };
 
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
@@ -112,42 +94,24 @@ class Usertable extends Component {
       this.setState({ open: true, isAddUser: true });
     }
 
-
-
   };
 
   handleClose = () => {
     this.setState({ open: false });
   };
   deletedata = (id) => {
-    
+
     if (window.confirm(`Are you sure to delete Recore data :${id}`)) {
       this.props.initUserRequest()
       this.props.deleteUserRequest(id)
-      // let url = `${"http://localhost:8888/user"}/${id}`
-      // const url = `${constants.baseURL}/user/${id}`;
-      // DeleteData(url).then(() => {
-      //   window.alert("Record delete succesfully");
-      //   this.fetchData()
-      // })
-
     }
   }
   getsinglerecord = (id) => {
     this.props.getSingleUserRequest(id)
-
-    // let url =`${get_user}/${id}`;
-    // const url = `${constants.baseURL}/user/${id}`;
-    // getData(url).then((res) => {
-    //   console.log(res.data);
-    //   const { user, id, fname, lname, password, email, role, gender, contact } = res.data;
-    //   this.setState({ id, fname, lname, password, email, role, gender, contact });
-    // })
   }
 
   resetUserFormHandler = () => {
     this.setState({
-      // user: [],
       id: null,
       fname: "",
       lname: "",
@@ -156,10 +120,7 @@ class Usertable extends Component {
       contact: "",
       gender: "",
       email: "",
-      // page: 0,
-      // rowsPerPage: 10,
-      // open: false,
-      // singlerecord: ""
+
     })
   }
 
@@ -176,47 +137,39 @@ class Usertable extends Component {
     }
     if (this.state.isAddUser) {
       this.props.addUserRequest(pobj);
-      // const url = `${constants.baseURL}/user`;
-      console.log("add ", pobj);
-      // AddData(url, pobj).then(() => {
       window.alert("User added successfully")
-      // })
+
     } else {
       pobj['id'] = this.state.id;
       this.props.initUserRequest()
       this.props.updateUserRequest(pobj)
-      // const url = `${constants.baseURL}/user/${this.state.id}`;
-      console.log("update ", pobj);
-      // UpdateData(url, pobj).then(() => {
       window.alert("Record updated successfully");
-      //   this.fetchData();
-      // })
+
     }
-
-
-
 
   }
   render() {
-    // const { open, } = this.state;
-    const { page, rowsPerPage, user, fname, open, lname, password, contact, email, gender, role } = this.state;
-    // const filteredUsers = this.props.allUser.filter((data) =>{
-    //   const searchQuery = this.state.searchQuery;
-    //   const fnameIncludes = data.fname.toUpperCase().includes(searchQuery)
-    //   const lnameIncludes = data.lname.toUpperCase().includes(searchQuery)
-    //   const emailIncludes = data.email.toUpperCase().includes(searchQuery)
-    //   const roleIncludes =data.role.toUpperCase().includes(searchQuery)
 
-    //     return fnameIncludes || lnameIncludes || emailIncludes || roleIncludes 
-        
-    //     }    
-    //     );
+    const { page, rowsPerPage, user, fname, open, lname, password, contact, email, gender, role } = this.state;
+    const filteredUsers = this.props.allUser.filter((data) => {
+      const searchQuery = this.state.searchQuery;
+      const fnameIncludes = data.fname.toLowerCase().includes(searchQuery)
+      const lnameIncludes = data.lname.toLowerCase().includes(searchQuery)
+      const emailIncludes = data.email.toLowerCase().includes(searchQuery)
+      const roleIncludes = data.role.toLowerCase().includes(searchQuery)
+
+      return fnameIncludes || lnameIncludes || emailIncludes || roleIncludes
+
+    }
+    );
     return (
 
       <div className='container'>
-        <Box sx={{ height: 100 }}>
-          <Paper sx={{ width: "100%", overflow: "hidden", position: "relative", right: "30px", top: "50px" }}>
-            <Button variant="contained" color="primary" size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon/>User</Button>&nbsp;
+        <Box>
+          <Paper>
+            
+            <Button variant="contained" color="primary" size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />User</Button>&nbsp;
+            
             <TextField
               label="Search.."
               variant="outlined"
@@ -242,41 +195,46 @@ class Usertable extends Component {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {this.props.allUser.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
 
+                  {filteredUsers.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={8} align='center'>
+                        <strong style={{ fontSize: "34px" }}>No data found</strong>
 
-                    return <TableRow key={index}>
-                      <TableCell component="th" scope="row">{data.id}</TableCell>
-                      <TableCell>{data.fname}</TableCell >
-                      <TableCell>{data.lname}</TableCell >
-                      <TableCell>{data.email}</TableCell>
-                      <TableCell>{data.password}</TableCell>
-                      <TableCell>{data.role}</TableCell>
-                      <TableCell>{data.gender}</TableCell>
-                      <TableCell>{data.contact}</TableCell>
-
-                      <TableCell align="center" >
-
-                        <Button color="primary" size="small" type="button" onClick={() => (this.handleOpen(data.id))}><EditIcon /></Button>&nbsp;
-                        <Button color="primary" size="small" type="button" onClick={() => this.deletedata(data.id)}><DeleteIcon /></Button>
                       </TableCell>
-
                     </TableRow>
+                  ) : (
 
 
+                    filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
 
 
-                  })}
+                      return (<TableRow key={index}>
+                        <TableCell component="th" scope="row">{index + 1}</TableCell>
+                        <TableCell>{data.fname}</TableCell >
+                        <TableCell>{data.lname}</TableCell >
+                        <TableCell>{data.email}</TableCell>
+                        <TableCell>{data.password}</TableCell>
+                        <TableCell>{data.role}</TableCell>
+                        <TableCell>{data.gender}</TableCell>
+                        <TableCell>{data.contact}</TableCell>
 
+                        <TableCell align="center" >
+                          <Button color="primary" size="small" type="button" onClick={() => (this.handleOpen(data.id))}><EditIcon /></Button>&nbsp;
+                          <Button color="primary" size="small" type="button" onClick={() => this.deletedata(data.id)}><DeleteIcon /></Button>
+                        </TableCell>
+
+                      </TableRow>
+                      )
+                    })
+                  )}
                 </TableBody>
-
               </Table>
-              <TablePagination
 
+              <TablePagination
                 component="div"
                 rowsPerPageOptions={[3, 10, 25]}
-                count={this.props.allUser.length}
-              
+                count={filteredUsers.length}
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={this.handleChangePage}
@@ -375,7 +333,8 @@ class Usertable extends Component {
                 <Grid item xs={12}>
                   <Button type="submit" variant="contained" color="primary">
                     {this.state.isAddUser ? "Add User" : "Update User"}
-                  </Button>
+                  </Button> &nbsp;
+                  <Button type="button" onClick={this.handleClose} variant="contained" color="primary">cancel</Button>
                 </Grid>
               </Grid>
             </form>
@@ -390,18 +349,4 @@ class Usertable extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  allUser: state.userStore.allUser,
-  singleUser: state.userStore.user
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  initUserRequest: () => dispatch(useraction.getAlluser()),
-  updateUserRequest: (id) => dispatch(useraction.updateUser(id)),
-  addUserRequest: (data) => dispatch(useraction.addUser(data)),
-  deleteUserRequest: (id) => dispatch(useraction.deleteUser(id)),
-  getSingleUserRequest: (id) => dispatch(useraction.getSingleuser(id))
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Usertable);
+export default Usertable;

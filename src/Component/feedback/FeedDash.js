@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,15 +7,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Button } from 'react-bootstrap';
 import Stack from '@mui/material/Stack';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as Action from '../../pages/feedback/Action'
 import { Typography, Box, Modal } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CloseIcon from '@mui/icons-material/Close';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const style = {
     position: 'absolute',
@@ -46,7 +44,8 @@ export class FeedDash extends Component {
             selectedFeedback: null,
             open: false,
             page: 0,
-            rowsPerPage: 10,
+            rowsPerPage: 5,
+            searchQuery: '',
         }
     }
 
@@ -72,12 +71,16 @@ export class FeedDash extends Component {
     };
 
     handleChangeRowsPerPage = (event) => {
-        // this.setState({ rowsPerPage: +event.target.value, page: 0 });
         this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
     };
 
+    // search function
+    handleSearchChange = (event) => {
+        this.setState({ searchQuery: event.target.value, page: 0 });
+    }
+
     render() {
-        const { page, rowsPerPage, feedback, selectedFeedback } = this.state;
+        const { page, rowsPerPage, selectedFeedback, searchQuery } = this.state;
         const { open } = this.state;
         const { allFeedback } = this.props;
 
@@ -85,39 +88,69 @@ export class FeedDash extends Component {
         const lastIndex = (page + 1) * rowsPerPage;
         const firstIndex = lastIndex - rowsPerPage;
 
-        const feedbackOnPage = allFeedback.slice(firstIndex, lastIndex);
+        const filteredFeedback = this.props.allFeedback.filter((val) => {
+            const searchQuery = this.state.searchQuery;
+            const fNameIncludes = val.fname.toLowerCase().includes(searchQuery);
+            const orgIncludes = val.org.toLowerCase().includes(searchQuery);
+            const contactIncludes = val.contact.toLowerCase().includes(searchQuery);
+
+            return fNameIncludes || orgIncludes || contactIncludes
+        })
 
         return (
-            <div className='container'>
+            <div className='container' style={{ marginTop: '0px' }}>
+
+                {/* search box */}
+                <TextField
+                    className='searchinput'
+                    type="text"
+                    value={searchQuery}
+                    onChange={this.handleSearchChange}
+                    placeholder="Search Result"
+                    label="Search Result" // Optional label for the input field
+                    variant="outlined" // You can choose the variant based on your design
+                    sx={{
+                        paddingBottom: 8,
+                    }}
+                />
 
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell align="center" style={{fontWeight:'600'}}>SrNo</TableCell>
-                                <TableCell align="center" style={{fontWeight:'600'}}>Name</TableCell>
-                                <TableCell align="center" style={{fontWeight:'600'}} >Contact</TableCell>
-                                <TableCell align="center" style={{fontWeight:'600'}}>Organization</TableCell>
-                                <TableCell style={{fontWeight:'600'}}>Action</TableCell>
+                                <TableCell align="center" style={{ fontWeight: '600' }}>SrNo</TableCell>
+                                <TableCell align="center" style={{ fontWeight: '600' }}>Name</TableCell>
+                                <TableCell align="center" style={{ fontWeight: '600' }} >Contact</TableCell>
+                                <TableCell align="center" style={{ fontWeight: '600' }}>Organization</TableCell>
+                                <TableCell style={{ fontWeight: '600' }}>Action</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
-
-                            {feedbackOnPage.map((val,index) => {
-                                const rowNumber = firstIndex + index + 1
-                                return <TableRow  key={val.id}>
-                                    <TableCell
-                                        component="th" scope="row" align="center">{rowNumber}</TableCell>
-                                    <TableCell align="center" >{val.fname}</TableCell>
-                                    <TableCell align="center" >{val.contact}</TableCell>
-                                    <TableCell align="center" >{val.org}</TableCell>
-                                    <TableCell align="center">
-                                        <Stack spacing={2} direction="row" >
-                                            <Button onClick={() => this.handleShow(val)} type="button" variant="contained" color="primary"><RemoveRedEyeIcon style={{ color: 'blue' }} /></Button>
-                                        </Stack>
+                            {filteredFeedback.length === 0 ? (
+                                <TableRow>
+                                    <TableCell colSpan={8} align="center">
+                                        <strong style={{ fontSize: "28px" }}>  No data found</strong>
                                     </TableCell>
                                 </TableRow>
-                            })}
+                            ) : (
+                                
+                                    filteredFeedback.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
+                                        const rowNumber = firstIndex + index + 1
+                                        return <TableRow key={val.id}>
+                                            <TableCell
+                                                component="th" scope="row" align="center">{rowNumber}</TableCell>
+                                            <TableCell align="center" >{val.fname}</TableCell>
+                                            <TableCell align="center" >{val.contact}</TableCell>
+                                            <TableCell align="center" >{val.org}</TableCell>
+                                            <TableCell align="center">
+                                                <Stack spacing={2} direction="row" >
+                                                    <Button onClick={() => this.handleShow(val)} type="button"><RemoveRedEyeIcon style={{ color: 'blue' }} /></Button>
+                                                </Stack>
+                                            </TableCell>
+                                        </TableRow>
+                                    })
+                            )
+                        }
                         </TableBody>
                     </Table>
 
@@ -129,11 +162,11 @@ export class FeedDash extends Component {
                     >
                         <Box sx={style}>
 
-                        <Stack spacing={2} direction="row">
-                                <Button variant="contained" onClick={this.handleClose} style={{marginLeft:'410px', color:'grey'}}><CloseIcon style={{color:'gray'}}/></Button>
+                            <Stack spacing={2} direction="row">
+                                <Button onClick={this.handleClose} style={{ marginLeft: '395px', color: 'grey' }}><CloseIcon style={{ color: 'gray' }} /></Button>
                             </Stack>
-                            <Typography id="modal-modal-title" variant="h6" component="h2" style={{fontWeight:'700'}}>
-                                Feedback Details 
+                            <Typography id="modal-modal-title" variant="h6" component="h2" style={{ fontWeight: '700' }}>
+                                Feedback Details
                             </Typography>
 
                             {selectedFeedback && (
@@ -167,11 +200,8 @@ export class FeedDash extends Component {
                                     </TableRow>
                                 </Table>
                             )}
-                            {/* <Button sx={{ mt: 2 }} onClick={this.handleClose} variant="contained" style={{marginLeft:'380px'}}>
-                                Close
-                            </Button> */}
                             <Stack spacing={2} direction="row">
-                                <Button variant="contained" onClick={this.handleClose}  style={{marginLeft:'380px'}}>Close</Button>
+                                <Button onClick={this.handleClose} style={{ marginLeft: '380px', marginTop: '10px', color: 'gray' }}>Close</Button>
                             </Stack>
                         </Box>
                     </Modal>

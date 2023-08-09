@@ -3,9 +3,9 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+// import MenuIcon from '@mui/icons-material/Menu';
 import StudentLogin from './StudentLogin';
 
 export default function NavBar() {
@@ -27,10 +27,9 @@ export default function NavBar() {
           </Typography>
         </Toolbar>
       </AppBar>
-      
         <StudentLogin/>
         
-      <Box sx={{ flexGrow: 1 , marginTop:8}}>
+      <Box sx={{ flexGrow: 1 , marginTop:40}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton

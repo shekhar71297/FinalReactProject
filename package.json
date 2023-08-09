@@ -15,9 +15,11 @@
     "cdbreact": "^1.5.18",
     "concurrently": "^8.2.0",
     "font-awesome": "^4.7.0",
+    "init": "^0.1.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.10.1",
     "react-redux": "^8.1.2",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
@@ -27,6 +29,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "json-server": "cd src/database && json-server --watch -p 8888 quizapp.json",
+    "start:dev": "concurrently \"npm start\" \"npm run json-server\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

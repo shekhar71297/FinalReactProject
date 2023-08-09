@@ -1,7 +1,11 @@
 import {combineReducers} from 'redux'
-import StudentReducer from '../pages/student/Reducer'; 
+import resultreducer from '../pages/result/Reducer'; 
+// import StudentReducer from '../pages/student/Reducer'; 
 
 const rootReducer = combineReducers({
+        resultStore:resultreducer ,
+
+// const rootReducer = combineReducers({
         
         
     });

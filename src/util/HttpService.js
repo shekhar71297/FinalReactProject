@@ -1,25 +1,25 @@
 import axios from "axios";
 
-export function getData(endpoint){
+export function Get(url){
    return(
-    axios.get(`http://localhost:8888/${endpoint}`)
+    axios.get(url)
    );
 }
 
-export function AddData(endpoint,data){
+export function Post(url,data){
     return(
-     axios.post(`http://localhost:8888/${endpoint}`,data)
+     axios.post(url,data)
     );
  }
 
- export function DeleteData(endpoint,id){
+ export function Delete(url){
     return(
-     axios.delete(`http://localhost:8888/${endpoint}/${id}`)
+     axios.delete(url)
     );
  }
 
- export function UpdateData(endpoint,id,data){
+ export function Put(url,data){
     return(
-     axios.put(`http://localhost:8888/${endpoint}/${id}`,data)
+     axios.put(url,data)
     );
  }

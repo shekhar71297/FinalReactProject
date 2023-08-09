@@ -1,58 +1,58 @@
 import React from 'react'
-import Avatar from '@mui/material/Avatar';
+
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-// import Link from '@mui/material/Link';
+
+import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { hover } from '@testing-library/user-event/dist/hover';
+
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import axios from 'axios'
-import { Link } from 'react-router-dom';
 
 
 const defaultTheme = createTheme();
 
 
 const StudentLogin = () => {
-  const navigate=useNavigate();
-  const[students,setStudent]=useState({
-      email:"",
-      dob:""
+
+  const[user,setUser]=useState({
+      semail:"",
+      sdob:""
     });
 
 
     const inputChangeHandler=(event)=>{
-      setStudent({...students,[event.target.name]:event.target.value});
+      setUser({...user,[event.target.name]:event.target.value});
   }
   
   const checkData =(event)=>{
       event.preventDefault();
+      console.log(user.semail);
+      console.log(user.sdob);
       axios.get("http://localhost:8888/students").then((res) => {
-  
-                  const data =res.data.filter((item)=>{return item.email===students.email && item.dob===students.dob})
+                  
+                  const data =res.data.filter((item)=>{return item.semail===user.semail && item.sdob===user.sdob})
 
                   if(data.length > 0){
-                      console.log(students.email,students.dob);                                   
-                      sessionStorage.setItem("islogin",students.email);
-                      navigate("/Register");
+                      console.log(user.semail,user.sdob);                                   
+                      sessionStorage.setItem("islogin",user.semail);
+                    //   navigate("/voucher");
                   }else{
                       window.alert("wrong credential");
-                      setStudent({email:"",dob:""});
+                      setUser({semail:"",sdob:""});
                   }
           });
       
   }
 
- 
+    
   return (
     <div>
     <ThemeProvider theme={defaultTheme}>
@@ -79,22 +79,24 @@ const StudentLogin = () => {
               fullWidth
               id="email"
               label="Enter Email/Username"
-              name="email"
+              name="semail"
               autoComplete="email"
               autoFocus
-              value={students.email}
+              value={user.semail}
               onChange={inputChangeHandler}
+
             />
-            <TextField  
+            <TextField
               margin="normal"
               required
               fullWidth
-              name="dob"
+              label="Dob"
+              name="sdob"
               type="date"
               id="dob"
-              value={students.dob}
+              value={user.sdob}
               onChange={inputChangeHandler}
-              
+        
             />
             <Button
               type="submit"
@@ -107,7 +109,7 @@ const StudentLogin = () => {
             </Button>
             <Grid container style={{ textAlign: 'left' }}>
               <Grid item xs>
-                <Link to='/Register' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
+                <Link href='#' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
                   New Student ? Register Here
                 </Link><br />
                 <Link href="#" variant="body2" style={{ color: 'red', textDecoration: 'none' }}>

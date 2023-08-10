@@ -87,7 +87,6 @@ export class StudentDashboard extends Component {
     // let url = `${"http://localhost:8888/students"}/${id}`;
     this.props.getSingleStudentRequest(id);
     // axios.get(url).then((res) => {
-    //   console.log(res.data);
     //   const { students, id, firstname, lastname, email, contact, dob, gender, organization} = res.data;
 
     //   this.setState({ id, firstname, lastname, email, contact, dob, gender, organization });
@@ -240,18 +239,24 @@ updateStudent = (event) => {
     const { students, open, dob, contact, email, gender, organization } = this.state;
     const { searchQuery, page, rowsPerPage } = this.state;
 
-    const filteredStudent = this.props.allstudent.filter((val) =>{
+
+    const filteredStudents = this.props.allstudent.some((val) => {
       const searchQuery = this.state.searchQuery;
-    const firstnameIncludes = val.firstname.toLowerCase().includes(searchQuery);
-    const lastnameIncludes = val.lastname.toLowerCase().includes(searchQuery);
-    const emailIncludes = val.email.toLowerCase().includes(searchQuery);
-    // const statusIncludes = status.toLowerCase().includes(searchQuery);
-    const dobIncludes = val.dob.toLowerCase().includes(searchQuery);
-    const organizationIncludes = val.organization.toLowerCase().includes(searchQuery);
-      return firstnameIncludes || lastnameIncludes || emailIncludes || dobIncludes ||
-      organizationIncludes 
-    } );
+
+      const firstNameIncludes = val.firstName.toLowerCase().includes(searchQuery);
+      const lastNameInclude = val.lastName.toLowerCase().includes(searchQuery);
+      const organizationIncludes = val.Orgnization.toLowerCase().includes(searchQuery);
+      const emailIncludes = val.email.toLowerCase().includes(searchQuery);
+      // const statusIncludes = status.toLowerCase().includes(searchQuery);
+      // const branchIncludes = val.Branch.toLowerCase().includes(searchQuery);
+      const dobIncludes = val.dob.toLowerCase().includes(searchQuery);
+        return firstNameIncludes || organizationIncludes || lastNameInclude || emailIncludes ||
+        dobIncludes 
+      }
+      );
+    
     return (
+      <>
       <div className='container'>
          <Button variant="contained" color="primary" size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon/>Student</Button>
                   <input style={{position:'relative' , right:"30%" , padding:"7px", margin:"7px", border:"2px solid "}}
@@ -281,7 +286,7 @@ updateStudent = (event) => {
                 </TableHead>
                 <TableBody>
 
-                  {filteredStudent.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val,index) => {
+                  {filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val,index) => {
                     return <TableRow key={val.id}>
                       <TableCell component="th" scope="row">{index+1}</TableCell>
                       <TableCell align='center' >{val.firstname}</TableCell >
@@ -313,7 +318,7 @@ updateStudent = (event) => {
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, 35, 50]}
               component="div"
-              count={filteredStudent.length} // Use the filtered results length for pagination
+              count={filteredStudents.length} // Use the filtered results length for pagination
               rowsPerPage={rowsPerPage}
               page={page}
               onPageChange={this.handleChangePage}
@@ -433,14 +438,14 @@ updateStudent = (event) => {
           </Box>
         </Modal>
       </div>
-
+      </>
 
     );
   }
 }
 const mapStateToProps = (state) => ({
-  allstudent: state.StudentStore.allstudent,
-  singelStudent: state.StudentStore.student
+  allstudent: state.studentStore.allstudent,
+  singelStudent: state.studentStore.student
 })
 
 const mapDispatchToprops = (dispatch) => ({

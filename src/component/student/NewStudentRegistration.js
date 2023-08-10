@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import * as constants from '../../util/Constant'
-import { getData, DeleteData, UpdateData } from '../../util/HttpService';
+// import * as constants from '../../util/Constant'
+// import { getData, DeleteData, UpdateData } from '../../util/HttpService';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -27,7 +27,6 @@ class NewStudentRegistration extends Component {
     super(props)
 
     this.state = {
-      students: [],
       id: null,
       firstname: '',
       lastname: '',
@@ -281,11 +280,11 @@ class NewStudentRegistration extends Component {
   }
 }
 const mapStateToProps = (state) => ({
-  allstudent: state.StudentStore.allstudent
+  allstudent: state.studentStore.allstudent
 })
 
 const mapDispatchToprops = (dispatch) => ({
-  initStudentRequest: () => dispatch(Student.getAllStudent()),
+  // initStudentRequest: () => dispatch(Student.getAllStudent()),
   addStudentRequest: (data) => dispatch(Student.addAllStudent(data)),
 
 

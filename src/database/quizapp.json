@@ -355,6 +355,17 @@
       "lname": "",
       "role": "",
       "password": ""
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "3233-03-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "branch": "",
+      "id": 36
     }
   ]
 }

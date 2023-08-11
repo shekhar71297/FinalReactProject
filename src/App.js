@@ -19,7 +19,6 @@ function App() {
       
     
       <BrowserRouter>
-    
       <Student/>
       {/* <StudentDashboard/> */}
       
@@ -27,7 +26,7 @@ function App() {
         <Route path='/register' element={<NewStudentRegistration/>}/>
         <Route path='/dash' element={<StudentDashboard />} />
          <Route path='/dashboard' element={<Dashboard />}>
-          {/* <Route path='result' element={<Result/>}/> */}
+          <Route path='result' element={<Result/>}/>
         </Route> 
       </Routes>
       </BrowserRouter>

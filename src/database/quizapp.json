@@ -1,38 +1,6 @@
 {
   "students": [
     {
-      "id": 5,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 6,
-      "StudentName": "sujit gaikwad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 26,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 7,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 8,
       "StudentName": "amol pawar",
       "Orgnization": "Hematite",

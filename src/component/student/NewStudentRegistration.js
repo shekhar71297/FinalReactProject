@@ -46,6 +46,7 @@ class NewStudentRegistration extends Component {
   addResgisterStudent = (event) => {
     event.preventDefault();
     this.setState({
+      students: [],
       firstname: '',
       lastname: '',
       email: '',

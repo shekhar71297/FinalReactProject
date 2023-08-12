@@ -25,7 +25,7 @@ export class FeedbackModule extends Component {
             queThree: '',
             queFour: '',
             queFive: '',
-            queSix: '',
+            queSix: ''
         }
     }
 
@@ -43,7 +43,6 @@ export class FeedbackModule extends Component {
 
     // method update state property
     inputChangeHandler = (event) => {
-        // const {name,value}=event.target;
         this.setState({ [event.target.name]: event.target.value })
     }
 
@@ -60,7 +59,8 @@ export class FeedbackModule extends Component {
             queThree: '',
             queFour: '',
             queFive: '',
-            queSix: ''
+            queSix: '',
+            errorMessage:''
         });
     };
 
@@ -87,7 +87,7 @@ export class FeedbackModule extends Component {
     }
 
     render() {
-        const { id, fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix } = this.state;
+        const { id, fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix,errorMessage } = this.state;
 
         const isSubmitDisabled = !fname || !email || !contact || !org || !queOne || !queTwo || !queThree || !queFour || !queFive || !queSix ;
         return (
@@ -104,13 +104,15 @@ export class FeedbackModule extends Component {
                         >
                             <TextField id="fullname" type='text' label='Name' name='fname' variant="standard"
                                 required placeholder='Enter Name' multiline
-                                rows={1} onChange={this.inputChangeHandler} value={fname} />
+                                rows={1} onChange={this.inputChangeHandler} value={fname} errorMessage="Full name is required"/>
+                                <span>{errorMessage}</span>
 
-                            <TextField id="email" type='text' name='email' label="Email" variant="standard"
+                            <TextField id="email" type='email' name='email' label="Email" variant="standard"
                                 required placeholder='Enter Email' pattern='[a-z0-9._%+-]+@([a-z0-9.-]{5})+\.[a-z]{2,4}' multiline
-                                rows={1} onChange={this.inputChangeHandler} value={email} />
+                                rows={1} onChange={this.inputChangeHandler} value={email}
+                            />
                             
-                            <TextField id="contact" type='text' name='contact' label="Contact" variant="standard"
+                            <TextField id="contact" type='tel' name='contact' label="Contact" variant="standard"
                                 required placeholder='Enter Contact' pattern='[0-9]{10}' multiline
                                 rows={1} onChange={this.inputChangeHandler} value={contact} />
                             
@@ -121,7 +123,7 @@ export class FeedbackModule extends Component {
                             <TextField
                                 name="queOne"
                                 type='text'
-                                label="1.What did you enjoy the most about the tranning?"
+                                label="1.What did you enjoy the most about the trainning?"
                                 variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
                                 rows={3} onChange={this.inputChangeHandler} value={queOne}
                             />

@@ -163,7 +163,7 @@ export class FeedDash extends Component {
                         <Box sx={style}>
 
                             <Stack spacing={2} direction="row">
-                                <Button onClick={this.handleClose} style={{ marginLeft: '395px', color: 'grey' }}><CloseIcon style={{ color: 'gray' }} /></Button>
+                                <Button onClick={this.handleClose} style={{ marginLeft: '395px', color: 'grey' }}><CloseIcon style={{ color: 'blue' }} /></Button>
                             </Stack>
                             <Typography id="modal-modal-title" variant="h6" component="h2" style={{ fontWeight: '700' }}>
                                 Feedback Details
@@ -181,7 +181,7 @@ export class FeedDash extends Component {
                                         <TableCell>Organization: </TableCell><TableCell>{selectedFeedback.org}</TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell>1.What did you enjoy the most about the tranning?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queOne}</TableCell>
+                                        <TableCell>1.What did you enjoy the most about the trainning?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queOne}</TableCell>
                                     </TableRow>
                                     <TableRow>
                                         <TableCell>2.How would you rate the quality of instruction provided by the faculty? </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queTwo}</TableCell>
@@ -201,11 +201,10 @@ export class FeedDash extends Component {
                                 </Table>
                             )}
                             <Stack spacing={2} direction="row">
-                                <Button onClick={this.handleClose} style={{ marginLeft: '380px', marginTop: '10px', color: 'gray' }}>Close</Button>
+                                <Button onClick={this.handleClose} style={{ marginLeft: '380px', marginTop: '10px', color: 'blue' }}>Close</Button>
                             </Stack>
                         </Box>
                     </Modal>
-
                 </TableContainer>
 
                 <TablePagination

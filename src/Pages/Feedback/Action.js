@@ -3,15 +3,6 @@ import * as constants from '../../util/Constant'
 import * as constant from './constant.js'
 import {Get} from '../../util/HttpService.js'
 
-//get feedback
-// export function getAllFeedback() {
-//     return (dispatch) => {
-//         axios.get("http://localhost:8888/feedback")
-//             .then(response => dispatch(getFeedbackSuccess(response.data)))
-//             .catch(error => dispatch(getFeedbackError(error.response.data)))
-//     }
-// }
-
 export function getAllFeedback() {
     return (dispatch) => {
         const url = `${constants.baseURL}/feedback`;

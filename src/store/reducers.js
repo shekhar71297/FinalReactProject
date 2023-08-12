@@ -1,9 +1,14 @@
-import { combineReducers } from 'redux';
-import feedbackReducer from '../pages/feedback/Reducer';
+import {combineReducers} from 'redux'
 import resultreducer from '../pages/result/Reducer'; 
+// import StudentReducer from '../pages/student/Reducer'; 
+
 const rootReducer = combineReducers({
-   feedbackStore:feedbackReducer,
-   resultStore:resultreducer,
-});
+        resultStore:resultreducer ,
+
+// const rootReducer = combineReducers({
+        
+        
+    });
+    
 
 export default rootReducer;

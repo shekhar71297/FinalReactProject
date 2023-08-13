@@ -1,6 +1,9 @@
 import { Provider } from 'react-redux';
 import './App.css';
 import store from './store/store'
+import { Provider } from 'react-redux';
+// import Sidenav from './pages/Sidenav';
+import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
 import Result from './pages/result/container/Result';
@@ -30,7 +33,7 @@ function App() {
         </Route> 
       </Routes>
       </BrowserRouter>
-    </Provider>   
+    </Provider>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import axios from 'axios';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -18,7 +17,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
-import * as useraction from '../../pages/user/action'
+import * as studentaction from '../../pages/student/action'
 import { connect } from 'react-redux';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -38,54 +37,61 @@ const style = {
 };
 
 
-class Usertable extends Component {
+class StudentDashboard extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      user: [],
+      student: [],
       id: null,
-      fname: "",
-      lname: "",
-      role: "",
-      password: "",
+      firstname: "",
+      lastname: "",
       contact: "",
       gender: "",
       email: "",
+      organization: '',
       page: 0,
       rowsPerPage: 5,
       open: false,
       searchQuery: "",
-      isAddUser: true
+      isAddStudent: true
     }
   }
 
 
   componentDidUpdate(prevProps) {
-
-    if (prevProps.singleUser !== this.props.singleUser) {
-      const { id, fname, lname, role, password, contact, gender, email } = this.props.singleUser;
+    if (prevProps.singelStudent !== this.props.singelStudent) {
+      const { id, firstname, lastname, email, contact, dob, gender, organization } = this.props.singelStudent;
       this.setState({
-        id, fname, lname, role, password, contact, gender, email
-      }, () => console.log(this.state))
+        id, firstname, lastname, email, contact, dob, gender, organization
+      })
     }
+    
   }
+    
   componentDidMount() {
-    // this.fetchData();
-
-    this.props.initUserRequest();
-    console.log(this.props.singleUser)
-
+    this.props.initStudentRequest()
+    // console.log(this.props.singelStudent)
   }
+  // fetchData = () => {
+  //   // e.preventDefault()
+  //   // axios.get("http://localhost:8888/students").then((res) => {
+  //   //   this.setState({ students: res.data });
+  //   // })
+  //   this.props.initStudentRequest()
+  // }
+   
+
+  
   handleSearchQueryChange = (event) => {
-    this.setState({ searchQuery: event.target.value, page:0 });
+    this.setState({ searchQuery: event.target.value, page: 0 });
   };
 
   // fetchData = () => {
-  //   const url = `${constants.baseURL}/user`;
+  //   const url = `${constants.baseURL}/student`;
   //   getData(url).then((res) => {
   //     console.log(res.data);
-  //     this.setState({ user: res.data });
+  //     this.setState({ student: res.data });
   //   })
   // }
 
@@ -103,13 +109,13 @@ class Usertable extends Component {
   }
 
   handleOpen = (id = null) => {
-    this.resetUserFormHandler();
+    this.resetStudentFormHandler();
 
     if (id !== null) {
       this.getsinglerecord(id);
-      this.setState({ open: true, isAddUser: false });
+      this.setState({ open: true, isAddStudent: false });
     } else {
-      this.setState({ open: true, isAddUser: true });
+      this.setState({ open: true, isAddStudent: true });
     }
 
 
@@ -122,10 +128,10 @@ class Usertable extends Component {
   deletedata = (id) => {
     
     if (window.confirm(`Are you sure to delete Recore data :${id}`)) {
-      this.props.initUserRequest()
-      this.props.deleteUserRequest(id)
-      // let url = `${"http://localhost:8888/user"}/${id}`
-      // const url = `${constants.baseURL}/user/${id}`;
+      this.props.initStudentRequest()
+      this.props.deleteStudentRequest(id)
+      // let url = `${"http://localhost:8888/student"}/${id}`
+      // const url = `${constants.baseURL}/student/${id}`;
       // DeleteData(url).then(() => {
       //   window.alert("Record delete succesfully");
       //   this.fetchData()
@@ -134,28 +140,31 @@ class Usertable extends Component {
     }
   }
   getsinglerecord = (id) => {
-    this.props.getSingleUserRequest(id)
+    this.props.getSingleStudentRequest(id)
 
-    // let url =`${get_user}/${id}`;
-    // const url = `${constants.baseURL}/user/${id}`;
+    // let url =`${get_student}/${id}`;
+    // const url = `${constants.baseURL}/student/${id}`;
     // getData(url).then((res) => {
     //   console.log(res.data);
-    //   const { user, id, fname, lname, password, email, role, gender, contact } = res.data;
+    //   const { student, id, fname, lname, password, email, role, gender, contact } = res.data;
     //   this.setState({ id, fname, lname, password, email, role, gender, contact });
     // })
   }
 
-  resetUserFormHandler = () => {
+  resetStudentFormHandler = () => {
     this.setState({
-      // user: [],
+      // student: [],
       id: null,
-      fname: "",
-      lname: "",
-      role: "",
-      password: "",
+      firstname: "",
+      lastname: "",
       contact: "",
       gender: "",
       email: "",
+      organization: '',
+      page: 0,
+      rowsPerPage: 5,
+      open: false,
+      searchQuery: "",
       // page: 0,
       // rowsPerPage: 10,
       // open: false,
@@ -163,60 +172,63 @@ class Usertable extends Component {
     })
   }
 
-  updateuser = (event) => {
+  updateStudent = (event) => {
     event.preventDefault();
-    let pobj = {
+    let sObj = {
+      id: this.state.id,
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
       email: this.state.email,
-      fname: this.state.fname,
-      lname: this.state.lname,
-      password: this.state.password,
-      role: this.state.role,
-      gender: this.state.gender,
       contact: this.state.contact,
+      dob: this.state.dob,
+      gender: this.state.gender,
+      organization: this.state.organization,
+  
     }
-    if (this.state.isAddUser) {
-      this.props.addUserRequest(pobj);
+    if (this.state.isAddStudent) {
+      this.props.addStudentRequest(this.state);
       // const url = `${constants.baseURL}/user`;
-      console.log("add ", pobj);
-      // AddData(url, pobj).then(() => {
-      window.alert("User added successfully")
+      // console.log("add ", sObj);
+      // AddData(url, sObj).then(() => {
+      window.alert("Student added successfully")
       // })
     } else {
-      pobj['id'] = this.state.id;
-      this.props.initUserRequest()
-      this.props.updateUserRequest(pobj)
+      sObj['id'] = this.state.id;
+      this.props.initStudentRequest()
+      this.props.updateStudentRequest(sObj)
       // const url = `${constants.baseURL}/user/${this.state.id}`;
-      console.log("update ", pobj);
-      // UpdateData(url, pobj).then(() => {
+      // console.log("update ", sObj);
+      // UpdateData(url, sObj).then(() => {
       window.alert("Record updated successfully");
       //   this.fetchData();
       // })
     }
 
 
-
-
   }
   render() {
     // const { open, } = this.state;
-    const { page, rowsPerPage, user, fname, open, lname, password, contact, email, gender, role } = this.state;
-    const filteredUsers = this.props.allUser.filter((data) =>{
-      const searchQuery = this.state.searchQuery;
-      const fnameIncludes = data.fname.toLowerCase().includes(searchQuery)
-      const lnameIncludes = data.lname.toLowerCase().includes(searchQuery)
-      const emailIncludes = data.email.toLowerCase().includes(searchQuery)
-      const roleIncludes =data.role.toLowerCase().includes(searchQuery)
+    const { page, rowsPerPage, student, fname, open, lname, password, contact, email, gender, role } = this.state;
+    console.log(this.props.allstudent);
+    const filteredStudents = this.props.allstudent.map((data) => {
+   return data ;
+  //  const searchQuery = this.state.searchQuery;
+      // const firstnameIncludes = data.firstname.toLowerCase().includes(searchQuery);
+      // const lastnameIncludes = data.lastname.toLowerCase().includes(searchQuery);
+      // const emailIncludes = data.email.toLowerCase().includes(searchQuery);
+      // const dobIncludes = data.dob.toLowerCase().includes(searchQuery);
+      // const organizationIncludes = data.organization.toLowerCase().includes(searchQuery);
+      // return firstnameIncludes || lastnameIncludes || emailIncludes || dobIncludes || organizationIncludes;
 
-        return fnameIncludes || lnameIncludes || emailIncludes || roleIncludes 
-        
-        }    
-        );
+    }
+   
+    );
     return (
-
+      
       <div className='container'>
         <Box sx={{ height: 100 }}>
           <Paper sx={{ width: "100%", overflow: "hidden", position: "relative", right: "30px", top: "50px" }}>
-            <Button variant="contained" color="primary" size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon/>User</Button>&nbsp;
+            <Button variant="contained" color="primary" size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>&nbsp;
             <TextField
               label="Search.."
               variant="outlined"
@@ -234,27 +246,27 @@ class Usertable extends Component {
                     <TableCell align="center">First Name</TableCell>
                     <TableCell align="center">Last Name</TableCell>
                     <TableCell align="center">Email</TableCell>
-                    <TableCell align="center">Password</TableCell>
-                    <TableCell align="center">Role</TableCell>
-                    <TableCell align="center">Gender</TableCell>
                     <TableCell align="center">Contact</TableCell>
+                    <TableCell align="center">dob</TableCell>
+                    <TableCell align="center">Gender</TableCell>
+                    <TableCell align="center">Organization</TableCell>
                     <TableCell align="center">Action</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {filteredUsers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+                  {filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
 
 
                     return <TableRow key={index}>
-                      <TableCell component="th" scope="row">{data.id}</TableCell>
-                      <TableCell>{data.fname}</TableCell >
-                      <TableCell>{data.lname}</TableCell >
-                      <TableCell>{data.email}</TableCell>
-                      <TableCell>{data.password}</TableCell>
-                      <TableCell>{data.role}</TableCell>
-                      <TableCell>{data.gender}</TableCell>
-                      <TableCell>{data.contact}</TableCell>
-
+                    
+                      <TableCell component="th" scope="row">{index+1}</TableCell>
+                      <TableCell align='center' >{data.firstname}</TableCell >
+                      <TableCell align='center'>{data.lastname}</TableCell >
+                      <TableCell align='center'>{data.email}</TableCell>
+                      <TableCell align='center'>{data.contact}</TableCell>
+                      <TableCell align='center' >{data.dob}</TableCell>
+                      <TableCell align='center' >{data.gender}</TableCell>
+                      <TableCell align='center' >{data.organization}</TableCell>
                       <TableCell align="center" >
 
                         <Button color="primary" size="small" type="button" onClick={() => (this.handleOpen(data.id))}><EditIcon /></Button>&nbsp;
@@ -275,8 +287,8 @@ class Usertable extends Component {
 
                 component="div"
                 rowsPerPageOptions={[3, 10, 25]}
-                count={filteredUsers.length}
-              
+                count={filteredStudents.length}
+
                 rowsPerPage={rowsPerPage}
                 page={page}
                 onPageChange={this.handleChangePage}
@@ -294,7 +306,7 @@ class Usertable extends Component {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style} >
-            <form onSubmit={this.updateuser}>
+            <form onSubmit={this.updatestudent}>
               <Grid container spacing={2}>
                 <Grid item xs={12} >
                   <TextField
@@ -302,7 +314,7 @@ class Usertable extends Component {
                     variant="outlined"
                     fullWidth
                     name="fname"
-                    value={fname}
+                    value={this.state.firstname}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -312,7 +324,7 @@ class Usertable extends Component {
                     variant="outlined"
                     fullWidth
                     name="lname"
-                    value={lname}
+                    value={this.state.lastname}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -322,7 +334,7 @@ class Usertable extends Component {
                     variant="outlined"
                     fullWidth
                     name="email"
-                    value={email}
+                    value={this.state.email}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -332,17 +344,17 @@ class Usertable extends Component {
                     variant="outlined"
                     fullWidth
                     name="contact"
-                    value={contact}
+                    value={this.state.contact}
                     onChange={this.handleChange}
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    label="Role"
+                    label="Organization"
                     variant="outlined"
                     fullWidth
-                    name="role"
-                    value={role}
+                    name="organization"
+                    value={this.state.organization}
                     onChange={this.handleChange}
                   />
                 </Grid>
@@ -374,9 +386,9 @@ class Usertable extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Button type="submit" variant="contained" color="primary">
-                    {this.state.isAddUser ? "Add User" : "Update User"}
+                    {this.state.isAddStudent ? "Add Student" : "Update Student"}
                   </Button>
-                  <Button type="button" onChange={this.handleClose}variant="contained" color="primary">cancel</Button>
+                  <Button type="button" onChange={this.handleClose} variant="contained" color="primary">cancel</Button>
                 </Grid>
               </Grid>
             </form>
@@ -392,17 +404,17 @@ class Usertable extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  allUser: state.userStore.allUser,
-  singleUser: state.userStore.user
+  allstudent: state.studentStore.allstudent,
+  singleStudent: state.studentStore.student
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  initUserRequest: () => dispatch(useraction.getAlluser()),
-  updateUserRequest: (id) => dispatch(useraction.updateUser(id)),
-  addUserRequest: (data) => dispatch(useraction.addUser(data)),
-  deleteUserRequest: (id) => dispatch(useraction.deleteUser(id)),
-  getSingleUserRequest: (id) => dispatch(useraction.getSingleuser(id))
+  initStudentRequest: () => dispatch(studentaction.getAllStudent()),
+  updateStudentRequest: (id) => dispatch(studentaction.updateAllStudent(id)),
+  addStudentRequest: (data) => dispatch(studentaction.addAllStudent(data)),
+  deleteStudentRequest: (id) => dispatch(studentaction.deleteAllStudent(id)),
+  getSingleStudentRequest: (id) => dispatch(studentaction.getsingleStudent(id))
 
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Usertable); add cancel function in modal
+export default connect(mapStateToProps, mapDispatchToProps)(StudentDashboard);

@@ -334,6 +334,67 @@
       "organization": "cdac",
       "branch": "",
       "id": 36
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "",
+      "role": "",
+      "gender": "male",
+      "contact": "9322403669",
+      "id": 37
+    },
+    {
+      "students": [],
+      "id": 38,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-15",
+      "gender": "Male",
+      "organization": "hematite",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
+    },
+    {
+      "students": [],
+      "id": 39,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-15",
+      "gender": "Male",
+      "organization": "hematite",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "branch": "",
+      "id": 40
     }
   ]
 }

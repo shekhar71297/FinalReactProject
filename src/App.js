@@ -8,7 +8,8 @@ import Result from './pages/result/container/Result';
 import StudentLogin from './component/student/StudentLogin';
 import Student from './pages/student/container/Student';
 import NewStudentRegistration from './component/student/NewStudentRegistration';
-import { StudentDashboard } from './component/student/StudentDashboard';
+import StudentDashboard from './component/student/StudentDashboard';
+
 
 
 function App() {
@@ -20,7 +21,6 @@ function App() {
     
       <BrowserRouter>
       <Student/>
-      {/* <StudentDashboard/> */}
       
       <Routes>
         <Route path='/register' element={<NewStudentRegistration/>}/>

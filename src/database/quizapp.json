@@ -1,0 +1,283 @@
+{
+  "vcodes": [
+    {
+      "status": true,
+      "id": 1,
+      "Vcode": "7aqvnU"
+    },
+    {
+      "status": true,
+      "id": 2,
+      "Vcode": "SZa8Qm"
+    },
+    {
+      "status": false,
+      "id": 3,
+      "Vcode": "yUapUy"
+    },
+    {
+      "status": false,
+      "id": 4,
+      "Vcode": "SgLBmw"
+    },
+    {
+      "status": true,
+      "id": 5,
+      "Vcode": "TZkSCK"
+    },
+    {
+      "status": true,
+      "id": 6,
+      "Vcode": "rEOHy9"
+    },
+    {
+      "status": true,
+      "id": 7,
+      "Vcode": "gCoC7V"
+    },
+    {
+      "status": true,
+      "id": 8,
+      "Vcode": "M7ebg7"
+    },
+    {
+      "status": true,
+      "id": 9,
+      "Vcode": "vVOnxq"
+    },
+    {
+      "status": true,
+      "id": 10,
+      "Vcode": "MnF9q8"
+    },
+    {
+      "status": true,
+      "id": 11,
+      "Vcode": "wU4NOp"
+    },
+    {
+      "status": true,
+      "id": 12,
+      "Vcode": "A2Qekk"
+    },
+    {
+      "status": true,
+      "id": 13,
+      "Vcode": "opyAs6"
+    },
+    {
+      "status": true,
+      "id": 14,
+      "Vcode": "IwHLmT"
+    },
+    {
+      "status": true,
+      "id": 15,
+      "Vcode": "MaMkbt"
+    }
+  ],
+  "StudentResult": [
+    {
+      "id": 2,
+      "StudentName": "om patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 46,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 7,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 9,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 10,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 11,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 13,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 15,
+      "StudentName": "pooja mothe",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 35,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 16,
+      "StudentName": "yashraj jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 17,
+      "StudentName": "rohan badak",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 34,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 18,
+      "StudentName": "akhilesh yadav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "Angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 19,
+      "StudentName": "satish pandare",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 20,
+      "StudentName": "abhishek kad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "c++",
+      "TotalMark": 50,
+      "ObtainedMark": 35,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 21,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 37,
+      "Date": "26/06/2023"
+    }
+  ]
+}

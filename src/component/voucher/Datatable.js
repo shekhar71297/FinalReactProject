@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Switch from '@mui/material/Switch';
-// import Vouchercode from './Vouchercode';
+
 
 export class Datatable extends Component {
   constructor(props) {
@@ -76,11 +76,7 @@ export class Datatable extends Component {
 
     return (
       <div className='container'>
- {/* <Vouchercode voucherCode={vcodes} /> */}
-         {/* <Vouchercode
-          voucherCode={vcodes.find((data, index) => index === this.state.switchindex)}
-          voucherData={vcodes} */}
-        {/* /> */}
+ 
 
         <hr />
         <TableContainer component={Paper}>

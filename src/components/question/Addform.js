@@ -7,6 +7,8 @@ import Popup from './Popup';
 import { Modal } from 'react-bootstrap';
 // import { addAllQuestions } from '../../Pages/question/Action';
 import axios from 'axios';
+import { Button } from '@mui/material';
+
 
 
 
@@ -63,8 +65,8 @@ const Addform = () => {
     <div>
       
     {!isFormVisible && (
-      <div  className='float-center '>
-      <button type='button' onClick={() => setFormVisible(true)}   className='btn btn-outline-dark  mt-5 ' >Add Question +</button>
+      <div >
+      <Button variant='contained'  type='button' onClick={() => setFormVisible(true)}    >Add Question +</Button>
       </div>
       
     )}
@@ -154,10 +156,10 @@ const Addform = () => {
         />
         
         <div className='pull-left mb-3'><br/>
-        <button type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</button>
+        <Button variant='outlined' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
         </div>
         <div className='text-right'>
-        <button type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-4' >Clear</button>
+        <Button variant='outlined' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-4' >Clear</Button>
         </div> 
         <Popup show={showPopup} handleClose={handleClosePopup} />
       </div>

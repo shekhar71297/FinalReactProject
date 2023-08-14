@@ -109,8 +109,16 @@
         "None of the above."
       ],
       "answer": "C is the correct answer. The webpack command is a module bundler."
+    },
+    {
+      "Question": "",
+      "Option1": "",
+      "Option2": "",
+      "Option3": "",
+      "Option4": "",
+      "Answer": "",
+      "id": 11
     }
-   
   ],
   "python": [
     {
@@ -211,7 +219,6 @@
         "sqrt()"
       ],
       "answer": "b"
-
     }
   ],
   "php": [
@@ -271,7 +278,7 @@
       "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
     }
   ],
-      "vcodes": [
+  "vcodes": [
     {
       "status": true,
       "id": 1,

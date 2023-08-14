@@ -20,7 +20,6 @@ export default function NavBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            {/* <MenuIcon /> */}
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{textAlign:'left',fontWeight:'bold',width:'100px'}}>
             Hematite Infotech Online-Quiz
@@ -29,7 +28,7 @@ export default function NavBar() {
       </AppBar>
         <StudentLogin/>
         
-      <Box sx={{ flexGrow: 1 , marginTop:40}}>
+      <Box sx={{ flexGrow: 1 , marginTop:18}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -39,7 +38,7 @@ export default function NavBar() {
             aria-label="menu"
             sx={{ mr: 2 }}
           >
-            {/* <MenuIcon /> */}
+          
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{textAlign:'right',fontWeight:'bold',width:'100px',fontSize:'15px'}}>
             Designed And Developed By  Sujit Gaikwad

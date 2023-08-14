@@ -1,26 +1,20 @@
 import React, { Component } from 'react'
-// import * as constants from '../../util/Constant'
-// import { getData, DeleteData, UpdateData } from '../../util/HttpService';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
 import InputLabel from '@mui/material/InputLabel';
-import * as Student from '../../pages/student/action'
-import Form from 'react'
-import { Button } from '@mui/material'
+import * as Student from '../../pages/student/action';
+import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { Link } from '@mui/material';
-import axios from 'axios';
 import MenuItem from '@mui/material/MenuItem';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import { connect } from 'react-redux';
-import { SignalCellularNull, TextFields } from '@mui/icons-material';
+import { TextFields } from '@mui/icons-material';
 import Modal from '@mui/material/Modal';
 class NewStudentRegistration extends Component {
   constructor(props) {
@@ -77,15 +71,6 @@ class NewStudentRegistration extends Component {
   }
 
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    })
-    // }, () => console.log("anmol state", this.state));
-
-  };
-
   handleClearForm = () => {
     this.setState({
       firstname: (''),
@@ -99,6 +84,7 @@ class NewStudentRegistration extends Component {
     })
 
   }
+
   handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -122,7 +108,7 @@ class NewStudentRegistration extends Component {
 
 
   render() {
-    const { id, cdac, pnr, firstname, lastname, email, contact, dob, gender, organization, term, open } = this.state;
+    const { pnr, firstname, lastname, email, contact, dob, gender, organization} = this.state;
     return (
       // <Modal
       //   open={open}
@@ -165,7 +151,6 @@ class NewStudentRegistration extends Component {
                   label="Last Name"
                   onChange={this.handleChange}
                   value={lastname}
-                  // error
                   name='lastname'
                   fullWidth
                   required
@@ -178,7 +163,6 @@ class NewStudentRegistration extends Component {
                 color='secondary'
                 label="Email"
                 onChange={this.handleChange}
-                // error
                 value={email}
                 name='email'
                 fullWidth
@@ -191,7 +175,6 @@ class NewStudentRegistration extends Component {
                 color='secondary'
                 label="+91 contact number"
                 onChange={this.handleChange}
-                // error
                 value={contact}
                 name='contact'
                 fullWidth
@@ -202,8 +185,6 @@ class NewStudentRegistration extends Component {
                 type="date"
                 variant='outlined'
                 color='secondary'
-                // label="Date of Birth"
-                // error
                 onChange={this.handleChange}
                 value={dob}
                 name='dob'
@@ -261,9 +242,9 @@ class NewStudentRegistration extends Component {
                   <TextField
                     id="standard-basic"
                     variant="standard"
-                    name="pnr" // Use the correct name here
+                    name="pnr" 
                     placeholder="pnr"
-                    value={pnr} // Use the correct value here
+                    value={pnr} 
                     onChange={this.handleChange}
                   />
                 )}
@@ -271,7 +252,7 @@ class NewStudentRegistration extends Component {
               </FormControl>
 
               <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
-              <Button onClick={this.handleClearForm} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" type="resrt">Clear</Button>
+              <Button onClick={this.handleClearForm} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" type="reset">Clear</Button>
             </form>
 
           </div>
@@ -281,18 +262,8 @@ class NewStudentRegistration extends Component {
     )
   }
 }
-const mapStateToProps = (state) => ({
-  allstudent: state.studentStore.allstudent
-})
-
-const mapDispatchToprops = (dispatch) => ({
-  // initStudentRequest: () => dispatch(Student.getAllStudent()),
-  addStudentRequest: (data) => dispatch(Student.addAllStudent(data)),
 
 
-})
-
-export default connect(mapStateToProps, mapDispatchToprops)(NewStudentRegistration);
-// sx={{ marginBottom: 4 }}
+export default NewStudentRegistration;
 
 

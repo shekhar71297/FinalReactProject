@@ -24,7 +24,7 @@ import { MdGeneratingTokens } from 'react-icons/md';
 import { GiPapers } from 'react-icons/gi';
 import { MdFeedback } from 'react-icons/md';
 import { RiNewspaperFill } from 'react-icons/ri';
-
+import { PiStudentFill } from 'react-icons/pi';
 import {IoMdLogOut } from 'react-icons/io';
 import { Outlet, useNavigate } from 'react-router-dom';
 import './dashboard.css'
@@ -216,6 +216,27 @@ const Dashboard = () => {
                     <RiNewspaperFill />
                   </ListItemIcon>
                   <ListItemText primary='Exam' sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+
+              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/student")} >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    < PiStudentFill />
+                  </ListItemIcon>
+                  <ListItemText primary='Student' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
     

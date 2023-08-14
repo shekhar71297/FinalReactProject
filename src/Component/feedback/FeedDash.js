@@ -8,8 +8,6 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Stack from '@mui/material/Stack';
-import { connect } from 'react-redux';
-import * as Action from '../../pages/feedback/Action'
 import { Typography, Box, Modal } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CloseIcon from '@mui/icons-material/Close';
@@ -133,7 +131,6 @@ export class FeedDash extends Component {
                                     </TableCell>
                                 </TableRow>
                             ) : (
-                                
                                     filteredFeedback.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
                                         const rowNumber = firstIndex + index + 1
                                         return <TableRow key={val.id}>

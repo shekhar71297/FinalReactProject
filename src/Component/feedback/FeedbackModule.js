@@ -6,8 +6,6 @@ import Stack from '@mui/material/Stack';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-const ariaLabel = { 'aria-label': 'description' };
-
 export class FeedbackModule extends Component {
     constructor(props) {
         super(props)
@@ -30,6 +28,7 @@ export class FeedbackModule extends Component {
     // New onChange event handler for text fields
     handleChange = (event) => {
         const { name, value } = event.target;
+
         this.setState({
             [name]: value,
         });
@@ -85,7 +84,7 @@ export class FeedbackModule extends Component {
     }
 
     render() {
-        const { id, fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix,errorMessage } = this.state;
+        const { fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix,errorMessage } = this.state;
 
         const isSubmitDisabled = !fname || !email || !contact || !org || !queOne || !queTwo || !queThree || !queFour || !queFive || !queSix ;
         return (
@@ -103,7 +102,6 @@ export class FeedbackModule extends Component {
                             <TextField id="fullname" type='text' label='Name' name='fname' variant="standard"
                                 required placeholder='Enter Name' multiline
                                 rows={1} onChange={this.inputChangeHandler} value={fname} errorMessage="Full name is required"/>
-                                <span>{errorMessage}</span>
 
                             <TextField id="email" type='email' name='email' label="Email" variant="standard"
                                 required placeholder='Enter Email' pattern='[a-z0-9._%+-]+@([a-z0-9.-]{5})+\.[a-z]{2,4}' multiline

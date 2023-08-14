@@ -9,7 +9,7 @@ class Feedback extends Component{
     render(){
         return(
             <div>
-                {/* <FeedbackModule/> */}
+                {/* <FeedbackModule {...this.props}/> */}
                 <FeedDash {...this.props}/>
             </div>
         )
@@ -17,8 +17,7 @@ class Feedback extends Component{
 }
 
 const mapStateToProps = (state) => ({
-    allFeedback: state.feedbackStore.allFeedback
-
+    allFeedback: state.feedbackStore.allFeedback,
 })
 const mapDispatchToProps = (dispatch) => ({
     initFeedbackRequest: () => dispatch(Action.getAllFeedback()),

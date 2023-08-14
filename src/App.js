@@ -1,9 +1,8 @@
 
-import { Route, Routes } from 'react-router';
 import './App.css';
 import Datatable from './component/voucher/Datatable';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Result from './pages/result/container/Result';
-import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store/store'
 import Dashboard from './pages/dashboard/Dashboard';
@@ -21,15 +20,7 @@ function App() {
         </Route>
       </Routes>
       </BrowserRouter>
-       
-        
-       
     </Provider>
-
-    
-
-    {/* <Student /> */}
-   
     </div>
   );
 }

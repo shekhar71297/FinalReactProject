@@ -5,7 +5,8 @@ import { Container } from 'react-bootstrap';
 import { useState } from 'react';
 import Popup from './Popup';
 import { Modal } from 'react-bootstrap';
-import { addAllQuestions } from '../../Pages/question/Action';
+// import { addAllQuestions } from '../../Pages/question/Action';
+import axios from 'axios';
 
 
 
@@ -22,7 +23,7 @@ const Addform = () => {
 
   
 
-  const handleClearForm = ({addAllQuestions}) => {
+  const handleClearForm = () => {
 
     setQuestion('');
     setOption1('');
@@ -44,12 +45,12 @@ const Addform = () => {
     
     setShowPopup(true);
     e.preventDefault();
-    addAllQuestions(newQuestion)
-    // axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
-    //   console.log(res.data);
-    //   setQuestion({question: res.data})
+    // addAllQuestions(newQuestion)
+    axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
+      console.log(res.data);
+      setQuestion({question: res.data})
       
-    // })
+    })
     
     setFormVisible(false);
   };
@@ -62,13 +63,13 @@ const Addform = () => {
     <div>
       
     {!isFormVisible && (
-      <div className='float-center ms-5'>
+      <div  className='float-center '>
       <button type='button' onClick={() => setFormVisible(true)}   className='btn btn-outline-dark  mt-5 ' >Add Question +</button>
       </div>
       
     )}
     
-    <Container>
+    <Container >
     <Modal show={isFormVisible} onHide={() => setFormVisible(false)}>
           <Modal.Header closeButton>
           </Modal.Header>
@@ -79,6 +80,7 @@ const Addform = () => {
     
         width: 400,
         maxWidth: '500%',
+        marginLeft: 60
         
       }}
       noValidate
@@ -86,7 +88,7 @@ const Addform = () => {
     >
       {isFormVisible && (
       
-      <div className=' mb-n4'>
+      <div  className=' mb-n4'>
         <div className="text-center mt-4 mb-2">
             <p className="h4"> Add Question</p>
           </div><br/>
@@ -106,7 +108,7 @@ const Addform = () => {
           label="Option1"
           focused
           value={Option1}
-            onChange={(e) => setOption1(e.target.value)}
+          onChange={(e) => setOption1(e.target.value)}
          
         />
         </div><br/>
@@ -127,7 +129,7 @@ const Addform = () => {
           label="Option3"
           focused
           value={Option3}
-            onChange={(e) => setOption3(e.target.value)}
+          onChange={(e) => setOption3(e.target.value)}
          
         />
         </div><br/>
@@ -161,7 +163,6 @@ const Addform = () => {
       </div>
       
       )}
-      
       </Box>
       </Modal.Body>
       </Modal>

@@ -1,31 +1,29 @@
-import *  as constant from './Constant'
+// redux/reducer.js
+import { SET_SELECTED_OPTION, FETCH_DATA_SUCCESS } from './Action';
 
-export const initialstate = {
-    allquestions:[],
-    question:{},
-    error: null
-}
+const initialState = {
+  selectedOptions: {},
+  data: [],
+};
 
-export default function questionreducer  (state = initialstate, action){
-    switch (action.type){
-        case constant.GET_QUESTION_SUCCESS:{
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case SET_SELECTED_OPTION:
+      return {
+        ...state,
+        selectedOptions: {
+          ...state.selectedOptions,
+          [action.payload.questionId]: action.payload.option,
+        },
+      };
+    case FETCH_DATA_SUCCESS:
+      return {
+        ...state,
+        data: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 
-            return {...state,question:{},allquestions:action.payload};
-
-        }
-        case constant.GET_QUESTION_ERROR,
-        constant.ADD_QUESTION_ERROR:{
-
-            return {...state,question:{},error:action.payload};
-
-        } 
-
-        case constant.ADD_QUESTION_SUCCESS:{
-            let allquestions = state.allquestions
-            allquestions.push(action.payload)
-            return {...state,question:{},allquestions:allquestions};
-        }
-        default:
-            return state;
-    }
-}
+export default reducer;

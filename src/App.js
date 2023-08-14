@@ -20,8 +20,9 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path='/dashboard' element={<Dashboard/>}>
-          <Route path='result' element={<Result/>}/>n
+          <Route path='result' element={<Result/>}/>
           <Route path='voucher' element={<Datatable/>}/>
+          <Route path='question' element={<QuestionMain/>}/>
         </Route>
       </Routes>
       </BrowserRouter>

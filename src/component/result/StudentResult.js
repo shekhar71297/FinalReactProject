@@ -7,7 +7,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TablePagination from '@mui/material/TablePagination'; // Import TablePagination
 import './StudentResult.css'
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Button, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -170,7 +169,7 @@ export class StudentResult extends Component {
             <TableContainer>
               <Table aria-label="simple table" className=''>
                 <TableHead>
-                  <TableRow>
+                  <TableRow> 
                   <TableCell ><strong>SrNo</strong></TableCell>
                   <TableCell align="center"><strong>StudentName</strong></TableCell>
                   <TableCell align="center"><strong>Orgnization</strong></TableCell>
@@ -183,14 +182,14 @@ export class StudentResult extends Component {
                   <TableCell align="center"><strong>Date</strong></TableCell>
                   <TableCell align="center"><strong>Action</strong></TableCell>
                   </TableRow>
-                </TableHead>
-                <TableBody>
-                  {filteredResults.length === 0 ? (
+                  </TableHead>
+                  <TableBody>
+                   {filteredResults.length === 0 ? (
                     <TableRow>
-                      <TableCell colSpan={8} align="center">
+                        <TableCell colSpan={8} align="center">
                         <strong style={{ fontSize: "34px" }}>  No data found</strong>
-                      </TableCell>
-                    </TableRow>
+                        </TableCell>
+                      </TableRow>
                   ) : (
 
                     filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {

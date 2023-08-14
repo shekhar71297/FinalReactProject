@@ -1,19 +1,11 @@
-import { Provider } from 'react-redux';
-import './App.css';
-
-import store from './store/store'
-// import Sidenav from './pages/Sidenav';
-
-
 
 import './App.css';
-
-
+import Datatable from './component/voucher/Datatable';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './pages/dashboard/Dashboard';
 import Result from './pages/result/container/Result';
-import User from './pages/user/container/User'
-
+import { Provider } from 'react-redux';
+import store from './store/store'
+import Dashboard from './pages/dashboard/Dashboard';
 function App() {
   return (
     <div className="App">
@@ -22,21 +14,14 @@ function App() {
       
       <BrowserRouter>
       <Routes>
-        <Route path='/dashboard' element={<Dashboard />}>
-          <Route path='result' element={<Result/>}/>
-          <Route path='user' element={<User/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}>
+          <Route path='result' element={<Result/>}/>n
+          <Route path='voucher' element={<Datatable/>}/>
         </Route>
       </Routes>
       </BrowserRouter>
        
-        
-       
     </Provider>
-
-    
-
-    {/* <Student /> */}
-   
     </div>
   );
 }

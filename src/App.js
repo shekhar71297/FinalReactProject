@@ -5,7 +5,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './pages/dashboard/Dashboard';
 import Result from './pages/result/container/Result';
-import Questiontable from './components/question/Questiontable';
+import QuestionMain from './pages/question/container/Question';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <Routes>
           <Route path='/dashboard' element={<Dashboard />}>
           <Route path='result' element={<Result/>}/>
-          <Route path='question' element={<Questiontable/>}/>
+          <Route path='question' element={<QuestionMain/>}/>
         </Route>
       </Routes>
       </BrowserRouter>

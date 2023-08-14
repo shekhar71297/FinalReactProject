@@ -1,4 +1,4 @@
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
 import './App.css';
 import store from './store/store'
 import { Provider } from 'react-redux';
@@ -20,12 +20,10 @@ function App() {
     <div className="App">
     
       <Provider  store={store}>
-      
-    
       <BrowserRouter>
-      <Student/>
-      
+      {/* <Student/>       */}
       <Routes>
+        <Route path='/' element={<Student />} />
         <Route path='/register' element={<NewStudentRegistration/>}/>
         <Route path='/dash' element={<StudentDashboard />} />
          <Route path='/dashboard' element={<Dashboard />}>

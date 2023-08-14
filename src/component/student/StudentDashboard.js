@@ -141,7 +141,7 @@ class StudentDashboard extends Component {
   }
   getsinglerecord = (id) => {
     this.props.getSingleStudentRequest(id)
-
+    
     // let url =`${get_student}/${id}`;
     // const url = `${constants.baseURL}/student/${id}`;
     // getData(url).then((res) => {

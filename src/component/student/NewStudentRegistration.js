@@ -27,6 +27,7 @@ class NewStudentRegistration extends Component {
     super(props)
 
     this.state = {
+      students:[],
       id: null,
       firstname: '',
       lastname: '',

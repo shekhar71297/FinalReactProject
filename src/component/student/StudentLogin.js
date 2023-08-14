@@ -112,7 +112,6 @@ export class StudentLogin extends Component {
               <Grid container>
                 <Grid item xs>
                 <Link to='/feedback'><p>Feedback Form</p></Link>
-                <p>Contact Us</p>
                 </Grid>
                 <Grid item>
                 <Link to='/register'>  <p>New Student ? Register here</p></Link>

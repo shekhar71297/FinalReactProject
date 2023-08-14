@@ -5,8 +5,6 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 import { Button } from '@mui/material';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import * as Action from '../../pages/feedback/Action'
 
 const ariaLabel = { 'aria-label': 'description' };
 
@@ -178,12 +176,5 @@ export class FeedbackModule extends Component {
         )
     }
 }
-const mapStateToProps = (state) => ({
-    allFeedback: state.feedbackStore.allFeedback
 
-})
-const mapDispatchToProps = (dispatch) => ({
-    initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
-    addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data))
-})
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackModule)
+export default FeedbackModule;

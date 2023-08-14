@@ -1,13 +1,13 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import { Container } from 'react-bootstrap';
 import { useState } from 'react';
 import Popup from './Popup';
-import { Modal } from 'react-bootstrap';
-// import { addAllQuestions } from '../../Pages/question/Action';
+import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
 import axios from 'axios';
-import { Button } from '@mui/material';
+import { Button, TableContainer } from '@mui/material';
+import { CreateNewFolderOutlined } from '@mui/icons-material';
 
 
 
@@ -47,7 +47,6 @@ const Addform = () => {
     
     setShowPopup(true);
     e.preventDefault();
-    // addAllQuestions(newQuestion)
     axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
       console.log(res.data);
       setQuestion({question: res.data})
@@ -65,24 +64,20 @@ const Addform = () => {
     <div>
       
     {!isFormVisible && (
-      <div >
-      <Button variant='contained'  type='button' onClick={() => setFormVisible(true)}    >Add Question +</Button>
+      <div  >
+      <Button sx={{marginTop:5}}  variant='contained'  type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined/>}>Create</Button>
       </div>
       
     )}
-    
-    <Container >
-    <Modal show={isFormVisible} onHide={() => setFormVisible(false)}>
-          <Modal.Header closeButton>
-          </Modal.Header>
-          <Modal.Body>
+    <TableContainer>
+    <Dialog open={isFormVisible} onClose={() => setFormVisible(false)}>
+        <DialogContent>
     <Box
       component="form"
       sx={{
     
         width: 400,
         maxWidth: '500%',
-        marginLeft: 60
         
       }}
       noValidate
@@ -92,7 +87,7 @@ const Addform = () => {
       
       <div  className=' mb-n4'>
         <div className="text-center mt-4 mb-2">
-            <p className="h4"> Add Question</p>
+            <h3> Add Question</h3>
           </div><br/>
         <TextField 
           fullWidth
@@ -159,16 +154,17 @@ const Addform = () => {
         <Button variant='outlined' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
         </div>
         <div className='text-right'>
-        <Button variant='outlined' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-4' >Clear</Button>
+        <Button sx={{marginTop:3}} variant='outlined' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-5' >Clear</Button>
         </div> 
+        
         <Popup show={showPopup} handleClose={handleClosePopup} />
       </div>
       
       )}
       </Box>
-      </Modal.Body>
-      </Modal>
-      </Container>
+      </DialogContent>
+      </Dialog>
+      </TableContainer>
       
       </div>
       

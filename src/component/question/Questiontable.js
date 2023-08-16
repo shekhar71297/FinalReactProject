@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Box, MenuItem, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Box, Button, MenuItem, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
@@ -8,7 +8,6 @@ import TablePagination from '@mui/material/TablePagination';
 import {  DeleteOutlineSharp, EditNoteSharp} from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
-import { Link } from 'react-router-dom';
 import Addform from './Addform';
  
 
@@ -19,6 +18,8 @@ const Questiontable = () => {
   const [selectedOption, setSelectedOption] = useState({});
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [showCreateButton, setShowCreateButton] = useState(false); 
+
 
   const handleCollapseToggle = (itemId) => {
     setSelectedOption((prevState) => ({
@@ -53,12 +54,16 @@ const Questiontable = () => {
         .then((response) => {
           // console.log(response.data)
           setData(response.data);
+          setShowCreateButton(true); // Show the "Create" button
+
         })
         .catch((error) => {
-          // console.error(error);
+          console.error(error);
         });
     } else {
       setData([]);
+      setShowCreateButton(false); // Hide the "Create" button
+
     };
   }
   return (
@@ -82,14 +87,19 @@ const Questiontable = () => {
         </Select>
       </FormControl>
       <div>
+      {showCreateButton && (
+          <Addform />
+        )}
 
+      
         <Box marginRight={10}>
           <TableContainer component={Paper}  >
             <Table stickyHeader aria-label="sticky table"  >
-              <TableHead style={{ backgroundColor: '#2962ff', fontSize: 30 }} color="primary-color"  >
+              <TableHead  style={{ backgroundColor: '#2962ff', fontSize: 30,height:60 }}   >
                 Questions
               </TableHead>
               <TableBody color='primary-color'>
+                
                 {data.map((item) => (
                   <React.Fragment key={item.id}>
                     <TableRow hover onClick={() => handleCollapseToggle(item.id)} >
@@ -114,9 +124,8 @@ const Questiontable = () => {
                           ))}<br></br>
                           Answer :  {item.answer}
                           <Grid  marginLeft={90} item xs={4}>
-                           <Link to={Addform}><DeleteOutlineSharp  sx={{ color: dark[500] }} /></Link> &nbsp;&nbsp;
-                            <EditNoteSharp sx={{ color: dark[500] }}/>
-                            
+                           <Button><DeleteOutlineSharp  sx={{ color: dark[500] }} /></Button>
+                            <Button><EditNoteSharp sx={{ color: dark[500] }}/></Button>
                           </Grid>
                         </TableCell>
                       </TableRow>
@@ -138,6 +147,7 @@ const Questiontable = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
+        
         </Box>
       </div>
     </div>

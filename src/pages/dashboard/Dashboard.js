@@ -129,51 +129,50 @@ const Dashboard = () => {
   };
 
 
+  return (
 
-  if (isAdminLog) {
-    return (
+    <>
 
-      <>
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar position="fixed">
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={() => setOpen(!open)}
+              edge="start"
 
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <AppBar position="fixed">
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={() => setOpen(!open)}
-                edge="start"
-
-              >
-                <GiHamburgerMenu />
-              </IconButton>
-              <Typography variant="h6" noWrap component="div">
-                Dashboard
-              </Typography>
-              <Box sx={{ flexGrow: 1 }} />
-              <IconButton
-                color="inherit"
-                aria-label="logout"
-                onClick={handleLogout}
-                edge="end"
-              >
-                <IoMdLogOut />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
+            >
+              <GiHamburgerMenu />
+            </IconButton>
+            <Typography variant="h6" noWrap component="div">
+              Dashboard
+            </Typography>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton
+              color="inherit"
+              aria-label="logout"
+              onClick={handleLogout}
+              edge="end"
+            >
+              <IoMdLogOut />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
 
 
-          <Drawer variant="permanent" open={open}>
-            <DrawerHeader>
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </DrawerHeader>
-            <Divider />
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            </IconButton>
+          </DrawerHeader>
+          <Divider />
 
-            <List>
-{/* User module               */}
+          <List>
+            {/* User module               */}
+            {isAdminLog && (
               <ListItem disablePadding sx={{ display: 'block' }} >
                 <ListItemButton onClick={() => navigatePage("/dashboard/user")}
                   sx={{
@@ -195,146 +194,145 @@ const Dashboard = () => {
                   <ListItemText primary='User' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-{/* Student module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/student")} >
-                <ListItemButton
+            )}
+            {/* Student module */}
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/student")} >
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <PiStudentFill />
-                  </ListItemIcon>
-                  <ListItemText primary='Student' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-{/* Exam Module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/exam")} >
-                <ListItemButton
+                  <PiStudentFill />
+                </ListItemIcon>
+                <ListItemText primary='Student' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+            {/* Exam Module */}
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/exam")} >
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <RiNewspaperFill />
-                  </ListItemIcon>
-                  <ListItemText primary='Exam' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
+                  <RiNewspaperFill />
+                </ListItemIcon>
+                <ListItemText primary='Exam' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
 
-{/* Question Module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/question")} >
-                <ListItemButton
+            {/* Question Module */}
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/question")} >
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    < GiPapers />
-                  </ListItemIcon>
-                  <ListItemText primary='Question' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-{/* Voucher module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/voucher")}>
-                <ListItemButton
+                  < GiPapers />
+                </ListItemIcon>
+                <ListItemText primary='Question' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+            {/* Voucher module */}
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/voucher")}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <MdGeneratingTokens />
-                  </ListItemIcon>
-                  <ListItemText primary='Voucher' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-{/* Feedback module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/feedback")} >
-                <ListItemButton
+                  <MdGeneratingTokens />
+                </ListItemIcon>
+                <ListItemText primary='Voucher' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+            {/* Feedback module */}
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/feedback")} >
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <MdFeedback />
-                  </ListItemIcon>
-                  <ListItemText primary='Feedback' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
+                  <MdFeedback />
+                </ListItemIcon>
+                <ListItemText primary='Feedback' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
 
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/result")} >
-                <ListItemButton
+            <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/result")} >
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon
                   sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
                   }}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <PiExamFill />
-                  </ListItemIcon>
-                  <ListItemText primary='Result' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
+                  <PiExamFill />
+                </ListItemIcon>
+                <ListItemText primary='Result' sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
 
-            </List>
-            <Divider />
+          </List>
+          <Divider />
 
-          </Drawer>
-          <div className='child-components'>
-            <Outlet />
-          </div>
-        </Box>
-      </>
-    );
-  }
-
+        </Drawer>
+        <div className='child-components'>
+          <Outlet />
+        </div>
+      </Box>
+    </>
+  );
 }
 
 export default Dashboard

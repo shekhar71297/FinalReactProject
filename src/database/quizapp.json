@@ -34,14 +34,40 @@
       "Date": "26/06/2023"
     },
     {
+      "id": 12,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "1234567891",
+      "dob": "1211-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "term": false,
+      "showDropdown": false
+    },
+    {
       "id": 13,
-      "firstname": "Akash",
+      "firstname": "Sujit",
       "lastname": "Gaikwad",
-      "email": "akash2001@gmail.com",
+      "email": "sujitg1999@gmail.com",
       "contact": "9322403669",
       "dob": "1999-05-18",
       "gender": "Male",
-      "organization": "hematite"
+      "organization": "hematite",
+      "term": false,
+      "showDropdown": false
+    },
+    {
+      "id": 14,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1212-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "term": false,
+      "showDropdown": false
     },
     {
       "id": 16,
@@ -54,57 +80,6 @@
       "organization": "hematite",
       "term": false,
       "showDropdown": false
-    },
-    {
-      "firstname": "Sujit",
-      "lastname": "Gaikwad",
-      "email": "sujitg1999@gmail.com",
-      "contact": "9322403669",
-      "dob": "1999-05-18",
-      "gender": "Male",
-      "organization": "hematite",
-      "branch": "",
-      "id": 17
-    },
-    {
-      "students": [],
-      "id": 18,
-      "firstname": "Shekhar ",
-      "lastname": "Pawar",
-      "email": "shekharpawar@123.gmail.com",
-      "contact": "9933442211",
-      "dob": "1998-12-12",
-      "gender": "Male",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
-    },
-    {
-      "students": [],
-      "id": 19,
-      "firstname": "Test",
-      "lastname": "test",
-      "email": "test@123.gmail.com",
-      "contact": "9898989898",
-      "dob": "1999-02-12",
-      "gender": "Male",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
     }
   ]
 }

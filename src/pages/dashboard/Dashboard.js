@@ -19,12 +19,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { FaUsers } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { PiExamFill } from 'react-icons/pi';
+import { PiExamFill, PiStudentFill } from 'react-icons/pi';
 import { MdGeneratingTokens } from 'react-icons/md';
 import { GiPapers } from 'react-icons/gi';
 import { MdFeedback } from 'react-icons/md';
 import { RiNewspaperFill } from 'react-icons/ri';
-import { PiStudentFill } from 'react-icons/pi';
 import {IoMdLogOut } from 'react-icons/io';
 import { Outlet, useNavigate } from 'react-router-dom';
 import './dashboard.css'
@@ -97,45 +96,45 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 );
 
 const Dashboard = () => {
-  
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(true);
-    const navigate = useNavigate();
-    
-    
-   
-    const handleDrawerClose = () => {
-      setOpen(false);
-    };
-  
-    const navigatePage=(path)=>{
-        navigate(path)
-    }
-  
-  
-    
-    const isAdminLog = !!sessionStorage.getItem("Admin");
-   
-    const isTrainerLog = !!sessionStorage.getItem("Trainer");
-   
-    const handleLogout = () => {
-      if(isAdminLog){
-        sessionStorage.removeItem("Admin")
-        window.alert("logout successfully")
-        // navigate('/')
-      } else if(isTrainerLog)
-      sessionStorage.removeItem("Trainer")
+
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(true);
+  const navigate = useNavigate();
+
+
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const navigatePage = (path) => {
+    navigate(path)
+  }
+
+
+
+  const isAdminLog = !!sessionStorage.getItem("Admin");
+
+  const isTrainerLog = !!sessionStorage.getItem("Trainer");
+
+  const handleLogout = () => {
+    if (isAdminLog) {
+      sessionStorage.removeItem("Admin")
       window.alert("logout successfully")
       // navigate('/')
-    };
+    } else if (isTrainerLog)
+      sessionStorage.removeItem("Trainer")
+    window.alert("logout successfully")
+    // navigate('/')
+  };
 
 
-  
-    if(isAdminLog){
-      return (
-     
-        <>
-       
+
+  if (isAdminLog) {
+    return (
+
+      <>
+
         <Box sx={{ display: 'flex' }}>
           <CssBaseline />
           <AppBar position="fixed">
@@ -143,37 +142,38 @@ const Dashboard = () => {
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                onClick={()=>setOpen(!open)}
+                onClick={() => setOpen(!open)}
                 edge="start"
-               
+
               >
                 <GiHamburgerMenu />
               </IconButton>
               <Typography variant="h6" noWrap component="div">
                 Dashboard
               </Typography>
-              <Box sx={{ flexGrow: 1 }} /> 
-                <IconButton
-                  color="inherit"
-                  aria-label="logout"
-                  onClick={handleLogout}
-                  edge="end"
-                >
-                  <IoMdLogOut />
-                  </IconButton>
+              <Box sx={{ flexGrow: 1 }} />
+              <IconButton
+                color="inherit"
+                aria-label="logout"
+                onClick={handleLogout}
+                edge="end"
+              >
+                <IoMdLogOut />
+              </IconButton>
             </Toolbar>
           </AppBar>
-    
-    
-          <Drawer  variant="permanent" open={open}>
+
+
+          <Drawer variant="permanent" open={open}>
             <DrawerHeader>
               <IconButton onClick={handleDrawerClose}>
                 {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
               </IconButton>
             </DrawerHeader>
             <Divider />
-    
+
             <List>
+{/* User module               */}
               <ListItem disablePadding sx={{ display: 'block' }} >
                 <ListItemButton onClick={() => navigatePage("/dashboard/user")}
                   sx={{
@@ -189,14 +189,34 @@ const Dashboard = () => {
                       justifyContent: 'center',
                     }}
                   >
-    
+
                     <FaUsers />
                   </ListItemIcon>
                   <ListItemText primary='User' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-    
-    
+{/* Student module */}
+              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/student")} >
+                <ListItemButton
+                  sx={{
+                    minHeight: 48,
+                    justifyContent: open ? 'initial' : 'center',
+                    px: 2.5,
+                  }}
+                >
+                  <ListItemIcon
+                    sx={{
+                      minWidth: 0,
+                      mr: open ? 3 : 'auto',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <PiStudentFill />
+                  </ListItemIcon>
+                  <ListItemText primary='Student' sx={{ opacity: open ? 1 : 0 }} />
+                </ListItemButton>
+              </ListItem>
+{/* Exam Module */}
               <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/exam")} >
                 <ListItemButton
                   sx={{
@@ -240,6 +260,7 @@ const Dashboard = () => {
               </ListItem>
     
     
+{/* Question Module */}
               <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/question")} >
                 <ListItemButton
                   sx={{
@@ -260,7 +281,7 @@ const Dashboard = () => {
                   <ListItemText primary='Question' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-    
+{/* Voucher module */}
               <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/voucher")}>
                 <ListItemButton
                   sx={{
@@ -281,7 +302,7 @@ const Dashboard = () => {
                   <ListItemText primary='Voucher' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-    
+{/* Feedback module */}
               <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/feedback")} >
                 <ListItemButton
                   sx={{
@@ -302,7 +323,7 @@ const Dashboard = () => {
                   <ListItemText primary='Feedback' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-    
+
               <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/result")} >
                 <ListItemButton
                   sx={{
@@ -320,181 +341,22 @@ const Dashboard = () => {
                   >
                     <PiExamFill />
                   </ListItemIcon>
-                  <ListItemText primary='Result'sx={{ opacity: open ? 1 : 0 }} />
+                  <ListItemText primary='Result' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-    
+
             </List>
             <Divider />
-    
+
           </Drawer>
-         <div className='child-components'>
-         <Outlet />
-         </div>
+          <div className='child-components'>
+            <Outlet />
+          </div>
         </Box>
-        </>
-      );
-    } else if(isTrainerLog){
-      return (
-  
-        <>
-        <Outlet />
-        {/* <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <AppBar position="fixed">
-            <Toolbar>
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={()=>setOpen(!open)}
-                edge="start"
-               
-              >
-                <GiHamburgerMenu />
-              </IconButton>
-              <Typography variant="h6" noWrap component="div">
-                Dashboard
-              </Typography>
-              <Box sx={{ flexGrow: 1 }} /> 
-                <IconButton
-                  color="inherit"
-                  aria-label="logout"
-                  onClick={handleLogout}
-                  edge="end"
-                >
-                  <IoMdLogOut />
-                  </IconButton>
-            </Toolbar>
-          </AppBar>
-    
-    
-          <Drawer  variant="permanent" open={open}>
-            <DrawerHeader>
-              <IconButton onClick={handleDrawerClose}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-              </IconButton>
-            </DrawerHeader>
-            <Divider />
-    
-            <List>
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => setMenuData("Exam")} >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <RiNewspaperFill />
-                  </ListItemIcon>
-                  <ListItemText primary='Exam' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-    
-    
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => setMenuData("Question")} >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    < GiPapers />
-                  </ListItemIcon>
-                  <ListItemText primary='Question' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-    
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => setMenuData("Voucher")}>
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <MdGeneratingTokens />
-                  </ListItemIcon>
-                  <ListItemText primary='Voucher' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-    
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => setMenuData("Feedback")} >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <MdFeedback />
-                  </ListItemIcon>
-                  <ListItemText primary='Feedback' sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-    
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => setMenuData("Result")} >
-                <ListItemButton
-                  sx={{
-                    minHeight: 48,
-                    justifyContent: open ? 'initial' : 'center',
-                    px: 2.5,
-                  }}
-                >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: 0,
-                      mr: open ? 3 : 'auto',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <PiExamFill />
-                  </ListItemIcon>
-                  <ListItemText primary='Result'sx={{ opacity: open ? 1 : 0 }} />
-                </ListItemButton>
-              </ListItem>
-    
-            </List>
-            <Divider />
-    
-          </Drawer>
-        
-    
-          <Outlet />
-        </Box> */}
-        </>
-      );
-    }
-  
+      </>
+    );
+  }
+
 }
 
 export default Dashboard

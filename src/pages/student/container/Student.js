@@ -1,4 +1,3 @@
-import NavBar from '../../../component/student/NavBar'
 import { connect } from 'react-redux'
 import * as Action from '../action'
 import StudentDashboard from '../../../component/student/StudentDashboard'
@@ -11,7 +10,7 @@ export class Student extends Component {
       // console.log("anmol ",this.props)
         return (
             <div>
-            
+          
             <StudentDashboard {...this.props} />   
             {/* <StudentLogin {...this.props}/>  */}
             {/* <NewStudentRegistration {...this.props} /> */}

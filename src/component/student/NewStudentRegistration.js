@@ -8,6 +8,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import * as Student from '../../pages/student/action';
+import * as Action from '../../pages/student/action'
 import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { Link } from '@mui/material';
@@ -263,7 +264,21 @@ class NewStudentRegistration extends Component {
   }
 }
 
+const mapStateToProps = (state) => ({
+  allstudent: state.studentStore.allstudent,
+  singelStudent: state.studentStore.student
+})
 
-export default NewStudentRegistration;
+const mapDispatchToprops = (dispatch) => ({
+  initStudentRequest: () => dispatch(Action.getAllStudent()),
+  deleteStudentRequest: (id) => dispatch(Action.deleteAllStudent(id)),
+  updateStudentRequest: (id) => dispatch(Action.updateAllStudent(id)),
+  getSingleStudentRequest: (id) => dispatch(Action.getsingleStudent(id)),
+  addStudentRequest: (data) => dispatch(Action.addAllStudent(data))
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToprops)(NewStudentRegistration);
 
 

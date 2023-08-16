@@ -90,6 +90,7 @@ const Addform = () => {
             <h3> Add Question</h3>
           </div><br/>
         <TextField 
+        variant='standard'
           fullWidth
           label="Question"
           id="fullwidth"
@@ -100,7 +101,8 @@ const Addform = () => {
         />
         <div><br/>
         <TextField
-         fullWidth
+          variant='standard'
+          fullWidth
           id="fullwidth"
           label="Option1"
           focused
@@ -111,6 +113,7 @@ const Addform = () => {
         </div><br/>
         <div>
         <TextField
+          variant='standard'
           fullWidth
           id="outlined-password-input"
           label="Option2"
@@ -121,6 +124,7 @@ const Addform = () => {
         </div><br/>
         <div>
         <TextField
+          variant='standard'
           fullWidth
           id="outlined-password-input"
           label="Option3"
@@ -132,6 +136,7 @@ const Addform = () => {
         </div><br/>
         <div>
         <TextField
+          variant='standard'
           fullWidth
           id="outlined-password-input"
           label="Option4"
@@ -142,6 +147,7 @@ const Addform = () => {
         />
         </div><br/>
         <TextField
+          variant='standard'
           fullWidth
           id="outlined-password-input"
           label="Answer"

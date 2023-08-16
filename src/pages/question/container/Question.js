@@ -1,12 +1,11 @@
-import Questiontable from '../../../components/question/Questiontable'
-import Addform from '../../../components/question/Addform'
-import Popup from '../../../components/question/Popup'
+import Questiontable from '../../../component/question/Questiontable'
+import Popup from '../../../component/question/Popup'
 import React, { Component } from 'react'
-class QuestionMain extends Component {
+class Question extends Component {
   render() {
     return (
       <div>
-        <Addform/>
+        
         <Popup/>
         <Questiontable/>
       </div>
@@ -24,4 +23,4 @@ class QuestionMain extends Component {
 //     addQuestionRequest: (data)=> dispatch(Action.addAllQuestions(data))
 //   })
 
-export default QuestionMain;
+export default Question;

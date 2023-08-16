@@ -26,8 +26,11 @@ export class StudentResult extends Component {
       selectedRecord: ""
     };
   }
+
+
   componentDidMount() {
     this.props.initresultRequest();
+
   }
 
   // Function to open the table
@@ -71,6 +74,7 @@ export class StudentResult extends Component {
   };
   handleChangeRowsPerPage = (event) => {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
+    // setPage(0);
   };
   // search function
   handleSearchChange = (event) => {
@@ -197,7 +201,7 @@ export class StudentResult extends Component {
                         const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
                         return (
                           <TableRow key={val.id} className="tablebody">
-                            <TableCell className="tablebody" component="th" scope="row">{index + 1}</TableCell>
+                            <TableCell className="tablebody" component="th" scope="row">{val.srno}</TableCell>
                             <TableCell className="tablebody" align="center">{val.StudentName}</TableCell >
                             <TableCell className="tablebody" align="center">{val.Orgnization}</TableCell >
                             {/* <TableCell className="tablebody" align="center">{val.Branch}</TableCell> */}

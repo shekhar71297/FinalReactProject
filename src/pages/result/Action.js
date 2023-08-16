@@ -9,8 +9,9 @@ export function getAllResult() {
         const url = `${constants.baseURL}/StudentResult`
         Get(url).then(response =>{
             let results = [];
-            response.data.forEach((item) => {
+            response.data.reverse().forEach((item,index) => {
                 let result = { ...item };
+                result['srno'] = index + 1;
                 const {ObtainedMark,TotalMark} = result;
                 const percent = (ObtainedMark / TotalMark) * 100;
                 if (percent >= 50) {
@@ -22,7 +23,7 @@ export function getAllResult() {
                 results.push(result);
 
             });
-            results.reverse();
+            // results.reverse();
             dispatch(getResultsuccess(results))
         })
             .catch(error => dispatch(getResulterror(error.response.data)))

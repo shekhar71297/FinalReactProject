@@ -11,12 +11,12 @@
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
+      "status": true,
       "id": 4,
       "Vcode": "SgLBmw"
     },
@@ -51,40 +51,127 @@
       "Vcode": "MnF9q8"
     },
     {
-      "status": true,
+      "status": false,
       "id": 11,
       "Vcode": "wU4NOp"
     },
     {
-      "status": true,
+      "status": false,
       "id": 12,
       "Vcode": "A2Qekk"
     },
     {
-      "status": true,
+      "status": false,
       "id": 13,
       "Vcode": "opyAs6"
     },
     {
-      "status": true,
+      "status": false,
       "id": 14,
       "Vcode": "IwHLmT"
     },
     {
-      "status": true,
+      "status": false,
       "id": 15,
       "Vcode": "MaMkbt"
     }
   ],
   "StudentResult": [
     {
-      "id": 2,
-      "StudentName": "om patil",
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
       "TotalMark": 50,
-      "ObtainedMark": 46,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
       "Date": "26/06/2023"
     },
     {
@@ -131,13 +218,174 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 7,
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
       "StudentName": "Mayuri kakde",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "C++",
       "TotalMark": 50,
       "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
       "Grade": "C",
       "Date": "26/06/2023"
     },
@@ -154,7 +402,18 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 9,
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
       "StudentName": "Mayuri kakde",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
@@ -162,6 +421,281 @@
       "TotalMark": 50,
       "ObtainedMark": 30,
       "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
       "Date": "26/06/2023"
     },
     {
@@ -177,16 +711,6 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 11,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
-    },
-    {
       "id": 12,
       "StudentName": "Mayuri kakde",
       "Orgnization": "Hematite",
@@ -198,7 +722,50 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 13,
+      "id": 3,
+      "StudentName": "ravindra patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 10,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 4,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 5,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
       "StudentName": "amol pawar",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
@@ -210,73 +777,81 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 15,
-      "StudentName": "pooja mothe",
+      "id": 3,
+      "StudentName": "ravindra patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
       "TotalMark": 50,
-      "ObtainedMark": 35,
+      "ObtainedMark": 10,
+      "Grade": "-",
       "Date": "26/06/2023"
     },
     {
-      "id": 16,
-      "StudentName": "yashraj jadhav",
+      "id": 4,
+      "StudentName": "Mayuri kakde",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
-      "ExamName": "React js",
+      "ExamName": "C++",
       "TotalMark": 50,
-      "ObtainedMark": 25,
+      "ObtainedMark": 30,
+      "Grade": "C",
       "Date": "26/06/2023"
     },
     {
-      "id": 17,
-      "StudentName": "rohan badak",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 34,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 18,
-      "StudentName": "akhilesh yadav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "Angular",
-      "TotalMark": 50,
-      "ObtainedMark": 15,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 19,
-      "StudentName": "satish pandare",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 25,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 20,
-      "StudentName": "abhishek kad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "c++",
-      "TotalMark": 50,
-      "ObtainedMark": 35,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 21,
+      "id": 5,
       "StudentName": "pawan jadhav",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
       "TotalMark": 50,
-      "ObtainedMark": 37,
+      "ObtainedMark": 45,
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 6,
+      "StudentName": "sujit gaikwad",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "java",
+      "TotalMark": 50,
+      "ObtainedMark": 26,
+      "Grade": "C",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 8,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 10,
+      "StudentName": "amol pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "angular",
+      "TotalMark": 50,
+      "ObtainedMark": 15,
+      "Status": "fail",
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "Mayuri kakde",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "C++",
+      "TotalMark": 50,
+      "ObtainedMark": 30,
+      "Grade": "C",
       "Date": "26/06/2023"
     }
   ]

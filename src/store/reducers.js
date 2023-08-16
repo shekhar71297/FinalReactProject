@@ -1,16 +1,12 @@
 import {combineReducers} from 'redux'
 import resultreducer from '../pages/result/Reducer'; 
-import voucherReducer from '../pages/result/Reducer'
-// import StudentReducer from '../pages/student/Reducer'; 
-
+import voucherReducer from '../pages/result/Reducer';
+import questionreducer from '../pages/question/Reducer';
 const rootReducer = combineReducers({
         resultStore:resultreducer ,
-        voucherStore:voucherReducer
-
-// const rootReducer = combineReducers({
-        
-        
+        questionStore: questionreducer,
+        voucherStore:voucherReducer        
     });
     
 
-export default rootReducer;
+    export default rootReducer;

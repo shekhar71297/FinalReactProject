@@ -62,8 +62,8 @@ const Addform = () => {
     <div>
       
     {!isFormVisible && (
-      <div  >
-      <Button sx={{marginTop:5}}  variant='contained'  type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined/>}>Create</Button>
+      <div className='pull-left' >
+      <Button sx={{marginTop:5,marginBottom:2}} color='inherit'  variant='contained'  type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined/>}>Create</Button>
       </div>
     )}
 
@@ -169,10 +169,10 @@ const Addform = () => {
         </div>
     
         <div className='pull-left mb-3'><br/>
-        <Button variant='outlined' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
+        <Button variant='contained' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
         </div>
         <div className='text-right'>
-        <Button sx={{marginTop:3}} variant='outlined' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-5' >Clear</Button>
+        <Button sx={{marginTop:3}} variant='contained' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-5' >Clear</Button>
         </div>      
         <Popup show={showPopup} handleClose={handleClosePopup} />
       </div>

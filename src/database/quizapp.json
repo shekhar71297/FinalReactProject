@@ -11,40 +11,30 @@
       "id": 1
     },
     {
-      "id": 2,
-      "role": "trainer",
-      "password": "panchshil45",
+      "email": "panchashil145@gmail.com",
       "fname": "panchashil",
       "lname": "wankhade",
-      "contact": 8735412345,
+      "password": "panchshil45",
+      "role": "trainer",
       "gender": "male",
-      "email": "panchashil145@gmail.com"
+      "contact": 8735412345,
+      "id": 2
     },
     {
-      "id": 3,
       "email": "sam24@gmail.com",
       "fname": "samruddhi",
       "lname": "vaidya",
-      "password": "sam24",
+      "password": "sam249",
       "role": "trainer",
       "gender": "female",
-      "contact": "8976453213"
-    },
-    {
-      "email": "abc@gmail.com",
-      "fname": "abc",
-      "lname": "abc",
-      "password": "123",
-      "role": "admin",
-      "gender": "male",
-      "contact": "12344",
-      "id": 4
+      "contact": "8976453213",
+      "id": 3
     },
     {
       "email": "sa@gmail.com",
-      "fname": "sam",
+      "fname": "sami",
       "lname": "vaidya",
-      "password": "212352",
+      "password": "sam2352",
       "role": "admin",
       "gender": "female",
       "contact": "8907654322",
@@ -74,10 +64,10 @@
       "email": "samadhan1234@gmail.com",
       "fname": "samadhan",
       "lname": "kakde",
-      "password": "123456",
+      "password": "sa123456",
       "role": "trainer",
       "gender": "male",
-      "contact": "984558998",
+      "contact": "984558999",
       "id": 8
     }
   ],
@@ -93,12 +83,12 @@
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
+      "status": true,
       "id": 4,
       "Vcode": "SgLBmw"
     },

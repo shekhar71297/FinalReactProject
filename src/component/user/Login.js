@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import axios from 'axios';
 import {Link } from "react-router-dom";
  import WithRouter from '../../util/WithRouter';
+ import * as useraction from '../../pages/user/action'
+import { connect } from 'react-redux';
  
 
   const defaultTheme = createTheme();  
@@ -33,16 +35,17 @@ export class Login extends Component {
     }
     submitBtn=(e)=>{
         e.preventDefault()
-          axios.get("http://localhost:8888/user",this.state).then((res)=>{
-             const isTrue=res.data.some((d)=>
+            this.props.initUserRequest()
+
+             const isTrue=this.props.allUser.some((d)=>
               this.state.email===d.email && this.state.password===d.password
              )
              if (isTrue) {
-              const userRole = res.data.find(
+              const userRole = this.props.allUser.find(
                 (d) =>
                   this.state.email === d.email &&
                   this.state.password === d.password &&
-                  d.role === "admin" // Change this to "Teacher" if the role for teacher users is different
+                  d.role === "admin" 
               );
         
               if (userRole) {
@@ -57,7 +60,7 @@ export class Login extends Component {
             } else {
               window.alert("Please check your registered email and dob");
             }
-          })    
+             
   }
     
     render() {
@@ -102,10 +105,7 @@ export class Login extends Component {
                 id="dob"
                 onChange={this.inputChangeHandler}
               />
-              {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
+         
             
             <Button
                 type="submit"
@@ -133,4 +133,18 @@ export class Login extends Component {
     }
 }
 
-export default WithRouter(Login)
+const mapStateToProps = (state) => ({
+  allUser: state.userStore.allUser,
+  singleUser: state.userStore.user
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  initUserRequest: () => dispatch(useraction.getAlluser()),
+  updateUserRequest: (id) => dispatch(useraction.updateUser(id)),
+  addUserRequest: (data) => dispatch(useraction.addUser(data)),
+  deleteUserRequest: (id) => dispatch(useraction.deleteUser(id)),
+  getSingleUserRequest: (id) => dispatch(useraction.getSingleuser(id))
+
+})
+
+export default connect(mapStateToProps,mapDispatchToProps) (WithRouter(Login))

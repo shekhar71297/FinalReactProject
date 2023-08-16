@@ -31,16 +31,6 @@
       "id": 3
     },
     {
-      "email": "sa@gmail.com",
-      "fname": "sami",
-      "lname": "vaidya",
-      "password": "sam2352",
-      "role": "admin",
-      "gender": "female",
-      "contact": "8907654322",
-      "id": 5
-    },
-    {
       "email": "rushikakdeforever@gmail.com",
       "fname": "rushikesh",
       "lname": "kakde",

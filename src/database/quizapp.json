@@ -106,17 +106,6 @@
       "showDropdown": false
     },
     {
-      "firstname": "Vishakha",
-      "lastname": "Mankar",
-      "email": "vish24mankar@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-05",
-      "gender": "Female",
-      "organization": "hematite",
-      "branch": "",
-      "id": 18
-    },
-    {
       "firstname": "asdfghj",
       "lastname": "dfghjk",
       "email": "jkl345@g.com",
@@ -426,24 +415,14 @@
       "password": ""
     },
     {
-      "students": [],
       "id": 48,
       "firstname": "Rushi",
       "lastname": "Kakde",
       "email": "sujitg1999@gmail.com",
       "contact": "2345",
       "dob": "2001-06-26",
-      "gender": "",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
+      "gender": "Male",
+      "organization": "hematite"
     },
     {
       "students": [],

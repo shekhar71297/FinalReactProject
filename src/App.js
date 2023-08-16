@@ -11,6 +11,7 @@ import Student from './pages/student/container/Student';
 import Question from './pages/question/container/Question';
 import User from './pages/user/container/User';
 import Login from './component/user/Login';
+import StudentDashboard from './component/student/StudentDashboard';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path='result' element={<Result />} />
         <Route path='/admin' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}>
+          <Route path='student' element={<StudentDashboard />} />
           <Route path='result' element={<Result/>}/>
           <Route path='voucher' element={<Datatable/>}/>
           <Route path='question' element={<Question/>}/>

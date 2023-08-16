@@ -99,6 +99,6 @@ export function deleteStudenterror(payload){
 // get single Student
 
 export function getsingleStudent(id){
-    console.log(id)
+    
     return {type: constant.GET_SINGLE_STUDENT, payload:id}
 }

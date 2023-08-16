@@ -7,13 +7,13 @@ import NewStudentRegistration from '../../../component/student/NewStudentRegistr
 export class Student extends Component {
   
     render() {
-      // console.log("anmol ",this.props)
+  
         return (
             <div>
           
             <StudentDashboard {...this.props} />   
             {/* <StudentLogin {...this.props}/>  */}
-            {/* <NewStudentRegistration {...this.props} /> */}
+          
             </div>
         )
     }

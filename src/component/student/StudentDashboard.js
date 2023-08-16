@@ -76,9 +76,9 @@ class StudentDashboard extends Component {
     
   }
   componentDidMount() {
-    console.log(this.props)
+  
     this.props.initStudentRequest()
-    // console.log(this.props.singelStudent)
+    
   }
  
   

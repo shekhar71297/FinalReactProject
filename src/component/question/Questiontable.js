@@ -9,6 +9,11 @@ import {  DeleteOutlineSharp, EditNoteSharp} from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
 import Addform from './Addform';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
+import DialogActions from '@mui/material/DialogActions';
+
  
 
 
@@ -19,6 +24,20 @@ const Questiontable = () => {
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [showCreateButton, setShowCreateButton] = useState(false); 
+  const [selectedItemForDeletion, setSelectedItemForDeletion] = useState(null); // New state for selected item
+
+
+  const startIndex = page * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+  
+  const handleDelete = (itemId) => {
+    setSelectedItemForDeletion(itemId); // Set the selected item for deletion
+  };
+  const handleConfirmDelete = () => {
+    // setSelectedItemForDeletion(itemId);
+    
+    setSelectedItemForDeletion(null);
+  };
 
 
   const handleCollapseToggle = (itemId) => {
@@ -52,7 +71,6 @@ const Questiontable = () => {
       axios
         .get(`http://localhost:8888/${selectedValue}`)
         .then((response) => {
-          // console.log(response.data)
           setData(response.data);
           setShowCreateButton(true); // Show the "Create" button
 
@@ -88,7 +106,7 @@ const Questiontable = () => {
       </FormControl>
       <div>
       {showCreateButton && (
-          <Addform />
+          <Addform  />
         )}
 
       
@@ -100,7 +118,7 @@ const Questiontable = () => {
               </TableHead>
               <TableBody color='primary-color'>
                 
-                {data.map((item) => (
+                {data.slice(startIndex, endIndex).map((item) => (
                   <React.Fragment key={item.id}>
                     <TableRow hover onClick={() => handleCollapseToggle(item.id)} >
                       <TableCell >{item.question}</TableCell>
@@ -124,8 +142,9 @@ const Questiontable = () => {
                           ))}<br></br>
                           Answer :  {item.answer}
                           <Grid  marginLeft={90} item xs={4}>
-                           <Button><DeleteOutlineSharp  sx={{ color: dark[500] }} /></Button>
-                            <Button><EditNoteSharp sx={{ color: dark[500] }}/></Button>
+                           <Button onClick={() => handleDelete(item.id)}>
+                            <DeleteOutlineSharp  sx={{ color: dark[500] }} /></Button>
+                           <Button ><EditNoteSharp sx={{ color: dark[500] }}/></Button>
                           </Grid>
                         </TableCell>
                       </TableRow>
@@ -150,6 +169,18 @@ const Questiontable = () => {
         
         </Box>
       </div>
+      <Dialog open={selectedItemForDeletion !== null} onClose={() => setSelectedItemForDeletion(null)}>
+        <DialogTitle>Confirm Delete</DialogTitle>
+        <DialogContent>
+          Are you sure you want to delete this question?
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setSelectedItemForDeletion(null)}>Cancel</Button>
+          <Button onClick={handleConfirmDelete} color="primary">
+            Delete
+          </Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };

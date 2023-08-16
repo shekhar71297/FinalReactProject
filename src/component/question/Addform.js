@@ -7,7 +7,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import axios from 'axios';
 import { Button, TableContainer } from '@mui/material';
-import { CreateNewFolderOutlined } from '@mui/icons-material';
+import { Cancel, CreateNewFolderOutlined } from '@mui/icons-material';
 
 
 
@@ -20,7 +20,6 @@ const Addform = () => {
   const [Option3, setOption3] = useState('');
   const [Option4, setOption4] = useState('');
   const [Answer, setAnswer] = useState('');
-  const [options, setOptions] = useState(['', '', '', '']);
   const [showPopup, setShowPopup] = useState(false);
 
   
@@ -44,7 +43,6 @@ const Addform = () => {
   };
 
   const handleAdd = (e) => {
-    
     setShowPopup(true);
     e.preventDefault();
     axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
@@ -67,8 +65,8 @@ const Addform = () => {
       <div  >
       <Button sx={{marginTop:5}}  variant='contained'  type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined/>}>Create</Button>
       </div>
-      
     )}
+
     <TableContainer>
     <Dialog open={isFormVisible} onClose={() => setFormVisible(false)}>
         <DialogContent>
@@ -84,11 +82,24 @@ const Addform = () => {
       autoComplete="off"
     >
       {isFormVisible && (
+        
+    <div>
+      <div className='pull-right'>
+        <Button
+          color='error'
+          onClick={() => setFormVisible(false)}
+          endIcon={<Cancel />}
+        >
+          Cancel
+        </Button>
+      </div>
       
       <div  className=' mb-n4'>
+        
         <div className="text-center mt-4 mb-2">
             <h3> Add Question</h3>
           </div><br/>
+            <div>
         <TextField 
         variant='standard'
           fullWidth
@@ -155,26 +166,27 @@ const Addform = () => {
           focused
           onChange={(e) => setAnswer(e.target.value)}
         />
-        
+        </div>
+    
         <div className='pull-left mb-3'><br/>
         <Button variant='outlined' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
         </div>
         <div className='text-right'>
         <Button sx={{marginTop:3}} variant='outlined' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-5' >Clear</Button>
-        </div> 
-        
+        </div>      
         <Popup show={showPopup} handleClose={handleClosePopup} />
       </div>
-      
+      </div>
       )}
+      
       </Box>
       </DialogContent>
       </Dialog>
       </TableContainer>
-      
+    
       </div>
-      
   );
+  
 }
 
 export default  Addform;

@@ -71,6 +71,276 @@
       "id": 8
     }
   ],
+  "react": [
+    {
+      "id": 1,
+      "question": "Which of the following is the correct name of React.js?",
+      "options": [
+        "React",
+        "React.js",
+        "ReactJS",
+        "All of the above"
+      ],
+      "answer": "All of the above."
+    },
+    {
+      "id": 2,
+      "question": "Which of the following are the advantages of React.js?",
+      "options": [
+        "React.js can increase the application's performance with Virtual DOM",
+        "React.js is easy to integrate with other frameworks such as Angular, BackboneJS since it is only a view library",
+        "React.js can render both on client and server side.",
+        "All of the above"
+      ],
+      "answer": "All of the above."
+    },
+    {
+      "id": 3,
+      "question": "Which of the following is not a disadvantage of React.js?",
+      "options": [
+        "React.js has only a view layer. We have put your code for Ajax requests, events and so on.",
+        "The library of React.js is pretty large",
+        "The library of React.js is pretty large",
+        "The learning curve can be steep in React.js"
+      ],
+      "answer": "C is the correct answer.The JSX in React.js makes code easy to read and write is an advantage of React.js."
+    },
+    {
+      "id": 4,
+      "question": "What of the following is used in React.js to increase performance?",
+      "options": [
+        "Original DOM",
+        "Virtual DOM",
+        "Both A and B.",
+        "None of the above."
+      ],
+      "answer": "B is the correct answer. Virtual DOM is used in React.js to increase performance."
+    },
+    {
+      "id": 5,
+      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+      "options": [
+        "Constructor",
+        "Class",
+        "Both A and B.",
+        "Object"
+      ],
+      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+    },
+    {
+      "id": 6,
+      "question": "Using which of the following command can prevent default behaviour at in react?",
+      "options": [
+        "preventDefault()",
+        "avoidDefault()",
+        "revokeDefault()",
+        "Non of the above"
+      ],
+      "answer": "preventDefault()"
+    },
+    {
+      "id": 7,
+      "question": "Identify the command used to create a react app?.",
+      "options": [
+        "npm install create-react-app",
+        "npm install -g create-react-app",
+        "install -g create-react-app",
+        "Non of the above"
+      ],
+      "answer": "npm install -g create-react-app"
+    },
+    {
+      "id": 8,
+      "question": " Which of the following keyword is used to create a class inheritance?",
+      "options": [
+        "Create",
+        "Inherits",
+        "Extends",
+        "This"
+      ],
+      "answer": "Extends"
+    },
+    {
+      "id": 9,
+      "question": "  What is a state in React?",
+      "options": [
+        "A permanent storage.",
+        "Internal storage of the component.",
+        "External storage of the component.",
+        "None of the above."
+      ],
+      "answer": "Internal storage of the component."
+    },
+    {
+      "id": 10,
+      "question": "What is the use of webpack command in React.js?",
+      "options": [
+        "The webpack command is used to transpile all the JavaScript down into one file.",
+        "It runs React local development server.",
+        "It is a module bundler.",
+        "None of the above."
+      ],
+      "answer": "C is the correct answer. The webpack command is a module bundler."
+    }
+  ],
+  "python": [
+    {
+      "id": 1,
+      "question": "What is the maximum possible length of an identifier?",
+      "options": [
+        "16",
+        " 32",
+        "64",
+        "None of these above"
+      ],
+      "answer": "(d) None of these above"
+    },
+    {
+      "id": 2,
+      "question": " Who developed the Python language?",
+      "options": [
+        "Zim Den",
+        "Guido van Rossum",
+        "Niene Stom",
+        "Wick van Rossum"
+      ],
+      "answer": "(b) Guido van Rossum"
+    },
+    {
+      "id": 3,
+      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+      "options": [
+        "Constructor",
+        "Class",
+        "Both A and B.",
+        "Object"
+      ],
+      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+    },
+    {
+      "id": 5,
+      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+      "options": [
+        "Constructor",
+        "Class",
+        "Both A and B.",
+        "Object"
+      ],
+      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+    },
+    {
+      "id": 6,
+      "question": " Which of the following character is used to give single-line comments in Python?",
+      "options": [
+        "//",
+        "#",
+        "!",
+        "/*"
+      ],
+      "answer": "b"
+    },
+    {
+      "id": 7,
+      "question": "Which keyword is used for function in Python language?",
+      "options": [
+        "Function",
+        "def",
+        "Fun ",
+        "define"
+      ],
+      "answer": "b"
+    },
+    {
+      "id": 8,
+      "question": "Which of the following functions can help us to find the version of python that we are currently working on?",
+      "options": [
+        "sys.version(1)",
+        "sys.version(0)",
+        "sys.version()",
+        "sys.version"
+      ],
+      "answer": "d"
+    },
+    {
+      "id": 9,
+      "question": "What does pip stand for python??",
+      "options": [
+        "Pip Installs Python",
+        "Pip Installs Packages",
+        "Preferred Installer Program",
+        "All of the mentioned"
+      ],
+      "answer": "c"
+    },
+    {
+      "id": 10,
+      "question": "Which of the following functions is a built-in function in python?",
+      "options": [
+        "factorial()",
+        "print()",
+        " seed()",
+        "sqrt()"
+      ],
+      "answer": "b"
+    }
+  ],
+  "php": [
+    {
+      "id": 1,
+      "question": "Which of the following statement is correct for AngularJS?",
+      "options": [
+        "AngularJS is an HTML framework",
+        "AngularJS is a Java framework",
+        "AngularJS is a JavaScript framework",
+        "AngularJS is a SQL framework"
+      ],
+      "answer": " C is the correct option. AngularJS is a JavaScript framework."
+    },
+    {
+      "id": 2,
+      "question": " On which of the Architectural pattern AngularJS is based?",
+      "options": [
+        "Observer Pattern",
+        "Decorator pattern",
+        "MVC Architecture pattern",
+        "MVVM Architectural pattern"
+      ],
+      "answer": "D is the correct option. AngularJS is based on MVVM Architectural pattern."
+    },
+    {
+      "id": 3,
+      "question": "AngularJS is perfect for?",
+      "options": [
+        "SPAs",
+        "MPAs",
+        "DPAs",
+        "CPAs"
+      ],
+      "answer": " A is the correct option. AngularJS is perfect for Single Page Applications (SPAs)."
+    },
+    {
+      "id": 4,
+      "question": "Which of the following directive is used to bind the application data to the HTML view in AngularJS?",
+      "options": [
+        "ng-app directive",
+        "ng-model directive",
+        "ng-bind directive",
+        "ng-init directive"
+      ],
+      "answer": " C is the correct option. The ng-bind directive is used to bind the application data to the HTML view in the AngularJS application."
+    },
+    {
+      "id": 5,
+      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+      "options": [
+        "Constructor",
+        "Class",
+        "Both A and B.",
+        "Object"
+      ],
+      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+    }
+  ],
   "vcodes": [
     {
       "status": true,

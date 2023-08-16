@@ -100,7 +100,6 @@ const Dashboard = () => {
   
     const theme = useTheme();
     const [open, setOpen] = React.useState(true);
-    const [menuData, setMenuData] = React.useState('');
     const navigate = useNavigate();
     
     

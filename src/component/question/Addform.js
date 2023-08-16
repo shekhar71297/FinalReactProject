@@ -20,7 +20,6 @@ const Addform = () => {
   const [Option3, setOption3] = useState('');
   const [Option4, setOption4] = useState('');
   const [Answer, setAnswer] = useState('');
-  const [options, setOptions] = useState(['', '', '', '']);
   const [showPopup, setShowPopup] = useState(false);
 
   

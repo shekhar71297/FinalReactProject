@@ -1,0 +1,13 @@
+.firstcontainer{
+    display: flex;
+    justify-content: space-between;
+}
+.addbtn{
+    margin-top: -18px; 
+    width: 99px;
+    height: 45px;
+}
+.searchinput{
+    margin-right: 800px;
+    margin-top: -48px;
+}

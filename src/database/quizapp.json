@@ -202,5 +202,50 @@
       "ObtainedMark": 37,
       "Date": "26/06/2023"
     }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "code": "R1",
+      "examname": "Reactjs",
+      "examstatus": "false",
+      "action": ""
+    },
+    {
+      "id": 2,
+      "code": "R2",
+      "examname": "Phython",
+      "examstatus": true
+    },
+    {
+      "id": 3,
+      "code": "R3",
+      "examname": "Java",
+      "examstatus": "true"
+    },
+    {
+      "id": 4,
+      "code": "R4",
+      "examname": "Javascript",
+      "examstatus": true
+    },
+    {
+      "id": 5,
+      "code": "R5",
+      "examname": "PHP",
+      "examstatus": true
+    },
+    {
+      "id": 6,
+      "code": "R6",
+      "examname": "Angular",
+      "examstatus": true
+    },
+    {
+      "id": 7,
+      "code": "R7",
+      "examname": "Veu.js",
+      "status": true
+    }
   ]
 }

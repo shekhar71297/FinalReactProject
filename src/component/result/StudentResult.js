@@ -7,7 +7,6 @@ import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TablePagination from '@mui/material/TablePagination'; // Import TablePagination
 import './StudentResult.css'
-
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Button, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -31,15 +30,15 @@ export class StudentResult extends Component {
     this.props.initresultRequest();
   }
 
-  // Function to open the table
-  openDetailsPopup = (record) => {
-    this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
-  };
+  // // Function to open the table
+  // openDetailsPopup = (record) => {
+  //   this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
+  // };
 
-  // Function to close the table
-  closeDetailsPopup = () => {
-    this.setState({ isDetailsPopupOpen: false, selectedRecord: "" });
-  };
+  // // Function to close the table
+  // closeDetailsPopup = () => {
+  //   this.setState({ isDetailsPopupOpen: false, selectedRecord: "" });
+  // };
 
 
   // delete action 
@@ -217,8 +216,7 @@ export class StudentResult extends Component {
                               </Button>
                             </TableCell>
                           </TableRow>
-                        )
-                        
+                        ) 
                       })
                   )}
                 </TableBody>
@@ -226,7 +224,7 @@ export class StudentResult extends Component {
             </TableContainer>
 
             {/* Delete Popup Model */}
-            <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
+            {/* <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
               <DialogTitle>Delete Record</DialogTitle>
               <DialogContent>
                 <DialogContentText>
@@ -241,7 +239,7 @@ export class StudentResult extends Component {
                   Delete
                 </Button>
               </DialogActions>
-            </Dialog>
+            </Dialog> */}
 
             {/* table pagination */}
             <TablePagination

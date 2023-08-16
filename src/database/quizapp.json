@@ -444,6 +444,26 @@
       "lname": "",
       "role": "",
       "password": ""
+    },
+    {
+      "students": [],
+      "id": 49,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "0006-05-31",
+      "gender": "Female",
+      "organization": "hematite",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
     }
   ]
 }

@@ -7,7 +7,7 @@ import React,{Component} from 'react'
 export class Student extends Component {
   
     render() {
-      console.log("anmol ",this.props)
+      // console.log("anmol ",this.props)
         return (
             <div>
             

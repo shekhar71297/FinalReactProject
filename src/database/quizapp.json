@@ -1,4 +1,66 @@
 {
+  "user": [
+    {
+      "email": "anmol123@gmail.com",
+      "fname": "anmol",
+      "lname": "chaure",
+      "password": "anmol123",
+      "role": "admin",
+      "gender": "male",
+      "contact": 9283567048,
+      "id": 1
+    },
+    {
+      "email": "panchashil145@gmail.com",
+      "fname": "panchashil",
+      "lname": "wankhade",
+      "password": "panchshil45",
+      "role": "trainer",
+      "gender": "male",
+      "contact": 8735412345,
+      "id": 2
+    },
+    {
+      "email": "sam24@gmail.com",
+      "fname": "samruddhi",
+      "lname": "vaidya",
+      "password": "sam249",
+      "role": "trainer",
+      "gender": "female",
+      "contact": "8976453213",
+      "id": 3
+    },
+    {
+      "email": "rushikakdeforever@gmail.com",
+      "fname": "rushikesh",
+      "lname": "kakde",
+      "password": "rushi@26",
+      "role": "admin",
+      "gender": "male",
+      "contact": "8007419586",
+      "id": 6
+    },
+    {
+      "email": "rushikakdeforever@gmail.com",
+      "fname": "rushikesh",
+      "lname": "kakde",
+      "password": "rushi@26",
+      "role": "admin",
+      "gender": "male",
+      "contact": "8007419586",
+      "id": 7
+    },
+    {
+      "email": "samadhan1234@gmail.com",
+      "fname": "samadhan",
+      "lname": "kakde",
+      "password": "sa123456",
+      "role": "trainer",
+      "gender": "male",
+      "contact": "984558999",
+      "id": 8
+    }
+  ],
   "react": [
     {
       "id": 1,
@@ -286,7 +348,7 @@
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
+      "status": true,
       "id": 4,
       "Vcode": "SgLBmw"
     },

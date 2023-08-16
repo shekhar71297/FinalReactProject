@@ -21,7 +21,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-import './Usertable.css'
+import './usertable.css'
 
 
 

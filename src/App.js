@@ -19,14 +19,8 @@ function App() {
     <div className="App">
       <BrowserRouter>
       <Routes>
-      <Route path='/' element={<StudentLogin />} />
       <Route path='/register' element={<NewStudentRegistration />} />
-
-      
-          <Route path='result' element={<Result/>}/>
-          <Route path='voucher' element={<Datatable/>}/>
-          <Route path='student' element={<Student />} />
-          <Route path='result' element={<Result />} />
+          <Route path='/' element={<Student />} />
         <Route path='/admin' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}>
           <Route path='student' element={<StudentDashboard />} />

@@ -251,8 +251,9 @@ updateStudent = (event) => {
                 <TableBody>
 
                   {filteredStudents && filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val,index) => {
+                     const currentIndex = page * rowsPerPage + index + 1;
                     return <TableRow key={val.id}>
-                      <TableCell component="th" scope="row">{index +1 }</TableCell>
+                      <TableCell component="th" scope="row">{currentIndex}</TableCell>
                       <TableCell align='center' >{val.firstname}</TableCell >
                       <TableCell align='center'>{val.lastname}</TableCell >
                       <TableCell align='center'>{val.email}</TableCell>

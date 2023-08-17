@@ -11,8 +11,8 @@ export class Student extends Component {
         return (
             <div>
           
-            <StudentDashboard {...this.props} />   
-            {/* <StudentLogin {...this.props}/>  */}
+            
+            <StudentLogin {...this.props}/> 
           
             </div>
         )

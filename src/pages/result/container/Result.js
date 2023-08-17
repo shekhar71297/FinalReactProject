@@ -17,6 +17,8 @@ export class Result extends Component {
 // redux code
 const mapStateToProps = (state) => ({
     allresult: state.resultStore.allresult,
+    //  deleteRecordId: state.deleteRecordId
+    
   });
   
   const mapDispatchToprops = (dispatch) => ({

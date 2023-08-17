@@ -4,12 +4,13 @@
 
 .searchinput{
     position: relative;
-    right: 30%;
+    left: 200px;
     padding: 8px;
     margin: 8px;
-    border: 2px solid;
+    /* border: 2px solid; */
     border-radius: 5px;
     top: 50px;
+    margin-left: 50px;
    
 }
 .table{

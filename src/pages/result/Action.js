@@ -1,5 +1,5 @@
 // import axios from 'axios'
-import * as constant from "./Constant"
+import * as actiontype from "./Constant"
 import * as constants from '../../util/Constant';
 import { Get, Delete } from '../../util/HttpService'
 
@@ -9,8 +9,9 @@ export function getAllResult() {
         const url = `${constants.baseURL}/StudentResult`
         Get(url).then(response =>{
             let results = [];
-            response.data.forEach((item) => {
+            response.data.forEach((item,) => {
                 let result = { ...item };
+                // result['srno'] = index + 1;
                 const {ObtainedMark,TotalMark} = result;
                 const percent = (ObtainedMark / TotalMark) * 100;
                 if (percent >= 50) {
@@ -29,10 +30,10 @@ export function getAllResult() {
     }
 }
 export function getResultsuccess(payload) {
-    return { type: constant.GET_RESULT_SUCCESS, payload }
+    return { type: actiontype.GET_RESULT_SUCCESS, payload }
 }
 export function getResulterror(payload) {
-    return { type: constant.GET_RESULT_ERROR, payload }
+    return { type: actiontype.GET_RESULT_ERROR, payload }
 }
 
 export function deleteAllResult(id) {
@@ -46,10 +47,10 @@ export function deleteAllResult(id) {
 }
 
 export function deleteResultsuccess(payload) {
-    return { type: constant.DELETE_RESULT_SUCCESS, payload }
+    return { type: actiontype.DELETE_RESULT_SUCCESS, payload }
 }
 
 export function deleteResulterror(payload) {
-    return { type: constant.DELETE_RESULT_ERROR, payload }
+    return { type: actiontype.DELETE_RESULT_ERROR, payload }
 }
 

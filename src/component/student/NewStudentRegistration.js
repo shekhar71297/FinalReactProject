@@ -1,4 +1,10 @@
 import React, { Component } from 'react'
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import AppBar from '@mui/material/AppBar';
+import * as Action from '../../pages/student/action'
+import Toolbar from '@mui/material/Toolbar';
+import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
@@ -7,14 +13,12 @@ import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
-import * as Student from '../../pages/student/action';
-import * as Action from '../../pages/student/action'
-import { Button } from '@mui/material';
 import Stack from '@mui/material/Stack';
 import { Link } from '@mui/material';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { connect } from 'react-redux';
+import WithRouter from '../../util/WithRouter';
 import { TextFields } from '@mui/icons-material';
 import Modal from '@mui/material/Modal';
 class NewStudentRegistration extends Component {
@@ -69,6 +73,7 @@ class NewStudentRegistration extends Component {
     }
     this.props.addStudentRequest(payload)
     window.alert("Student Registered Successfully ")
+    this.props.router.navigate("/")
   }
 
 
@@ -116,6 +121,24 @@ class NewStudentRegistration extends Component {
       //   onClose={this.handleClose}
       //   aria-labelledby="modal-modal-title"
       //   aria-describedby="modal-modal-description">
+      <Box sx={{ flexGrow: 1 }}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+          </IconButton>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'left', fontWeight: 'bold', width: '100px' }}>
+            Hematite Infotech Online-Quiz
+          </Typography>
+        </Toolbar>
+      </AppBar>
+        
+
         <Box sx={{
           marginTop: 13,
           display: 'flex',
@@ -258,6 +281,28 @@ class NewStudentRegistration extends Component {
 
           </div>
         </Box>
+        
+        <Box sx={{ flexGrow: 1, marginTop: 18 }}>
+            <AppBar position="static">
+              <Toolbar>
+                <IconButton
+                  size="large"
+                  edge="start"
+                  color="inherit"
+                  aria-label="menu"
+                  sx={{ mr: 2 }}
+                >
+
+                </IconButton>
+                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'right', fontWeight: 'bold', width: '100px', fontSize: '15px' }}>
+                  Designed And Developed By  Sujit Gaikwad
+                </Typography>
+              </Toolbar>
+            </AppBar>
+          </Box>
+
+        </Box>
+
       // </Modal>
 
     )
@@ -279,6 +324,6 @@ const mapDispatchToprops = (dispatch) => ({
 
 
 
-export default connect(mapStateToProps, mapDispatchToprops)(NewStudentRegistration);
+export default connect(mapStateToProps, mapDispatchToprops)(WithRouter(NewStudentRegistration));
 
 

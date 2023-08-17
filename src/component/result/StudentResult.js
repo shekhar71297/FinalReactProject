@@ -182,9 +182,16 @@ export class StudentResult extends Component {
         {/* start table */}
         <Box sx={{ height: 100 }}>
           <Paper className='paper'>
-            <TableContainer>
+            <TableContainer >
               <Table aria-label="simple table" className=''>
-                <TableHead>
+                <TableHead >
+
+                <TableRow>
+            <TableCell align="center" colSpan={8} sx={{ backgroundColor:"blue" , fontSize:"25px" , textAlign:"start" , fontWeight:"bolder"}}>
+              Result module
+            </TableCell>
+           
+          </TableRow>
                   <TableRow>
                     <TableCell ><strong>SrNo</strong></TableCell>
                     <TableCell align="center"><strong>StudentName</strong></TableCell>

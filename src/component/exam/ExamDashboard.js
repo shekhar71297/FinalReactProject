@@ -283,6 +283,7 @@ class ExamDashboard extends Component {
                     <TableCell align="center"><strong>Exam Code</strong></TableCell>
                     <TableCell align="center"><strong>Exam Name</strong></TableCell>
                     <TableCell align="center"><strong>Exam Staus</strong></TableCell>
+                    <TableCell align="center"></TableCell>
                     <TableCell align="center"><strong>Action</strong></TableCell>
                   </TableRow>
                 </TableHead>
@@ -299,7 +300,7 @@ class ExamDashboard extends Component {
                           <TableCell className="tablebody" component="th" align="center" scope="row">{currentindex + 1}</TableCell>
                           <TableCell className="tablebody" align="center">{data.code}</TableCell >
                           <TableCell className="tablebody" align="center">{data.examname}</TableCell >
-                          {/* <TableCell className="tablebody" align="right">{data.examstatus}</TableCell> */}
+                          <TableCell className="tablebody" align="center">{data.examstatus}</TableCell>
                           <TableCell>
                             <Switch align="left"
                               key={index}
@@ -310,11 +311,11 @@ class ExamDashboard extends Component {
                             />
                           </TableCell>
                           <TableCell className="tablebody" align='center'><Button
-                            onClick={() => (this.handleOpen(data.id))} align="center"><EditIcon />
+                            onClick={() => (this.handleOpen(data.id))} ><EditIcon />
                           </Button>
                             <Button
                               onClick={() => this.deleteExam(data.id)}
-                              align="center"><DeleteIcon />
+                              ><DeleteIcon />
                             </Button>
                           </TableCell>
                         </TableRow>

@@ -878,65 +878,66 @@
       "id": 3,
       "code": "R3",
       "examname": "Java",
-      "examstatus": "true"
+      "examstatus": "disabled"
     },
     {
       "id": 4,
       "code": "R4",
       "examname": "Javascript",
-      "examstatus": true
+      "examstatus": "disabled"
     },
     {
       "id": 5,
       "code": "R5",
       "examname": "PHP",
-      "examstatus": true
+      "examstatus": "disabled"
     },
     {
       "id": 6,
       "code": "R6",
       "examname": "Angular",
-      "examstatus": true
+      "examstatus": "disabled"
     },
     {
       "id": 7,
       "code": "R7",
       "examname": "Veu.js",
+      "examstatus": "disabled",
       "status": true
     },
     {
       "id": 8,
       "code": "HI-15",
       "examname": "react",
-      "examstatus": "false",
+      "examstatus": "disabled",
       "action": ""
     },
     {
       "id": 9,
       "code": "HI-17",
       "examname": "vbg",
-      "examstatus": "false",
+      "examstatus": "disabled",
       "action": ""
     },
     {
       "id": 10,
       "code": "bvh",
       "examname": "vchg",
-      "examstatus": "",
+      "examstatus": "disabled",
       "action": ""
     },
     {
       "id": 11,
       "code": "HI-17",
       "examname": "mdvnfvnfnv",
-      "examstatus": "false",
+      "examstatus": "disabled",
       "action": ""
     },
     {
       "id": 12,
       "code": "HI-20",
       "examname": "hdvvc",
-      "examstatus": "",
+      "examstatus": "disabled",
       "action": ""
     }
   ]

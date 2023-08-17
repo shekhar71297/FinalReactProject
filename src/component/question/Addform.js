@@ -8,19 +8,33 @@ import DialogContent from '@mui/material/DialogContent';
 import axios from 'axios';
 import { Button, TableContainer } from '@mui/material';
 import { Cancel, CreateNewFolderOutlined } from '@mui/icons-material';
+import { useEffect } from 'react';
 
 
 
 
-const Addform = () => {
+const Addform = ({ isEditMode, editQuestionData }) => {
   const [isFormVisible, setFormVisible] = useState(false);
   const [question, setquestion] = useState('');
   const [Option1, setOption1] = useState('');
   const [Option2, setOption2] = useState('');
   const [Option3, setOption3] = useState('');
   const [Option4, setOption4] = useState('');
-  const [Answer, setAnswer] = useState('');
+  const [answer, setanswer] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+
+
+  useEffect(() => {
+    if (isEditMode) {
+      setquestion(editQuestionData.question);
+      setOption1(editQuestionData.Option1);
+      setOption2(editQuestionData.Option2);
+      setOption3(editQuestionData.Option3);
+      setOption4(editQuestionData.Option4);
+      setanswer(editQuestionData.answer);
+    }
+  }, [isEditMode, editQuestionData]);
+
 
   const handleClearForm = () => {
 
@@ -29,7 +43,7 @@ const Addform = () => {
     setOption2('');
     setOption3('');
     setOption4('');
-    setAnswer('');
+    setanswer('');
   };
   const newQuestion = {
     question,
@@ -37,8 +51,9 @@ const Addform = () => {
     Option2,
     Option3,
     Option4,
-    Answer,
+    answer,
   };
+  
 
   const handleAdd = (e) => {
     setShowPopup(true);
@@ -95,7 +110,7 @@ const Addform = () => {
       <div  className=' mb-n4'>
         
         <div className="text-center mt-4 mb-2">
-            <h3> Add Question</h3>
+            <h3 > Add Question</h3>
           </div><br/>
             <div>
         <TextField 
@@ -160,9 +175,9 @@ const Addform = () => {
           fullWidth
           id="outlined-password-input"
           label="Answer"
-          value={Answer}
+          value={answer}
           focused
-          onChange={(e) => setAnswer(e.target.value)}
+          onChange={(e) => setanswer(e.target.value)}
         />
         </div>
     

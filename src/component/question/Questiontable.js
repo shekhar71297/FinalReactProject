@@ -15,9 +15,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 
  
-
-
-
 const Questiontable = () => {
   const [data, setData] = useState([]);
   const [selectedOption, setSelectedOption] = useState({});
@@ -25,10 +22,18 @@ const Questiontable = () => {
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
   const [showCreateButton, setShowCreateButton] = useState(false); 
   const [selectedItemForDeletion, setSelectedItemForDeletion] = useState(null); // New state for selected item
-
+  const [isEditMode, setEditMode] = useState(false);
+  const [editQuestionData, setEditQuestionData] = useState({});
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
+
+  const handleEdit = (itemId) => {
+    // Find the question data based on itemId
+    const questionToEdit = data.find(item => item.id === itemId);
+    setEditQuestionData(questionToEdit);
+    setEditMode(true);
+  };
   
   const handleDelete = (itemId) => {
     setSelectedItemForDeletion(itemId); // Set the selected item for deletion
@@ -38,7 +43,6 @@ const Questiontable = () => {
     
     setSelectedItemForDeletion(null);
   };
-
 
   const handleCollapseToggle = (itemId) => {
     setSelectedOption((prevState) => ({
@@ -106,7 +110,7 @@ const Questiontable = () => {
       </FormControl>
       <div>
       {showCreateButton && (
-          <Addform  />
+          <Addform isEditMode={isEditMode} editQuestionData={editQuestionData}   />
         )}
         <Box marginRight={10}>
           <TableContainer component={Paper}  >
@@ -141,7 +145,7 @@ const Questiontable = () => {
                           <Grid  marginLeft={90} item xs={4}>
                            <Button onClick={() => handleDelete(item.id)}>
                             <DeleteOutlineSharp   sx={{ color: dark[500] }} /></Button>
-                           <Button ><EditNoteSharp sx={{ color: dark[500] }}/></Button>
+                           <Button onClick={() => handleEdit(item.id)} ><EditNoteSharp sx={{ color: dark[500] }}/></Button>
                           </Grid>
                         </TableCell>
                       </TableRow>
@@ -166,7 +170,7 @@ const Questiontable = () => {
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
         </Box>
-      </div>
+      </div>     
       <Dialog open={selectedItemForDeletion !== null} onClose={() => setSelectedItemForDeletion(null)}>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>

@@ -36,7 +36,8 @@ class NewStudentRegistration extends Component {
       gender: '',
       organization: '',
       term: false,
-      open: false
+      open: false,
+      
 
     }
   }

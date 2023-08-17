@@ -23,8 +23,10 @@ import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-
-
+import {  DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Dialog from '@mui/material/Dialog';
 
 
 const style = {
@@ -60,7 +62,14 @@ class StudentDashboard extends Component {
       page: 0,
       rowsPerPage: 5,
       searchQuery: '',
-      isAddStudent:true
+      isAddStudent:true,
+      isDeletePopupOpen: false,
+      deletingRecordId: null,
+      isDetailsPopupOpen: false,
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: ''
+
     
     }
   }
@@ -110,35 +119,38 @@ handleOpen = (id = null) => {
   };
 
 
+// delete action 
+  // Function to open the delete popup model
+  openDeletePopup = (id) => {
+    this.setState({ isDeletePopupOpen: true, deletingRecordId: id });
+  };
 
+  // Function to close the delete popup model
+  closeDeletePopup = () => {
+    this.setState({ isDeletePopupOpen: false, deletingRecordId: null });
+  };
 
-  deleteRecord = (id) => {
-    if (window.confirm(`Are you sure? you want to remove Student: `)) {
+  // Delete action
+  deletedata = (id) => {
+    this.openDeletePopup(id);
+  };
 
-      this.props.deleteStudentRequest(id)
-      window.alert("Student Deleted successfully")
-      
-    }
+  // Function to handle the actual delete action after user confirmation
+  handleDeleteConfirmed = () => {
+    const { deletingRecordId } = this.state;
+    
+    this.props.deleteStudentRequest(deletingRecordId);
+    this.closeDeletePopup();
 
-  }
-  addRecord = (event)=>{
-    let sObj = {
-      id: this.state.id,
-      firstname: this.state.firstname,
-      lastname: this.state.lastname,
-      email: this.state.email,
-      contact: this.state.contact,
-      dob: this.state.dob,
-      gender: this.state.gender,
-      organization: this.state.organization,
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: 'Student deleted successfully',
+    });
+
   
-    }
-    event.preventDefault();
-    
-      this.props.addStudentRequest(sObj);
-        window.alert("Student data added successfully ")
-    
-}
+  };
+
+  
 resetStudentFormHandler = () => {
   this.setState({
     students: [],
@@ -167,16 +179,23 @@ updateStudent = (event) => {
 
   }
   if (this.state.isAddStudent) {
-    this.props.addStudentRequest(this.state);
+    this.props.addStudentRequest(sObj);
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: 'Student added successfully',
+    });
     
-    window.alert("Student added successfully")
   
   } else {
     sObj['id'] = this.state.id;
     this.props.initStudentRequest()
     this.props.updateStudentRequest(sObj)
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: 'Student updated successfully',
+    });
+    this.handleClose()
     
-    window.alert("Record updated successfully");
     
   }
 
@@ -205,7 +224,7 @@ updateStudent = (event) => {
 
   render() {
 
-    const {id, students,firstname,lastname, open, gender, organization } = this.state;
+    const {id, students,firstname,lastname, open, gender, organization ,isDeletePopupOpen} = this.state;
     const { searchQuery, page, rowsPerPage } = this.state;
     const filteredStudents = this.props.allstudent && this.props.allstudent.filter((data) => {
       const searchQuery = this.state.searchQuery.toLowerCase(); 
@@ -266,7 +285,7 @@ updateStudent = (event) => {
                     
 
                         <Button type="button" onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>&nbsp;
-                        <Button type="button" onClick={() => this.deleteRecord(val.id)} color="primary"  ><DeleteIcon /></Button>
+                        <Button type="button" onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
                       </TableCell>
                     </TableRow>
 
@@ -275,6 +294,34 @@ updateStudent = (event) => {
                 </TableBody>
               </Table>
             </TableContainer>
+            {/* Delete Popup Model */}
+            <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
+              <DialogTitle>Delete Record</DialogTitle>
+              <DialogContent>
+                <DialogContentText>
+                  Are you sure you want to delete this record?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.closeDeletePopup} color="primary">
+                  Cancel
+                </Button>
+                <Button onClick={this.handleDeleteConfirmed} color="primary" autoFocus>
+                  Delete
+                </Button>
+              </DialogActions>
+            </Dialog>
+
+            <Snackbar
+              open={this.state.snackbarOpen}
+              autoHideDuration={3000} // You can adjust the duration as needed
+              onClose={() => this.setState({ snackbarOpen: false })}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+                {this.state.snackbarMessage}
+              </Alert>
+            </Snackbar>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25, 35, 50]}
               component="div"

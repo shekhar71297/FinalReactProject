@@ -15,6 +15,10 @@ import * as Action from '../../pages/student/action'
 import Toolbar from '@mui/material/Toolbar';
 import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
+import {  DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Dialog from '@mui/material/Dialog';
 
 const defaultTheme = createTheme();
 export class StudentLogin extends Component {
@@ -23,7 +27,12 @@ export class StudentLogin extends Component {
 
     this.state = {
       email: "",
-      dob: ""
+      dob: "",
+      isDetailsPopupOpen: false,
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: '',
+      severity:''
     }
   }
 
@@ -41,14 +50,24 @@ export class StudentLogin extends Component {
     )
     if (istrue) {
       sessionStorage.setItem("isLogin", "true")
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'Login successfully',
+        severity:'success'
+      });
 
-
-      window.alert("Login successfully", JSON.stringify(this.state));
+      // window.alert("Login successfully", JSON.stringify(this.state));
 
 
 
     } else {
-      window.alert("please cheack your register email and dob")
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'please cheack your register email and dob',
+        severity:'error'
+
+      });
+      // window.alert("please cheack your register email and dob")
     }
 
   }
@@ -157,7 +176,16 @@ export class StudentLogin extends Component {
           </Box>
 
         </Box>
-
+        <Snackbar
+              open={this.state.snackbarOpen}
+              autoHideDuration={3000} // You can adjust the duration as needed
+              onClose={() => this.setState({ snackbarOpen: false })}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
+                {this.state.snackbarMessage}
+              </Alert>
+            </Snackbar>
       </div>
     )
   }

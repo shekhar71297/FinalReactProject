@@ -15,47 +15,43 @@ export class Datatable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      switchindex:null,
       status: true,
       vcodes: [],
       page: 0,
       rowsPerPage: 5,
-    
+
     };
   }
 
   componentDidMount() {
-    this.fetchData();
+
+    this.props.initVoucherRequest()
   }
 
-  fetchData = () => {
-    axios.get("http://localhost:8888/vcodes").then((res) => {
-      console.log(res.data);
-      this.setState({ vcodes: res.data });
-    });
-  };
+  handleChange = (index, currentStatus,id) => {
+    // const { vcodes } = this.state;
+    const updatedVcodes = [...this.props.allvouchers];
 
-
-  handleChange = (index,status,event) => {
-    let vcodes = this.state.vcodes;
-    // console.log("before",vcodes,index,vcodes[index]);
-    vcodes[index].status = !status;
-    // console.log("after",vcodes);
-    this.setState({ vcodes:vcodes},() => console.log(this.state.vcodes[index]));
+    updatedVcodes[index] = { ...updatedVcodes[index], status: !currentStatus };
+    
+    
+    this.setState({ vcodes: updatedVcodes });
+  
+    const updatedVoucher = updatedVcodes[index];
    
-
-    this.setState({ vcodes }, () => {
-      const putvoucher = vcodes[index];
-      axios.put(`http://localhost:8888/vcodes/${putvoucher.id}`, putvoucher)
+  
+    if (id) {
+      axios.put(`http://localhost:8888/vcodes/${updatedVoucher.id}`, updatedVoucher)
         .then((res) => {
-          console.log( res.data);
+          console.log('Voucher updated:', res.data);
         })
         .catch((error) => {
-          console.error( error);
+          console.error('Error updating voucher:', error);
         });
-    });
+    } else {
+      // console.error('Updated voucher does not have a valid ID.');
+    }
   };
-
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
   };
@@ -64,24 +60,21 @@ export class Datatable extends Component {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
   };
 
-  handleToggleVoucher = (index) => {
-    const { vcodes } = this.state;
-    const updatedVcodes = [...vcodes];
-    updatedVcodes[index].enabled = !updatedVcodes[index].enabled;
-    this.setState({ vcodes: updatedVcodes });
-  };
 
   render() {
-    const { page, rowsPerPage, vcodes } = this.state;
+    const { page, rowsPerPage} = this.state;
 
     return (
       <div className='container'>
- 
-
         <hr />
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} style={{ marginTop: '50px' }}>
           <Table aria-label="simple table">
             <TableHead>
+              <TableRow>
+                <TableCell align='center'  colSpan={8} sx={{backgroundColor:"#2962ff", fontSize:"25px", textAlign:"start", fontWeight:"bolder"}}>
+Voucher module
+                </TableCell>
+              </TableRow>
               <TableRow>
                 <TableCell>ID</TableCell>
                 <TableCell align="left">Voucher Code</TableCell>
@@ -89,30 +82,29 @@ export class Datatable extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {vcodes.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => (
-                <TableRow key={data.id}>
-                  <TableCell component="th" scope="row">{index+1}</TableCell>
+              {this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+                const currentindex = page * rowsPerPage + index;
+                return (<TableRow key={currentindex}>
+                  <TableCell component="th" scope="row">{currentindex + 1}</TableCell>
                   <TableCell>{data.Vcode}</TableCell>
                   <TableCell>
                     <Switch
-                      key={index}
-                      // checked={this.state.status}
                       checked={data.status}
-                      onChange={(e)=>this.handleChange(index,data.status)}
+                      onChange={(e) => this.handleChange(currentindex, data.status,data.id)}
                       inputProps={{ 'aria-label': 'controlled' }}
                     />
-
                   </TableCell>
-
                 </TableRow>
-              ))}
+                )
+              }
+              )}
             </TableBody>
           </Table>
           {/* rowpagination */}
           <TablePagination
             component="div"
             rowsPerPageOptions={[5, 10, 25]}
-            count={vcodes.length}
+            count={this.props.allvouchers.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={this.handleChangePage}

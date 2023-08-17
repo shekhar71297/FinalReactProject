@@ -13,9 +13,6 @@ function App() {
   return (
     <Provider store={store}>
     <div className="App">
-     
-      <Provider  store={store}>
-      
       <BrowserRouter>
       <Routes>
         <Route path='/admin' element={<Login/>}/>
@@ -27,8 +24,6 @@ function App() {
         </Route>
       </Routes>
       </BrowserRouter>
-       
-    </Provider>
     </div>
     </Provider>
   );

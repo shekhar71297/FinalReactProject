@@ -161,6 +161,15 @@
         "None of the above."
       ],
       "answer": "C is the correct answer. The webpack command is a module bundler."
+    },
+    {
+      "Question": "",
+      "Option1": "",
+      "Option2": "",
+      "Option3": "",
+      "Option4": "",
+      "Answer": "",
+      "id": 11
     }
   ],
   "python": [
@@ -328,7 +337,7 @@
       "Vcode": "7aqvnU"
     },
     {
-      "status": false,
+      "status": true,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
@@ -796,28 +805,6 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 41,
-      "StudentName": "sujit gaikwad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 26,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 42,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 43,
       "StudentName": "Mayuri kakde",
       "Orgnization": "Hematite",
@@ -829,34 +816,23 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 44,
-      "StudentName": "pawan jadhav",
+      "id": 50,
+      "StudentName": "amol kakde",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
-      "ExamName": "React js",
+      "ExamName": "Angular",
       "TotalMark": 50,
-      "ObtainedMark": 45,
+      "ObtainedMark": 49,
       "Date": "26/06/2023"
     },
     {
-      "id": 47,
-      "StudentName": "ravindra patil",
+      "id": 52,
+      "StudentName": "akshay kale",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
-      "ExamName": "React js",
+      "ExamName": "c",
       "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 49,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
+      "ObtainedMark": 30,
       "Date": "26/06/2023"
     }
   ]

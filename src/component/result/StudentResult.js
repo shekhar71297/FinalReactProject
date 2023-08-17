@@ -31,12 +31,20 @@ export class StudentResult extends Component {
 
     };
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.allresult !== this.props.allresult) {
+      // Handle updates to the allresult prop here
+      // For example, if you need to update StudentResultData state:
+      this.setState({ StudentResultData: this.props.allresult });
+    }
+   
+  }
 
   componentDidMount() {
     this.props.initresultRequest();
-
   }
+
+  
 
   // Function to open the table
   openDetailsPopup = (record) => {
@@ -77,7 +85,7 @@ export class StudentResult extends Component {
       snackbarMessage: 'Result deleted successfully',
     });
 
-    // window.alert('Record deleted successfully');
+    
   };
 
   // pagination function
@@ -96,12 +104,12 @@ export class StudentResult extends Component {
   calculateGrade = (totalMark, obtainedMark) => {
     const percentage = (obtainedMark / totalMark) * 100;
 
-    if (percentage >= 40) {
+    if (percentage >= 75) {
       return 'A';
 
-    } else if (percentage >= 30) {
+    } else if (percentage >= 50) {
       return 'B';
-    } else if (percentage >= 20) {
+    } else if (percentage >= 25) {
       return 'c';
     } else {
       return '-';

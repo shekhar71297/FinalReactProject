@@ -8,6 +8,7 @@ import Dashboard from './pages/dashboard/Dashboard';
 import Question from './pages/question/container/Question';
 import User from './pages/user/container/User';
 import Login from './component/user/Login';
+import Vouchermodule from './pages/voucher/container/Vouchermodule';
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path='/admin' element={<Login/>}/>
         <Route path='/dashboard' element={<Dashboard/>}>
           <Route path='result' element={<Result/>}/>
-          <Route path='voucher' element={<Datatable/>}/>
+          <Route path='voucher' element={<Vouchermodule/>}/>
           <Route path='question' element={<Question/>}/>
           <Route path='user' element={<User/>}/>
         </Route>

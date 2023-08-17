@@ -312,7 +312,6 @@ class ExamDashboard extends Component {
                           <TableCell className="tablebody" align='center'><Button
                             onClick={() => (this.handleOpen(data.id))} align="center"><EditIcon />
                           </Button>
-{/* edit-onClick={() => (this.handleOpen(data.id))} delete- onClick={() => this.deleteExam(data.id)} */}
                             <Button
                               onClick={() => this.deleteExam(data.id)}
                               align="center"><DeleteIcon />

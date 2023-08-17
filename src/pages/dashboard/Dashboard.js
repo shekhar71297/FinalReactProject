@@ -113,21 +113,24 @@ const Dashboard = () => {
 
 
 
-  const isAdminLog = !!sessionStorage.getItem("Admin");
+  const isAdminLog = !!sessionStorage.getItem("admin");
 
-  const isTrainerLog = !!sessionStorage.getItem("Trainer");
+  const isTrainerLog = !!sessionStorage.getItem("trainer");
+
+  const isCounsellorLog = !!sessionStorage.getItem("counsellor");
 
   const handleLogout = () => {
-    if (isAdminLog) {
-      sessionStorage.removeItem("Admin")
-      window.alert("logout successfully")
-      // navigate('/')
-    } else if (isTrainerLog)
-      sessionStorage.removeItem("Trainer")
-    window.alert("logout successfully")
-    // navigate('/')
+    if (isAdminLog || isTrainerLog || isCounsellorLog) {
+      const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
+      if (window.confirm(`Are you sure you want to logout as ${role}?`)) {
+        sessionStorage.removeItem(role);
+        sessionStorage.removeItem("user")
+        window.alert(`${role} logout successfully`);
+      }
+    }
   };
 
+  const userName = sessionStorage.getItem("user");
 
   return (
 
@@ -146,9 +149,15 @@ const Dashboard = () => {
             >
               <GiHamburgerMenu />
             </IconButton>
+          {userName ? (
+            <Typography variant="h6" noWrap component="div">
+              Welcome, {userName}
+            </Typography>
+          ) : (
             <Typography variant="h6" noWrap component="div">
               Dashboard
             </Typography>
+          )}
             <Box sx={{ flexGrow: 1 }} />
             <IconButton
               color="inherit"

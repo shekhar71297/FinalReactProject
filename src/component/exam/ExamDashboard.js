@@ -18,9 +18,12 @@ import Stack from '@mui/material/Stack';
 import { TextField, Button, Grid, Container, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import Typography from '@mui/material/Typography';
-import './ExamDashboard.css'
-import * as constants from "../../util/Constant";
-import { Get, Post, Put, Delete } from "../../util/HttpService"
+// import './ExamDashboard.css'
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+// import * as constants from "../../util/Constant";
+// import { Get, Post, Put, Delete } from "../../util/HttpService"
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -48,6 +51,10 @@ class ExamDashboard extends Component {
       action: '',
       searchQuery: "",
       isAddExam: true,
+      snackbarOpen: false,
+      snackbarMessage: '',
+      confirmDialogOpen: false,
+      recordToDeleteId: null,
       // switchindex:null,
       status: true,
       open: false,
@@ -69,6 +76,7 @@ class ExamDashboard extends Component {
     this.setState({ searchQuery: event.target.value, page: 0 });
   }
 
+  // for add-update onchange method
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value });
@@ -91,25 +99,26 @@ class ExamDashboard extends Component {
   };
 
   componentDidMount() {
-    this.fetchData();
+    // this.fetchData();
+    this.props.initExamRequest();
   }
 
-  fetchData = () => {
-    const url = `${constants.baseURL}/exams`;
-    Get(url).then((res) => {
-      console.log(res.data);
-      this.setState({ exams: res.data });
-      // const filteredExams = res.data.filter(exam =>
-      //   exam.examname.toLowerCase().includes(this.state.searchQuery.toLowerCase())
-      // );
-      // this.setState({ exams: filteredExams });
-      // const url = `${constants.baseURL}/user`;
-      //   getData(url).then((res) => {
-      //     console.log(res.data);
-      //     this.setState({ user: res.data });
-      //   })
-    });
-  };
+  // fetchData = () => {
+  //   const url = `${constants.baseURL}/exams`;
+  //  Get(url).then((res) => {
+  //     console .log(res.data);
+  //     this.setState({ exams: res.data });
+  //     // const filteredExams = res.data.filter(exam =>
+  //     //   exam.examname.toLowerCase().includes(this.state.searchQuery.toLowerCase())
+  //     // );
+  //     // this.setState({ exams: filteredExams });
+  //     // const url = `${constants.baseURL}/user`;
+  //     //   getData(url).then((res) => {
+  //     //     console.log(res.data);
+  //     //     this.setState({ user: res.data });
+  //     //   })
+  //   });
+  // };
 
   componentDidUpdate(prevProps) {
     if (prevProps.singleExam !== this.props.singleExam) {
@@ -121,24 +130,31 @@ class ExamDashboard extends Component {
   }
 
   // Function to open the delete popup model
-  openDeletePopup = (id) => {
-    this.setState({ isDeletePopupOpen: true, deletingRecordId: id });
+  
+  openConfirmDialog = (id) => {
+    this.setState({
+      confirmDialogOpen: true,
+      recordToDeleteId: id,
+
+    });
   };
 
-  // Function to close the delete popup model
-  closeDeletePopup = () => {
-    this.setState({ isDeletePopupOpen: false, deletingRecordId: null });
+  closeConfirmDialog = () => {
+    this.setState({
+      confirmDialogOpen: false,
+      recordToDeleteId: null,
+    });
   };
 
   getsinglerecord = (id) => {
-    // this.props.getSingleUserRequest(id)
-    let url = `${"http://localhost:8888/exams"}/${id}`;
-    // const url = `${constants.baseURL}/user/${id}`;
-    axios.get(url).then((res) => {
-      console.log(res.data);
-      const { exams, id, code, examname, examstatus } = res.data;
-      this.setState({ id, code, examname, examstatus });
-    })
+    this.props.getSingleExamRequest(id)
+    // let url = `${"http://localhost:8888/exams"}/${id}`;
+    // // const url = `${constants.baseURL}/user/${id}`;
+    // axios.get(url).then((res) => {
+    //   console.log(res.data);
+    //   const { exams, id, code, examname, examstatus } = res.data;
+    //   this.setState({ id, code, examname, examstatus });
+    // })
   }
 
   resetUserFormHandler = () => {
@@ -152,6 +168,15 @@ class ExamDashboard extends Component {
     })
   }
 
+  // close alert message 
+  closeSnackbar = () => {
+    this.setState({
+      snackbarOpen: false,
+      snackbarMessage: '',
+    });
+  };
+
+  //update exam 
   updateExam = (event) => {
     event.preventDefault();
     let eobj = {
@@ -162,51 +187,70 @@ class ExamDashboard extends Component {
       action: this.state.action
     }
     if (this.state.isAddExam) {
-      // this.props.addExamRequest(eobj);
-      const url = `${constants.baseURL}/exams`;
-
-      console.log("add ", eobj);
-
-      Post(url, eobj).then(() => {
-        window.alert("User added successfully")
-      })
-    } else {
-      eobj['id'] = this.state.id;
-      // this.props.initExamRequest()
-      // this.props.updateExamRequest(eobj)
-      const url = `${constants.baseURL}/exams/${this.state.id}`;
-      console.log("update ", eobj);
-      Put(url, eobj).then(() => {
-        window.alert("Record updated successfully");
-        this.fetchData();
-      })
-    }
-  }
-
-  // for delete operation
-  deleteExam = (id) => {
-    if (window.confirm(`Are you sure to delete record with id:${id}`)) {
-      let url = `${"http://localhost:8888/exams"}/${id}`
-      Delete(url).then(() => { ////then use for as promises. 
-        window.alert("Record Deleted successfully");
-        // this.fetchdata(); ///refresh krte
+      this.props.addExamRequest(eobj);
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'User added successfully',
       });
     }
+    else {
+      eobj['id'] = this.state.id;
+      this.props.initExamRequest();
+      this.props.updateExamRequest(eobj);
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'User updated successfully',
+      });
+    }
+    this.handleClose();
   }
+
+  confirmDelete = () => {
+    const id = this.state.recordToDeleteId;
+    this.props.initExamRequest();
+    this.props.deleteExamRequest(id);
+    this.closeConfirmDialog();
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: 'User deleted successfully',
+    });
+  };
+  openConfirmDialog = (id) => {
+    this.setState({
+      confirmDialogOpen: true,
+      recordToDeleteId: id,
+
+    });
+  };
+
+  // for delete operation
+  // deleteExam = (id) => {
+   
+  //   if (window.confirm(`Are you sure to delete record with id:${id}`)) {
+  //     // let url = `${"http://localhost:8888/exams"}/${id}`
+  //     this.props.initExamRequest();
+  //     this.props.deleteExamRequest(id);
+  //     // Delete(url).then(() => { ////then use for as promises. 
+  //       window.alert("Record Deleted successfully");
+  //       // this.fetchdata(); ///refresh krte
+  //     // });
+  //   }
+  // }
 
   render() {
     const { exams, id, code, examname, examstatus, page, rowsPerPage, open, searchQuery, isDetailsPopupOpen, isDeletePopupOpen } = this.state;
-    // const filteredexam = exams.filter((val) => {
+    // const filteredExam = this.props.allExam.filter((data) => {
+
     //   const searchQuery = this.state.searchQuery;
-    //   const examNameIncludes = val.examname.toLowerCase().includes(searchQuery);
-    //   const examStatusIncludes = val.examstatus.toLowerCase().includes(searchQuery.toLowerCase());
-    //   // Add similar code for dateIncludes if needed
-    //   return examNameIncludes || examStatusIncludes;
+    //   const examCodeInclude = data.code.toLowerCase().includes(searchQuery)
+    //   const examNameIncludes = data.examname.toLowerCase().includes(searchQuery)
+    //   const examStatusIncludes = data.examstatus.toLowerCase().includes(searchQuery)
+      
+    //   return examCodeInclude || examNameIncludes || examStatusIncludes
     // });
 
     return (
       <div>
-        <br /><br />
         {/* add button */}
         <div className='firstcontainer'>
           <Button className='addbtn' variant="contained" color="primary" onClick={() => (this.handleOpen())}><AddIcon />Exam</Button>
@@ -247,7 +291,7 @@ class ExamDashboard extends Component {
                   </TableBody>
 
                   {
-                    exams.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+                    this.props.allExam.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
                                       const currentindex= page*rowsPerPage + index ;
 
                       return (
@@ -268,9 +312,10 @@ class ExamDashboard extends Component {
                           <TableCell className="tablebody" align='center'><Button
                             onClick={() => (this.handleOpen(data.id))} align="center"><EditIcon />
                           </Button>
-
+{/* edit-onClick={() => (this.handleOpen(data.id))} delete- onClick={() => this.deleteExam(data.id)} */}
                             <Button
-                              onClick={() => this.deleteExam(data.id)} align="center"><DeleteIcon />
+                              onClick={() => this.deleteExam(data.id)}
+                              align="center"><DeleteIcon />
                             </Button>
                           </TableCell>
                         </TableRow>
@@ -289,8 +334,20 @@ class ExamDashboard extends Component {
 
 
                   <Grid container spacing={2}>
+                  <Grid item xs={12} >
+                      <TextField
+                        required
+                        label="Exam Code"
+                        variant="outlined"
+                        fullWidth
+                        name="code"
+                        value={code}
+                        onChange={this.handleChange}
+                      />
+                    </Grid>
                     <Grid item xs={12} >
                       <TextField
+                        required
                         label="Exam Name"
                         variant="outlined"
                         fullWidth
@@ -299,6 +356,7 @@ class ExamDashboard extends Component {
                         onChange={this.handleChange}
                       />
                     </Grid>
+                    
 
                     <Grid item xs={12}>
                       <FormControl component="fieldset">
@@ -359,6 +417,21 @@ class ExamDashboard extends Component {
             />
           </Paper>
         </Box>
+        {/* alert message after action perform */}
+        <Snackbar
+          open={this.state.snackbarOpen}
+          autoHideDuration={3000}
+          onClose={this.closeSnackbar}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <Alert
+            onClose={this.closeSnackbar}
+            severity="success"
+            sx={{ width: '100%' }}
+          >
+            {this.state.snackbarMessage}
+          </Alert>
+        </Snackbar>
       </div>
     )
   }

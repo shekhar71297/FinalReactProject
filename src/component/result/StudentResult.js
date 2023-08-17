@@ -12,6 +12,8 @@ import { Box, Button, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import TextField from '@mui/material/TextField';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 export class StudentResult extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +25,10 @@ export class StudentResult extends Component {
       isDeletePopupOpen: false,
       deletingRecordId: null,
       isDetailsPopupOpen: false,
-      selectedRecord: ""
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: ''
+
     };
   }
 
@@ -63,8 +68,15 @@ export class StudentResult extends Component {
   // Function to handle the actual delete action after user confirmation
   handleDeleteConfirmed = () => {
     const { deletingRecordId } = this.state;
+    // this.props.initresultRequest();
     this.props.deleteResultRequest(deletingRecordId);
     this.closeDeletePopup();
+
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: 'Result deleted successfully',
+    });
+
     // window.alert('Record deleted successfully');
   };
 
@@ -134,7 +146,7 @@ export class StudentResult extends Component {
           label="Search Result" // Optional label for the input field
           variant="outlined" // You can choose the variant based on your design
           sx={{
-          paddingBottom:4 ,
+            paddingBottom: 4,
           }}
         />
         {/* table pop up */}
@@ -168,61 +180,63 @@ export class StudentResult extends Component {
         </Dialog>
 
         {/* start table */}
-        <Box sx={{height: 100}}>
+        <Box sx={{ height: 100 }}>
           <Paper className='paper'>
             <TableContainer>
               <Table aria-label="simple table" className=''>
                 <TableHead>
-                  <TableRow> 
-                  <TableCell ><strong>SrNo</strong></TableCell>
-                  <TableCell align="center"><strong>StudentName</strong></TableCell>
-                  <TableCell align="center"><strong>Orgnization</strong></TableCell>
-                  {/* <TableCell  align="center">Branch</TableCell> */}
-                  <TableCell align="center"><strong>ExamName</strong></TableCell>
-                  {/* <TableCell  align="center">TotalMark</TableCell> */}
-                  {/* <TableCell  align="center">ObtainedMark</TableCell> */}
-                  <TableCell align="center"><strong>Status</strong></TableCell>
-                  {/* <TableCell  align="center">Grade</TableCell> */}
-                  <TableCell align="center"><strong>Date</strong></TableCell>
-                  <TableCell align="center"><strong>Action</strong></TableCell>
+                  <TableRow>
+                    <TableCell ><strong>SrNo</strong></TableCell>
+                    <TableCell align="center"><strong>StudentName</strong></TableCell>
+                    <TableCell align="center"><strong>Orgnization</strong></TableCell>
+                    {/* <TableCell  align="center">Branch</TableCell> */}
+                    <TableCell align="center"><strong>ExamName</strong></TableCell>
+                    {/* <TableCell  align="center">TotalMark</TableCell> */}
+                    {/* <TableCell  align="center">ObtainedMark</TableCell> */}
+                    <TableCell align="center"><strong>Status</strong></TableCell>
+                    {/* <TableCell  align="center">Grade</TableCell> */}
+                    <TableCell align="center"><strong>Date</strong></TableCell>
+                    <TableCell align="center"><strong>Action</strong></TableCell>
                   </TableRow>
-                  </TableHead>
-                  <TableBody>
-                   {filteredResults.length === 0 ? (
+                </TableHead>
+                <TableBody>
+                  {filteredResults.length === 0 ? (
                     <TableRow>
-                        <TableCell colSpan={8} align="center">
+                      <TableCell align="center">
                         <strong style={{ fontSize: "34px" }}>  No data found</strong>
-                        </TableCell>
-                      </TableRow>
+                      </TableCell>
+                    </TableRow>
                   ) : (
 
                     filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-                        // const grade = this.calculateGrade(val.TotalMark, val.ObtainedMark);
-                        const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
-                        return (
-                          <TableRow key={val.id} className="tablebody">
-                            <TableCell className="tablebody" component="th" scope="row">{val.srno}</TableCell>
-                            <TableCell className="tablebody" align="center">{val.StudentName}</TableCell >
-                            <TableCell className="tablebody" align="center">{val.Orgnization}</TableCell >
-                            {/* <TableCell className="tablebody" align="center">{val.Branch}</TableCell> */}
-                            <TableCell className="tablebody" align="center">{val.ExamName}</TableCell>
-                            {/* <TableCell className="tablebody" align="center">{val.TotalMark}</TableCell> */}
-                            {/* <TableCell className="tablebody" align="center">{val.ObtainedMark}</TableCell> */}
-                            <TableCell className="tablebody" align="center">{status}</TableCell>
-                            {/* <TableCell className="tablebody" align="center">{grade}</TableCell> */}
-                            <TableCell className="tablebody" align="center">{val.Date}</TableCell>
-                            <TableCell className="tablebody" align='center'><Button
-                              onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />
-                            </Button>
+                      // const grade = this.calculateGrade(val.TotalMark, val.ObtainedMark);
+                      const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
+                      const currentIndex = page * rowsPerPage + index + 1;
 
-                              <Button
-                                onClick={() => this.openDetailsPopup(val)} align="cnter"><VisibilityIcon />
-                              </Button>
-                            </TableCell>
-                          </TableRow>
-                        )
-                        
-                      })
+                      return (
+                        <TableRow key={val.id} className="tablebody">
+                          <TableCell className="tablebody" component="th" scope="row">{currentIndex}</TableCell>
+                          <TableCell className="tablebody" align="center">{val.StudentName}</TableCell >
+                          <TableCell className="tablebody" align="center">{val.Orgnization}</TableCell >
+                          {/* <TableCell className="tablebody" align="center">{val.Branch}</TableCell> */}
+                          <TableCell className="tablebody" align="center">{val.ExamName}</TableCell>
+                          {/* <TableCell className="tablebody" align="center">{val.TotalMark}</TableCell> */}
+                          {/* <TableCell className="tablebody" align="center">{val.ObtainedMark}</TableCell> */}
+                          <TableCell className="tablebody" align="center">{status}</TableCell>
+                          {/* <TableCell className="tablebody" align="center">{grade}</TableCell> */}
+                          <TableCell className="tablebody" align="center">{val.Date}</TableCell>
+                          <TableCell className="tablebody" align='center'><Button
+                            onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />
+                          </Button>
+
+                            <Button
+                              onClick={() => this.openDetailsPopup(val)} align="cnter"><VisibilityIcon />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      )
+
+                    })
                   )}
                 </TableBody>
               </Table>
@@ -246,6 +260,16 @@ export class StudentResult extends Component {
               </DialogActions>
             </Dialog>
 
+            <Snackbar
+              open={this.state.snackbarOpen}
+              autoHideDuration={3000} // You can adjust the duration as needed
+              onClose={() => this.setState({ snackbarOpen: false })}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+                {this.state.snackbarMessage}
+              </Alert>
+            </Snackbar>
             {/* table pagination */}
             <TablePagination
               disabled={filteredResults.length === 0}

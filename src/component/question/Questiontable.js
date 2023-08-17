@@ -142,7 +142,7 @@ const Questiontable = () => {
                           Answer :  {item.answer}
                           <Grid  marginLeft={90} item xs={4}>
                            <Button onClick={() => handleDelete(item.id)}>
-                            <DeleteOutlineSharp  sx={{ color: dark[500] }} /></Button>
+                            <DeleteOutlineSharp   sx={{ color: dark[500] }} /></Button>
                            <Button ><EditNoteSharp sx={{ color: dark[500] }}/></Button>
                           </Grid>
                         </TableCell>
@@ -177,7 +177,7 @@ const Questiontable = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setSelectedItemForDeletion(null)}>Cancel</Button>
-          <Button onClick={handleConfirmDelete} color="primary">
+          <Button onClick={handleConfirmDelete} color="error">
             Delete
           </Button>
         </DialogActions>

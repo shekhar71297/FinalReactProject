@@ -5,20 +5,23 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 import { CloseSharp } from '@mui/icons-material';
+import { Alert } from '@mui/material';
 
 
 const Popup = ({ show, handleClose }) => {
   return (
     <Dialog open={show} onClose={handleClose} aria-labelledby="dialog-title">
       <DialogTitle id="dialog-title">Success</DialogTitle>
-      <DialogContent>
-        <p>The question has been successfully added!</p>
-      </DialogContent>
       <DialogActions>
-        <Button onClick={handleClose} color="primary">
-          <CloseSharp/>
+        <Button endIcon={<CloseSharp/>} onClick={handleClose} color="primary">
         </Button>
       </DialogActions>
+      <DialogContent >
+      <Alert variant="filled" severity="success">
+       The question has been successfully added!
+      </Alert>
+      </DialogContent>
+      
     </Dialog>
   );
 };

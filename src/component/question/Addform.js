@@ -22,8 +22,6 @@ const Addform = () => {
   const [Answer, setAnswer] = useState('');
   const [showPopup, setShowPopup] = useState(false);
 
-  
-
   const handleClearForm = () => {
 
     setQuestion('');
@@ -48,7 +46,7 @@ const Addform = () => {
     axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
       console.log(res.data);
       setQuestion({question: res.data})
-      
+      handleClearForm();
     })
     
     setFormVisible(false);
@@ -174,8 +172,9 @@ const Addform = () => {
         <div className='text-right'>
         <Button sx={{marginTop:3}} variant='contained' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-5' >Clear</Button>
         </div>      
-        <Popup show={showPopup} handleClose={handleClosePopup} />
+        
       </div>
+      
       </div>
       )}
       
@@ -183,6 +182,9 @@ const Addform = () => {
       </DialogContent>
       </Dialog>
       </TableContainer>
+
+      <Popup show={showPopup} handleClose={handleClosePopup} />
+      
     
       </div>
   );

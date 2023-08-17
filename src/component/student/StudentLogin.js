@@ -56,7 +56,7 @@ export class StudentLogin extends Component {
         severity:'success'
       });
 
-      // window.alert("Login successfully", JSON.stringify(this.state));
+    
 
 
 
@@ -67,7 +67,7 @@ export class StudentLogin extends Component {
         severity:'error'
 
       });
-      // window.alert("please cheack your register email and dob")
+    
     }
 
   }

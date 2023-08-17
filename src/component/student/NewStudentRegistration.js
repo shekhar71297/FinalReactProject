@@ -35,6 +35,8 @@ class NewStudentRegistration extends Component {
       dob: '',
       gender: '',
       organization: '',
+      pnr:'',
+      branch:null,
       term: false,
       open: false,
       
@@ -56,7 +58,7 @@ class NewStudentRegistration extends Component {
       gender: '',
       organization: '',
       term: false,
-      branch: null,
+      branch: '',
       pnr: "",
       showCdacTextField: false,
 
@@ -70,6 +72,7 @@ class NewStudentRegistration extends Component {
       dob: this.state.dob,
       gender: this.state.gender,
       organization: this.state.organization,
+      pnr:this.state.pnr,
       branch: this.state.organization === "hematite" || this.state.organization === "cdac" ? "" : this.state.branch
     }
     this.props.addStudentRequest(payload)
@@ -115,7 +118,7 @@ class NewStudentRegistration extends Component {
 
 
   render() {
-    const { pnr, firstname, lastname, email, contact, dob, gender, organization} = this.state;
+    const { pnr, firstname, lastname, email, contact, dob, gender, organization,branch} = this.state;
     return (
       // <Modal
       //   open={open}

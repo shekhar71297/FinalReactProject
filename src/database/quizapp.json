@@ -151,6 +151,17 @@
       "organization": "hematite",
       "branch": "",
       "id": 20
+    },
+    {
+      "firstname": "Jethalal",
+      "lastname": "Gada",
+      "email": "jethalal@123.gmail.com",
+      "contact": "9867530872",
+      "dob": "2000-02-14",
+      "gender": "Male",
+      "organization": "hematite",
+      "branch": "",
+      "id": 21
     }
   ]
 }

@@ -116,14 +116,13 @@ const Questiontable = () => {
               <TableHead  style={{ backgroundColor: '#2962ff', fontSize: 30,height:60 }}   >
                 Questions
               </TableHead>
-              <TableBody color='primary-color'>
-                
-                {data.slice(startIndex, endIndex).map((item) => (
+              <TableBody color='secondary-color'>
+              {data.length > 0 ? (
+                data.slice(startIndex, endIndex).map((item) => (
                   <React.Fragment key={item.id}>
                     <TableRow hover onClick={() => handleCollapseToggle(item.id)} >
                       <TableCell >{item.question}</TableCell>
                     </TableRow >
-
                     {selectedOption[item.id] && (
                       <TableRow >
                         <TableCell height={2}>
@@ -150,10 +149,12 @@ const Questiontable = () => {
                       </TableRow>
                     )}
                   </React.Fragment>
-                ))}
+                ))
+                ) : (
                 <TableRow>
                   <TableCell height='100px' align='center' >NO DATA</TableCell>
                 </TableRow>
+                 )}
               </TableBody>
             </Table>
           </TableContainer>

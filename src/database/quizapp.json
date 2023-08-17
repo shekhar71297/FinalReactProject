@@ -3,7 +3,7 @@
     {
       "email": "anmol123@gmail.com",
       "fname": "anmol",
-      "lname": "chaure",
+      "lname": "chaware",
       "password": "anmol123",
       "role": "admin",
       "gender": "male",
@@ -31,13 +31,13 @@
       "id": 3
     },
     {
-      "email": "rushikakdeforever@gmail.com",
-      "fname": "rushikesh",
-      "lname": "kakde",
-      "password": "rushi@26",
+      "email": "ompacharne9@gmail.com",
+      "fname": "Om",
+      "lname": "Pacharne",
+      "password": "Om@112233",
       "role": "admin",
       "gender": "male",
-      "contact": "8007419586",
+      "contact": "9998887770",
       "id": 6
     },
     {

@@ -22,33 +22,34 @@ export class Datatable extends Component {
 
     };
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.allvouchers !== this.props.allvouchers) {
+      this.setState({ vcodes: this.props.allvouchers });
+    }
+  }
 
   componentDidMount() {
-
     this.props.initVoucherRequest()
   }
 
   handleChange = (index, currentStatus,id) => {
-    // const { vcodes } = this.state;
-    const updatedVcodes = [...this.props.allvouchers];
+    const { vcodes } = this.state;
+  const updatedVcodes = [...vcodes];
+  updatedVcodes[index] = { ...updatedVcodes[index], status: !currentStatus };
 
-    updatedVcodes[index] = { ...updatedVcodes[index], status: !currentStatus };
-    
-    
-    this.setState({ vcodes: updatedVcodes });
-  
-    const updatedVoucher = updatedVcodes[index];
-   
-  
-    if (id) {
-      axios.put(`http://localhost:8888/vcodes/${updatedVoucher.id}`, updatedVoucher)
-        .then((res) => {
-          console.log('Voucher updated:', res.data);
-        })
-        .catch((error) => {
-          console.error('Error updating voucher:', error);
-        });
-    } else {
+  this.setState({ vcodes: updatedVcodes });
+
+  const updatedVoucher = updatedVcodes[index];
+
+  if (id) {
+    axios.put(`http://localhost:8888/vcodes/${updatedVoucher.id}`, updatedVoucher)
+      .then((res) => {
+        console.log('Voucher updated:', res.data);
+      })
+      .catch((error) => {
+        console.error('Error updating voucher:', error);
+      });
+  }  else {
       // console.error('Updated voucher does not have a valid ID.');
     }
   };
@@ -62,58 +63,53 @@ export class Datatable extends Component {
 
 
   render() {
-    const { page, rowsPerPage} = this.state;
-
-    return (
-      <div className='container'>
-        <hr />
-        <TableContainer component={Paper} style={{ marginTop: '50px' }}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align='center'  colSpan={8} sx={{backgroundColor:"#2962ff", fontSize:"25px", textAlign:"start", fontWeight:"bolder"}}>
-Voucher module
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell align="left">Voucher Code</TableCell>
-                <TableCell align="left">Action</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
-                const currentindex = page * rowsPerPage + index;
-                return (<TableRow key={currentindex}>
-                  <TableCell component="th" scope="row">{currentindex + 1}</TableCell>
-                  <TableCell>{data.Vcode}</TableCell>
-                  <TableCell>
-                    <Switch
-                      checked={data.status}
-                      onChange={(e) => this.handleChange(currentindex, data.status,data.id)}
-                      inputProps={{ 'aria-label': 'controlled' }}
-                    />
-                  </TableCell>
+      const { page, rowsPerPage } = this.state;
+    
+      return (
+        <div className='container'>
+          <hr />
+          <TableContainer component={Paper} style={{ marginTop: '50px' }}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>ID</TableCell>
+                  <TableCell align="left">Voucher Code</TableCell>
+                  <TableCell align="left">Action</TableCell>
                 </TableRow>
-                )
-              }
-              )}
-            </TableBody>
-          </Table>
-          {/* rowpagination */}
-          <TablePagination
-            component="div"
-            rowsPerPageOptions={[5, 10, 25]}
-            count={this.props.allvouchers.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            onPageChange={this.handleChangePage}
-            onRowsPerPageChange={this.handleChangeRowsPerPage}
-          />
-        </TableContainer>
-      </div>
-    );
-  }
-}
+              </TableHead>
+              <TableBody>
+                {this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+                  const currentindex = page * rowsPerPage + index;
+                  return (
+                    <TableRow key={currentindex}>
+                      <TableCell component="th" scope="row">{currentindex + 1}</TableCell>
+                      <TableCell>{data.Vcode}</TableCell>
+                      <TableCell>
+                        <Switch
+                          checked={data.status}
+                          onChange={() => this.handleChange(currentindex, data.status, data.id)}
+                          inputProps={{ 'aria-label': 'controlled' }}
+                        />
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+            {/* rowpagination */}
+            <TablePagination
+              component="div"
+              rowsPerPageOptions={[5, 10, 25]}
+              count={this.props.allvouchers.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={this.handleChangePage}
+              onRowsPerPageChange={this.handleChangeRowsPerPage}
+            />
+          </TableContainer>
+        </div>
+      );
+    }
+  }    
 
 export default Datatable;

@@ -126,6 +126,7 @@ const Dashboard = () => {
         sessionStorage.removeItem(role);
         sessionStorage.removeItem("user")
         window.alert(`${role} logout successfully`);
+        navigate("/")
       }
     }
   };

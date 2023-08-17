@@ -13,6 +13,11 @@ import { Link } from "react-router-dom";
 import WithRouter from '../../util/WithRouter';
 import * as useraction from '../../pages/user/action'
 import { connect } from 'react-redux';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+
 
 
 const defaultTheme = createTheme();
@@ -26,10 +31,13 @@ export class Login extends Component {
       role: "",
       fname: "",
       lname: "",
+      showPassword: false,
     }
   }
 
- 
+  componentDidMount() {
+    this.props.initUserRequest();
+  }
 
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -104,12 +112,33 @@ export class Login extends Component {
                   margin="normal"
                   required
                   fullWidth
-                  label="password"
+                  label="Password"
                   name="password"
-                  type="password"
-                  id="dob"
+                  type={this.state.showPassword ? 'text' : 'password'}
+                  id="pass"
                   onChange={this.inputChangeHandler}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={() =>
+                            this.setState((prevState) => ({
+                              showPassword: !prevState.showPassword,
+                            }))
+                          }
+                          edge="end"
+                        >
+                          {this.state.showPassword ? (
+                            <VisibilityIcon />
+                          ) : (
+                            <VisibilityOffIcon />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
+
 
 
                 <Button

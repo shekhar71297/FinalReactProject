@@ -108,8 +108,6 @@ const Questiontable = () => {
       {showCreateButton && (
           <Addform  />
         )}
-
-      
         <Box marginRight={10}>
           <TableContainer component={Paper}  >
             <Table stickyHeader aria-label="sticky table"  >
@@ -167,7 +165,6 @@ const Questiontable = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        
         </Box>
       </div>
       <Dialog open={selectedItemForDeletion !== null} onClose={() => setSelectedItemForDeletion(null)}>

@@ -171,16 +171,8 @@
         "None of the above."
       ],
       "answer": "C is the correct answer. The webpack command is a module bundler."
-    },
-    {
-      "Question": "kniIJI",
-      "Option1": "joj",
-      "Option2": "joj",
-      "Option3": "oj",
-      "Option4": "oj",
-      "Answer": "o",
-      "id": 11
     }
+    
   ],
   "python": [
     {

@@ -14,7 +14,7 @@ import { Cancel, CreateNewFolderOutlined } from '@mui/icons-material';
 
 const Addform = () => {
   const [isFormVisible, setFormVisible] = useState(false);
-  const [Question, setQuestion] = useState('');
+  const [question, setquestion] = useState('');
   const [Option1, setOption1] = useState('');
   const [Option2, setOption2] = useState('');
   const [Option3, setOption3] = useState('');
@@ -24,7 +24,7 @@ const Addform = () => {
 
   const handleClearForm = () => {
 
-    setQuestion('');
+    setquestion('');
     setOption1('');
     setOption2('');
     setOption3('');
@@ -32,7 +32,7 @@ const Addform = () => {
     setAnswer('');
   };
   const newQuestion = {
-    Question,
+    question,
     Option1,
     Option2,
     Option3,
@@ -45,7 +45,7 @@ const Addform = () => {
     e.preventDefault();
     axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
       console.log(res.data);
-      setQuestion({question: res.data})
+      setquestion({question: res.data})
       handleClearForm();
     })
     
@@ -104,8 +104,8 @@ const Addform = () => {
           label="Question"
           id="fullwidth"
           focused
-          value={Question}
-          onChange={(e) => setQuestion(e.target.value)}
+          value={question}
+          onChange={(e) => setquestion(e.target.value)}
           
         />
         <div><br/>

@@ -824,16 +824,293 @@
       "TotalMark": 50,
       "ObtainedMark": 49,
       "Date": "26/06/2023"
+    }
+  ],
+  "students": [
+    {
+      "id": 2,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
     },
     {
-      "id": 52,
-      "StudentName": "akshay kale",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "c",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Date": "26/06/2023"
+      "id": 3,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 4,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 5,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 6,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 7,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 8,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 9,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 10,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 11,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 12,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 13,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 14,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 15,
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 16,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 20,
+      "firstname": "Rushi",
+      "lastname": "Kakde",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "5678-04-23",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "firstname": "Shekhar ",
+      "lastname": "wwwws",
+      "email": "admin@gmail.com",
+      "contact": "9322403669",
+      "dob": "12222-04-23",
+      "gender": "Male",
+      "organization": "hematite",
+      "branch": "",
+      "id": 21
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "122222-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "branch": "",
+      "id": 22
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "tesing@gmail.com",
+      "contact": "9322403669",
+      "dob": "45678-03-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "branch": "",
+      "id": 24
+    },
+    {
+      "firstname": "Om",
+      "lastname": "Om",
+      "email": "ompachane@gmail.com",
+      "contact": "1234567891",
+      "dob": "4222-04-23",
+      "gender": "Male",
+      "organization": "hematite",
+      "branch": "",
+      "id": 25
+    },
+    {
+      "firstname": "Anushka",
+      "lastname": "Gaikwad",
+      "email": "sujit1212@gmail.com",
+      "contact": "23456wery",
+      "dob": "2011-12-12",
+      "gender": "Female",
+      "organization": "Hadapsar",
+      "branch": null,
+      "id": 26
+    },
+    {
+      "firstname": "Popatlal",
+      "lastname": "Mehta",
+      "email": "test@123.gmail.com",
+      "contact": "9898989898",
+      "dob": "2033-12-21",
+      "gender": "Male",
+      "organization": "cdac",
+      "branch": "",
+      "id": 27
+    },
+    {
+      "firstname": "Tapu",
+      "lastname": "gada",
+      "email": "sujit18gaikwad@gmail.com",
+      "contact": "23456wery",
+      "dob": "1222-02-23",
+      "gender": "Male",
+      "organization": "cdac",
+      "branch": "",
+      "id": 28
+    },
+    {
+      "firstname": "test2",
+      "lastname": "test2",
+      "email": "test@123.gmail.com",
+      "contact": "23456wery",
+      "dob": "1222-02-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "11233",
+      "branch": "",
+      "id": 29
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "275760-03-12",
+      "gender": "Other",
+      "organization": "Warje",
+      "pnr": "",
+      "branch": null,
+      "id": 30
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "wwwws",
+      "email": "test@123.gmail.com",
+      "contact": "9898989898",
+      "dob": "56789-04-23",
+      "gender": "Male",
+      "organization": "Vadgoansheri",
+      "pnr": "",
+      "branch": null,
+      "id": 31
+    },
+    {
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 32
     }
   ]
 }

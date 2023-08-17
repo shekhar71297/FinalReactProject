@@ -151,7 +151,7 @@ const Dashboard = () => {
               >
                 <GiHamburgerMenu />
               </IconButton>
-              {userName ? (
+          {userName ? (
             <Typography variant="h6" noWrap component="div">
               Welcome, {userName}
             </Typography>
@@ -160,17 +160,17 @@ const Dashboard = () => {
               Dashboard
             </Typography>
           )}
-              <Box sx={{ flexGrow: 1 }} />
-              <IconButton
-                color="inherit"
-                aria-label="logout"
-                onClick={handleLogout}
-                edge="end"
-              >
-                <IoMdLogOut />
-              </IconButton>
-            </Toolbar>
-          </AppBar>
+            <Box sx={{ flexGrow: 1 }} />
+            <IconButton
+              color="inherit"
+              aria-label="logout"
+              onClick={handleLogout}
+              edge="end"
+            >
+              <IoMdLogOut />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
 
 
           <Drawer variant="permanent" open={open}>

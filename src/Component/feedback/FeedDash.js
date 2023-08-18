@@ -96,7 +96,7 @@ export class FeedDash extends Component {
         })
 
         return (
-            <div className='container' style={{ marginTop: '0px' }}>
+            <div className='container' style={{ marginRight: '30px' }}>
 
                 {/* search box */}
                 <TextField
@@ -115,6 +115,10 @@ export class FeedDash extends Component {
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
+                        <TableRow>
+                                <TableCell align="center" colSpan={8} sx={{ backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder",color:"white" }}>
+                                Feedback module</TableCell>
+                        </TableRow>
                             <TableRow>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>SrNo</TableCell>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>Name</TableCell>
@@ -131,23 +135,23 @@ export class FeedDash extends Component {
                                     </TableCell>
                                 </TableRow>
                             ) : (
-                                    filteredFeedback.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-                                        const rowNumber = firstIndex + index + 1
-                                        return <TableRow key={val.id}>
-                                            <TableCell
-                                                component="th" scope="row" align="center">{rowNumber}</TableCell>
-                                            <TableCell align="center" >{val.fname}</TableCell>
-                                            <TableCell align="center" >{val.contact}</TableCell>
-                                            <TableCell align="center" >{val.org}</TableCell>
-                                            <TableCell align="center">
-                                                <Stack spacing={2} direction="row" >
-                                                    <Button onClick={() => this.handleShow(val)} type="button"><RemoveRedEyeIcon style={{ color: 'blue' }} /></Button>
-                                                </Stack>
-                                            </TableCell>
-                                        </TableRow>
-                                    })
+                                filteredFeedback.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
+                                    const rowNumber = firstIndex + index + 1
+                                    return <TableRow key={val.id}>
+                                        <TableCell
+                                            component="th" scope="row" align="center">{rowNumber}</TableCell>
+                                        <TableCell align="center" >{val.fname}</TableCell>
+                                        <TableCell align="center" >{val.contact}</TableCell>
+                                        <TableCell align="center" >{val.org}</TableCell>
+                                        <TableCell align="center">
+                                            <Stack spacing={2} direction="row" >
+                                                <Button onClick={() => this.handleShow(val)} type="button"><RemoveRedEyeIcon style={{ color: '#1976d2' }} /></Button>
+                                            </Stack>
+                                        </TableCell>
+                                    </TableRow>
+                                })
                             )
-                        }
+                            }
                         </TableBody>
                     </Table>
 

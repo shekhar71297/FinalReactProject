@@ -35,6 +35,7 @@ class NewStudentRegistration extends Component {
       dob: '',
       gender: '',
       organization: '',
+      pnr:'',
       branch:null,
       term: false,
       open: false,
@@ -58,6 +59,7 @@ class NewStudentRegistration extends Component {
       organization: '',
       term: false,
       branch: '',
+      pnr: "",
       showCdacTextField: false,
 
     })
@@ -70,6 +72,7 @@ class NewStudentRegistration extends Component {
       dob: this.state.dob,
       gender: this.state.gender,
       organization: this.state.organization,
+      pnr:this.state.pnr,
       branch: this.state.organization === "hematite" || this.state.organization === "cdac" ? "" : this.state.branch
     }
     this.props.addStudentRequest(payload)

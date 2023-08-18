@@ -168,7 +168,7 @@ export class StudentLogin extends Component {
             </Container>
           </ThemeProvider>
 {/* footer */}
-          <Box sx={{ flexGrow: 1, marginTop: 18 }}>
+          <Box sx={{ flexGrow: 1, marginTop: 8 }}>
             <AppBar position="static">
               <Toolbar>
                 <IconButton

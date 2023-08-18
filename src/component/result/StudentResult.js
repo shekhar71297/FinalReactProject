@@ -39,7 +39,7 @@ export class StudentResult extends Component {
   componentDidMount() {
     this.props.initresultRequest();
   }
-// pop up table
+  // pop up table
   // Function to open the table
   openDetailsPopup = (record) => {
     this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
@@ -82,7 +82,7 @@ export class StudentResult extends Component {
   };
   handleChangeRowsPerPage = (event) => {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
-    
+
   };
   // search function
   handleSearchChange = (event) => {
@@ -138,8 +138,8 @@ export class StudentResult extends Component {
           value={searchQuery}
           onChange={this.handleSearchChange}
           placeholder="Search Result"
-          label="Search Result" 
-          variant="outlined" 
+          label="Search Result"
+          variant="outlined"
           sx={{
             paddingBottom: 4,
           }}
@@ -153,7 +153,7 @@ export class StudentResult extends Component {
             <DialogContent>
               <DialogContentText className='popup'>
                 {/* Show the details of the selected record here */}
- 
+
                 <strong>Student Name::</strong> {selectedRecord.StudentName} <br />
                 <strong>Organization:: </strong>{selectedRecord.Orgnization} <br />
                 <strong>Branch::</strong> {selectedRecord.Branch} <br />
@@ -182,7 +182,7 @@ export class StudentResult extends Component {
                 <TableHead >
 
                   <TableRow>
-                    <TableCell align="center" colSpan={8} sx={{ backgroundColor: "blue", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
+                    <TableCell align="center" color='' colSpan={8} sx={{ backgroundColor: '#1976d2;', fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
                       Result module
                     </TableCell>
 

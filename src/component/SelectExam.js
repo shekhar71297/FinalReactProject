@@ -26,6 +26,7 @@ class SelectExam extends Component {
 
     submitBtn = ()=>{
         this.setState({showInstruction:true})
+        console.log(this.state.exam);
     }
 
     render() {

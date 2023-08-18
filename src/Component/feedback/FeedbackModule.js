@@ -9,6 +9,7 @@ import * as Action from '../../pages/feedback/Action'
 import { connect } from "react-redux";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import WithRouter from '../../util/WithRouter';
 
 
 export class FeedbackModule extends Component {
@@ -87,7 +88,7 @@ export class FeedbackModule extends Component {
         }
 
         this.props.addFeedbackRequest(payload)
-
+        this.props.router.navigate("/")
         this.setState({
             snackbarOpen: true,
             snackbarMessage: "Thank You For Giving Feedback!!",
@@ -182,7 +183,7 @@ export class FeedbackModule extends Component {
 
                             <Stack spacing={2} direction="row" style={{ margin: 'auto' }}>
                                 <Button type='submit' variant="contained" color="primary" disabled={isSubmitDisabled}>Submit</Button>
-                                <Link to={'/login'}><Button variant="contained" color="primary" >Back</Button></Link>
+                                <Button variant="contained" color="primary" >Back</Button>
                             </Stack>
                         </Box>
                     </form>
@@ -210,4 +211,4 @@ const mapDispatchToProps = (dispatch) => ({
     initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
     addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackModule)
+export default connect(mapStateToProps, mapDispatchToProps)(WithRouter(FeedbackModule))

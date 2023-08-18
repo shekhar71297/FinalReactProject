@@ -15,10 +15,10 @@ import * as Action from '../../pages/student/action'
 import Toolbar from '@mui/material/Toolbar';
 import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
-import {  DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import Dialog from '@mui/material/Dialog';
+
+import Vouchervalidation from '../voucher/Vouchervalidation';
 
 const defaultTheme = createTheme();
 export class StudentLogin extends Component {
@@ -32,50 +32,62 @@ export class StudentLogin extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
-      severity:''
+      severity:'',
+      isLoggedIn: false,
     }
   }
-
+  componentDidMount() {
+    this.props.initStudentRequest();
+  }
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
   }
 
   submitBtn = (e) => {
-    e.preventDefault()
-    this.props.initStudentRequest()
-
+    e.preventDefault();
+    this.props.initStudentRequest();
+  
     const istrue = this.props.allstudent.some((d) =>
       this.state.email === d.email && this.state.dob === d.dob
-    )
+    );
+  
     if (istrue) {
-      sessionStorage.setItem("isLogin", "true")
+      const student = this.props.allstudent.find(
+        (d) => this.state.email === d.email && this.state.dob === d.dob
+      );
+  
+      sessionStorage.setItem("isLogin", "true");
+      sessionStorage.setItem("studentName", `${student.firstname} ${student.lastname}`); // Set student's full name
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Login successfully',
-        severity:'success'
+        severity: 'success',
       });
-
-    
-
-
-
+  
+      setTimeout(() => {
+        this.setState({ snackbarOpen: false });
+        this.setState({ isLoggedIn: true });
+      }, 1000);
     } else {
       this.setState({
         snackbarOpen: true,
-        snackbarMessage: 'please cheack your register email and dob',
-        severity:'error'
-
+        snackbarMessage: 'please check your registered email and dob',
+        severity: 'error'
       });
-    
     }
-
   }
+  
 
   render() {
+    const { isLoggedIn } = this.state;
     return (
 
       <div>
+         {isLoggedIn ? (
+          <Vouchervalidation />
+        ) : (
+          <>
 
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="static">
@@ -186,7 +198,10 @@ export class StudentLogin extends Component {
                 {this.state.snackbarMessage}
               </Alert>
             </Snackbar>
+            </>
+        )}
       </div>
+      
     )
   }
 }

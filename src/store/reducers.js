@@ -1,18 +1,18 @@
 import {combineReducers} from 'redux'
-import resultreducer from '../pages/result/Reducer'; 
+import resultreducer from '../pages/result/Reducer';
+import StudentReducer from '../pages/student/reducer';  
+import userReducer from '../pages/user/reducer'; 
+import questionreducer from '../pages/question/Reducer';
+import VoucherReducer from '../pages/voucher/Reducer';
 import feedbackReducer from '../pages/feedback/Reducer';
-import voucherReducer from '../pages/result/Reducer'
-// import StudentReducer from '../pages/student/Reducer'; 
-
 const rootReducer = combineReducers({
+        userStore:userReducer ,
         resultStore:resultreducer ,
-        voucherStore:voucherReducer,
-        feedbackStore:feedbackReducer
-
-// const rootReducer = combineReducers({
-        
-        
+        VoucherStore:VoucherReducer,
+        studentStore:StudentReducer,
+        questionStore: questionreducer,
+        feedbackStore:feedbackReducer,
     });
     
 
-export default rootReducer;
+    export default rootReducer;

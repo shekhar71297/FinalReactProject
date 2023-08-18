@@ -61,7 +61,7 @@
         "ReactJS",
         "All of the above"
       ],
-      "answer": "All of the above."
+      "answer": "All of the above"
     },
     {
       "id": 2,
@@ -72,7 +72,7 @@
         "React.js can render both on client and server side.",
         "All of the above"
       ],
-      "answer": "All of the above."
+      "answer": "All of the above"
     },
     {
       "id": 3,
@@ -83,7 +83,7 @@
         "The library of React.js is pretty large",
         "The learning curve can be steep in React.js"
       ],
-      "answer": "C is the correct answer.The JSX in React.js makes code easy to read and write is an advantage of React.js."
+      "answer": "The library of React.js is pretty large"
     },
     {
       "id": 4,
@@ -94,7 +94,7 @@
         "Both A and B.",
         "None of the above."
       ],
-      "answer": "B is the correct answer. Virtual DOM is used in React.js to increase performance."
+      "answer": "Virtual DOM"
     },
     {
       "id": 5,
@@ -105,7 +105,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "Class"
     },
     {
       "id": 6,
@@ -157,10 +157,10 @@
       "options": [
         "The webpack command is used to transpile all the JavaScript down into one file.",
         "It runs React local development server.",
-        "It is a module bundler.",
+        "It is a module bundler",
         "None of the above."
       ],
-      "answer": "C is the correct answer. The webpack command is a module bundler."
+      "answer": "It is a module bundler"
     }
   ],
   "python": [
@@ -173,7 +173,7 @@
         "64",
         "None of these above"
       ],
-      "answer": "(d) None of these above"
+      "answer": "None of these above"
     },
     {
       "id": 2,
@@ -184,7 +184,7 @@
         "Niene Stom",
         "Wick van Rossum"
       ],
-      "answer": "(b) Guido van Rossum"
+      "answer": "Guido van Rossum"
     },
     {
       "id": 3,
@@ -195,7 +195,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "Class"
     },
     {
       "id": 5,
@@ -206,7 +206,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": " Class"
     },
     {
       "id": 6,
@@ -217,7 +217,7 @@
         "!",
         "/*"
       ],
-      "answer": "b"
+      "answer": "#"
     },
     {
       "id": 7,
@@ -228,7 +228,7 @@
         "Fun ",
         "define"
       ],
-      "answer": "b"
+      "answer": "def"
     },
     {
       "id": 8,
@@ -239,7 +239,7 @@
         "sys.version()",
         "sys.version"
       ],
-      "answer": "d"
+      "answer": "sys.version"
     },
     {
       "id": 9,
@@ -250,7 +250,7 @@
         "Preferred Installer Program",
         "All of the mentioned"
       ],
-      "answer": "c"
+      "answer": "Preferred Installer Program"
     },
     {
       "id": 10,
@@ -261,7 +261,7 @@
         " seed()",
         "sqrt()"
       ],
-      "answer": "b"
+      "answer": "print()"
     }
   ],
   "php": [
@@ -307,7 +307,7 @@
         "ng-bind directive",
         "ng-init directive"
       ],
-      "answer": " C is the correct option. The ng-bind directive is used to bind the application data to the HTML view in the AngularJS application."
+      "answer": "ng-bind directive"
     },
     {
       "id": 5,
@@ -318,7 +318,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "class"
     }
   ],
   "vcodes": [
@@ -370,7 +370,7 @@
     {
       "status": true,
       "id": 10,
-      "Vcode": "MnF9q8"
+      "Vcode": "aaaaa"
     },
     {
       "status": false,
@@ -628,6 +628,13 @@
       "code": "h12",
       "examname": "abc",
       "examstatus": "disable"
+    }
+  ],
+  "examresult": [
+    {
+      "studentName": "anmol chaware",
+      "count": 1,
+      "id": 1
     }
   ]
 }

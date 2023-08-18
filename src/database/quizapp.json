@@ -529,6 +529,18 @@
       "dob": "1993-12-12",
       "gender": "Male",
       "organization": "hematite"
+    },
+    {
+      "firstname": "Vishakha",
+      "lastname": "Mankar",
+      "email": "vish24mankar@gmail.com",
+      "contact": "9765223448",
+      "dob": "2023-08-18",
+      "gender": "Female",
+      "organization": "Warje",
+      "pnr": "",
+      "branch": null,
+      "id": 2
     }
   ],
   "exams": [
@@ -536,80 +548,86 @@
       "id": 1,
       "code": "R1",
       "examname": "ReactJs",
-      "examstatus": "true",
-      "action": ""
+      "examstatus": "disable"
     },
     {
       "id": 2,
       "code": "R2",
       "examname": "Phython",
-      "examstatus": true
+      "examstatus": "disable"
     },
     {
       "id": 3,
       "code": "R3",
       "examname": "Java",
-      "examstatus": "disabled"
+      "examstatus": "disable"
     },
     {
       "id": 4,
       "code": "R4",
       "examname": "Javascript",
-      "examstatus": "disabled"
+      "examstatus": "disable"
     },
     {
       "id": 5,
       "code": "R5",
       "examname": "PHP",
-      "examstatus": "disabled"
+      "examstatus": "disable"
     },
     {
       "id": 6,
       "code": "R6",
       "examname": "Angular",
-      "examstatus": "disabled"
+      "examstatus": "disable"
     },
     {
       "id": 7,
       "code": "R7",
       "examname": "Veu.js",
-      "examstatus": "disabled",
-      "status": true
+      "examstatus": "disable"
     },
     {
       "id": 8,
       "code": "HI-15",
       "examname": "react",
-      "examstatus": "disabled",
-      "action": ""
+      "examstatus": "disable"
     },
     {
       "id": 9,
       "code": "HI-17",
       "examname": "vbg",
-      "examstatus": "disabled",
-      "action": ""
+      "examstatus": "disable"
     },
     {
       "id": 10,
       "code": "bvh",
       "examname": "vchg",
-      "examstatus": "disabled",
+      "examstatus": "enable",
       "action": ""
     },
     {
       "id": 11,
       "code": "HI-17",
       "examname": "mdvnfvnfnv",
-      "examstatus": "disabled",
-      "action": ""
+      "examstatus": "disable"
     },
     {
       "id": 12,
       "code": "HI-20",
       "examname": "hdvvc",
-      "examstatus": "disabled",
-      "action": ""
+      "examstatus": "disable"
+    },
+    {
+      "id": 13,
+      "code": "HI-23",
+      "examname": "Sass",
+      "examstatus": "disable"
+    },
+    {
+      "id": 14,
+      "code": "h12",
+      "examname": "abc",
+      "examstatus": "disable"
     }
   ]
 }

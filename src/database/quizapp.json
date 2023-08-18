@@ -171,8 +171,29 @@
         "None of the above."
       ],
       "answer": "C is the correct answer. The webpack command is a module bundler."
+    },
+    {
+      "question": "ygyG",
+      "options": [
+        "GG",
+        "G",
+        "YG",
+        "GY"
+      ],
+      "answer": "YG",
+      "id": 11
+    },
+    {
+      "question": "What is the maximum possible length of an identifier?",
+      "options": [
+        "16",
+        " 32",
+        "64",
+        "None of these above"
+      ],
+      "answer": " None of these above",
+      "id": 12
     }
-    
   ],
   "python": [
     {
@@ -538,6 +559,16 @@
       "email": "anmol@gmail.com",
       "contact": "1234567891",
       "dob": "1993-12-12",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 2,
+      "firstname": "Om",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "7028340777",
+      "dob": "2002-02-02",
       "gender": "Male",
       "organization": "hematite"
     }

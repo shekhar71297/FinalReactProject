@@ -76,7 +76,7 @@ const Questiontable = () => {
         .get(`http://localhost:8888/${selectedValue}`)
         .then((response) => {
           setData(response.data);
-          setShowCreateButton(true); // Show the "Create" button
+          setShowCreateButton(true); 
 
         })
         .catch((error) => {
@@ -110,12 +110,20 @@ const Questiontable = () => {
       </FormControl>
       <div>
       {showCreateButton && (
-          <Addform isEditMode={isEditMode} editQuestionData={editQuestionData}   />
+          <Addform/>
         )}
+        {isEditMode && (
+        <Addform
+          isEditMode={isEditMode}
+          editQuestionData={editQuestionData}
+          setEditMode={setEditMode}
+          setEditQuestionData={setEditQuestionData}
+        />
+      )}
         <Box marginRight={10}>
           <TableContainer component={Paper}  >
             <Table stickyHeader aria-label="sticky table"  >
-              <TableHead  style={{ backgroundColor: '#2962ff', fontSize: 30,height:60 }}   >
+              <TableHead   sx={{color:'white', backgroundColor: '#1976d2', fontSize: 40,height:60 }}   >
                 Questions
               </TableHead>
               <TableBody color='secondary-color'>
@@ -142,7 +150,7 @@ const Questiontable = () => {
                             </div>
                           ))}<br></br>
                           Answer :  {item.answer}
-                          <Grid  marginLeft={90} item xs={4}>
+                          <Grid  marginLeft={100} item xs={4}>
                            <Button onClick={() => handleDelete(item.id)}>
                             <DeleteOutlineSharp   sx={{ color: dark[500] }} /></Button>
                            <Button onClick={() => handleEdit(item.id)} ><EditNoteSharp sx={{ color: dark[500] }}/></Button>

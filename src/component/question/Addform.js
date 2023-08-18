@@ -10,49 +10,64 @@ import { Button, TableContainer } from '@mui/material';
 import { Cancel, CreateNewFolderOutlined } from '@mui/icons-material';
 import { useEffect } from 'react';
 
-
-
-
-const Addform = ({ isEditMode, editQuestionData }) => {
+const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionData }) => {
   const [isFormVisible, setFormVisible] = useState(false);
   const [question, setquestion] = useState('');
-  const [Option1, setOption1] = useState('');
-  const [Option2, setOption2] = useState('');
-  const [Option3, setOption3] = useState('');
-  const [Option4, setOption4] = useState('');
+  const [options, setOptions] = useState([
+    { id: 1, text: '' },
+    { id: 2, text: '' },
+    { id: 3, text: '' },
+    { id: 4, text: '' },
+  ]);
+  const [formData, setFormData] = useState({
+    // Initialize your form fields here
+    question: '',
+    options: [],
+    answer: '',
+  });
   const [answer, setanswer] = useState('');
   const [showPopup, setShowPopup] = useState(false);
 
+  const handleOptionChange = (e, optionIndex) => {
+    const newText = e.target.value;
+    setOptions((prevOptions) =>
+      prevOptions.map((option, index) =>
+        index === optionIndex ? { ...option, text: newText } : option
+      )
+    );
+  };
 
   useEffect(() => {
     if (isEditMode) {
       setquestion(editQuestionData.question);
-      setOption1(editQuestionData.Option1);
-      setOption2(editQuestionData.Option2);
-      setOption3(editQuestionData.Option3);
-      setOption4(editQuestionData.Option4);
+      // Assuming editQuestionData.options is an array of options
+      setOptions(
+        editQuestionData.options.map((text, index) => ({
+          id: index + 1,
+          text,
+        }))
+      );
       setanswer(editQuestionData.answer);
     }
   }, [isEditMode, editQuestionData]);
 
-
   const handleClearForm = () => {
-
     setquestion('');
-    setOption1('');
-    setOption2('');
-    setOption3('');
-    setOption4('');
+    setOptions([
+      { id: 1, text: '' },
+      { id: 2, text: '' },
+      { id: 3, text: '' },
+      { id: 4, text: '' },
+    ]);
     setanswer('');
   };
+
   const newQuestion = {
     question,
-    Option1,
-    Option2,
-    Option3,
-    Option4,
+    options: options.map((option) => option.text),
     answer,
   };
+  
   
 
   const handleAdd = (e) => {
@@ -61,8 +76,18 @@ const Addform = ({ isEditMode, editQuestionData }) => {
     axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
       console.log(res.data);
       setquestion({question: res.data})
+      setOptions(
+        res.data.options.map((text, index) => ({
+          id: index + 1,
+          text,
+        }))
+      );
+      setanswer(res.data.answer);
       handleClearForm();
     })
+    .catch((error) => {
+      console.error(error);
+    });
     
     setFormVisible(false);
   };
@@ -70,6 +95,7 @@ const Addform = ({ isEditMode, editQuestionData }) => {
   const handleClosePopup = () => {
     setShowPopup(false);
   };
+  
   return (
     
     <div>
@@ -123,53 +149,20 @@ const Addform = ({ isEditMode, editQuestionData }) => {
           onChange={(e) => setquestion(e.target.value)}
           
         />
-        <div><br/>
+        {options.map((option, index) => (
+        <div key={option.id}><br/>
         <TextField
           variant='standard'
           fullWidth
           id="fullwidth"
-          label="Option1"
+          label={`Option ${index + 1}`}
           focused
-          value={Option1}
-          onChange={(e) => setOption1(e.target.value)}
+          value={option.text}
+          onChange={(e) => handleOptionChange(e, index)}
          
         />
-        </div><br/>
-        <div>
-        <TextField
-          variant='standard'
-          fullWidth
-          id="outlined-password-input"
-          label="Option2"
-          value={Option2}
-          focused
-          onChange={(e) => setOption2(e.target.value)}
-        />
-        </div><br/>
-        <div>
-        <TextField
-          variant='standard'
-          fullWidth
-          id="outlined-password-input"
-          label="Option3"
-          focused
-          value={Option3}
-          onChange={(e) => setOption3(e.target.value)}
-         
-        />
-        </div><br/>
-        <div>
-        <TextField
-          variant='standard'
-          fullWidth
-          id="outlined-password-input"
-          label="Option4"
-          value={Option4}
-          focused
-          onChange={(e) => setOption4(e.target.value)}
-         
-        />
-        </div><br/>
+        </div>
+        ))}<br/>
         <TextField
           variant='standard'
           fullWidth
@@ -180,13 +173,30 @@ const Addform = ({ isEditMode, editQuestionData }) => {
           onChange={(e) => setanswer(e.target.value)}
         />
         </div>
-    
+        {isEditMode && (
+          <div>
+      <Button
+        sx={{marginTop:3}}
+        variant='contained'
+        color='primary'
+        type='button'
+        // onClick={handleUpdate}
+        className='btn btn-outline-primary ml-5 btn-lg'
+      >
+        Update
+      </Button>
+      </div>
+    )}
+        {!isEditMode && (
         <div className='pull-left mb-3'><br/>
         <Button variant='contained' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
         </div>
+        )}
+        {!isEditMode && (
         <div className='text-right'>
-        <Button sx={{marginTop:3}} variant='contained' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg mt-5' >Clear</Button>
-        </div>      
+        <Button sx={{marginTop:3}}  variant='contained' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg ' >Clear</Button>
+        </div> 
+        )}     
         
       </div>
       

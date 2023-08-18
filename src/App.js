@@ -7,7 +7,7 @@ import Feedback from './pages/feedback/container/Feedback';
 import { Provider } from 'react-redux';
 import store from './store/store'
 import Dashboard from './pages/dashboard/Dashboard';
-import FeedbackModule from './component/feedback/FeedbackModule';
+
 function App() {
   return (
     <div className="App">

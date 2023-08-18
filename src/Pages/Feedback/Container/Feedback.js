@@ -4,7 +4,6 @@ import FeedDash from "../../../component/feedback/FeedDash";
 import * as Action from '../Action'
 import { connect } from "react-redux";
 
-
 class Feedback extends Component{
     render(){
         return(

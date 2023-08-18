@@ -56,8 +56,7 @@ export class FeedbackModule extends Component {
             queThree: '',
             queFour: '',
             queFive: '',
-            queSix: '',
-            errorMessage:''
+            queSix: ''
         });
     };
 
@@ -76,11 +75,10 @@ export class FeedbackModule extends Component {
             queFive: this.state.queFour,
             queSix: this.state.queSix
         }
+        
         this.props.addFeedbackRequest(payload)
         window.alert("Thank you...!,for giving feedback")
-
         this.resetForm();
-
     }
 
     render() {

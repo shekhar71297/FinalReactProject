@@ -720,11 +720,11 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 32,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
+      "id": 32,   
+      "StudentName": "pawan jadhav",  
+      "Orgnization": "Hematite",  
+      "Branch": "Chandannagar",  
+      "ExamName": "React js",      
       "TotalMark": 50,
       "ObtainedMark": 45,
       "Date": "26/06/2023"

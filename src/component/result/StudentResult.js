@@ -5,7 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TablePagination from '@mui/material/TablePagination'; // Import TablePagination
+import TablePagination from '@mui/material/TablePagination';
 import './StudentResult.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Button, Paper } from '@mui/material';
@@ -28,24 +28,18 @@ export class StudentResult extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: ''
-
     };
   }
+
   componentDidUpdate(prevProps) {
     if (prevProps.allresult !== this.props.allresult) {
-      // Handle updates to the allresult prop here
-      // For example, if you need to update StudentResultData state:
       this.setState({ StudentResultData: this.props.allresult });
     }
-   
   }
-
   componentDidMount() {
     this.props.initresultRequest();
   }
-
-  
-
+// pop up table
   // Function to open the table
   openDetailsPopup = (record) => {
     this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
@@ -68,24 +62,18 @@ export class StudentResult extends Component {
     this.setState({ isDeletePopupOpen: false, deletingRecordId: null });
   };
 
-  // Delete action
   deletedata = (id) => {
     this.openDeletePopup(id);
   };
 
-  // Function to handle the actual delete action after user confirmation
   handleDeleteConfirmed = () => {
     const { deletingRecordId } = this.state;
-    // this.props.initresultRequest();
     this.props.deleteResultRequest(deletingRecordId);
     this.closeDeletePopup();
-
     this.setState({
       snackbarOpen: true,
       snackbarMessage: 'Result deleted successfully',
     });
-
-    
   };
 
   // pagination function
@@ -94,7 +82,7 @@ export class StudentResult extends Component {
   };
   handleChangeRowsPerPage = (event) => {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
-    // setPage(0);
+    
   };
   // search function
   handleSearchChange = (event) => {
@@ -128,7 +116,6 @@ export class StudentResult extends Component {
   render() {
     const { searchQuery, page, rowsPerPage, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen } = this.state;
     const grade = this.calculateGrade(selectedRecord.TotalMark, selectedRecord.ObtainedMark);
-    // const status = this.calculateStatus(selectedRecord.TotalMark , selectedRecord.ObtainedMark);
     const filteredResults = this.props.allresult.filter((val) => {
       const searchQuery = this.state.searchQuery;
       const studentNameIncludes = val.StudentName.toLowerCase().includes(searchQuery);
@@ -151,8 +138,8 @@ export class StudentResult extends Component {
           value={searchQuery}
           onChange={this.handleSearchChange}
           placeholder="Search Result"
-          label="Search Result" // Optional label for the input field
-          variant="outlined" // You can choose the variant based on your design
+          label="Search Result" 
+          variant="outlined" 
           sx={{
             paddingBottom: 4,
           }}
@@ -194,12 +181,12 @@ export class StudentResult extends Component {
               <Table aria-label="simple table" className=''>
                 <TableHead >
 
-                <TableRow>
-            <TableCell align="center" colSpan={8} sx={{ backgroundColor:"blue" , fontSize:"25px" , textAlign:"start" , fontWeight:"bolder"}}>
-              Result module
-            </TableCell>
-           
-          </TableRow>
+                  <TableRow>
+                    <TableCell align="center" colSpan={8} sx={{ backgroundColor: "blue", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
+                      Result module
+                    </TableCell>
+
+                  </TableRow>
                   <TableRow>
                     <TableCell ><strong>SrNo</strong></TableCell>
                     <TableCell align="center"><strong>StudentName</strong></TableCell>
@@ -250,7 +237,6 @@ export class StudentResult extends Component {
                           </TableCell>
                         </TableRow>
                       )
-
                     })
                   )}
                 </TableBody>
@@ -302,6 +288,4 @@ export class StudentResult extends Component {
     );
   }
 }
-
-
 export default StudentResult

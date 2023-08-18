@@ -530,5 +530,12 @@
       "gender": "Male",
       "organization": "hematite"
     }
+  ],
+  "examresult": [
+    {
+      "studentName": "anmol chaware",
+      "count": 1,
+      "id": 1
+    }
   ]
 }

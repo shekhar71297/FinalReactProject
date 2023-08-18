@@ -87,6 +87,10 @@ class StartExam extends Component {
       this.setState({ count, open: true });
       this.setState({endpage:true})
       console.log(count);
+      axios.post("http://localhost:8888/examresult", {
+        studentName: this.state.studentName,
+        count: count,
+      });
     }) }
 
 

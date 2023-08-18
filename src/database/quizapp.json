@@ -332,17 +332,17 @@
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": false,
+      "status": true,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
@@ -720,11 +720,11 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 32,   
-      "StudentName": "pawan jadhav",  
-      "Orgnization": "Hematite",  
-      "Branch": "Chandannagar",  
-      "ExamName": "React js",      
+      "id": 32,
+      "StudentName": "pawan jadhav",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
       "TotalMark": 50,
       "ObtainedMark": 45,
       "Date": "26/06/2023"

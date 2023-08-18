@@ -153,7 +153,7 @@ export class StudentResult extends Component {
             <DialogContent>
               <DialogContentText className='popup'>
                 {/* Show the details of the selected record here */}
-
+ 
                 <strong>Student Name::</strong> {selectedRecord.StudentName} <br />
                 <strong>Organization:: </strong>{selectedRecord.Orgnization} <br />
                 <strong>Branch::</strong> {selectedRecord.Branch} <br />

@@ -14,6 +14,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
+import SubmitExam from './SubmitExam';
 
 
 class StartExam extends Component {
@@ -26,6 +27,7 @@ class StartExam extends Component {
       selectedOptions: [],
       count: 0,
       studentName: '',
+      endpage:false
     };
   }
 
@@ -72,6 +74,7 @@ class StartExam extends Component {
   }
   submitExam = () => {
     axios.get("http://localhost:8888/react").then((res) => {
+      console.log(res.data);
       const questionsData = res.data;
       const selectedOptions = this.state.selectedOptions;
   
@@ -82,16 +85,21 @@ class StartExam extends Component {
       const count = correctAnswers.length; // Count of correct answers
   
       this.setState({ count, open: true });
+      this.setState({endpage:true})
       console.log(count);
     }) }
 
 
   render() {
-    const { timer, open, questions, studentName } = this.state;
+    const { timer, open, questions, studentName,endpage } = this.state;
   
 
     return (
       <>
+       {endpage ? (
+        <SubmitExam />
+      ) : (
+      <div>
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
             <Toolbar>
@@ -156,7 +164,8 @@ class StartExam extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
+        </div>
+      )}
       </>
     );
   }

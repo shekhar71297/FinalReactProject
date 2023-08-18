@@ -194,12 +194,10 @@ updateStudent = (event) => {
       snackbarOpen: true,
       snackbarMessage: 'Student updated successfully',
     });
-    this.handleClose()
-    
     
   }
 
-
+  this.handleClose()
 
 
 }

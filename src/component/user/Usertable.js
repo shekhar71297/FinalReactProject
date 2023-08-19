@@ -23,6 +23,8 @@ import Alert from '@mui/material/Alert';
 
 import './usertable.css'
 
+import * as validation from '../../util/validation';
+
 
 
 
@@ -49,7 +51,9 @@ class Usertable extends Component {
       recordToDeleteId: null,
       snackbarOpen: false,
       snackbarMessage: '',
-
+      errors:{
+        fnameError:false
+      }
     }
   }
 
@@ -82,7 +86,18 @@ class Usertable extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value }, () => {
+      if(name === "fname"){
+        const isFnameError = !(validation.isValidName(this.state[name]));
+        if(isFnameError){
+          this.setState({errors:{...this.state.errors,fnameError:true}})
+        }else{
+          this.setState({errors:{...this.state.errors,fnameError:false}})
+        }
+      }
+    });
+
+    
   }
 
   //to popup
@@ -313,6 +328,7 @@ class Usertable extends Component {
                     value={fname}
                     onChange={this.handleChange}
                   />
+                  {this.state.errors.fnameError && (<span>Please enter a valid fname</span>)}
                 </Grid>
                 <Grid item xs={12}>
                   <TextField

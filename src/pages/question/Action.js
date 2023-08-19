@@ -25,7 +25,7 @@ export function getQuestionError(payload) {
 export function addQuestions(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/students`
+        const url = `${constants.baseURL}`
         Post(url, data).then(response => dispatch(addQuestionsuccess(data)))
             .catch(error => dispatch(addQuestionerror(error.response.data)))
 

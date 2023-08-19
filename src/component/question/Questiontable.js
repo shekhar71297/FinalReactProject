@@ -1,25 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, Button, MenuItem, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import TablePagination from '@mui/material/TablePagination';
-import {  DeleteOutlineSharp, EditNoteSharp} from '@mui/icons-material';
+import { DeleteOutlineSharp, EditNoteSharp } from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
 import Addform from './Addform';
- 
 
 
 
-const Questiontable = () => {
+
+const Questiontable = ({ allquestions }) => {
   const [data, setData] = useState([]);
   const [selectedOption, setSelectedOption] = useState({});
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [showCreateButton, setShowCreateButton] = useState(false); 
+  const [showCreateButton, setShowCreateButton] = useState(false);
 
+  useEffect(() => {
+    const data = allquestions && allquestions.length > 0 ? allquestions : [];
+    setData(data);
+  },[]);
+
+  useEffect(() => {
+    const data = allquestions && allquestions.length > 0 ? allquestions : [];
+    setData(data);
+    
+  },[allquestions])
 
   const handleCollapseToggle = (itemId) => {
     setSelectedOption((prevState) => ({
@@ -69,7 +79,7 @@ const Questiontable = () => {
   return (
 
     <div className='question'>
-      <FormControl variant="standard" sx={{ m: 3,marginLeft:70, minWidth: 160 }}>
+      <FormControl variant="standard" sx={{ m: 3, marginLeft: 70, minWidth: 160 }}>
         <InputLabel id="demo-simple-select-standard-label">Select Exam</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
@@ -87,19 +97,19 @@ const Questiontable = () => {
         </Select>
       </FormControl>
       <div>
-      {showCreateButton && (
+        {showCreateButton && (
           <Addform />
         )}
 
-      
+
         <Box marginRight={10}>
           <TableContainer component={Paper}  >
             <Table stickyHeader aria-label="sticky table"  >
-              <TableHead  style={{ backgroundColor: '#2962ff', fontSize: 30,height:60 }}   >
+              <TableHead style={{ backgroundColor: '#2962ff', fontSize: 30, height: 60 }}   >
                 Questions
               </TableHead>
               <TableBody color='primary-color'>
-                
+
                 {data.map((item) => (
                   <React.Fragment key={item.id}>
                     <TableRow hover onClick={() => handleCollapseToggle(item.id)} >
@@ -119,13 +129,13 @@ const Questiontable = () => {
                                 onChange={() => handleRadioChange(item.id, option)}
                               />
                               <label>{option}</label>
-                              
+
                             </div>
                           ))}<br></br>
                           Answer :  {item.answer}
-                          <Grid  marginLeft={90} item xs={4}>
-                           <Button><DeleteOutlineSharp  sx={{ color: dark[500] }} /></Button>
-                            <Button><EditNoteSharp sx={{ color: dark[500] }}/></Button>
+                          <Grid marginLeft={90} item xs={4}>
+                            <Button><DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
+                            <Button><EditNoteSharp sx={{ color: dark[500] }} /></Button>
                           </Grid>
                         </TableCell>
                       </TableRow>
@@ -139,15 +149,15 @@ const Questiontable = () => {
             </Table>
           </TableContainer>
           <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-        
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={data.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+
         </Box>
       </div>
     </div>

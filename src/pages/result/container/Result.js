@@ -7,9 +7,9 @@ export class Result extends Component {
     render() {
         return (
             <div>
-             
-                <StudentResult {...this.props}/>
-               
+
+                <StudentResult {...this.props} />
+
             </div>
         )
     }
@@ -18,12 +18,12 @@ export class Result extends Component {
 const mapStateToProps = (state) => ({
     allresult: state.resultStore.allresult,
     //  deleteRecordId: state.deleteRecordId
-    
-  });
-  
-  const mapDispatchToprops = (dispatch) => ({
+
+});
+
+const mapDispatchToprops = (dispatch) => ({
     initresultRequest: () => dispatch(resultaction.getAllResult()),
     deleteResultRequest: (id) => dispatch(resultaction.deleteAllResult(id)),
-  });
+});
 
 export default connect(mapStateToProps, mapDispatchToprops)(Result);

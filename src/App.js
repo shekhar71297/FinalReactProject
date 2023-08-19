@@ -1,7 +1,6 @@
 import { Provider } from 'react-redux';
 import store from './store/store'
 import './App.css';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Result from './pages/result/container/Result';
 import Dashboard from './pages/dashboard/Dashboard';

@@ -2,17 +2,7 @@
 
 
 
-.searchinput{
-    position: relative;
-    left: 200px;
-    padding: 8px;
-    margin: 8px;
-    /* border: 2px solid; */
-    border-radius: 5px;
-    top: 50px;
-    margin-left: 50px;
-   
-}
+
 .table{
     display: flex;
     flex-wrap: wrap;
@@ -36,8 +26,3 @@
      top:50px
 }
 
-.popup{
-  width: 250px;
- 
-}
-  

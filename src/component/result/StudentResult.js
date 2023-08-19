@@ -10,7 +10,7 @@ import './StudentResult.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Button, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -20,7 +20,7 @@ export class StudentResult extends Component {
     this.state = {
       StudentResultData: [],
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 3,
       searchQuery: '',
       isDeletePopupOpen: false,
       deletingRecordId: null,
@@ -95,7 +95,7 @@ export class StudentResult extends Component {
     if (percentage >= 75) {
       return 'A';
 
-    } else if (percentage >= 50) {
+    } else if (percentage >= 60) {
       return 'B';
     } else if (percentage >= 25) {
       return 'c';
@@ -129,12 +129,12 @@ export class StudentResult extends Component {
     }
     );
 
-    
+
     return (
       <div>
         {/* search box */}
         <TextField
-          className='searchinput'
+
           type="text"
           value={searchQuery}
           onChange={this.handleSearchChange}
@@ -142,30 +142,61 @@ export class StudentResult extends Component {
           label="Search Result"
           variant="outlined"
           sx={{
-            paddingBottom: 4,
+            padding: 1,
+            marginTop: 3,
+            position: "relative",
+            left: "200px",
+            marginLeft: "45px",
+            textAlign: "center",
+            
           }}
         />
         {/* table pop up */}
 
-        {/* Details Popup Model */}
+
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup}>
           <DialogTitle>Result Details</DialogTitle>
           {selectedRecord && (
             <DialogContent>
-              <DialogContentText className='popup'>
-                {/* Show the details of the selected record here */}
-
-                <strong>Student Name::</strong> {selectedRecord.StudentName} <br />
-                <strong>Organization:: </strong>{selectedRecord.Orgnization} <br />
-                <strong>Branch::</strong> {selectedRecord.Branch} <br />
-                <strong>Exam Name:: </strong>{selectedRecord.ExamName} <br />
-                <strong>TotalMark::</strong> {selectedRecord.TotalMark} <br />
-                <strong> ObtainedMark:: </strong>{selectedRecord.ObtainedMark} <br />
-                <strong> Status :: </strong>{selectedRecord.status} <br />
-                <strong> Grade:: </strong>{grade} <br />
-                <strong> Date::</strong> {selectedRecord.Date} <br />
-
-              </DialogContentText>
+              {/* Show the details of the selected record here */}
+              <Typography >
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Student Name:
+                </Typography>{" "}
+                {selectedRecord.StudentName} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Organization:
+                </Typography>{" "}
+                {selectedRecord.Orgnization} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Branch:
+                </Typography>{" "}
+                {selectedRecord.Branch} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Exam Name:
+                </Typography>{" "}
+                {selectedRecord.ExamName} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Total mark:
+                </Typography>{" "}
+                {selectedRecord.TotalMark} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  ObtaineMark:
+                </Typography>{" "}
+                {selectedRecord.ObtainedMark} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Status:
+                </Typography>{" "}
+                {selectedRecord.status} <br />
+              </Typography>
+              <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                Grade:
+              </Typography>{" "}
+              {grade} <br />
+              <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                Date:
+              </Typography>{" "}
+              {selectedRecord.Date} <br />
             </DialogContent>
           )}
           <DialogActions>
@@ -177,9 +208,9 @@ export class StudentResult extends Component {
 
         {/* start table */}
         <Box sx={{ height: 100 }}>
-          <Paper className='paper'>
+          <Paper>
             <TableContainer >
-              <Table aria-label="simple table" className=''>
+              <Table aria-label="simple table">
                 <TableHead >
 
                   <TableRow>
@@ -189,17 +220,15 @@ export class StudentResult extends Component {
 
                   </TableRow>
                   <TableRow>
-                    <TableCell ><strong>SrNo</strong></TableCell>
-                    <TableCell align="center"><strong>StudentName</strong></TableCell>
-                    <TableCell align="center"><strong>Orgnization</strong></TableCell>
-                   
-                    <TableCell align="center"><strong>ExamName</strong></TableCell>
-                  
-                   
-                    <TableCell align="center"><strong>Status</strong></TableCell>
-                    
-                    <TableCell align="center"><strong>Date</strong></TableCell>
-                    <TableCell align="center"><strong>Action</strong></TableCell>
+                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>StudentName</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Orgnization</Typography></TableCell>
+
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>ExamName</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Status</Typography></TableCell>
+
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Date</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -212,22 +241,22 @@ export class StudentResult extends Component {
                   ) : (
 
                     filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-                     
+
                       const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
                       const currentIndex = page * rowsPerPage + index + 1;
 
                       return (
-                        <TableRow key={val.id} className="tablebody">
-                          <TableCell className="tablebody" component="th" scope="row">{currentIndex}</TableCell>
-                          <TableCell className="tablebody" align="center">{val.StudentName}</TableCell >
-                          <TableCell className="tablebody" align="center">{val.Orgnization}</TableCell >
-                         
-                          <TableCell className="tablebody" align="center">{val.ExamName}</TableCell>
-                         
-                          <TableCell className="tablebody" align="center">{status}</TableCell>
-                          
-                          <TableCell className="tablebody" align="center">{val.Date}</TableCell>
-                          <TableCell className="tablebody" align='center'><Button
+                        <TableRow key={val.id} >
+                          <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                          <TableCell align="center">{val.StudentName}</TableCell >
+                          <TableCell align="center">{val.Orgnization}</TableCell >
+
+                          <TableCell align="center">{val.ExamName}</TableCell>
+
+                          <TableCell align="center">{status}</TableCell>
+
+                          <TableCell align="center">{val.Date}</TableCell>
+                          <TableCell align='center'><Button
                             onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />
                           </Button>
 

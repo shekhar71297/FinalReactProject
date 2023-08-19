@@ -333,7 +333,7 @@
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
@@ -557,6 +557,50 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "code": "HI-1",
+      "examname": "React",
+      "examstatus": false
+    },
+    {
+      "id": 2,
+      "code": "HI-2",
+      "examname": "Java",
+      "examstatus": false
+    },
+    {
+      "id": 3,
+      "code": "HI-3",
+      "examname": "Phython",
+      "examstatus": true
+    },
+    {
+      "id": 4,
+      "code": "HI-4",
+      "examname": "PHP",
+      "examstatus": false
+    },
+    {
+      "id": 5,
+      "code": "HI-5",
+      "examname": "Angular",
+      "examstatus": false
+    },
+    {
+      "id": 6,
+      "code": "HI-6",
+      "examname": "Javascript",
+      "examstatus": true
+    },
+    {
+      "id": 7,
+      "code": "HI-7",
+      "examname": "Veu.js",
+      "examstatus": true
     }
   ]
 }

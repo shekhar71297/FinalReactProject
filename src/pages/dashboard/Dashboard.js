@@ -26,7 +26,11 @@ import { MdFeedback } from 'react-icons/md';
 import { RiNewspaperFill } from 'react-icons/ri';
 import {IoMdLogOut } from 'react-icons/io';
 import { Outlet, useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+
 import './dashboard.css'
+import DialogBox from '../../component/common/DialogBox';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -99,8 +103,26 @@ const Dashboard = () => {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState('');
+  const [alertSeverity, setAlertSeverity] = React.useState('info');
   const navigate = useNavigate();
+  const location = useLocation();
 
+ const handleShowAlert = (message, severity) => {
+    this.setState({
+      showAlert: true,
+      alertMessage: message,
+      alertSeverity: severity,
+    });
+  };
+
+ const handleCloseAlert = () => {
+    this.setState({
+      showAlert: false,
+      alertMessage: '',
+    });
+  };
 
 
   const handleDrawerClose = () => {
@@ -120,16 +142,13 @@ const Dashboard = () => {
   const isCounsellorLog = !!sessionStorage.getItem("counsellor");
 
   const handleLogout = () => {
-    if (isAdminLog || isTrainerLog || isCounsellorLog) {
-      const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
-      if (window.confirm(`Are you sure you want to logout as ${role}?`)) {
-        sessionStorage.removeItem(role);
-        sessionStorage.removeItem("user")
-        window.alert(`${role} logout successfully`);
-        navigate("/")
-      }
-    }
-  };
+  if (isAdminLog || isTrainerLog || isCounsellorLog) {
+    const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
+    setAlertSeverity('warning'); // or 'info', 'error', etc. based on your needs
+    setAlertMessage(`Are you sure you want to logout as ${role}?`);
+    setShowAlert(true);
+  }
+};
 
   const userName = sessionStorage.getItem("user");
 
@@ -185,7 +204,11 @@ const Dashboard = () => {
             <List>
 {/* User module               */}
 {isAdminLog && (
-              <ListItem disablePadding sx={{ display: 'block' }} >
+              <ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/user' ? 'selected' : ''}
+            >
                 <ListItemButton onClick={() => navigatePage("/dashboard/user")}
                   sx={{
                     minHeight: 48,
@@ -208,8 +231,12 @@ const Dashboard = () => {
               </ListItem>
                  )}
 {/* Student module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/student")} >
-                <ListItemButton
+<ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/student' ? 'selected' : ''}
+            >
+                <ListItemButton onClick={() => navigatePage("/dashboard/student")}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
@@ -229,8 +256,12 @@ const Dashboard = () => {
                 </ListItemButton>
               </ListItem>
 {/* Exam Module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/exam")} >
-                <ListItemButton
+<ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/exam' ? 'selected' : ''}
+            >
+                <ListItemButton onClick={() => navigatePage("/dashboard/exam")}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
@@ -251,8 +282,12 @@ const Dashboard = () => {
               </ListItem>
     
 {/* Question Module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/question")} >
-                <ListItemButton
+<ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/question' ? 'selected' : ''}
+            >
+                <ListItemButton onClick={() => navigatePage("/dashboard/question")}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
@@ -272,8 +307,12 @@ const Dashboard = () => {
                 </ListItemButton>
               </ListItem>
 {/* Voucher module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/voucher")}>
-                <ListItemButton
+<ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/voucher' ? 'selected' : ''}
+            >
+                <ListItemButton onClick={() => navigatePage("/dashboard/voucher")}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
@@ -293,8 +332,12 @@ const Dashboard = () => {
                 </ListItemButton>
               </ListItem>
 {/* Feedback module */}
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/feedback")} >
-                <ListItemButton
+<ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/feedback' ? 'selected' : ''}
+            >
+                <ListItemButton onClick={() => navigatePage("/dashboard/feedback")}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
@@ -313,9 +356,13 @@ const Dashboard = () => {
                   <ListItemText primary='Feedback' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
-
-              <ListItem disablePadding sx={{ display: 'block' }} onClick={(e) => navigatePage("/dashboard/result")} >
-                <ListItemButton
+{/* result module */}
+              <ListItem
+              disablePadding
+              sx={{ display: 'block' }}
+              className={location.pathname === '/dashboard/result' ? 'selected' : ''}
+            >
+                <ListItemButton onClick={() => navigatePage("/dashboard/result")}
                   sx={{
                     minHeight: 48,
                     justifyContent: open ? 'initial' : 'center',
@@ -343,6 +390,18 @@ const Dashboard = () => {
             <Outlet />
           </div>
         </Box>
+     {/* Alert Dialog */}
+     <DialogBox
+        open={showAlert}
+        onClose={() => setShowAlert(false)}
+        onConfirm={() => {
+          setShowAlert(false);
+          sessionStorage.removeItem(isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor");
+          sessionStorage.removeItem("user");
+          navigate("/");
+        }}
+        message={alertMessage}
+      />
       </>
     );
   }

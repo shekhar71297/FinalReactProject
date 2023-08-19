@@ -67,7 +67,14 @@ export class Login extends Component {
           sessionStorage.setItem(user.role, "true");
           sessionStorage.setItem("user", `${user.fname} ${user.lname}`);
           window.alert(`${user.role} Login Successfully`);
-          this.props.router.navigate('/dashboard/user');
+          if (isAdmin) {
+           // Redirect to the user module for admin
+            this.props.router.navigate('/dashboard/user');
+          } else {
+            // Redirect to the student module for trainer and counsellors
+            this.props.router.navigate('/dashboard/student');
+          }
+  
         }
       }
     } else {

@@ -1,0 +1,1 @@
+export const isValidName = (name) => /^[a-zA-Z]{5,10}$/.test(name);

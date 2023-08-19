@@ -14,6 +14,7 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, T
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+
 export class StudentResult extends Component {
   constructor(props) {
     super(props);
@@ -283,6 +284,7 @@ export class StudentResult extends Component {
               page={page}
               onPageChange={this.handleChangePage}
               onRowsPerPageChange={this.handleChangeRowsPerPage}
+             
             />
           </Paper>
         </Box>

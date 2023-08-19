@@ -208,7 +208,7 @@ export class FeedbackModule extends Component {
         return (
             <div>
                 <div style={{ marginTop: '80px' }}>
-                    <h4>Training Feedback</h4><hr style={{ width: '73ch', margin: 'auto' }} />
+                    <h3>Training Feedback</h3><hr style={{ width: '73ch', margin: 'auto' }} />
                     <form onSubmit={this.addfeedback} action={<Link to=" " />}>
                         <Box
                             sx={{

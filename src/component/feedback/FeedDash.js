@@ -13,6 +13,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import * as TablePaginationActions from "../common/TablePaginationActions"
 
 const style = {
     position: 'absolute',
@@ -110,22 +111,22 @@ export class FeedDash extends Component {
                     variant="outlined" // You can choose the variant based on your design
                     sx={{
                         paddingBottom: 1,
-                        marginTop:4,
-                        marginLeft:60
+                        marginTop: 4,
+                        marginLeft: 60
                     }}
                 />
 
                 <TableContainer component={Paper}>
                     <Table aria-label="simple table">
                         <TableHead>
-                        <TableRow>
-                                <TableCell align="center" colSpan={8} sx={{ backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder",color:"white" }}>
-                                Feedback module</TableCell>
-                        </TableRow>
+                            <TableRow>
+                                <TableCell align="center" colSpan={8} sx={{ backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
+                                    Feedback module</TableCell>
+                            </TableRow>
                             <TableRow>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>SrNo</TableCell>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>Name</TableCell>
-                                <TableCell align="center" style={{ fontWeight: '600' }} >Contact</TableCell>
+                                <TableCell align="center" style={{ fontWeight: '600' }}>Contact</TableCell>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>Organization</TableCell>
                                 <TableCell style={{ fontWeight: '600' }}>Action</TableCell>
                             </TableRow>
@@ -138,7 +139,7 @@ export class FeedDash extends Component {
                                     </TableCell>
                                 </TableRow>
                             ) : (
-                                filteredFeedback &&  filteredFeedback.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
+                                filteredFeedback && filteredFeedback.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
                                     const rowNumber = firstIndex + index + 1
                                     return <TableRow key={val.id}>
                                         <TableCell
@@ -176,31 +177,42 @@ export class FeedDash extends Component {
                             {selectedFeedback && (
                                 <Table>
                                     <TableRow>
-                                        <TableCell>Student Name: </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
+                                        <TableCell>
+                                            Student Name: </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
                                         <TableCell>Contact No: </TableCell><TableCell>{selectedFeedback.contact}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
                                         <TableCell>Organization: </TableCell><TableCell>{selectedFeedback.org}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
-                                        <TableCell>1.What did you enjoy the most about the trainning?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queOne}</TableCell>
+                                        <TableCell colSpan={2}>
+                                            1.What did you enjoy the most about the trainning?:  <br></br><strong>Ans:  &nbsp;</strong>{selectedFeedback.queOne}
+                                            </TableCell>                     
                                     </TableRow>
+
                                     <TableRow>
-                                        <TableCell>2.How would you rate the quality of instruction provided by the faculty? </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queTwo}</TableCell>
+                                        <TableCell colSpan={2}>2.How would you rate the quality of instruction provided by the faculty? <br></br><strong>Ans:  &nbsp;</strong>{selectedFeedback.queTwo}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
-                                        <TableCell>3. Was there any subject matter that you found confusing? If so, please provide specific examples.: </TableCell><TableCell> <strong>Ans:  &nbsp;</strong>{selectedFeedback.queThree}</TableCell>
+                                        <TableCell colSpan={2}>3. Was there any subject matter that you found confusing? If so, please provide specific examples.: <br></br><strong>Ans:  &nbsp;</strong>{selectedFeedback.queThree}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
-                                        <TableCell>4. What is the most valuable thing you learned in course (knowledge or skills)?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queFour}</TableCell>
+                                        <TableCell colSpan={2}>4. What is the most valuable thing you learned in course (knowledge or skills)?: <br></br><strong>Ans:  &nbsp;</strong>{selectedFeedback.queFour}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
-                                        <TableCell>5. Overall how is the faculty feedback? Any specific comments about faculty?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queFive}</TableCell>
+                                        <TableCell colSpan={2}>5. Overall how is the faculty feedback? Any specific comments about faculty?:<br></br> <strong>Ans:  &nbsp;</strong>{selectedFeedback.queFive}</TableCell>
                                     </TableRow>
+
                                     <TableRow>
-                                        <TableCell>6. Any additional comments you wish to share?: </TableCell><TableCell><strong>Ans:  &nbsp;</strong>{selectedFeedback.queSix}</TableCell>
+                                        <TableCell colSpan={2}>6. Any additional comments you wish to share?: <br></br><strong>Ans:  &nbsp;</strong>{selectedFeedback.queSix}</TableCell>
                                     </TableRow>
                                 </Table>
                             )}
@@ -212,13 +224,20 @@ export class FeedDash extends Component {
                 </TableContainer>
 
                 <TablePagination
-                    rowsPerPageOptions={[5, 10, 25, 50]}
-                    component="div"
-                    count={allFeedback?.length || 0}
+                    rowsPerPageOptions={[5, 10, 25]}
+                    colSpan={7} // Adjust the colSpan value according to your table structure
+                    count={filteredFeedback.length}
                     rowsPerPage={rowsPerPage}
                     page={page}
+                    SelectProps={{
+                        inputProps: {
+                            'aria-label': 'rows per page',
+                        },
+                        native: true,
+                    }}
                     onPageChange={this.handleChangePage}
                     onRowsPerPageChange={this.handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions.default} // Imported component
                 />
             </div>
         );

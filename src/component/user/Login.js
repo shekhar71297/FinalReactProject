@@ -48,9 +48,8 @@ export class Login extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.allUser !== this.props.allUser) {
-
       const isTrue = this.props.allUser.some((d) =>
-        this.state.email === d.email && this.state.password === d.password
+        this.state.email === d.email && this.state.password === d.password && this.state.role === d.role
       );
 
       if (isTrue) {
@@ -69,28 +68,43 @@ export class Login extends Component {
           if (isAdmin || isTrainer || isCounsellor) {
             sessionStorage.setItem(user.role, "true");
             sessionStorage.setItem("user", `${user.fname} ${user.lname}`);
-            // window.alert(`${user.role} Login Successfully`);
-            this.props.router.navigate('/dashboard/user');
-            this.setState({
-              snackbarOpen: true,
-              snackbarMessage: `${user.role} Login successfully`,
-              severity: 'success',
-            });
+            this.handleShowAlert(`${user.role} Login Successfully`, 'success');
+
             setTimeout(() => {
-              this.setState({ snackbarOpen: false });
-              this.setState({ isLoggedIn: true });
+              if (isAdmin) {
+                // Redirect to the user module for admin
+                this.props.router.navigate('/dashboard/user');
+              } else {
+                // Redirect to the student module for trainer and counsellors
+                this.props.router.navigate('/dashboard/student');
+              }
             }, 1000);
+
           }
+
         }
       } else {
-        this.setState({
-          snackbarOpen: true,
-          snackbarMessage: 'please check your registered email and password',
-          severity: 'error'
-        });
+        this.handleShowAlert('Please check your registered email,password and role', 'error');
+
       }
     }
   }
+  handleShowAlert = (message, severity) => {
+    this.setState({
+      showAlert: true,
+      alertMessage: message,
+      alertSeverity: severity,
+    });
+  };
+
+  handleCloseAlert = () => {
+    this.setState({
+      showAlert: false,
+      alertMessage: '',
+    });
+  };
+
+
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
     this.setState({ [name]: value })
@@ -98,6 +112,8 @@ export class Login extends Component {
   submitBtn = (e) => {
     e.preventDefault();
     this.props.initUserRequest();
+
+
   }
 
 
@@ -163,6 +179,8 @@ export class Login extends Component {
                     ),
                   }}
                 />
+                                
+
                 <TextField
                   select
                   margin="normal"
@@ -180,6 +198,7 @@ export class Login extends Component {
                 </TextField>
 
 
+
                 <Button
                   type="submit"
                   fullWidth
@@ -188,12 +207,9 @@ export class Login extends Component {
                 >
                   Login In
                 </Button>
-
-               
               </Box>
             </Box>
           </Container>
-         
         </ThemeProvider>
         <Snackbar
           open={this.state.showAlert}

@@ -170,18 +170,62 @@
         "It is a module bundler",
         "None of the above."
       ],
-      "answer": "C is the correct answer. The webpack command is a module bundler."
+      "answer": "The webpack command is a module bundler."
     },
     {
-      "question": "ygyG",
+      "question": "jo",
       "options": [
-        "GG",
-        "G",
-        "YG",
-        "GY"
+        "ojj",
+        "oj",
+        "oj",
+        "non"
       ],
-      "answer": "YG",
+      "answer": "oj",
       "id": 11
+    },
+    {
+      "question": "hi",
+      "options": [
+        "hihip",
+        "vyv",
+        "vt",
+        "cy"
+      ],
+      "answer": "vt",
+      "id": 12
+    },
+    {
+      "question": "ii",
+      "options": [
+        "ii",
+        "ii",
+        "ib",
+        "joj"
+      ],
+      "answer": "ib",
+      "id": 13
+    },
+    {
+      "question": "igi",
+      "options": [
+        "ii",
+        "iu",
+        "nolk",
+        "u"
+      ],
+      "answer": "bu",
+      "id": 14
+    },
+    {
+      "question": "gugu",
+      "options": [
+        "gugu",
+        "v",
+        "hv ",
+        "g"
+      ],
+      "answer": "c ",
+      "id": 15
     }
   ],
   "python": [
@@ -295,7 +339,7 @@
         "AngularJS is a JavaScript framework",
         "AngularJS is a SQL framework"
       ],
-      "answer": " C is the correct option. AngularJS is a JavaScript framework."
+      "answer": " AngularJS is a JavaScript framework."
     },
     {
       "id": 2,
@@ -306,7 +350,7 @@
         "MVC Architecture pattern",
         "MVVM Architectural pattern"
       ],
-      "answer": "D is the correct option. AngularJS is based on MVVM Architectural pattern."
+      "answer": "AngularJS is based on MVVM Architectural pattern."
     },
     {
       "id": 3,
@@ -317,7 +361,7 @@
         "DPAs",
         "CPAs"
       ],
-      "answer": " A is the correct option. AngularJS is perfect for Single Page Applications (SPAs)."
+      "answer": " AngularJS is perfect for Single Page Applications (SPAs)."
     },
     {
       "id": 4,
@@ -551,6 +595,16 @@
       "pnr": "",
       "branch": "",
       "id": 2
+    },
+    {
+      "id": 3,
+      "firstname": "om ",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "7028347679",
+      "dob": "2002-02-02",
+      "gender": "Male",
+      "organization": "hematite"
     }
   ],
   "examresult": [

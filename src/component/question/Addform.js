@@ -9,6 +9,9 @@ import axios from 'axios';
 import { Button, TableContainer } from '@mui/material';
 import { Cancel, CreateNewFolderOutlined } from '@mui/icons-material';
 import { useEffect } from 'react';
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Stack from '@mui/material/Stack';
 
 const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionData }) => {
   const [isFormVisible, setFormVisible] = useState(false);
@@ -19,14 +22,10 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     { id: 3, text: '' },
     { id: 4, text: '' },
   ]);
-  const [formData, setFormData] = useState({
-    // Initialize your form fields here
-    question: '',
-    options: [],
-    answer: '',
-  });
+  
   const [answer, setanswer] = useState('');
   const [showPopup, setShowPopup] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleOptionChange = (e, optionIndex) => {
     const newText = e.target.value;
@@ -71,6 +70,11 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
   
 
   const handleAdd = (e) => {
+    if (!question || options.some(option => !option.text) || !answer) {
+      setShowAlert(true);
+      return;
+    }
+
     setShowPopup(true);
     e.preventDefault();
     axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
@@ -97,14 +101,28 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
   };
   
   return (
-    
+  
     <div>
+      <Dialog open={showAlert} onClose={() => setShowAlert(false)}>
+        <DialogContent>
+        <Button onClick={() => setShowAlert(false)} >Close</Button>
+          <Stack sx={{ width: '100%' }} spacing={2}>
+            <Alert severity="warning">
+              <AlertTitle>Warning</AlertTitle>
+              Please fill in all fields before submitting. <strong>Check it out!</strong>
+            </Alert>
+          </Stack>
+          
+        </DialogContent>
+      </Dialog>
       
     {!isFormVisible && (
       <div className='pull-left' >
       <Button sx={{marginTop:5,marginBottom:2}} color='inherit'  variant='contained'  type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined/>}>Create</Button>
       </div>
     )}
+
+    
 
     <TableContainer>
     <Dialog open={isFormVisible} onClose={() => setFormVisible(false)}>
@@ -175,14 +193,14 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
         </div>
         {isEditMode && (
           <div>
-      <Button
+        <Button
         sx={{marginTop:3}}
         variant='contained'
         color='primary'
         type='button'
         // onClick={handleUpdate}
         className='btn btn-outline-primary ml-5 btn-lg'
-      >
+        >
         Update
       </Button>
       </div>
@@ -199,7 +217,6 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
         )}     
         
       </div>
-      
       </div>
       )}
       

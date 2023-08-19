@@ -37,6 +37,7 @@ const Questiontable = ({ allquestions }) => {
   const handleDelete = (itemId) => {
     setSelectedItemForDeletion(itemId); // Set the selected item for deletion
   };
+  
   const handleConfirmDelete = () => {
     // setSelectedItemForDeletion(itemId);
     

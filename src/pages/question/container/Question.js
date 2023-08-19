@@ -1,13 +1,15 @@
-import Questiontable from '../../../component/question/Questiontable'
-import Popup from '../../../component/question/Popup'
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Questiontable from '../../../component/question/Questiontable';
+import Popup from '../../../component/question/Popup';
+
+
 class Question extends Component {
   render() {
     return (
       <div>
 
         <Popup />
-        <Questiontable {...this.props}/>
+        <Questiontable {...this.props} />
       </div>
     )
   }
@@ -15,12 +17,12 @@ class Question extends Component {
 
 
 
-// const mapStateToProps = (state) => ({
-//   allquestions: state.questionStore.allquestions
-// })
-//   const  mapDispatchToProps = (dispatch) =>({
-//     initquestionRequest: ()=> dispatch(Action.getAllQuestions()),
-//     addQuestionRequest: (data)=> dispatch(Action.addAllQuestions(data))
-//   })
+const mapStateToProps = (state) => ({
+  // allquestions: state.questionStore.allquestions
+})
+const mapDispatchToProps = (dispatch) => ({
+  getAllQuestionsSuccess: (data) => dispatch(actions.getQuestionSuccess(data)),
+  getAllQuestionsError: (data) => dispatch(actions.getQuestionError(data))
+})
 
-export default Question;
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

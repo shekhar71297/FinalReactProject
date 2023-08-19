@@ -5,12 +5,12 @@ import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
-import TablePagination from '@mui/material/TablePagination'; // Import TablePagination
+import TablePagination from '@mui/material/TablePagination';
 import './StudentResult.css'
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Box, Button, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -20,7 +20,7 @@ export class StudentResult extends Component {
     this.state = {
       StudentResultData: [],
       page: 0,
-      rowsPerPage: 5,
+      rowsPerPage: 4,
       searchQuery: '',
       isDeletePopupOpen: false,
       deletingRecordId: null,
@@ -28,65 +28,55 @@ export class StudentResult extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: ''
-
     };
   }
-
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.allresult !== this.props.allresult) {
+      this.setState({ StudentResultData: this.props.allresult });
+    }
+  }
   componentDidMount() {
     this.props.initresultRequest();
-
   }
-
+  // pop up table
   // Function to open the table
   openDetailsPopup = (record) => {
     this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
   };
-
   // Function to close the table
   closeDetailsPopup = () => {
     this.setState({ isDetailsPopupOpen: false, selectedRecord: "" });
   };
-
 
   // delete action 
   // Function to open the delete popup model
   openDeletePopup = (id) => {
     this.setState({ isDeletePopupOpen: true, deletingRecordId: id });
   };
-
   // Function to close the delete popup model
   closeDeletePopup = () => {
     this.setState({ isDeletePopupOpen: false, deletingRecordId: null });
   };
 
-  // Delete action
   deletedata = (id) => {
     this.openDeletePopup(id);
   };
-
-  // Function to handle the actual delete action after user confirmation
   handleDeleteConfirmed = () => {
     const { deletingRecordId } = this.state;
-    // this.props.initresultRequest();
     this.props.deleteResultRequest(deletingRecordId);
     this.closeDeletePopup();
-
     this.setState({
       snackbarOpen: true,
       snackbarMessage: 'Result deleted successfully',
     });
-
-    // window.alert('Record deleted successfully');
   };
-
   // pagination function
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
   };
   handleChangeRowsPerPage = (event) => {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
-    // setPage(0);
+
   };
   // search function
   handleSearchChange = (event) => {
@@ -96,12 +86,12 @@ export class StudentResult extends Component {
   calculateGrade = (totalMark, obtainedMark) => {
     const percentage = (obtainedMark / totalMark) * 100;
 
-    if (percentage >= 40) {
+    if (percentage >= 75) {
       return 'A';
 
-    } else if (percentage >= 30) {
+    } else if (percentage >= 60) {
       return 'B';
-    } else if (percentage >= 20) {
+    } else if (percentage >= 25) {
       return 'c';
     } else {
       return '-';
@@ -116,11 +106,9 @@ export class StudentResult extends Component {
       return "fail"
     }
   }
-
   render() {
     const { searchQuery, page, rowsPerPage, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen } = this.state;
     const grade = this.calculateGrade(selectedRecord.TotalMark, selectedRecord.ObtainedMark);
-    // const status = this.calculateStatus(selectedRecord.TotalMark , selectedRecord.ObtainedMark);
     const filteredResults = this.props.allresult.filter((val) => {
       const searchQuery = this.state.searchQuery;
       const studentNameIncludes = val.StudentName.toLowerCase().includes(searchQuery);
@@ -133,43 +121,69 @@ export class StudentResult extends Component {
         dateIncludes || statusIncludes
     }
     );
-
     return (
       <div>
         {/* search box */}
         <TextField
-          className='searchinput'
           type="text"
           value={searchQuery}
           onChange={this.handleSearchChange}
           placeholder="Search Result"
-          label="Search Result" // Optional label for the input field
-          variant="outlined" // You can choose the variant based on your design
+          label="Search Result"
+          variant="outlined"
           sx={{
-            paddingBottom: 4,
+            padding: 1,
+            marginTop: 3,
+            position: "relative",
+            left: "200px",
+            marginLeft: "45px",
+            textAlign: "center", 
           }}
         />
         {/* table pop up */}
-
-        {/* Details Popup Model */}
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup}>
           <DialogTitle>Result Details</DialogTitle>
           {selectedRecord && (
             <DialogContent>
-              <DialogContentText className='popup'>
-                {/* Show the details of the selected record here */}
-
-                <strong>Student Name::</strong> {selectedRecord.StudentName} <br />
-                <strong>Organization:: </strong>{selectedRecord.Orgnization} <br />
-                <strong>Branch::</strong> {selectedRecord.Branch} <br />
-                <strong>Exam Name:: </strong>{selectedRecord.ExamName} <br />
-                <strong>TotalMark::</strong> {selectedRecord.TotalMark} <br />
-                <strong> ObtainedMark:: </strong>{selectedRecord.ObtainedMark} <br />
-                <strong> Status :: </strong>{selectedRecord.status} <br />
-                <strong> Grade:: </strong>{grade} <br />
-                <strong> Date::</strong> {selectedRecord.Date} <br />
-
-              </DialogContentText>
+              {/* Show the details of the selected record here */}
+              <Typography >
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Student Name:
+                </Typography>{" "}
+                {selectedRecord.StudentName} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Organization:
+                </Typography>{" "}
+                {selectedRecord.Orgnization} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Branch:
+                </Typography>{" "}
+                {selectedRecord.Branch} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Exam Name:
+                </Typography>{" "}
+                {selectedRecord.ExamName} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Total mark:
+                </Typography>{" "}
+                {selectedRecord.TotalMark} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  ObtaineMark:
+                </Typography>{" "}
+                {selectedRecord.ObtainedMark} <br />
+                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                  Status:
+                </Typography>{" "}
+                {selectedRecord.status} <br />
+              </Typography>
+              <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                Grade:
+              </Typography>{" "}
+              {grade} <br />
+              <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
+                Date:
+              </Typography>{" "}
+              {selectedRecord.Date} <br />
             </DialogContent>
           )}
           <DialogActions>
@@ -178,32 +192,25 @@ export class StudentResult extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
         {/* start table */}
         <Box sx={{ height: 100 }}>
-          <Paper className='paper'>
+          <Paper>
             <TableContainer >
-              <Table aria-label="simple table" className=''>
+              <Table aria-label="simple table">
                 <TableHead >
-
-                <TableRow>
-            <TableCell align="center" colSpan={8} sx={{ backgroundColor:"blue" , fontSize:"25px" , textAlign:"start" , fontWeight:"bolder"}}>
-              Result module
-            </TableCell>
-           
-          </TableRow>
                   <TableRow>
-                    <TableCell ><strong>SrNo</strong></TableCell>
-                    <TableCell align="center"><strong>StudentName</strong></TableCell>
-                    <TableCell align="center"><strong>Orgnization</strong></TableCell>
-                    {/* <TableCell  align="center">Branch</TableCell> */}
-                    <TableCell align="center"><strong>ExamName</strong></TableCell>
-                    {/* <TableCell  align="center">TotalMark</TableCell> */}
-                    {/* <TableCell  align="center">ObtainedMark</TableCell> */}
-                    <TableCell align="center"><strong>Status</strong></TableCell>
-                    {/* <TableCell  align="center">Grade</TableCell> */}
-                    <TableCell align="center"><strong>Date</strong></TableCell>
-                    <TableCell align="center"><strong>Action</strong></TableCell>
+                    <TableCell align="center" color='' colSpan={8} sx={{ backgroundColor: '#1976d2;', fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
+                      Result module
+                    </TableCell>
+                  </TableRow>
+                  <TableRow>
+                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>StudentName</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Orgnization</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>ExamName</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Status</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Date</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -214,41 +221,31 @@ export class StudentResult extends Component {
                       </TableCell>
                     </TableRow>
                   ) : (
-
                     filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-                      // const grade = this.calculateGrade(val.TotalMark, val.ObtainedMark);
                       const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
                       const currentIndex = page * rowsPerPage + index + 1;
-
                       return (
-                        <TableRow key={val.id} className="tablebody">
-                          <TableCell className="tablebody" component="th" scope="row">{currentIndex}</TableCell>
-                          <TableCell className="tablebody" align="center">{val.StudentName}</TableCell >
-                          <TableCell className="tablebody" align="center">{val.Orgnization}</TableCell >
-                          {/* <TableCell className="tablebody" align="center">{val.Branch}</TableCell> */}
-                          <TableCell className="tablebody" align="center">{val.ExamName}</TableCell>
-                          {/* <TableCell className="tablebody" align="center">{val.TotalMark}</TableCell> */}
-                          {/* <TableCell className="tablebody" align="center">{val.ObtainedMark}</TableCell> */}
-                          <TableCell className="tablebody" align="center">{status}</TableCell>
-                          {/* <TableCell className="tablebody" align="center">{grade}</TableCell> */}
-                          <TableCell className="tablebody" align="center">{val.Date}</TableCell>
-                          <TableCell className="tablebody" align='center'><Button
+                        <TableRow key={val.id} >
+                          <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                          <TableCell align="center">{val.StudentName}</TableCell >
+                          <TableCell align="center">{val.Orgnization}</TableCell >
+                          <TableCell align="center">{val.ExamName}</TableCell>
+                          <TableCell align="center">{status}</TableCell>
+                          <TableCell align="center">{val.Date}</TableCell>
+                          <TableCell align='center'><Button
                             onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />
                           </Button>
-
                             <Button
                               onClick={() => this.openDetailsPopup(val)} align="cnter"><VisibilityIcon />
                             </Button>
                           </TableCell>
                         </TableRow>
                       )
-
                     })
                   )}
                 </TableBody>
               </Table>
             </TableContainer>
-
             {/* Delete Popup Model */}
             <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
               <DialogTitle>Delete Record</DialogTitle>
@@ -266,7 +263,6 @@ export class StudentResult extends Component {
                 </Button>
               </DialogActions>
             </Dialog>
-
             <Snackbar
               open={this.state.snackbarOpen}
               autoHideDuration={3000} // You can adjust the duration as needed
@@ -280,7 +276,7 @@ export class StudentResult extends Component {
             {/* table pagination */}
             <TablePagination
               disabled={filteredResults.length === 0}
-              rowsPerPageOptions={[5, 10, 25, 35, 50]}
+              rowsPerPageOptions={[4, 8, 12, 16, 32]}
               component="div"
               count={filteredResults.length}
               rowsPerPage={rowsPerPage}
@@ -294,6 +290,4 @@ export class StudentResult extends Component {
     );
   }
 }
-
-
 export default StudentResult

@@ -17,7 +17,7 @@ const mapStateToProps =(state)=>({
 });
 const mapDispatchToprops = (dispatch) => ({
     initVoucherRequest: () => dispatch(voucheraction.getAllVouchers()),
-    updateVoucherRequest: (id) => dispatch(voucheraction.updateAllVoucher(id)),
+    updateVoucherRequest: (data) => dispatch(voucheraction.updateAllVoucher(data)),
   });
 
 export default connect(mapStateToProps, mapDispatchToprops) (Vouchermodule);

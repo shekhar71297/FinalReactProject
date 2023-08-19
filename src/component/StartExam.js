@@ -14,6 +14,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
+import SubmitExam from './SubmitExam';
 
 
 class StartExam extends Component {
@@ -26,6 +27,7 @@ class StartExam extends Component {
       selectedOptions: [],
       count: 0,
       studentName: '',
+      endpage:false
     };
   }
 
@@ -47,11 +49,35 @@ class StartExam extends Component {
         timer: Math.max(0, prevState.timer - 1),
       }));
     }, 1000);
-  }
-  componentWillUnmount() {
-    clearInterval(this.interval);
+  // Add an event listener for the beforeunload event
+    window.addEventListener("beforeunload", this.handleBeforeUnload);
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
   }
 
+
+  componentWillUnmount() {
+    // Remove the event listener when the component is unmounted
+    window.removeEventListener("beforeunload", this.handleBeforeUnload);
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+    clearInterval(this.interval);
+  }
+  // Event handler for the beforeunload event
+   handleBeforeUnload = (e) => {
+  // If the exam hasn't been submitted yet
+    if (!this.state.endpage) {
+      e.preventDefault();
+      e.returnValue = ""; // This is required for some browsers to show a confirmation dialog
+      this.submitExam();
+    }
+  };
+  
+ // Event handler for the visibilitychange event
+ handleVisibilityChange = () => {
+ // Check if the tab is hidden
+  if (document.visibilityState === "hidden" && !this.state.endpage) {
+    this.submitExam();
+  }
+};
   formatTimer = timer => {
     const hours = Math.floor(timer / 3600);
     const minutes = Math.floor((timer % 3600) / 60);
@@ -72,6 +98,7 @@ class StartExam extends Component {
   }
   submitExam = () => {
     axios.get("http://localhost:8888/react").then((res) => {
+      console.log(res.data);
       const questionsData = res.data;
       const selectedOptions = this.state.selectedOptions;
   
@@ -82,16 +109,25 @@ class StartExam extends Component {
       const count = correctAnswers.length; // Count of correct answers
   
       this.setState({ count, open: true });
+      this.setState({endpage:true})
       console.log(count);
+      axios.post("http://localhost:8888/examresult", {
+        studentName: this.state.studentName,
+        count: count,
+      });
     }) }
 
 
   render() {
-    const { timer, open, questions, studentName } = this.state;
+    const { timer, open, questions, studentName,endpage } = this.state;
   
 
     return (
       <>
+       {endpage ? (
+        <SubmitExam />
+      ) : (
+      <div>
         <Box sx={{ flexGrow: 1 }}>
           <AppBar position="fixed">
             <Toolbar>
@@ -125,8 +161,8 @@ class StartExam extends Component {
               <Typography   sx={{ fontSize: "20px", textAlign: 'left' }}  variant="h6" color='primary' gutterBottom>
                 {index + 1} .{question.question}
               </Typography>
-              <FormControl component="fieldset" >
-                <RadioGroup  aria-label={`question-${index}`} onChange={this.inputChangeHandler} name={`question-${index}`}>
+           
+                <RadioGroup  sx={{ fontSize: "10px", textAlign: 'left' }}  aria-label={`question-${index}`} onChange={this.inputChangeHandler} name={`question-${index}`}>
                   {question.options.map((option, optionIndex) => (
                     <FormControlLabel
                       key={optionIndex}
@@ -137,7 +173,7 @@ class StartExam extends Component {
                     />
                   ))}
                 </RadioGroup>
-              </FormControl>
+           
             </Box>
           ))}
         </Box>
@@ -156,7 +192,8 @@ class StartExam extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
+        </div>
+      )}
       </>
     );
   }

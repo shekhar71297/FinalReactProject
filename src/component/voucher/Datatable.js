@@ -32,6 +32,7 @@ export class Datatable extends Component {
     axios.get("http://localhost:8888/vcodes").then((res) => {
       console.log(res.data);
       this.setState({ vcodes: res.data });
+      // this.props.updateVoucherRequest(data)
     });
   };
 
@@ -41,19 +42,22 @@ export class Datatable extends Component {
     // console.log("before",vcodes,index,vcodes[index]);
     vcodes[index].status = !status;
     // console.log("after",vcodes);
-    this.setState({ vcodes:vcodes},() => console.log(this.state.vcodes[index]));
+    this.setState({ vcodes:vcodes},() => {
+      console.log(this.state.vcodes[index])
+      this.props.updateVoucherRequest(this.state.vcodes[index]);
+    });
    
 
-    this.setState({ vcodes }, () => {
-      const putvoucher = vcodes[index];
-      axios.put(`http://localhost:8888/vcodes/${putvoucher.id}`, putvoucher)
-        .then((res) => {
-          console.log( res.data);
-        })
-        .catch((error) => {
-          console.error( error);
-        });
-    });
+    // this.setState({ vcodes }, () => {
+    //   const putvoucher = vcodes[index];
+    //   axios.put(`http://localhost:8888/vcodes/${putvoucher.id}`, putvoucher)
+    //     .then((res) => {
+    //       console.log( res.data);
+    //     })
+    //     .catch((error) => {
+    //       console.error( error);
+    //     });
+    // });
   };
 
   handleChangePage = (event, newPage) => {

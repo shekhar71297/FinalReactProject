@@ -5,9 +5,9 @@ class Question extends Component {
   render() {
     return (
       <div>
-        
-        <Popup/>
-        <Questiontable/>
+
+        <Popup />
+        <Questiontable {...this.props}/>
       </div>
     )
   }
@@ -15,9 +15,9 @@ class Question extends Component {
 
 
 
-// const  mapStateToProps = (state) =>({
-//     allquestions: state.questionStore.allquestions
-//   })
+// const mapStateToProps = (state) => ({
+//   allquestions: state.questionStore.allquestions
+// })
 //   const  mapDispatchToProps = (dispatch) =>({
 //     initquestionRequest: ()=> dispatch(Action.getAllQuestions()),
 //     addQuestionRequest: (data)=> dispatch(Action.addAllQuestions(data))

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, Button, MenuItem, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import TablePagination from '@mui/material/TablePagination';
-import {  DeleteOutlineSharp, EditNoteSharp} from '@mui/icons-material';
+import { DeleteOutlineSharp, EditNoteSharp } from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
 import Addform from './Addform';
@@ -14,8 +14,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 
- 
-const Questiontable = () => {
+const Questiontable = ({ allquestions }) => {
   const [data, setData] = useState([]);
   const [selectedOption, setSelectedOption] = useState({});
   const [page, setPage] = React.useState(0);
@@ -43,6 +42,18 @@ const Questiontable = () => {
     
     setSelectedItemForDeletion(null);
   };
+  
+
+  useEffect(() => {
+    const data = allquestions && allquestions.length > 0 ? allquestions : [];
+    setData(data);
+  },[]);
+
+  useEffect(() => {
+    const data = allquestions && allquestions.length > 0 ? allquestions : [];
+    setData(data);
+    
+  },[allquestions])
 
   const handleCollapseToggle = (itemId) => {
     setSelectedOption((prevState) => ({
@@ -91,7 +102,7 @@ const Questiontable = () => {
   return (
 
     <div className='question'>
-      <FormControl variant="standard" sx={{ m: 3,marginLeft:70, minWidth: 160 }}>
+      <FormControl variant="standard" sx={{ m: 3, marginLeft: 70, minWidth: 160 }}>
         <InputLabel id="demo-simple-select-standard-label">Select Exam</InputLabel>
         <Select
           labelId="demo-simple-select-standard-label"
@@ -146,7 +157,7 @@ const Questiontable = () => {
                                 onChange={() => handleRadioChange(item.id, option)}
                               />
                               <label>{option}</label>
-                              
+
                             </div>
                           ))}<br></br>
                           Answer :  {item.answer}

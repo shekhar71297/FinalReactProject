@@ -71,7 +71,7 @@
         "ReactJS",
         "All of the above"
       ],
-      "answer": "All of the above."
+      "answer": "All of the above"
     },
     {
       "id": 2,
@@ -82,7 +82,7 @@
         "React.js can render both on client and server side.",
         "All of the above"
       ],
-      "answer": "All of the above."
+      "answer": "All of the above"
     },
     {
       "id": 3,
@@ -93,7 +93,7 @@
         "The library of React.js is pretty large",
         "The learning curve can be steep in React.js"
       ],
-      "answer": "C is the correct answer.The JSX in React.js makes code easy to read and write is an advantage of React.js."
+      "answer": "The library of React.js is pretty large"
     },
     {
       "id": 4,
@@ -104,7 +104,7 @@
         "Both A and B.",
         "None of the above."
       ],
-      "answer": "B is the correct answer. Virtual DOM is used in React.js to increase performance."
+      "answer": "Virtual DOM"
     },
     {
       "id": 5,
@@ -115,7 +115,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "Class"
     },
     {
       "id": 6,
@@ -167,7 +167,7 @@
       "options": [
         "The webpack command is used to transpile all the JavaScript down into one file.",
         "It runs React local development server.",
-        "It is a module bundler.",
+        "It is a module bundler",
         "None of the above."
       ],
       "answer": "C is the correct answer. The webpack command is a module bundler."
@@ -182,17 +182,6 @@
       ],
       "answer": "YG",
       "id": 11
-    },
-    {
-      "question": "What is the maximum possible length of an identifier?",
-      "options": [
-        "16",
-        " 32",
-        "64",
-        "None of these above"
-      ],
-      "answer": " None of these above",
-      "id": 12
     }
   ],
   "python": [
@@ -205,7 +194,7 @@
         "64",
         "None of these above"
       ],
-      "answer": "(d) None of these above"
+      "answer": "None of these above"
     },
     {
       "id": 2,
@@ -216,7 +205,7 @@
         "Niene Stom",
         "Wick van Rossum"
       ],
-      "answer": "(b) Guido van Rossum"
+      "answer": "Guido van Rossum"
     },
     {
       "id": 3,
@@ -227,7 +216,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "Class"
     },
     {
       "id": 5,
@@ -238,7 +227,7 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": " Class"
     },
     {
       "id": 6,
@@ -249,7 +238,7 @@
         "!",
         "/*"
       ],
-      "answer": "b"
+      "answer": "#"
     },
     {
       "id": 7,
@@ -260,7 +249,7 @@
         "Fun ",
         "define"
       ],
-      "answer": "b"
+      "answer": "def"
     },
     {
       "id": 8,
@@ -271,7 +260,7 @@
         "sys.version()",
         "sys.version"
       ],
-      "answer": "d"
+      "answer": "sys.version"
     },
     {
       "id": 9,
@@ -282,7 +271,7 @@
         "Preferred Installer Program",
         "All of the mentioned"
       ],
-      "answer": "c"
+      "answer": "Preferred Installer Program"
     },
     {
       "id": 10,
@@ -293,7 +282,7 @@
         " seed()",
         "sqrt()"
       ],
-      "answer": "b"
+      "answer": "print()"
     }
   ],
   "php": [
@@ -339,7 +328,7 @@
         "ng-bind directive",
         "ng-init directive"
       ],
-      "answer": " C is the correct option. The ng-bind directive is used to bind the application data to the HTML view in the AngularJS application."
+      "answer": "ng-bind directive"
     },
     {
       "id": 5,
@@ -350,27 +339,27 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "class"
     }
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": false,
+      "status": true,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
+      "status": true,
       "id": 4,
       "Vcode": "SgLBmw"
     },
@@ -402,7 +391,7 @@
     {
       "status": true,
       "id": 10,
-      "Vcode": "MnF9q8"
+      "Vcode": "aaaaa"
     },
     {
       "status": false,
@@ -433,7 +422,7 @@
   "StudentResult": [
     {
       "id": 1,
-      "StudentName": "ravindra patil",
+      "StudentName": "sainath tayade",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -444,29 +433,7 @@
     },
     {
       "id": 2,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 3,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 4,
-      "StudentName": "Mayuri kakde",
+      "StudentName": "amol pawar",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "C++",
@@ -477,7 +444,7 @@
     },
     {
       "id": 5,
-      "StudentName": "ravindra patil",
+      "StudentName": "vinod daud",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -487,19 +454,8 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 6,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 7,
-      "StudentName": "pawan jadhav",
+      "StudentName": "sankett jadhav",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -509,7 +465,7 @@
     },
     {
       "id": 8,
-      "StudentName": "ravindra patil",
+      "StudentName": "rohan patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -549,6 +505,28 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "sandeep thorat",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 13,
+      "StudentName": "vijay kumar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "python",
+      "TotalMark": 50,
+      "ObtainedMark": 28,
+      "Grade": "-",
+      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -563,14 +541,33 @@
       "organization": "hematite"
     },
     {
-      "id": 2,
-      "firstname": "Om",
-      "lastname": "Pacharne",
-      "email": "ompacharne9@gmail.com",
-      "contact": "7028340777",
-      "dob": "2002-02-02",
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
       "gender": "Male",
-      "organization": "hematite"
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 2
+    }
+  ],
+  "examresult": [
+    {
+      "studentName": "anmol chaware",
+      "count": 1,
+      "id": 1
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 2
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 3
     }
   ]
 }

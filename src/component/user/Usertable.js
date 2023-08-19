@@ -144,6 +144,8 @@ class Usertable extends Component {
     
   }
 
+
+
   //to popup
   handleOpen = (id = null) => {
     this.resetUserFormHandler();
@@ -214,6 +216,7 @@ class Usertable extends Component {
 
   updateuser = (event) => {
     event.preventDefault();
+
     let uobj = {
       email: this.state.email,
       fname: this.state.fname,
@@ -358,6 +361,7 @@ class Usertable extends Component {
               onRowsPerPageChange={this.handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions.default} // Imported component
             />
+
           </Paper>
         </Box>
 

@@ -58,7 +58,6 @@ export class Login extends Component {
             this.state.email === d.email &&
             this.state.password === d.password &&
             this.state.role === d.role
-
         );
 
         if (user) {
@@ -179,7 +178,9 @@ export class Login extends Component {
                       </InputAdornment>
                     ),
                   }}
-                />           
+                />
+                                
+
                 <TextField
                   select
                   margin="normal"

@@ -4,17 +4,12 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
 import SubmitExam from './SubmitExam';
+import DialogBox from './common/DialogBox';
 
 
 class StartExam extends Component {
@@ -22,12 +17,12 @@ class StartExam extends Component {
     super(props);
     this.state = {
       timer: 3600,
-      open: false,
       questions: [],
       selectedOptions: [],
       count: 0,
       studentName: '',
-      endpage:false
+      endpage:false,
+      openDialog: false,
     };
   }
 
@@ -93,9 +88,13 @@ class StartExam extends Component {
   };
 
   // Inside your submitExam function
-  handleOpen = () => {
-    this.setState({ open: true });
-  }
+  handleOpenDialog = () => {
+    this.setState({ openDialog: true });
+  };
+
+  handleCloseDialog = () => {
+    this.setState({ openDialog: false });
+  };
   submitExam = () => {
     axios.get("http://localhost:8888/react").then((res) => {
       console.log(res.data);
@@ -119,7 +118,7 @@ class StartExam extends Component {
 
 
   render() {
-    const { timer, open, questions, studentName,endpage } = this.state;
+    const { timer, openDialog, questions, studentName, endpage, count } = this.state;
   
 
     return (
@@ -137,7 +136,7 @@ class StartExam extends Component {
               <Typography variant="body2" sx={{ mr: 2, fontSize: '24px' }}>
                 {this.formatTimer(timer)}
               </Typography>
-              <Button variant='contained' color="warning" onClick={this.handleOpen}>
+              <Button variant='contained' color="warning" onClick={this.handleOpenDialog}>
                 Submit Exam
               </Button>
             </Toolbar>
@@ -178,20 +177,15 @@ class StartExam extends Component {
           ))}
         </Box>
         {/* Dialog component */}
-        <Dialog open={open} onClose={() => this.setState({ open: false })}>
-          <DialogTitle>Exam Submission</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              Are you sure you want to submit the exam?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={() => this.setState({ open: false })}>Cancel</Button>
-            <Button onClick={() => { this.setState({ open: false }); this.submitExam(); }} color="primary">
-              Submit
-            </Button>
-          </DialogActions>
-        </Dialog>
+        <DialogBox
+              open={openDialog}
+              onClose={this.handleCloseDialog}
+              onConfirm={() => {
+                this.handleCloseDialog();
+                this.submitExam();
+              }}
+              message={`Are you sure you want to submit the exam?`}
+            />
         </div>
       )}
       </>

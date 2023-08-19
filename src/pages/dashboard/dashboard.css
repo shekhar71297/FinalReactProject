@@ -3,3 +3,6 @@
     margin-left: 50px;
     width: 100%;
 }
+.selected {
+    background-color: #919293a6; /* Change this to the desired highlight color */
+  }

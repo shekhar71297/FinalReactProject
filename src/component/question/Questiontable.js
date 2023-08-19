@@ -23,6 +23,8 @@ const Questiontable = ({ allquestions }) => {
   const [selectedItemForDeletion, setSelectedItemForDeletion] = useState(null); // New state for selected item
   const [isEditMode, setEditMode] = useState(false);
   const [editQuestionData, setEditQuestionData] = useState({});
+  const [selectedValue, setSelectedValue] = useState('');
+
 
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
@@ -81,6 +83,8 @@ const Questiontable = ({ allquestions }) => {
   const handleDropdownChange = (event) => {
     setSelectedOption(event.target.value)
     const selectedValue = event.target.value;
+    setSelectedValue(selectedValue);
+    
 
 
     if (selectedValue) {
@@ -108,7 +112,7 @@ const Questiontable = ({ allquestions }) => {
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
-          value={data}
+          value={selectedValue}
           onChange={handleDropdownChange}
           label="Select Exam"
         >

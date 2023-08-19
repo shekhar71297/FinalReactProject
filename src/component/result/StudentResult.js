@@ -14,7 +14,7 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, T
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-// import * as TablePaginationActions from "../common/TablePaginationActions"
+import * as TablePaginationActions from "../common/TablePaginationActions"
 
 export class StudentResult extends Component {
   constructor(props) {
@@ -278,16 +278,23 @@ export class StudentResult extends Component {
               </Alert>
             </Snackbar>
             {/* table pagination */}
-              <TablePagination
-              disabled={filteredResults.length === 0}
-              rowsPerPageOptions={[4, 8, 12, 16, 32]}
-              component="div"
-              count={filteredResults.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={this.handleChangePage}
-              onRowsPerPageChange={this.handleChangeRowsPerPage}
-             /> 
+              
+   <TablePagination
+  rowsPerPageOptions={[5, 10, 25]}
+  colSpan={7} // Adjust the colSpan value according to your table structure
+  count={filteredResults.length}
+  rowsPerPage={rowsPerPage}
+  page={page}
+  SelectProps={{
+    inputProps: {
+      'aria-label': 'rows per page',
+    },
+    native: true,
+  }}
+  onPageChange={this.handleChangePage}
+  onRowsPerPageChange={this.handleChangeRowsPerPage}
+  ActionsComponent={TablePaginationActions.default} // Imported component
+/>
 
 
           </Paper>

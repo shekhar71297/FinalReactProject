@@ -134,7 +134,7 @@ const Dashboard = () => {
   const userName = sessionStorage.getItem("user");
 
 
-  if (isAdminLog) {
+  
     return (
 
       <>
@@ -184,6 +184,7 @@ const Dashboard = () => {
 
             <List>
 {/* User module               */}
+{isAdminLog && (
               <ListItem disablePadding sx={{ display: 'block' }} >
                 <ListItemButton onClick={() => navigatePage("/dashboard/user")}
                   sx={{
@@ -205,6 +206,7 @@ const Dashboard = () => {
                   <ListItemText primary='User' sx={{ opacity: open ? 1 : 0 }} />
                 </ListItemButton>
               </ListItem>
+                 )}
 {/* Student module */}
               <ListItem disablePadding sx={{ display: 'block' }} onClick={() => navigatePage("/dashboard/student")} >
                 <ListItemButton
@@ -345,6 +347,5 @@ const Dashboard = () => {
     );
   }
 
-}
 
 export default Dashboard

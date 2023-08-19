@@ -129,6 +129,7 @@ export class StudentResult extends Component {
     }
     );
 
+    
     return (
       <div>
         {/* search box */}
@@ -191,12 +192,12 @@ export class StudentResult extends Component {
                     <TableCell ><strong>SrNo</strong></TableCell>
                     <TableCell align="center"><strong>StudentName</strong></TableCell>
                     <TableCell align="center"><strong>Orgnization</strong></TableCell>
-                    {/* <TableCell  align="center">Branch</TableCell> */}
+                   
                     <TableCell align="center"><strong>ExamName</strong></TableCell>
-                    {/* <TableCell  align="center">TotalMark</TableCell> */}
-                    {/* <TableCell  align="center">ObtainedMark</TableCell> */}
+                  
+                   
                     <TableCell align="center"><strong>Status</strong></TableCell>
-                    {/* <TableCell  align="center">Grade</TableCell> */}
+                    
                     <TableCell align="center"><strong>Date</strong></TableCell>
                     <TableCell align="center"><strong>Action</strong></TableCell>
                   </TableRow>
@@ -211,7 +212,7 @@ export class StudentResult extends Component {
                   ) : (
 
                     filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-                      // const grade = this.calculateGrade(val.TotalMark, val.ObtainedMark);
+                     
                       const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
                       const currentIndex = page * rowsPerPage + index + 1;
 
@@ -220,12 +221,11 @@ export class StudentResult extends Component {
                           <TableCell className="tablebody" component="th" scope="row">{currentIndex}</TableCell>
                           <TableCell className="tablebody" align="center">{val.StudentName}</TableCell >
                           <TableCell className="tablebody" align="center">{val.Orgnization}</TableCell >
-                          {/* <TableCell className="tablebody" align="center">{val.Branch}</TableCell> */}
+                         
                           <TableCell className="tablebody" align="center">{val.ExamName}</TableCell>
-                          {/* <TableCell className="tablebody" align="center">{val.TotalMark}</TableCell> */}
-                          {/* <TableCell className="tablebody" align="center">{val.ObtainedMark}</TableCell> */}
+                         
                           <TableCell className="tablebody" align="center">{status}</TableCell>
-                          {/* <TableCell className="tablebody" align="center">{grade}</TableCell> */}
+                          
                           <TableCell className="tablebody" align="center">{val.Date}</TableCell>
                           <TableCell className="tablebody" align='center'><Button
                             onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />

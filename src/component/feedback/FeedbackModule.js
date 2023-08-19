@@ -53,7 +53,7 @@ export class FeedbackModule extends Component {
 
         this.setState({[name]: value},() => {
             if(name === "fname"){
-              const isFnameError = !(validation.isValidName(this.state[name]));
+              const isFnameError = !(validation.isValidFullName(this.state[name]));
               if(isFnameError){
                 this.setState({errors:{...this.state.errors,fnameError:true}})
               }else{

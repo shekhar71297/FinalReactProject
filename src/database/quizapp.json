@@ -323,22 +323,22 @@
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": false,
+      "status": true,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
+      "status": true,
       "id": 4,
       "Vcode": "SgLBmw"
     },
@@ -401,7 +401,7 @@
   "StudentResult": [
     {
       "id": 1,
-      "StudentName": "ravindra patil",
+      "StudentName": "sainath tayade",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -412,29 +412,7 @@
     },
     {
       "id": 2,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 3,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 4,
-      "StudentName": "Mayuri kakde",
+      "StudentName": "amol pawar",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "C++",
@@ -445,7 +423,7 @@
     },
     {
       "id": 5,
-      "StudentName": "ravindra patil",
+      "StudentName": "vinod daud",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -455,19 +433,8 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 6,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 7,
-      "StudentName": "pawan jadhav",
+      "StudentName": "sankett jadhav",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -477,7 +444,7 @@
     },
     {
       "id": 8,
-      "StudentName": "ravindra patil",
+      "StudentName": "rohan patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -517,6 +484,28 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "sandeep thorat",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 13,
+      "StudentName": "vijay kumar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "python",
+      "TotalMark": 50,
+      "ObtainedMark": 28,
+      "Grade": "-",
+      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -529,6 +518,18 @@
       "dob": "1993-12-12",
       "gender": "Male",
       "organization": "hematite"
+    },
+    {
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 2
     }
   ],
   "examresult": [
@@ -536,7 +537,16 @@
       "studentName": "anmol chaware",
       "count": 1,
       "id": 1
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 2
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 3
     }
-   
   ]
 }

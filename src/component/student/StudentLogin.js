@@ -32,12 +32,47 @@ export class StudentLogin extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
-      severity:'',
+      severity: '',
       isLoggedIn: false,
     }
   }
   componentDidMount() {
-    this.props.initStudentRequest();
+    // this.props.initStudentRequest();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.allstudent !== this.props.allstudent) {
+      console.log("anmol updated")
+      const istrue = this.props.allstudent.some((d) =>
+        this.state.email === d.email && this.state.dob === d.dob
+      );
+
+      if (istrue) {
+        const student = this.props.allstudent.find(
+          (d) => this.state.email === d.email && this.state.dob === d.dob
+        );
+
+        sessionStorage.setItem("isLogin", "true");
+        sessionStorage.setItem("studentName", `${student.firstname} ${student.lastname}`); // Set student's full name
+        this.setState({
+          snackbarOpen: true,
+          snackbarMessage: 'Login successfully',
+          severity: 'success',
+        });
+
+        setTimeout(() => {
+          this.setState({ snackbarOpen: false });
+          this.setState({ isLoggedIn: true });
+        }, 1000);
+      } else {
+        this.setState({
+          snackbarOpen: true,
+          snackbarMessage: 'please check your registered email and dob',
+          severity: 'error'
+        });
+      }
+    }
+    // this.props.initStudentRequest();
   }
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -47,148 +82,121 @@ export class StudentLogin extends Component {
   submitBtn = (e) => {
     e.preventDefault();
     this.props.initStudentRequest();
-  
-    const istrue = this.props.allstudent.some((d) =>
-      this.state.email === d.email && this.state.dob === d.dob
-    );
-  
-    if (istrue) {
-      const student = this.props.allstudent.find(
-        (d) => this.state.email === d.email && this.state.dob === d.dob
-      );
-  
-      sessionStorage.setItem("isLogin", "true");
-      sessionStorage.setItem("studentName", `${student.firstname} ${student.lastname}`); // Set student's full name
-      this.setState({
-        snackbarOpen: true,
-        snackbarMessage: 'Login successfully',
-        severity: 'success',
-      });
-  
-      setTimeout(() => {
-        this.setState({ snackbarOpen: false });
-        this.setState({ isLoggedIn: true });
-      }, 1000);
-    } else {
-      this.setState({
-        snackbarOpen: true,
-        snackbarMessage: 'please check your registered email and dob',
-        severity: 'error'
-      });
-    }
+
+
   }
-  
+
 
   render() {
     const { isLoggedIn } = this.state;
     return (
 
       <div>
-         {isLoggedIn ? (
+        {isLoggedIn ? (
           <Vouchervalidation />
         ) : (
           <>
 
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="static">
-            <Toolbar>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-              >
-              </IconButton>
-              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'left', fontWeight: 'bold', width: '100px' }}>
-                Hematite Infotech Online-Quiz
-              </Typography>
-            </Toolbar>
-          </AppBar>
-{/* Student Login */}
-          <ThemeProvider theme={defaultTheme}>
-            <Container component="main" maxWidth="xs">
-              <CssBaseline />
-              <Box
-                sx={{
-                  marginTop: 8,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                }}
-              >
-                <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                  <LockOutlinedIcon />
-                </Avatar>
-                <Typography component="h1" variant="h5">
-                  Student Login
-                </Typography>
-                <Box component="form" onSubmit={this.submitBtn} noValidate sx={{ mt: 1 }}>
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label="Enter Email/Username"
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                    onChange={this.inputChangeHandler}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="dob"
-                    type="date"
-                    id="dob"
-                    onChange={this.inputChangeHandler}
-                  />
-
-                  <Button
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
+            <Box sx={{ flexGrow: 1 }}>
+              <AppBar position="static">
+                <Toolbar>
+                  <IconButton
+                    size="large"
+                    edge="start"
+                    color="inherit"
+                    aria-label="menu"
+                    sx={{ mr: 2 }}
                   >
-                    Login In
-                  </Button>
+                  </IconButton>
+                  <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'left', fontWeight: 'bold', width: '100px' }}>
+                    Hematite Infotech Online-Quiz
+                  </Typography>
+                </Toolbar>
+              </AppBar>
+              {/* Student Login */}
+              <ThemeProvider theme={defaultTheme}>
+                <Container component="main" maxWidth="xs">
+                  <CssBaseline />
+                  <Box
+                    sx={{
+                      marginTop: 8,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+                      <LockOutlinedIcon />
+                    </Avatar>
+                    <Typography component="h1" variant="h5">
+                      Student Login
+                    </Typography>
+                    <Box component="form" onSubmit={this.submitBtn} noValidate sx={{ mt: 1 }}>
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Enter Email/Username"
+                        name="email"
+                        autoComplete="email"
+                        autoFocus
+                        onChange={this.inputChangeHandler}
+                      />
+                      <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="dob"
+                        type="date"
+                        id="dob"
+                        onChange={this.inputChangeHandler}
+                      />
 
-                  <Grid container>
-                    <Grid item xs>
-                      <Link to='/form'><p>Feedback Form</p></Link>
-                    </Grid>
-                    <Grid item>
-                      <Link to='/register'>  <p>New Student ? Register here</p></Link>
-                    </Grid>
-                  </Grid>
-                </Box>
+                      <Button
+                        type="submit"
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                      >
+                        Login In
+                      </Button>
+
+                      <Grid container>
+                        <Grid item xs>
+                          <Link to='/form'><p>Feedback Form</p></Link>
+                        </Grid>
+                        <Grid item>
+                          <Link to='/register'>  <p>New Student ? Register here</p></Link>
+                        </Grid>
+                      </Grid>
+                    </Box>
+                  </Box>
+
+                </Container>
+              </ThemeProvider>
+              {/* footer */}
+              <Box sx={{ flexGrow: 1, marginTop: 8 }}>
+                <AppBar position="static">
+                  <Toolbar>
+                    <IconButton
+                      size="large"
+                      edge="start"
+                      color="inherit"
+                      aria-label="menu"
+                      sx={{ mr: 2 }}
+                    >
+
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'right', fontWeight: 'bold', width: '100px', fontSize: '15px' }}>
+                      Designed And Developed By  Sujit Gaikwad
+                    </Typography>
+                  </Toolbar>
+                </AppBar>
               </Box>
 
-            </Container>
-          </ThemeProvider>
-{/* footer */}
-          <Box sx={{ flexGrow: 1, marginTop: 18 }}>
-            <AppBar position="static">
-              <Toolbar>
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 2 }}
-                >
-
-                </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'right', fontWeight: 'bold', width: '100px', fontSize: '15px' }}>
-                  Designed And Developed By  Sujit Gaikwad
-                </Typography>
-              </Toolbar>
-            </AppBar>
-          </Box>
-
-        </Box>
-        <Snackbar
+            </Box>
+            <Snackbar
               open={this.state.snackbarOpen}
               autoHideDuration={3000} // You can adjust the duration as needed
               onClose={() => this.setState({ snackbarOpen: false })}
@@ -198,10 +206,10 @@ export class StudentLogin extends Component {
                 {this.state.snackbarMessage}
               </Alert>
             </Snackbar>
-            </>
+          </>
         )}
       </div>
-      
+
     )
   }
 }

@@ -539,16 +539,6 @@
       "dob": "45678-03-12",
       "gender": "Male",
       "organization": "hematite"
-    },
-    {
-      "id": 3,
-      "firstname": "Om ",
-      "lastname": "dqdw",
-      "email": "sujitg1999@gmail.com",
-      "contact": "qdwfe",
-      "dob": "45678-03-12",
-      "gender": "Male",
-      "organization": "hematite"
     }
   ],
   "examresult": [
@@ -556,6 +546,21 @@
       "studentName": "anmol chaware",
       "count": 1,
       "id": 1
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 2
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 3
+    },
+    {
+      "studentName": "Ashok Gaikwad",
+      "count": 0,
+      "id": 4
     }
   ]
 }

@@ -96,7 +96,6 @@ class Usertable extends Component {
         }
       }
     });
-
     
   }
 

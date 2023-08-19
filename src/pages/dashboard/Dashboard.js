@@ -27,6 +27,8 @@ import { RiNewspaperFill } from 'react-icons/ri';
 import {IoMdLogOut } from 'react-icons/io';
 import { Outlet, useNavigate } from 'react-router-dom';
 import './dashboard.css'
+import DialogBox from '../../component/common/DialogBox';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -99,8 +101,25 @@ const Dashboard = () => {
 
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [showAlert, setShowAlert] = React.useState(false);
+  const [alertMessage, setAlertMessage] = React.useState('');
+  const [alertSeverity, setAlertSeverity] = React.useState('info');
   const navigate = useNavigate();
 
+ const handleShowAlert = (message, severity) => {
+    this.setState({
+      showAlert: true,
+      alertMessage: message,
+      alertSeverity: severity,
+    });
+  };
+
+ const handleCloseAlert = () => {
+    this.setState({
+      showAlert: false,
+      alertMessage: '',
+    });
+  };
 
 
   const handleDrawerClose = () => {
@@ -120,16 +139,13 @@ const Dashboard = () => {
   const isCounsellorLog = !!sessionStorage.getItem("counsellor");
 
   const handleLogout = () => {
-    if (isAdminLog || isTrainerLog || isCounsellorLog) {
-      const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
-      if (window.confirm(`Are you sure you want to logout as ${role}?`)) {
-        sessionStorage.removeItem(role);
-        sessionStorage.removeItem("user")
-        window.alert(`${role} logout successfully`);
-        navigate("/")
-      }
-    }
-  };
+  if (isAdminLog || isTrainerLog || isCounsellorLog) {
+    const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
+    setAlertSeverity('warning'); // or 'info', 'error', etc. based on your needs
+    setAlertMessage(`Are you sure you want to logout as ${role}?`);
+    setShowAlert(true);
+  }
+};
 
   const userName = sessionStorage.getItem("user");
 
@@ -343,6 +359,18 @@ const Dashboard = () => {
             <Outlet />
           </div>
         </Box>
+     {/* Alert Dialog */}
+     <DialogBox
+        open={showAlert}
+        onClose={() => setShowAlert(false)}
+        onConfirm={() => {
+          setShowAlert(false);
+          sessionStorage.removeItem(isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor");
+          sessionStorage.removeItem("user");
+          navigate("/");
+        }}
+        message={alertMessage}
+      />
       </>
     );
   }

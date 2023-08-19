@@ -12,7 +12,7 @@ import { CreateNewFolderOutlined } from '@mui/icons-material';
 
 
 
-const Addform = () => {
+const Addform = ({}) => {
   const [isFormVisible, setFormVisible] = useState(false);
   const [Question, setQuestion] = useState('');
   const [Option1, setOption1] = useState('');
@@ -46,11 +46,12 @@ const Addform = () => {
     
     setShowPopup(true);
     e.preventDefault();
-    axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
-      console.log(res.data);
-      setQuestion({question: res.data})
+    // axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
+    //   console.log(res.data);
+    //   setQuestion({question: res.data})
       
-    })
+    // })
+    // xyz(data)
     
     setFormVisible(false);
   };

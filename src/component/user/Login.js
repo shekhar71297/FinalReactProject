@@ -67,7 +67,7 @@ export class Login extends Component {
           sessionStorage.setItem(user.role, "true");
           sessionStorage.setItem("user", `${user.fname} ${user.lname}`);
           window.alert(`${user.role} Login Successfully`);
-          this.props.router.navigate('/dashboard');
+          this.props.router.navigate('/dashboard/user');
         }
       }
     } else {

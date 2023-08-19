@@ -20,7 +20,7 @@ export class StudentResult extends Component {
     this.state = {
       StudentResultData: [],
       page: 0,
-      rowsPerPage: 3,
+      rowsPerPage: 4,
       searchQuery: '',
       isDeletePopupOpen: false,
       deletingRecordId: null,
@@ -30,7 +30,6 @@ export class StudentResult extends Component {
       snackbarMessage: ''
     };
   }
-
   componentDidUpdate(prevProps) {
     if (prevProps.allresult !== this.props.allresult) {
       this.setState({ StudentResultData: this.props.allresult });
@@ -44,19 +43,16 @@ export class StudentResult extends Component {
   openDetailsPopup = (record) => {
     this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
   };
-
   // Function to close the table
   closeDetailsPopup = () => {
     this.setState({ isDetailsPopupOpen: false, selectedRecord: "" });
   };
-
 
   // delete action 
   // Function to open the delete popup model
   openDeletePopup = (id) => {
     this.setState({ isDeletePopupOpen: true, deletingRecordId: id });
   };
-
   // Function to close the delete popup model
   closeDeletePopup = () => {
     this.setState({ isDeletePopupOpen: false, deletingRecordId: null });
@@ -65,7 +61,6 @@ export class StudentResult extends Component {
   deletedata = (id) => {
     this.openDeletePopup(id);
   };
-
   handleDeleteConfirmed = () => {
     const { deletingRecordId } = this.state;
     this.props.deleteResultRequest(deletingRecordId);
@@ -75,7 +70,6 @@ export class StudentResult extends Component {
       snackbarMessage: 'Result deleted successfully',
     });
   };
-
   // pagination function
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
@@ -112,7 +106,6 @@ export class StudentResult extends Component {
       return "fail"
     }
   }
-
   render() {
     const { searchQuery, page, rowsPerPage, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen } = this.state;
     const grade = this.calculateGrade(selectedRecord.TotalMark, selectedRecord.ObtainedMark);
@@ -128,13 +121,10 @@ export class StudentResult extends Component {
         dateIncludes || statusIncludes
     }
     );
-
-
     return (
       <div>
         {/* search box */}
         <TextField
-
           type="text"
           value={searchQuery}
           onChange={this.handleSearchChange}
@@ -147,13 +137,10 @@ export class StudentResult extends Component {
             position: "relative",
             left: "200px",
             marginLeft: "45px",
-            textAlign: "center",
-            
+            textAlign: "center", 
           }}
         />
         {/* table pop up */}
-
-
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup}>
           <DialogTitle>Result Details</DialogTitle>
           {selectedRecord && (
@@ -205,28 +192,23 @@ export class StudentResult extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-
         {/* start table */}
         <Box sx={{ height: 100 }}>
           <Paper>
             <TableContainer >
               <Table aria-label="simple table">
                 <TableHead >
-
                   <TableRow>
                     <TableCell align="center" color='' colSpan={8} sx={{ backgroundColor: '#1976d2;', fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
                       Result module
                     </TableCell>
-
                   </TableRow>
                   <TableRow>
                     <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>StudentName</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Orgnization</Typography></TableCell>
-
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>ExamName</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Status</Typography></TableCell>
-
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Date</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
                   </TableRow>
@@ -239,27 +221,20 @@ export class StudentResult extends Component {
                       </TableCell>
                     </TableRow>
                   ) : (
-
                     filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-
                       const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
                       const currentIndex = page * rowsPerPage + index + 1;
-
                       return (
                         <TableRow key={val.id} >
                           <TableCell component="th" scope="row">{currentIndex}</TableCell>
                           <TableCell align="center">{val.StudentName}</TableCell >
                           <TableCell align="center">{val.Orgnization}</TableCell >
-
                           <TableCell align="center">{val.ExamName}</TableCell>
-
                           <TableCell align="center">{status}</TableCell>
-
                           <TableCell align="center">{val.Date}</TableCell>
                           <TableCell align='center'><Button
                             onClick={() => this.deletedata(val.id)} align="cnter"><DeleteIcon />
                           </Button>
-
                             <Button
                               onClick={() => this.openDetailsPopup(val)} align="cnter"><VisibilityIcon />
                             </Button>
@@ -271,7 +246,6 @@ export class StudentResult extends Component {
                 </TableBody>
               </Table>
             </TableContainer>
-
             {/* Delete Popup Model */}
             <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
               <DialogTitle>Delete Record</DialogTitle>
@@ -289,7 +263,6 @@ export class StudentResult extends Component {
                 </Button>
               </DialogActions>
             </Dialog>
-
             <Snackbar
               open={this.state.snackbarOpen}
               autoHideDuration={3000} // You can adjust the duration as needed
@@ -303,7 +276,7 @@ export class StudentResult extends Component {
             {/* table pagination */}
             <TablePagination
               disabled={filteredResults.length === 0}
-              rowsPerPageOptions={[5, 10, 25, 35, 50]}
+              rowsPerPageOptions={[4, 8, 12, 16, 32]}
               component="div"
               count={filteredResults.length}
               rowsPerPage={rowsPerPage}

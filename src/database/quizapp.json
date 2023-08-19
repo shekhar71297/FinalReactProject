@@ -343,7 +343,7 @@
       "Vcode": "SgLBmw"
     },
     {
-      "status": true,
+      "status": false,
       "id": 5,
       "Vcode": "TZkSCK"
     },
@@ -401,7 +401,7 @@
   "StudentResult": [
     {
       "id": 1,
-      "StudentName": "ravindra patil",
+      "StudentName": "sainath tayade",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -412,7 +412,7 @@
     },
     {
       "id": 2,
-      "StudentName": "Mayuri kakde",
+      "StudentName": "amol pawar",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "C++",
@@ -422,19 +422,8 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 3,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 5,
-      "StudentName": "ravindra patil",
+      "StudentName": "vinod daud",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -445,7 +434,7 @@
     },
     {
       "id": 7,
-      "StudentName": "pawan jadhav",
+      "StudentName": "sankett jadhav",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -455,7 +444,7 @@
     },
     {
       "id": 8,
-      "StudentName": "ravindra patil",
+      "StudentName": "rohan patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -506,6 +495,17 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "id": 13,
+      "StudentName": "vijay kumar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "python",
+      "TotalMark": 50,
+      "ObtainedMark": 28,
+      "Grade": "-",
+      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -542,6 +542,11 @@
       "studentName": "rushikesh kakde",
       "count": 0,
       "id": 2
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 3
     }
   ]
 }

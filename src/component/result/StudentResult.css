@@ -3,26 +3,4 @@
 
 
 
-.table{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-.table-wrapper {
-    overflow-x: auto;
-  }
-  
-  /* Make the table responsive */
-  .table-wrapper table {
-    min-width: 100%;
-  }
-  
-.paper{
-  width: 100%;
-  overflow: auto;
-    position:relative;
-     right:30px ;
-     top:50px
-}
 

@@ -1,6 +1,6 @@
 import * as constants from '../../util/Constant';
 import { Get, Post, Put } from '../../util/HttpService';
-import * as actionTypes from "./ActionType";
+import * as actionTypes from "./actiontype";
 
 /////get method CRUD
 

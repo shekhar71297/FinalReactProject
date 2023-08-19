@@ -8,21 +8,20 @@ import TableCell from '@mui/material/TableCell';
 import TablePagination from '@mui/material/TablePagination';
 import './StudentResult.css'
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Box, Button, Paper } from '@mui/material';
+import { Box, Button, Grid, Paper } from '@mui/material';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import * as TablePaginationActions from "../common/TablePaginationActions"
-
 export class StudentResult extends Component {
   constructor(props) {
     super(props);
     this.state = {
       StudentResultData: [],
       page: 0,
-      rowsPerPage: 4,
+      rowsPerPage: 5,
       searchQuery: '',
       isDeletePopupOpen: false,
       deletingRecordId: null,
@@ -80,8 +79,6 @@ export class StudentResult extends Component {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
 
   };
-
-  
   // search function
   handleSearchChange = (event) => {
     this.setState({ searchQuery: event.target.value, page: 0 });
@@ -126,24 +123,8 @@ export class StudentResult extends Component {
     }
     );
     return (
-      <div>
-        {/* search box */}
-        <TextField
-          type="text"
-          value={searchQuery}
-          onChange={this.handleSearchChange}
-          placeholder="Search Result"
-          label="Search Result"
-          variant="outlined"
-          sx={{
-            padding: 1,
-            marginTop: 3,
-            position: "relative",
-            left: "200px",
-            marginLeft: "45px",
-            textAlign: "center", 
-          }}
-        />
+      <div >
+
         {/* table pop up */}
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup}>
           <DialogTitle>Result Details</DialogTitle>
@@ -200,11 +181,33 @@ export class StudentResult extends Component {
         <Box sx={{ height: 100 }}>
           <Paper>
             <TableContainer >
-              <Table aria-label="simple table">
-                <TableHead >
+              <Table aria-label="simple table" sx={{ marginTop: 8 }}>
+                <TableHead style={{ maxHeight: '400px', overflowY: 'auto' }}>
                   <TableRow>
-                    <TableCell align="center" color='' colSpan={8} sx={{ backgroundColor: '#1976d2;', fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
-                      Result module
+                    <TableCell align="center" colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
+                      <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                        <Grid item>
+                          Result module
+                        </Grid>
+                        <Grid item>
+                          <TextField
+                            className='searchinput'
+                            type="text"
+                            value={searchQuery}
+                            onChange={this.handleSearchChange}
+                            placeholder="Search Result"
+                            // label="Search Result"
+                            variant="standard"
+                            sx={{
+                              backgroundColor: 'white',
+                              padding: "2px 5px",
+                              borderRadius: "4px",
+                              width: "auto",
+
+                            }}
+                          />
+                        </Grid>
+                      </Grid>
                     </TableCell>
                   </TableRow>
                   <TableRow>
@@ -278,25 +281,24 @@ export class StudentResult extends Component {
               </Alert>
             </Snackbar>
             {/* table pagination */}
-              
-   <TablePagination
-  rowsPerPageOptions={[5, 10, 25]}
-  colSpan={7} // Adjust the colSpan value according to your table structure
-  count={filteredResults.length}
-  rowsPerPage={rowsPerPage}
-  page={page}
-  SelectProps={{
-    inputProps: {
-      'aria-label': 'rows per page',
-    },
-    native: true,
-  }}
-  onPageChange={this.handleChangePage}
-  onRowsPerPageChange={this.handleChangeRowsPerPage}
-  ActionsComponent={TablePaginationActions.default} // Imported component
-/>
 
+            <TablePagination
 
+              rowsPerPageOptions={[5, 10, 25]}
+              colSpan={7} // Adjust the colSpan value according to your table structure
+              count={filteredResults.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                native: true,
+              }}
+              onPageChange={this.handleChangePage}
+              onRowsPerPageChange={this.handleChangeRowsPerPage}
+              ActionsComponent={TablePaginationActions.default} // Imported component
+            />
           </Paper>
         </Box>
       </div>

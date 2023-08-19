@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 const DialogBox = ({ open, onClose, onConfirm, message }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Exam Submission</DialogTitle>
+      <DialogTitle>Confirmation</DialogTitle>
       <DialogContent>
         <DialogContentText>
           {message}

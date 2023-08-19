@@ -130,6 +130,7 @@ class ExamDashboard extends Component {
 
   resetUserFormHandler = () => {
     this.setState({
+
       //exam: [],
       id: null,
       code: '',
@@ -176,6 +177,7 @@ class ExamDashboard extends Component {
     this.handleClose();
   }
 
+  // data delete 
   deletedata = (id) => {
     this.openConfirmDialog(id);
   };
@@ -377,7 +379,7 @@ class ExamDashboard extends Component {
           <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
-              Are you sure you want to delete this record?
+                  Are you sure you want to delete this record?
             </DialogContentText>
           </DialogContent>
           <DialogActions>

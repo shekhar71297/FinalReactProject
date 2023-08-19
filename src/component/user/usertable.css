@@ -23,4 +23,7 @@
     margin-right: 50px; 
 }
 
- 
+ .errorText-wrapper{
+    display: flex;
+    align-items: center;
+ }

@@ -1,4 +1,5 @@
 import *  as constant from './actiontype'
+
 export const initialState = {
     allquestions: [],
     questions: {},

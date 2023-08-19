@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Questiontable from '../../../component/question/Questiontable';
 import Popup from '../../../component/question/Popup';
+import * as actions from '../action'
+import { connect } from 'react-redux';
 
 
 

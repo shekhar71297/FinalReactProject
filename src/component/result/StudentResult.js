@@ -14,6 +14,7 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, T
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+// import * as TablePaginationActions from "../common/TablePaginationActions"
 
 export class StudentResult extends Component {
   constructor(props) {
@@ -79,6 +80,8 @@ export class StudentResult extends Component {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
 
   };
+
+  
   // search function
   handleSearchChange = (event) => {
     this.setState({ searchQuery: event.target.value, page: 0 });
@@ -275,7 +278,7 @@ export class StudentResult extends Component {
               </Alert>
             </Snackbar>
             {/* table pagination */}
-            <TablePagination
+              <TablePagination
               disabled={filteredResults.length === 0}
               rowsPerPageOptions={[4, 8, 12, 16, 32]}
               component="div"
@@ -284,8 +287,9 @@ export class StudentResult extends Component {
               page={page}
               onPageChange={this.handleChangePage}
               onRowsPerPageChange={this.handleChangeRowsPerPage}
-             
-            />
+             /> 
+
+
           </Paper>
         </Box>
       </div>

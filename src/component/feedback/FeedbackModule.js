@@ -289,8 +289,10 @@ export class FeedbackModule extends Component {
                 />
 
                 <Stack spacing={2} direction="row" style={{ margin: 'auto' }}>
+                <Link to={'/'}>
                   <Button type='submit' variant="contained" color="primary" disabled={isSubmitDisabled}>Submit</Button>
-                  <Link to={'/login'}><Button variant="contained" color="primary" >Back</Button></Link>
+                  <Button variant="contained" color="primary" >Back</Button>
+                </Link>
                 </Stack>
               </Box>
             </form>

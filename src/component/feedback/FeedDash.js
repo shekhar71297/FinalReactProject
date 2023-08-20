@@ -121,7 +121,7 @@ export class FeedDash extends Component {
                         <TableHead>
                             <TableRow>
                                 <TableCell align="center" colSpan={8} sx={{ backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
-                                    Feedback module</TableCell>
+                                   Manage Feedback</TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>SrNo</TableCell>

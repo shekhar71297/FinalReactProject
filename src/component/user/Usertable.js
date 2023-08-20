@@ -292,7 +292,7 @@ class Usertable extends Component {
                 <TableHead>
                   <TableRow>
                     <TableCell align="center" colSpan={8} sx={{ color: "white", backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
-                      User module
+                      Manage User
                     </TableCell>
                   </TableRow>
                   <TableRow>

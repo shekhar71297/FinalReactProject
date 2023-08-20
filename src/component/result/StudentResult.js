@@ -126,7 +126,7 @@ export class StudentResult extends Component {
     }
     );
     return (
-      <div>
+      <div className='container' style={{ marginRight: '25px' }}>
         {/* search box */}
         <TextField
           type="text"
@@ -204,7 +204,7 @@ export class StudentResult extends Component {
                 <TableHead >
                   <TableRow>
                     <TableCell align="center" color='' colSpan={8} sx={{ backgroundColor: '#1976d2;', fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
-                      Result module
+                      Manage Result
                     </TableCell>
                   </TableRow>
                   <TableRow>

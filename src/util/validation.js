@@ -1,6 +1,7 @@
-import { Password } from "@mui/icons-material";
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
+export const isValidFullName = (name) => /^[a-zA-Z ]{5,20}$/.test(name);
+export const isValidQue = (que) => /^[a-zA-Z0-9 ]{5,100}$/.test(que);
 export const isValidName = (name) => /^[a-zA-Z]{5,10}$/.test(name);
 export const isvalidContact = (contact) => /^[6789]\d{9}$/.test(contact);
 export const isValidEmail=(email)=>/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/.test(email);

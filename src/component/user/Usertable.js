@@ -23,7 +23,6 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
-import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 import * as TablePaginationActions from "../common/TablePaginationActions"
 
 import './usertable.css'
@@ -63,8 +62,7 @@ class Usertable extends Component {
         emailError:false,
         passwordError:false
       },
-      showPassword: false,
-     
+      showPassword: false
     }
   }
 
@@ -117,7 +115,7 @@ class Usertable extends Component {
       }
 
       if(name === "contact"){
-        const isContactError = !(validation.isvalidContact(this.state[name]));
+        const isContactError = !(validation.isValidContact(this.state[name]));
         if(isContactError){
           this.setState({errors:{...this.state.errors,contactError:true}})
         }else{
@@ -143,7 +141,6 @@ class Usertable extends Component {
         }
       }
     });
-
     
   }
 
@@ -246,8 +243,6 @@ class Usertable extends Component {
     }
     this.handleClose();
   };
-
-
    
   // close alert message 
   closeSnackbar = () => {
@@ -398,7 +393,6 @@ class Usertable extends Component {
                      error={this.state.errors.fnameError 
                     }
                     helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid first name") ||'eg:John'}
-
                   />
                  </Grid>
                 <Grid item xs={12}>
@@ -414,7 +408,6 @@ class Usertable extends Component {
                     error={this.state.errors.lnameError 
                     }
                     helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") ||'eg: Dev'}
-
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -430,7 +423,6 @@ class Usertable extends Component {
                     error={this.state.errors.emailError 
                     }
                     helperText={this.state.errors.emailError && validation.errorText("Please enter a valid Email") ||'eg: John1@gmail.com'}
-
                   />
                 </Grid>
                 <Grid item xs={12}>

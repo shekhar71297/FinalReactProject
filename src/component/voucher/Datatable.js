@@ -9,6 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Switch from '@mui/material/Switch';
+import TablePaginationActions from '../common/TablePaginationActions';
 
 
 export class Datatable extends Component {
@@ -41,7 +42,7 @@ export class Datatable extends Component {
     console.log("vcodes:", this.state.vcodes);
     console.log("index:", index);
     console.log("status:", status);
-  
+
     let vcodes = this.state.vcodes;
     if (vcodes[index]) {
       vcodes[index].status = !status;
@@ -51,17 +52,18 @@ export class Datatable extends Component {
       });
     }
     //  else {
-      // console.log("Invalid index or vcodes data:", index, vcodes);
+    // console.log("Invalid index or vcodes data:", index, vcodes);
     // }
   };
-  
 
+
+  // pagination function
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
   };
-
   handleChangeRowsPerPage = (event) => {
     this.setState({ rowsPerPage: parseInt(event.target.value, 10), page: 0 });
+
   };
 
   handleToggleVoucher = (index) => {
@@ -93,34 +95,48 @@ export class Datatable extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => (
-                <TableRow key={data.id}>
-                  <TableCell component="th" scope="row">{index + 1}</TableCell>
-                  <TableCell>{data.Vcode}</TableCell>
-                  <TableCell>
-                    <Switch
-                      key={index}
-                      // checked={this.state.status}
-                      checked={data.status}
-                      onChange={(e) => this.handleChange(index, data.status)}
-                      inputProps={{ 'aria-label': 'controlled' }}
-                    />
+              {
+                this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+                  const currentIndex = page * rowsPerPage + index + 1;
+                  return (
+                    <TableRow key={data.id}>
+                      <TableCell component="th" scope="row">{currentIndex}</TableCell>
 
-                  </TableCell>
+                      <TableCell>{data.Vcode}</TableCell>
+                      <TableCell>
+                        <Switch
+                          key={index}
+                          // checked={this.state.status}
+                          checked={data.status}
+                          onChange={(e) => this.handleChange(index, data.status)}
+                          inputProps={{ 'aria-label': 'controlled' }}
+                        />
 
-                </TableRow>
-              ))}
+                      </TableCell>
+
+                    </TableRow>
+                  )
+                })
+              }
             </TableBody>
           </Table>
-          {/* rowpagination */}
+
           <TablePagination
-            component="div"
+
             rowsPerPageOptions={[5, 10, 25]}
-            count={vcodes.length}
+            colSpan={7} // Adjust the colSpan value according to your table structure
+            count={this.props.allvouchers.length}
             rowsPerPage={rowsPerPage}
             page={page}
+            SelectProps={{
+              inputProps: {
+                'aria-label': 'rows per page',
+              },
+              native: true,
+            }}
             onPageChange={this.handleChangePage}
             onRowsPerPageChange={this.handleChangeRowsPerPage}
+            ActionsComponent={TablePaginationActions.default} // Imported component
           />
         </TableContainer>
       </div>

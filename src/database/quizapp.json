@@ -32,7 +32,7 @@
     },
     {
       "email": "rushikakdeforever@gmail.com",
-      "fname": "rushikesh",
+      "fname": "Rushikesh",
       "lname": "kakde",
       "password": "rushi@26",
       "role": "admin",
@@ -49,6 +49,16 @@
       "gender": "male",
       "contact": "984558999",
       "id": 8
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "sujit",
+      "lname": "gaikwad",
+      "password": "123456",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9322403669",
+      "id": 9
     }
   ],
   "react": [
@@ -562,6 +572,11 @@
       "studentName": "anmol chaware",
       "count": 10,
       "id": 6
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 7
     }
   ],
   "feedback": [

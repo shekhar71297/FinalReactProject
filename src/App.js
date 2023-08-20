@@ -11,6 +11,8 @@ import User from './pages/user/container/User';
 import Login from './component/user/Login';
 import StudentDashboard from './component/student/StudentDashboard';
 import Vouchermodule from './pages/voucher/container/Vouchermodule';
+import Feedback from './pages/feedback/container/Feedback';
+import FeedbackModule from './component/feedback/FeedbackModule';
 
 function App() {
   return (
@@ -27,7 +29,9 @@ function App() {
               <Route path='voucher' element={<Vouchermodule />} />
               <Route path='question' element={<Question />} />
               <Route path='user' element={<User />} />
+              <Route path='feedback' element={<Feedback/>} />
             </Route>
+            <Route path='form' element={<FeedbackModule/>} />
           </Routes>
         </BrowserRouter>
       </div>

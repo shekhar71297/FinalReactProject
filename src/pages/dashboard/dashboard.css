@@ -4,5 +4,6 @@
     width: 100%;
 }
 .selected {
-    background-color: #919293a6; /* Change this to the desired highlight color */
+    background-color: #eef1f25a; 
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5); 
   }

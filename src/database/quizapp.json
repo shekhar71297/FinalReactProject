@@ -558,6 +558,28 @@
       "dob": "1995-03-12",
       "gender": "Male",
       "organization": "lighthouse"
+    },
+    {
+      "id": 21,
+      "firstname": "Jhon",
+      "lastname": "Dev",
+      "email": "jhon123@gmail.com",
+      "contact": "9889345532",
+      "dob": "1995-03-12",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 22
     }
   ],
   "examresult": [
@@ -704,7 +726,6 @@
       "role": "",
       "password": ""
     },
-    
     {
       "firstname": "Sam",
       "lastname": "Vaiduya",
@@ -738,7 +759,11 @@
       "pnr": "sg23456",
       "branch": "",
       "id": 34
-
+    },
+    {
+      "studentName": "Sujit Gaikwad",
+      "count": 0,
+      "id": 35
     }
   ]
 }

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Box from '@mui/material/Box';
+import { Box,  Grid, Paper } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -23,16 +21,23 @@ import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import {  DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+import { DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Dialog from '@mui/material/Dialog';
+import * as validation from '../../util/validation'
+import './studentdashboard.css'
+import * as TablePaginationActions from "../common/TablePaginationActions";
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+
 
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
+  // marginTop:3,
   transform: 'translate(-50%, -50%)',
   width: 400,
   height: 500,
@@ -62,20 +67,26 @@ class StudentDashboard extends Component {
       page: 0,
       rowsPerPage: 5,
       searchQuery: '',
-      isAddStudent:true,
+      isAddStudent: true,
       isDeletePopupOpen: false,
       deletingRecordId: null,
       isDetailsPopupOpen: false,
       selectedRecord: "",
       snackbarOpen: false,
-      snackbarMessage: ''
+      snackbarMessage: '',
+      errors: {
+        fnameError: false,
+        lnameError: false,
+        emailError: false,
+        contactError: false
+      }
 
-    
+
     }
   }
 
-  
- 
+
+
   componentDidUpdate(prevProps) {
     if (prevProps.singelStudent !== this.props.singelStudent) {
       const { id, firstname, lastname, email, contact, dob, gender, organization } = this.props.singelStudent;
@@ -83,24 +94,24 @@ class StudentDashboard extends Component {
         id, firstname, lastname, email, contact, dob, gender, organization
       })
     }
-    
+
   }
   componentDidMount() {
-  
+
     this.props.initStudentRequest()
-    
+
   }
- 
-  
+
+
   getSingleRecord = (id) => {
-    
+
     this.props.getSingleStudentRequest(id);
-  
+
   }
 
 
-  
-handleOpen = (id = null) => {
+
+  handleOpen = (id = null) => {
     this.resetStudentFormHandler();
 
     if (id !== null) {
@@ -119,7 +130,7 @@ handleOpen = (id = null) => {
   };
 
 
-// delete action 
+  // delete action 
   // Function to open the delete popup model
   openDeletePopup = (id) => {
     this.setState({ isDeletePopupOpen: true, deletingRecordId: id });
@@ -138,7 +149,7 @@ handleOpen = (id = null) => {
   // Function to handle the actual delete action after user confirmation
   handleDeleteConfirmed = () => {
     const { deletingRecordId } = this.state;
-    
+
     this.props.deleteStudentRequest(deletingRecordId);
     this.closeDeletePopup();
 
@@ -147,69 +158,119 @@ handleOpen = (id = null) => {
       snackbarMessage: 'Student deleted successfully',
     });
 
-  
+
   };
 
-  
-resetStudentFormHandler = () => {
-  this.setState({
-    students: [],
-    id: null,
-    fname: "",
-    lname: "",
-    role: "",
-    password: "",
-    contact: "",
-    gender: "",
-    email: ""
-  })
-}
 
-updateStudent = (event) => {
-  event.preventDefault();
-  let sObj = {
-    id: this.state.id,
-    firstname: this.state.firstname,
-    lastname: this.state.lastname,
-    email: this.state.email,
-    contact: this.state.contact,
-    dob: this.state.dob,
-    gender: this.state.gender,
-    organization: this.state.organization,
-
+  resetStudentFormHandler = () => {
+    this.setState({
+      students: [],
+      id: null,
+      fname: "",
+      lname: "",
+      role: "",
+      password: "",
+      contact: "",
+      gender: "",
+      email: ""
+    })
   }
-  if (this.state.isAddStudent) {
-    this.props.addStudentRequest(sObj);
-    this.setState({
-      snackbarOpen: true,
-      snackbarMessage: 'Student added successfully',
-    });
-    
-  
-  } else {
-    sObj['id'] = this.state.id;
-    this.props.initStudentRequest()
-    this.props.updateStudentRequest(sObj)
-    this.setState({
-      snackbarOpen: true,
-      snackbarMessage: 'Student updated successfully',
-    });
+
+  updateStudent = (event) => {
+    event.preventDefault();
+    let sObj = {
+      id: this.state.id,
+      firstname: this.state.firstname,
+      lastname: this.state.lastname,
+      email: this.state.email,
+      contact: this.state.contact,
+      dob: this.state.dob,
+      gender: this.state.gender,
+      organization: this.state.organization,
+
+    }
+    if (this.state.isAddStudent) {
+      this.props.addStudentRequest(sObj);
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'Student added successfully',
+      });
+
+
+    } else {
+      sObj['id'] = this.state.id;
+      this.props.initStudentRequest()
+      this.props.updateStudentRequest(sObj)
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'Student updated successfully',
+      });
+
+    }
+
     this.handleClose()
-    
-    
+
+
   }
-
-
-
-
-}
 
 
   handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
+    const { name, value } = event.target;
+
+    if (name === 'organization') {
+      this.setState({
+        [name]: value,
+        showCdacTextField: value === 'cdac',
+      });
+    } else if (name === 'cdac') {
+      this.setState({
+        [name]: value,
+        showCdacTextField: true,
+      });
+    } else {
+      this.setState({
+        [name]: value,
+      });
+    }
+
+    this.setState({ [name]: value }, () => {
+      if (name === "firstname") {
+        const isFnameError = !(validation.isValidName(this.state[name]));
+        if (isFnameError) {
+          this.setState({ errors: { ...this.state.errors, fnameError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, fnameError: false } })
+        }
+      }
+      if (name === "lastname") {
+        const isLnameError = !(validation.isValidName(this.state[name]));
+        if (isLnameError) {
+          this.setState({ errors: { ...this.state.errors, lnameError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, lnameError: false } })
+        }
+      }
+
+      if (name === "email") {
+        const isEmailError = !(validation.isValidEmail(this.state[name]));
+        if (isEmailError) {
+          this.setState({ errors: { ...this.state.errors, emailError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, emailError: false } })
+        }
+      }
+
+      if (name === "contact") {
+        const isvalidContact = !(validation.isValidContact(this.state[name]));
+        if (isvalidContact) {
+          this.setState({ errors: { ...this.state.errors, contactError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, contactError: false } })
+        }
+      }
     });
   };
+
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
   };
@@ -224,72 +285,116 @@ updateStudent = (event) => {
 
   render() {
 
-    const {id, students,firstname,lastname, open, gender, organization ,isDeletePopupOpen} = this.state;
+    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen } = this.state;
     const { searchQuery, page, rowsPerPage } = this.state;
     const filteredStudents = this.props.allstudent && this.props.allstudent.filter((data) => {
-      const searchQuery = this.state.searchQuery.toLowerCase(); 
-    
-    
+      const searchQuery = this.state.searchQuery.toLowerCase();
+
+
       const firstnameIncludes = data.firstname && data.firstname.toLowerCase().includes(searchQuery);
       const lastnameIncludes = data.lastname && data.lastname.toLowerCase().includes(searchQuery);
       const emailIncludes = data.email && data.email.toLowerCase().includes(searchQuery);
       const organizationIncludes = data.organization && data.organization.toLowerCase().includes(searchQuery);
-    
+
       return firstnameIncludes || lastnameIncludes || emailIncludes || organizationIncludes;
     }) || [];
-    
-        
-    return (
 
-      <div className='container'>
-       
-       <Box sx={{ height: 100 }}>
-          <Paper sx={{ width: "100%", overflow: "hidden", position: "relative", right: "30px", top: "50px" }}>
-          <Button variant="contained" color="primary" size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon/>Student</Button>
-                  <input style={{position:'relative' , right:"30%" , padding:"7px", margin:"7px", border:"2px solid "}}
-          type="text"
-          value={searchQuery}
-          onChange={this.handleSearchChange}
-          placeholder="Search Here"
-        />
+
+    return (
+      <div>
+        
+
+
+        <Box sx={{ height: 100 }}>
+          <Paper className='paper'>
             <TableContainer  >
+
               <Table aria-label="simple table">
                 <TableHead>
+
+                  <TableRow >
+
+                  <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
+                      <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                        <Grid item>
+                          Student module
+                        </Grid>
+                        <Grid item>
+
+                          <TextField
+                            className='searchinput'
+                            type="text"
+                            value={searchQuery}
+                            onChange={this.handleSearchChange}
+                            placeholder="Search Result"
+                            // label="Search Result"
+
+                            variant="standard"
+                            sx={{
+                              backgroundColor: 'white',
+                              padding: "2px 3px",
+                              borderRadius: "4px",
+                              width: "auto",
+
+                            }}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="end">
+                                  <SearchIcon />
+                                </InputAdornment>
+                              ),
+                            }}
+
+                          />
+                        </Grid>
+                      </Grid>
+                    </TableCell>
+                  </TableRow>
+                  <Button variant="contained" color="primary" sx={{ marginTop: 4 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
                   <TableRow>
-                    <TableCell align="center" >SrNo</TableCell>
-                    <TableCell align="center">First Name</TableCell>
-                    <TableCell align="center">Last Name</TableCell>
-                    <TableCell align="center" >Email</TableCell>
-                    <TableCell align="center">contact</TableCell>
-                    <TableCell align="center">dob</TableCell>
-                    <TableCell align="center">Gender</TableCell>
-                    <TableCell align="center">organization</TableCell>
-                    <TableCell align="center">Action</TableCell>
+                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Last Name</Typography></TableCell>
+                    <TableCell align="center" ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Email</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Contact</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Dob</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Gender</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Organization</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
 
-                  {filteredStudents && filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val,index) => {
-                     const currentIndex = page * rowsPerPage + index + 1;
-                    return <TableRow key={val.id}>
-                      <TableCell component="th" scope="row">{currentIndex}</TableCell>
-                      <TableCell align='center' >{val.firstname}</TableCell >
-                      <TableCell align='center'>{val.lastname}</TableCell >
-                      <TableCell align='center'>{val.email}</TableCell>
-                      <TableCell align='center'>{val.contact}</TableCell>
-                      <TableCell align='center' >{val.dob}</TableCell>
-                      <TableCell align='center' >{val.gender}</TableCell>
-                      <TableCell align='center' >{val.organization}</TableCell>
+                  {filteredStudents.length === 0 ? (
+                    <TableRow>
+                      <TableCell colSpan={8} align='center'>
+                        <strong style={{ fontSize: "34px" }}>No data found</strong>
 
-                      <TableCell align="center">
-                    
-
-                        <Button type="button" onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>&nbsp;
-                        <Button type="button" onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
                       </TableCell>
                     </TableRow>
+                  ) : (
 
-                  }) || []}
+
+
+                    filteredStudents && filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
+                      const currentIndex = page * rowsPerPage + index + 1;
+                      return <TableRow key={val.id}>
+                        <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                        <TableCell align='center' >{val.firstname}</TableCell >
+                        <TableCell align='center'>{val.lastname}</TableCell >
+                        <TableCell align='center'>{val.email}</TableCell>
+                        <TableCell align='center'>{val.contact}</TableCell>
+                        <TableCell align='center' >{val.dob}</TableCell>
+                        <TableCell align='center' >{val.gender}</TableCell>
+                        <TableCell align='center' >{val.organization}</TableCell>
+
+                        <TableCell className='tablebody' align="center">
+                          <Button onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>&nbsp;
+                          <Button onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
+                        </TableCell>
+                      </TableRow>
+
+                    }) || [])}
 
                 </TableBody>
               </Table>
@@ -323,18 +428,25 @@ updateStudent = (event) => {
               </Alert>
             </Snackbar>
             <TablePagination
-              rowsPerPageOptions={[5, 10, 25, 35, 50]}
-              component="div"
-              count={filteredStudents.length} // Use the filtered results length for pagination
+              rowsPerPageOptions={[5, 10, 25]}
+              colSpan={7} // Adjust the colSpan value according to your table structure
+              count={filteredStudents.length}
               rowsPerPage={rowsPerPage}
               page={page}
+              SelectProps={{
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                native: true,
+              }}
               onPageChange={this.handleChangePage}
               onRowsPerPageChange={this.handleChangeRowsPerPage}
+              ActionsComponent={TablePaginationActions.default} // Imported component
             />
           </Paper>
         </Box>
 
-        
+
         <Modal
           open={open}
           onClose={this.handleClose}
@@ -355,6 +467,8 @@ updateStudent = (event) => {
                   name='firstname'
                   fullWidth
                   required
+                  error={this.state.errors.fnameError}
+                  helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid firstname") || "eg:John"}
                 />
                 <TextField
                   type="text"
@@ -366,6 +480,8 @@ updateStudent = (event) => {
                   name='lastname'
                   fullWidth
                   required
+                  error={this.state.errors.lnameError}
+                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Dev'}
                 />
               </Stack>
               <br />
@@ -379,6 +495,8 @@ updateStudent = (event) => {
                 name='email'
                 fullWidth
                 required
+                error={this.state.errors.emailError}
+                helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email") || "eg:jhon@123"}
                 sx={{ mb: 4 }}
               />
               <TextField
@@ -391,6 +509,8 @@ updateStudent = (event) => {
                 name='contact'
                 fullWidth
                 required
+                error={this.state.errors.contactError}
+                helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact") || "eg:99223344222"}
                 sx={{ mb: 4 }}
               />
               <TextField
@@ -458,8 +578,8 @@ const mapDispatchToprops = (dispatch) => ({
   deleteStudentRequest: (id) => dispatch(Action.deleteAllStudent(id)),
   updateStudentRequest: (id) => dispatch(Action.updateAllStudent(id)),
   getSingleStudentRequest: (id) => dispatch(Action.getsingleStudent(id)),
-  addStudentRequest:(data)=>dispatch(Action.addAllStudent(data))
+  addStudentRequest: (data) => dispatch(Action.addAllStudent(data))
 })
 
 
-export default connect(mapStateToProps,mapDispatchToprops)(StudentDashboard);  
+export default connect(mapStateToProps, mapDispatchToprops)(StudentDashboard);  

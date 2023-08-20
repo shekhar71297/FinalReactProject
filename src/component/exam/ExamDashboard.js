@@ -135,7 +135,6 @@ class ExamDashboard extends Component {
     // }
     this.props.initExamRequest();
   }
-  // 
   
   componentDidUpdate(prevProps) {
     if (prevProps.singleExam !== this.props.singleExam) {
@@ -217,6 +216,8 @@ class ExamDashboard extends Component {
     }
     this.handleClose();
   }
+
+  // for delete 
   confirmDelete = () => {
     const id = this.state.recordToDeleteId;
     this.props.initExamRequest();

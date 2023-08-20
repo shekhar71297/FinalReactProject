@@ -32,13 +32,33 @@
     },
     {
       "email": "rushikakdeforever@gmail.com",
-      "fname": "rushikesh",
+      "fname": "Rushikesh",
       "lname": "kakde",
       "password": "rushi@26",
       "role": "admin",
       "gender": "male",
       "contact": "8007419586",
       "id": 7
+    },
+    {
+      "email": "samadhan1234@gmail.com",
+      "fname": "samadhan",
+      "lname": "kakde",
+      "password": "sa123456",
+      "role": "trainer",
+      "gender": "male",
+      "contact": "984558999",
+      "id": 8
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "sujit",
+      "lname": "gaikwad",
+      "password": "123456",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9322403669",
+      "id": 9
     }
   ],
   "react": [
@@ -343,7 +363,7 @@
       "Vcode": "rEOHy9"
     },
     {
-      "status": true,
+      "status": false,
       "id": 7,
       "Vcode": "gCoC7V"
     },
@@ -504,22 +524,84 @@
       "firstname": "anmol",
       "lastname": "chaware",
       "email": "anmol@gmail.com",
-      "contact": "1234567891",
+      "contact": "7350537398",
       "dob": "1993-12-12",
       "gender": "Male",
       "organization": "hematite"
     },
     {
-      "firstname": "rushikesh",
-      "lastname": "kakde",
-      "email": "rushikakdeforever@gmail.com",
-      "contact": "8007419586",
-      "dob": "2001-06-26",
+      "id": 2,
+      "firstname": "Om",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "9421688541",
+      "dob": "1994-03-11",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 5,
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "sujit@gmail.com",
+      "contact": "9322403669",
+      "dob": "1992-04-23",
+      "gender": "Male",
+      "organization": "Hadapsar"
+    },
+    {
+      "id": 16,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujit123@gmail.com",
+      "contact": "9922506887",
+      "dob": "1994-03-12",
+      "gender": "Male",
+      "organization": "lighthouse"
+    },
+    {
+      "id": 20,
+      "firstname": "Anmol",
+      "lastname": "Sir",
+      "email": "As123@gmail.com",
+      "contact": "9889153532",
+      "dob": "1995-03-12",
+      "gender": "Male",
+      "organization": "lighthouse"
+    },
+    {
+      "id": 21,
+      "firstname": "Jhon",
+      "lastname": "Dev",
+      "email": "jhon123@gmail.com",
+      "contact": "9889345532",
+      "dob": "1995-03-12",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
       "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
-      "id": 2
+      "id": 22
+    },
+    {
+      "firstname": "Vishakha",
+      "lastname": "Mankar",
+      "email": "vish24mankar@gmail.com",
+      "contact": "9765223448",
+      "dob": "2008-08-28",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 23
     }
   ],
   "exams": [
@@ -563,9 +645,14 @@
       "id": 1
     },
     {
-      "studentName": "rushikesh kakde",
+      "studentName": "anmol chaware",
       "count": 0,
       "id": 2
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 3
     },
     {
       "studentName": "rushikesh kakde",
@@ -583,9 +670,161 @@
       "id": 5
     },
     {
-      "studentName": "anmol chaware",
-      "count": 10,
-      "id": 6
+      "firstname": "test",
+      "lastname": "test",
+      "email": "test@123.gmail.com",
+      "contact": "test",
+      "dob": "1111-11-11",
+      "gender": "Male",
+      "organization": "cdac",
+      "branch": "",
+      "id": 26
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "admin@gmail.com",
+      "contact": "9898989898",
+      "dob": "2023-08-10",
+      "gender": "Female",
+      "organization": "cdac",
+      "branch": "",
+      "id": 27
+    },
+    {
+      "students": [],
+      "id": 29,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-11",
+      "gender": "Male",
+      "organization": "hematite",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
+    },
+    {
+      "students": [],
+      "id": 31,
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-11",
+      "gender": "Male",
+      "organization": "hematite",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
+    },
+    {
+      "firstname": "2222",
+      "lastname": "4",
+      "email": "admin@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-04",
+      "gender": "Male",
+      "organization": "hematite",
+      "branch": "",
+      "id": 32
+    },
+    {
+      "students": [],
+      "id": 33,
+      "firstname": "Renuka",
+      "lastname": "Gaikwad",
+      "email": "admin@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-05-10",
+      "gender": "Female",
+      "organization": "Cdac",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
+    },
+    {
+      "students": [],
+      "id": 34,
+      "firstname": "Samrudhi",
+      "lastname": "Vaidya",
+      "email": "samrudhi24vaidya@gmail.com",
+      "contact": "8484854108",
+      "dob": "1999-04-27",
+      "gender": "Female",
+      "organization": "hematite",
+      "open": true,
+      "page": 0,
+      "rowsPerPage": 5,
+      "searchQuery": "",
+      "isAddStudent": true,
+      "fname": "",
+      "lname": "",
+      "role": "",
+      "password": ""
+    },
+    {
+      "firstname": "Sam",
+      "lastname": "Vaiduya",
+      "email": "sam@123.gmail.com",
+      "contact": "945678765432",
+      "dob": "222222-02-21",
+      "gender": "Female",
+      "organization": "Warje",
+      "branch": null,
+      "id": 32
+    },
+    {
+      "firstname": "Rutuja",
+      "lastname": "Sawant",
+      "email": "rutuja@123.gmail.com",
+      "contact": "23456987654321",
+      "dob": "23333-02-21",
+      "gender": "Female",
+      "organization": "cdac",
+      "branch": "",
+      "id": 33
+    },
+    {
+      "firstname": "werty",
+      "lastname": "qwertyu",
+      "email": "sujitg1999@gmail.com",
+      "contact": "234567",
+      "dob": "275760-04-23",
+      "gender": "Female",
+      "organization": "cdac",
+      "pnr": "sg23456",
+      "branch": "",
+      "id": 34
+    },
+    {
+      "studentName": "Sujit Gaikwad",
+      "count": 0,
+      "id": 35
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 7
     }
   ],
   "feedback": [

@@ -29,6 +29,12 @@ function App() {
               <Route path='user' element={<User />} />
             </Route>
           </Routes>
+<<<<<<< Updated upstream
+=======
+          {/* <NewStudentRegistration/> */}
+          
+          <Sidenav/>
+>>>>>>> Stashed changes
         </BrowserRouter>
       </div>
     </Provider>

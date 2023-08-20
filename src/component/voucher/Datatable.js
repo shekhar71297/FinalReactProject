@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Switch from '@mui/material/Switch';
-import TablePaginationActions from '../common/TablePaginationActions';
+import * as TablePaginationActions from '../common/TablePaginationActions';
 
 
 export class Datatable extends Component {
@@ -23,6 +23,8 @@ export class Datatable extends Component {
       rowsPerPage: 5,
 
     };
+    this.handleChangePage = this.handleChangePage.bind(this);
+    this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.allvouchers !== this.props.allvouchers) {
@@ -33,27 +35,21 @@ export class Datatable extends Component {
   componentDidMount() {
 
     this.props.initVoucherRequest()
+    
   }
 
-
-
-
   handleChange = (index, status, event) => {
-    console.log("vcodes:", this.state.vcodes);
-    console.log("index:", index);
-    console.log("status:", status);
-
+    const { page, rowsPerPage } = this.state;
     let vcodes = this.state.vcodes;
-    if (vcodes[index]) {
-      vcodes[index].status = !status;
-      this.setState({ vcodes: vcodes }, () => {
-        // console.log("Updated vcodes:", this.state.vcodes);
-        this.props.updateVoucherRequest(this.state.vcodes[index]);
-      });
-    }
-    //  else {
-    // console.log("Invalid index or vcodes data:", index, vcodes);
-    // }
+    const dataIndex = page * rowsPerPage + index;
+    // console.log("before",vcodes,index,vcodes[index]);
+    vcodes[dataIndex].status = !status;
+    // console.log("after",vcodes);
+    this.setState({ vcodes: vcodes }, () => {
+      console.log(this.state.vcodes[dataIndex])
+      this.props.updateVoucherRequest(this.state.vcodes[dataIndex]);
+    });
+
   };
 
 
@@ -106,11 +102,11 @@ export class Datatable extends Component {
                       <TableCell>
                         <Switch
                           key={index}
-                          // checked={this.state.status}
                           checked={data.status}
                           onChange={(e) => this.handleChange(index, data.status)}
                           inputProps={{ 'aria-label': 'controlled' }}
                         />
+
 
                       </TableCell>
 
@@ -124,7 +120,7 @@ export class Datatable extends Component {
           <TablePagination
 
             rowsPerPageOptions={[5, 10, 25]}
-            colSpan={7} // Adjust the colSpan value according to your table structure
+            colSpan={6} // Adjust the colSpan value according to your table structure
             count={this.props.allvouchers.length}
             rowsPerPage={rowsPerPage}
             page={page}

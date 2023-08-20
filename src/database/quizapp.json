@@ -592,11 +592,6 @@
       "id": 5
     },
     {
-<<<<<<< Updated upstream
-      "studentName": "anmol chaware",
-      "count": 10,
-      "id": 6
-=======
       "firstname": "test",
       "lastname": "test",
       "email": "test@123.gmail.com",
@@ -709,26 +704,41 @@
       "role": "",
       "password": ""
     },
+    
     {
-      "students": [],
-      "id": 35,
-      "firstname": "Samrudhi",
-      "lastname": "Vaidya",
-      "email": "samrudhi24vaidya@gmail.com",
-      "contact": "8484854108",
-      "dob": "1999-04-27",
+      "firstname": "Sam",
+      "lastname": "Vaiduya",
+      "email": "sam@123.gmail.com",
+      "contact": "945678765432",
+      "dob": "222222-02-21",
       "gender": "Female",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
->>>>>>> Stashed changes
+      "organization": "Warje",
+      "branch": null,
+      "id": 32
+    },
+    {
+      "firstname": "Rutuja",
+      "lastname": "Sawant",
+      "email": "rutuja@123.gmail.com",
+      "contact": "23456987654321",
+      "dob": "23333-02-21",
+      "gender": "Female",
+      "organization": "cdac",
+      "branch": "",
+      "id": 33
+    },
+    {
+      "firstname": "werty",
+      "lastname": "qwertyu",
+      "email": "sujitg1999@gmail.com",
+      "contact": "234567",
+      "dob": "275760-04-23",
+      "gender": "Female",
+      "organization": "cdac",
+      "pnr": "sg23456",
+      "branch": "",
+      "id": 34
+
     }
   ]
 }

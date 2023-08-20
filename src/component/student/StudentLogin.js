@@ -36,7 +36,6 @@ export class StudentLogin extends Component {
       isLoggedIn: false,
     }
   }
-<<<<<<< Updated upstream
   componentDidMount() {
     // this.props.initStudentRequest();
   }
@@ -72,88 +71,6 @@ export class StudentLogin extends Component {
           severity: 'error'
         });
       }
-=======
-    
-    render() {
-        return (
-          
-            <div>
-                <ThemeProvider theme={defaultTheme}>
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <Box
-            sx={{
-              marginTop: 1,
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              
-            }}
-          >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
-            <Typography component="h1" variant="h5">
-             Student Login
-            </Typography>
-            <Box component="form" onSubmit={this.submitBtn} marginTop={3} padding={3}  boxShadow={'5px 5px 10px #ccc'} 
-            sx={{  ":hover": {
-              boxShadow:'10px 10px 20px #ccc'
-            }}} >
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Enter Email/Username"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                onChange={this.inputChangeHandler}
-              />
-              <TextField
-                margin="normal"
-                required
-                fullWidth
-                name="dob"
-                type="date"
-                id="dob"
-                onChange={this.inputChangeHandler}
-              />
-              {/* <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-              /> */}
-            
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Login In
-              </Button>
-       
-              <Grid container style={{ textAlign: 'left' }}>
-              <Grid item xs>
-                <Link to='register' variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
-                  New Student ? Register Here
-                </Link><br />
-                <Link href="#" variant="body2" style={{ color: 'red', textDecoration: 'none' }}>
-                  Feedback ? Click Here
-                </Link>
-              </Grid>
-              <br />
-            </Grid>
-            </Box>
-          </Box>
-        
-        </Container>
-      </ThemeProvider>
-      {/* { istrue && <Voucher/> } */}
-            </div>
-        )
->>>>>>> Stashed changes
     }
     // this.props.initStudentRequest();
   }

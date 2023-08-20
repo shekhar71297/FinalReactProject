@@ -6,22 +6,9 @@ import { Delete, Get, Post, Put } from '../../util/HttpService'
 
 
 
-<<<<<<< Updated upstream
 
-=======
-// get data
-// export function getAllStudent(){
 
-//     return (dispatch)=>{  
-//         const url=`${Constant.baseURL}/students`
-//        Get(url).then(response => dispatch(getStudentsuccess(response.data)))
-//        .catch(error => dispatch(getStudenterror(error.response.data)) )
-   
-//     }
-   
-//    }
 
->>>>>>> Stashed changes
    export function getAllStudent() {
     return (dispatch) => {
         const url = `${Constant.baseURL}/students`;

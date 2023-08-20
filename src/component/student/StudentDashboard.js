@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -8,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import Box from '@mui/material/Box';
+import { Box,  Grid, Paper } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -29,7 +27,9 @@ import Alert from '@mui/material/Alert';
 import Dialog from '@mui/material/Dialog';
 import * as validation from '../../util/validation'
 import './studentdashboard.css'
-import * as TablePaginationActions from "../common/TablePaginationActions"
+import * as TablePaginationActions from "../common/TablePaginationActions";
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
 
 
 
@@ -302,17 +302,8 @@ class StudentDashboard extends Component {
 
     return (
       <div>
-        <Button variant="contained" color="primary" sx={{ marginTop: 8 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
-        <TextField
-          type="text"
-          value={searchQuery}
-          onChange={this.handleSearchChange}
-          placeholder="Search Result"
-          label="Search Result"
-          variant="outlined"
-          className='search'
-          sx={{ paddingBottom: 4 }}
-        />
+        
+
 
         <Box sx={{ height: 100 }}>
           <Paper className='paper'>
@@ -321,13 +312,45 @@ class StudentDashboard extends Component {
               <Table aria-label="simple table">
                 <TableHead>
 
-                  <TableRow>
+                  <TableRow >
 
-                    <TableCell align="center" colSpan={10} sx={{ color: "white", backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
-                      Student Module
+                  <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
+                      <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                        <Grid item>
+                          Student module
+                        </Grid>
+                        <Grid item>
+
+                          <TextField
+                            className='searchinput'
+                            type="text"
+                            value={searchQuery}
+                            onChange={this.handleSearchChange}
+                            placeholder="Search Result"
+                            // label="Search Result"
+
+                            variant="standard"
+                            sx={{
+                              backgroundColor: 'white',
+                              padding: "2px 3px",
+                              borderRadius: "4px",
+                              width: "auto",
+
+                            }}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="end">
+                                  <SearchIcon />
+                                </InputAdornment>
+                              ),
+                            }}
+
+                          />
+                        </Grid>
+                      </Grid>
                     </TableCell>
                   </TableRow>
-
+                  <Button variant="contained" color="primary" sx={{ marginTop: 4 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
                   <TableRow>
                     <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>

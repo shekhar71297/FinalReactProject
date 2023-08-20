@@ -269,7 +269,7 @@ class Usertable extends Component {
     );
     return (
 
-      <div>
+      <div className='container' style={{ marginRight: '25px' }}>
         {/* add button */}
 
         {/* User table  */}

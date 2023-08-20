@@ -532,6 +532,39 @@
       "id": 2
     }
   ],
+  "exams": [
+    {
+      "id": 1,
+      "code": "HI-1",
+      "examname": "Java"
+    },
+    {
+      "id": 2,
+      "code": "HI-2",
+      "examname": "Phython"
+    },
+    {
+      "id": 3,
+      "code": "HI-3",
+      "examname": "PHP"
+    },
+    {
+      "id": 4,
+      "code": "HI-4",
+      "examname": "Angular"
+    },
+    {
+      "id": 5,
+      "code": "HI-5",
+      "examname": "React"
+    },
+    {
+      "id": 6,
+      "code": "HI-6",
+      "examname": "Vue js",
+      "examstatus": false
+    }
+  ],
   "examresult": [
     {
       "studentName": "anmol chaware",

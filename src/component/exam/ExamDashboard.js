@@ -21,6 +21,8 @@ import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
+import * as validation from '../../util/validation';
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -254,7 +256,7 @@ class ExamDashboard extends Component {
 
           <TableRow>
             <TableCell align="center" colSpan={8} sx={{ backgroundColor:"#1976d2",color:"white" , fontSize:"25px" , textAlign:"start" , fontWeight:"bolder"}}>
-              Exam module
+              Manage Exam
             </TableCell>
           
           </TableRow>
@@ -289,14 +291,14 @@ class ExamDashboard extends Component {
                           <TableCell className="tablebody" align="center">{data.examname}</TableCell >
                           {/* <TableCell className="tablebody" align="center">{data.examstatus}</TableCell> */}
                           <TableCell>
-                            <Switch align="left"
+                            {/* <Switch align="left"
                               key={index}
                               // checked={this.state.examstatus}
                               checked={data.examstatus ? true : false}
                               onChange={(e)=>this.handleChange(index)}
                               inputProps={{ 'aria-label': 'controlled' }}
                             />
-                            {data.examstatus ? "Enabled" : "Disabled"}
+                            {data.examstatus ? "Enabled" : "Disabled"} */}
                           </TableCell>
                           <TableCell className="tablebody" align='center'><Button
                             onClick={() => (this.handleOpen(data.id))} ><EditIcon />

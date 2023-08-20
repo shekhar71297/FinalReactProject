@@ -1,0 +1,29 @@
+.paper {
+    width: 100%;
+    overflow: auto;
+    position: relative;
+    right: 30px;
+    /* top: 50px; */
+}
+.search{
+    left: 200px;
+    padding: 8px;
+    margin: 8px;
+    border: 2px solid;
+    border-radius: 5px;
+    top: 50px;
+    margin-left: 50px;
+}
+
+.addbtn{
+    right: 300px;
+    padding: 8px;
+    margin: 8px;
+    top: 50px;
+    margin-right: 50px; 
+}
+
+ .errorText-wrapper{
+    display: flex;
+    align-items: center;
+ }

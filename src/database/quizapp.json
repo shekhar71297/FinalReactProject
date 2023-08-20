@@ -343,7 +343,7 @@
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
@@ -1060,7 +1060,22 @@
       "id": 7,
       "code": "HI-7",
       "examname": "Veu.js",
-      "examstatus": true
+      "examstatus": "disable",
+      "action": ""
+    },
+    {
+      "id": 8,
+      "code": "jkwabsxh",
+      "examname": "ncb",
+      "examstatus": "disable",
+      "action": ""
+    },
+    {
+      "id": 9,
+      "code": "HI-24",
+      "examname": "nbckdsb",
+      "examstatus": "",
+      "action": ""
     }
   ]
 }

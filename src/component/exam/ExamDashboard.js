@@ -20,9 +20,6 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } 
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import * as validation from '../../util/validation';
-import * as TablePaginationActions from "../common/TablePaginationActions"
-
 
 const style = {
   position: 'absolute',
@@ -135,7 +132,7 @@ class ExamDashboard extends Component {
     // }
     this.props.initExamRequest();
   }
-  
+
   componentDidUpdate(prevProps) {
     if (prevProps.singleExam !== this.props.singleExam) {
       const { id = 0, code = "", examname = "", examstatus=false } = this.props.singleExam;
@@ -217,7 +214,10 @@ class ExamDashboard extends Component {
     this.handleClose();
   }
 
-  // for delete 
+  deletedata = (id) => {
+    this.openConfirmDialog(id);
+  };
+
   confirmDelete = () => {
     const id = this.state.recordToDeleteId;
     this.props.initExamRequest();

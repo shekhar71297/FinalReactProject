@@ -119,7 +119,7 @@ export class Datatable extends Component {
                 })
               }
             </TableBody>
-          </Table>
+          </Table> 
 
           <TablePagination
 

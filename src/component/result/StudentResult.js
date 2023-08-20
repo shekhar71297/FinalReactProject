@@ -184,7 +184,7 @@ export class StudentResult extends Component {
           <Paper>
             <TableContainer >
               <Table aria-label="simple table" sx={{ marginTop: 8 }}>
-                <TableHead style={{ maxHeight: '400px', overflowY: 'auto' }}>
+                <TableHead style={{ maxHeight: '400px', overflow: 'auto' }}>
                   <TableRow>
                     <TableCell align="center" colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>

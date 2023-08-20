@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { TextField, Button, Grid, MenuItem, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
+import { TextField, Button, Grid, MenuItem, Radio, Typography, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
@@ -24,9 +24,8 @@ import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import * as TablePaginationActions from "../common/TablePaginationActions"
-
+import SearchIcon from '@mui/icons-material/Search';
 import './usertable.css'
-
 import * as validation from '../../util/validation';
 
 
@@ -55,12 +54,12 @@ class Usertable extends Component {
       recordToDeleteId: null,
       snackbarOpen: false,
       snackbarMessage: '',
-      errors:{
-        fnameError:false,
-        lnameError:false,
-        contactError:false,
-        emailError:false,
-        passwordError:false
+      errors: {
+        fnameError: false,
+        lnameError: false,
+        contactError: false,
+        emailError: false,
+        passwordError: false
       },
       showPassword: false
     }
@@ -96,52 +95,52 @@ class Usertable extends Component {
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({ [name]: value }, () => {
-      if(name === "fname"){
+      if (name === "fname") {
         const isFnameError = !(validation.isValidName(this.state[name]));
-        if(isFnameError){
-          this.setState({errors:{...this.state.errors,fnameError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,fnameError:false}})
+        if (isFnameError) {
+          this.setState({ errors: { ...this.state.errors, fnameError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, fnameError: false } })
         }
       }
 
-      if(name === "lname"){
+      if (name === "lname") {
         const isLnameError = !(validation.isValidName(this.state[name]));
-        if(isLnameError){
-          this.setState({errors:{...this.state.errors,lnameError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,lnameError:false}})
+        if (isLnameError) {
+          this.setState({ errors: { ...this.state.errors, lnameError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, lnameError: false } })
         }
       }
 
-      if(name === "contact"){
+      if (name === "contact") {
         const isContactError = !(validation.isValidContact(this.state[name]));
-        if(isContactError){
-          this.setState({errors:{...this.state.errors,contactError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,contactError:false}})
+        if (isContactError) {
+          this.setState({ errors: { ...this.state.errors, contactError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, contactError: false } })
         }
       }
 
-      if(name === "email"){
+      if (name === "email") {
         const isEmailError = !(validation.isValidEmail(this.state[name]));
-        if(isEmailError){
-          this.setState({errors:{...this.state.errors,emailError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,emailError:false}})
+        if (isEmailError) {
+          this.setState({ errors: { ...this.state.errors, emailError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, emailError: false } })
         }
       }
 
-      if(name === "password"){
+      if (name === "password") {
         const isPasswordError = !(validation.isValidPassword(this.state[name]));
-        if(isPasswordError){
-          this.setState({errors:{...this.state.errors,passwordError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,passwordError:false}})
+        if (isPasswordError) {
+          this.setState({ errors: { ...this.state.errors, passwordError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, passwordError: false } })
         }
       }
     });
-    
+
   }
 
 
@@ -243,7 +242,7 @@ class Usertable extends Component {
     }
     this.handleClose();
   };
-   
+
   // close alert message 
   closeSnackbar = () => {
     this.setState({
@@ -252,10 +251,10 @@ class Usertable extends Component {
     });
   };
 
- 
+
   render() {
 
-    const { page, rowsPerPage, user, fname, open, lname, password, contact, email, gender, role } = this.state;
+    const { page, rowsPerPage, searchQuery, fname, open, lname, password, contact, email, gender, role } = this.state;
     const filteredUsers = this.props.allUser.filter((data) => {
 
       const searchQuery = this.state.searchQuery;
@@ -270,41 +269,66 @@ class Usertable extends Component {
     );
     return (
 
-      <div>
+      <div className='container' style={{ marginRight: '25px' }}>
         {/* add button */}
-        <Button variant="contained" color="primary" size="small" className='addbtn' type="button" onClick={() => (this.handleOpen())}><AddIcon />User</Button>&nbsp;
-
-        {/* search field  */}
-        <TextField
-          label="Search.."
-          variant="outlined"
-          value={this.state.searchQuery}
-          onChange={this.handleSearchQueryChange}
-          className='search'
-          sx={{ paddingBottom: 4 }}
-        />
 
         {/* User table  */}
         <Box sx={{ height: 100 }}>
-          <Paper className='paper'>
+          <Paper>
             <TableContainer>
-              <Table aria-label="simple table">
-                <TableHead>
+              <Table aria-label="simple table" sx={{ marginTop: 8 }}>
+                <TableHead style={{ maxHeight: '400px', overflowY: 'auto' }}>
                   <TableRow>
                     <TableCell align="center" colSpan={8} sx={{ color: "white", backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
-                      Manage User
+                      {/* Manage User */}
+
+                      <Grid container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                        <Grid item>
+                          Manage User
+                        </Grid>
+                        <Grid item>
+
+                          <TextField
+                            className='searchinput'
+                            type="text"
+                            value={searchQuery}
+                            onChange={this.handleSearchQueryChange}
+                            placeholder="Search User"
+                            // label="Search Result"
+
+                            variant="standard"
+                            sx={{
+                              backgroundColor: 'white',
+                              padding: "2px 3px",
+                              borderRadius: "4px",
+                              width: "auto",
+
+                            }}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="end">
+                                  <SearchIcon />
+                                </InputAdornment>
+                              ),
+                            }}
+
+                          />
+                        </Grid>
+                      </Grid>
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell>SrNo</TableCell>
-                    <TableCell align="center">First Name</TableCell>
-                    <TableCell align="center">Last Name</TableCell>
-                    <TableCell align="center">Email</TableCell>
-                    {/* <TableCell align="center">Password</TableCell> */}
-                    <TableCell align="center">Role</TableCell>
-                    <TableCell align="center">Gender</TableCell>
-                    <TableCell align="center">Contact</TableCell>
-                    <TableCell align="center">Action</TableCell>
+                       <Button variant="contained" color="primary" size="small" type="button" sx={{ margin:"8px" ,padding: "4px 4px",}} onClick={() => (this.handleOpen())}><AddIcon />User</Button>
+                   </TableRow>
+                  <TableRow>
+                    <TableCell><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Last Name</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Email</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Role</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Gender</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Contact</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -327,12 +351,9 @@ class Usertable extends Component {
                         <TableCell className="tablebody" align="center">{data.fname}</TableCell >
                         <TableCell className="tablebody" align="center">{data.lname}</TableCell >
                         <TableCell className="tablebody" align="center">{data.email}</TableCell>
-
-                        {/* <TableCell className="tablebody" align="center">{data.password}</TableCell> */}
                         <TableCell className="tablebody" align="center">{data.role}</TableCell>
                         <TableCell className="tablebody" align="center">{data.gender}</TableCell>
                         <TableCell className="tablebody" align="center">{data.contact}</TableCell>
-
                         <TableCell className="tablebody" align="center" >
                           <Button onClick={() => (this.handleOpen(data.id))}><EditIcon /></Button>
                           <Button onClick={() => this.deletedata(data.id)}><DeleteIcon /></Button>
@@ -347,7 +368,7 @@ class Usertable extends Component {
             </TableContainer>
             <TablePagination
               rowsPerPageOptions={[5, 10, 25]}
-              colSpan={7} // Adjust the colSpan value according to your table structure
+              colSpan={8} // Adjust the colSpan value according to your table structure
               count={filteredUsers.length}
               rowsPerPage={rowsPerPage}
               page={page}
@@ -390,11 +411,11 @@ class Usertable extends Component {
                     type="text"
                     value={fname}
                     onChange={this.handleChange}
-                     error={this.state.errors.fnameError 
+                    error={this.state.errors.fnameError
                     }
-                    helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid first name") ||'eg:John'}
+                    helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid first name") || 'eg:John'}
                   />
-                 </Grid>
+                </Grid>
                 <Grid item xs={12}>
                   <TextField
                     required
@@ -405,9 +426,9 @@ class Usertable extends Component {
                     name="lname"
                     value={lname}
                     onChange={this.handleChange}
-                    error={this.state.errors.lnameError 
+                    error={this.state.errors.lnameError
                     }
-                    helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") ||'eg: Dev'}
+                    helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Dev'}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -420,9 +441,9 @@ class Usertable extends Component {
                     name="email"
                     value={email}
                     onChange={this.handleChange}
-                    error={this.state.errors.emailError 
+                    error={this.state.errors.emailError
                     }
-                    helperText={this.state.errors.emailError && validation.errorText("Please enter a valid Email") ||'eg: John1@gmail.com'}
+                    helperText={this.state.errors.emailError && validation.errorText("Please enter a valid Email") || 'eg: John1@gmail.com'}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -435,9 +456,9 @@ class Usertable extends Component {
                     name="contact"
                     value={contact}
                     onChange={this.handleChange}
-                    error={this.state.errors.contactError 
+                    error={this.state.errors.contactError
                     }
-                    helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact") ||'eg: 8888888888'}
+                    helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact") || 'eg: 8888888888'}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -508,8 +529,8 @@ class Usertable extends Component {
                     }}
                     error={this.state.errors.passwordError
                     }
-                    helperText={this.state.errors.passwordError && validation.errorText("Please enter a valid password") ||'eg: Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'}
-                   />
+                    helperText={this.state.errors.passwordError && validation.errorText("Please enter a valid password") || 'eg: Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character'}
+                  />
                 </Grid>
               </Grid>
             </DialogContent>

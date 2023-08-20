@@ -37,24 +37,22 @@ export class Datatable extends Component {
 
 
 
-
-  handleChange = (index, status, event) => {
-    console.log("vcodes:", this.state.vcodes);
-    console.log("index:", index);
-    console.log("status:", status);
-
-    let vcodes = this.state.vcodes;
-    if (vcodes[index]) {
-      vcodes[index].status = !status;
-      this.setState({ vcodes: vcodes }, () => {
-        // console.log("Updated vcodes:", this.state.vcodes);
-        this.props.updateVoucherRequest(this.state.vcodes[index]);
-      });
-    }
-    //  else {
-    // console.log("Invalid index or vcodes data:", index, vcodes);
-    // }
+  handleChange = (index) => {
+    const { page, rowsPerPage } = this.state;
+  
+    const dataIndex = page * rowsPerPage + index; // Calculate the actual index in the full data array
+  
+    this.setState((prevState) => {
+      const updatedVcodes = [...prevState.vcodes];
+      updatedVcodes[dataIndex].status = !updatedVcodes[dataIndex].status; // Toggle the status directly
+      return { vcodes: updatedVcodes };
+    }, () => {
+      this.props.updateVoucherRequest(this.state.vcodes[dataIndex]);
+    });
   };
+  
+  
+  
 
 
   // pagination function
@@ -106,11 +104,11 @@ export class Datatable extends Component {
                       <TableCell>
                         <Switch
                           key={index}
-                          // checked={this.state.status}
                           checked={data.status}
                           onChange={(e) => this.handleChange(index, data.status)}
                           inputProps={{ 'aria-label': 'controlled' }}
                         />
+
 
                       </TableCell>
 

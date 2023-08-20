@@ -9,7 +9,7 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Switch from '@mui/material/Switch';
-import TablePaginationActions from '../common/TablePaginationActions';
+import * as TablePaginationActions from '../common/TablePaginationActions';
 
 
 export class Datatable extends Component {
@@ -23,6 +23,8 @@ export class Datatable extends Component {
       rowsPerPage: 5,
 
     };
+    this.handleChangePage = this.handleChangePage.bind(this);
+    this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
   }
   componentDidUpdate(prevProps) {
     if (prevProps.allvouchers !== this.props.allvouchers) {
@@ -33,26 +35,22 @@ export class Datatable extends Component {
   componentDidMount() {
 
     this.props.initVoucherRequest()
+    
   }
 
-
-
-  handleChange = (index) => {
+  handleChange = (index, status, event) => {
     const { page, rowsPerPage } = this.state;
-  
-    const dataIndex = page * rowsPerPage + index; // Calculate the actual index in the full data array
-  
-    this.setState((prevState) => {
-      const updatedVcodes = [...prevState.vcodes];
-      updatedVcodes[dataIndex].status = !updatedVcodes[dataIndex].status; // Toggle the status directly
-      return { vcodes: updatedVcodes };
-    }, () => {
+    let vcodes = this.state.vcodes;
+    const dataIndex = page * rowsPerPage + index;
+    // console.log("before",vcodes,index,vcodes[index]);
+    vcodes[dataIndex].status = !status;
+    // console.log("after",vcodes);
+    this.setState({ vcodes: vcodes }, () => {
+      console.log(this.state.vcodes[dataIndex])
       this.props.updateVoucherRequest(this.state.vcodes[dataIndex]);
     });
+
   };
-  
-  
-  
 
 
   // pagination function
@@ -122,7 +120,7 @@ export class Datatable extends Component {
           <TablePagination
 
             rowsPerPageOptions={[5, 10, 25]}
-            colSpan={7} // Adjust the colSpan value according to your table structure
+            colSpan={6} // Adjust the colSpan value according to your table structure
             count={this.props.allvouchers.length}
             rowsPerPage={rowsPerPage}
             page={page}

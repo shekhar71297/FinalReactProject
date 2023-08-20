@@ -333,7 +333,7 @@
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
@@ -353,7 +353,7 @@
       "Vcode": "SgLBmw"
     },
     {
-      "status": false,
+      "status": true,
       "id": 5,
       "Vcode": "TZkSCK"
     },
@@ -363,7 +363,7 @@
       "Vcode": "rEOHy9"
     },
     {
-      "status": false,
+      "status": true,
       "id": 7,
       "Vcode": "gCoC7V"
     },
@@ -383,27 +383,27 @@
       "Vcode": "aaaaa"
     },
     {
-      "status": false,
+      "status": true,
       "id": 11,
       "Vcode": "wU4NOp"
     },
     {
-      "status": false,
+      "status": true,
       "id": 12,
       "Vcode": "A2Qekk"
     },
     {
-      "status": false,
+      "status": true,
       "id": 13,
       "Vcode": "opyAs6"
     },
     {
-      "status": false,
+      "status": true,
       "id": 14,
       "Vcode": "IwHLmT"
     },
     {
-      "status": false,
+      "status": true,
       "id": 15,
       "Vcode": "MaMkbt"
     }
@@ -774,7 +774,6 @@
       "studentName": "Sujit Gaikwad",
       "count": 0,
       "id": 35
-    
     },
     {
       "studentName": "rushikesh kakde",

@@ -39,16 +39,6 @@
       "gender": "male",
       "contact": "8007419586",
       "id": 7
-    },
-    {
-      "email": "samadhan1234@gmail.com",
-      "fname": "samadhan",
-      "lname": "kakde",
-      "password": "sa123456",
-      "role": "trainer",
-      "gender": "male",
-      "contact": "984558999",
-      "id": 8
     }
   ],
   "react": [
@@ -333,7 +323,7 @@
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
@@ -561,8 +551,9 @@
     {
       "id": 6,
       "code": "HI-6",
-      "examname": "Vue js",
-      "examstatus": false
+      "examname": "Vuejss",
+      "examstatus": false,
+      "action": ""
     }
   ],
   "examresult": [
@@ -794,17 +785,11 @@
       "id": 15
     },
     {
-      "fname": "Nakul",
-      "email": "nakul12@gmail.com",
-      "contact": "7656565656",
-      "org": "CDAC",
-      "queOne": "test",
-      "queTwo": "test",
-      "queThree": "test",
-      "queFour": "test",
-      "queFive": "test",
-      "queSix": "test",
-      "id": 16
+      "id": 4,
+      "code": "HI-4",
+      "examname": "PHP",
+      "examstatus": false,
+      "action": ""
     },
     {
       "fname": "renuka",
@@ -833,17 +818,10 @@
       "id": 18
     },
     {
-      "fname": "Renuka Kahane",
-      "email": "renuka1@gmail.com",
-      "contact": "8987676565",
-      "org": "Hematite",
-      "queOne": "testee",
-      "queTwo": "dfsdfsf",
-      "queThree": "dfdfd",
-      "queFour": "dfdfdf",
-      "queFive": "dfdfdf",
-      "queSix": "fdfdfdfd",
-      "id": 19
+      "id": 7,
+      "code": "HI-7",
+      "examname": "Veu.js",
+      "examstatus": true
     }
   ]
 }

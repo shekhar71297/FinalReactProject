@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -17,11 +16,13 @@ import Modal from '@mui/material/Modal';
 import Stack from '@mui/material/Stack';
 import { TextField, Button, Grid, Container, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
+
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-
 import * as validation from '../../util/validation';
+import * as TablePaginationActions from "../common/TablePaginationActions"
+
 
 const style = {
   position: 'absolute',
@@ -30,8 +31,8 @@ const style = {
   transform: 'translate(-50%, -50%)',
   width: 400,
   height: 500,
-  bgcolor: 'background.paper',
   border: '2px solid #000',
+  bgcolor: 'background.paper',
   boxShadow: 24,
   overflow: 'auto',
   p: 4,
@@ -54,6 +55,11 @@ class ExamDashboard extends Component {
       snackbarMessage: '',
       confirmDialogOpen: false,
       recordToDeleteId: null,
+      errors:{
+        codeError:false,
+        examnameError:false,
+        examstatusError:false,
+      },
       status: true,
       open: false,
       page: 0,
@@ -76,17 +82,40 @@ class ExamDashboard extends Component {
   }
 
   // for add-update onchange method
-  handleChange = (index) => {
-    // const { name, value } = event.target;
-    // this.setState({ [name]: value });
-    // console.log(value);
-    let allExams = this.props.allExams;
-    allExams[index].examstatus = !allExams[index].examstatus;
-    this.props.updateExamRequest(allExams[index]);
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+    console.log(value);
+
+    if(name === "code"){
+      const codeError = !(validation.isValidName(this.state[name]));
+      if(codeError){
+        this.setState({errors:{...this.state.errors,codeError:true}})
+      }else{
+        this.setState({errors:{...this.state.errors,codeError:false}})
+      }
+    }
+    if(name === "examname"){
+      const examnameError = !(validation.isValidExamname(this.state[name]));
+      if(examnameError){
+        this.setState({errors:{...this.state.errors,examnameError:true}})
+      }else{
+        this.setState({errors:{...this.state.errors,examnameError:false}})
+      }
+    }
+    // handleChange = (index) => {
+    // let allExams = this.props.allExams;
+    // allExams[index].examstatus = !allExams[index].examstatus;
+    // this.props.updateExamRequest(allExams[index]);
   }
 
+  //   inputChangeHandler=(e)=>{
+  //     const{name,value}=e.target;
+  //     this.setState({[name]:value})
+  // }
+
   handleOpen = (id = null) => {
-    this.resetUserFormHandler();
+    this.resetExamFormHandler();
 
     if (id !== null) {
       this.getsinglerecord(id);
@@ -106,7 +135,8 @@ class ExamDashboard extends Component {
     // }
     this.props.initExamRequest();
   }
-
+  // 
+  
   componentDidUpdate(prevProps) {
     if (prevProps.singleExam !== this.props.singleExam) {
       const { id = 0, code = "", examname = "", examstatus=false } = this.props.singleExam;
@@ -140,7 +170,7 @@ class ExamDashboard extends Component {
     this.props.getSingleExamRequest(id)
   }
 
-  resetUserFormHandler = () => {
+  resetExamFormHandler = () => {
     this.setState({
       //exam: [],
       id: null,
@@ -187,20 +217,19 @@ class ExamDashboard extends Component {
     }
     this.handleClose();
   }
-
-  deletedata = (id) => {
-    this.openConfirmDialog(id);
-  };
-
   confirmDelete = () => {
     const id = this.state.recordToDeleteId;
-    // this.props.initExamRequest();
+    this.props.initExamRequest();
     this.props.deleteExamRequest(id);
     this.closeConfirmDialog();
     this.setState({
       snackbarOpen: true,
       snackbarMessage: 'Exam deleted successfully',
     });
+  };
+
+  deletedata = (id) => {
+    this.openConfirmDialog(id);
   };
 
   openConfirmDialog = (id) => {
@@ -304,7 +333,7 @@ class ExamDashboard extends Component {
                             onClick={() => (this.handleOpen(data.id))} ><EditIcon />
                           </Button>
                             <Button
-                              onClick={() => this.deletedata(data.id)}
+                              onClick={() =>(this.deletedata(data.id))}
                               ><DeleteIcon />
                             </Button>
                           </TableCell>
@@ -333,6 +362,10 @@ class ExamDashboard extends Component {
                         name="code"
                         value={code}
                         onChange={this.handleChange}
+                        error={this.state.errors.codeError 
+                        }
+                        helperText={this.state.errors.codeError && validation.errorText("Please enter a valid code ") ||'eg:HI-3'}
+    
                       />
                     </Grid>
                     <Grid item xs={12} >
@@ -344,6 +377,9 @@ class ExamDashboard extends Component {
                         name="examname"
                         value={examname}
                         onChange={this.handleChange}
+                        error={this.state.errors.examnameError 
+                        }
+                        helperText={this.state.errors.examnameError && validation.errorText("Please enter a exam name") ||'eg:Java,php'}
                       />
                     </Grid>
                     
@@ -399,15 +435,22 @@ class ExamDashboard extends Component {
           </DialogActions>
         </Dialog>
 
-            {/* table pagination */}
-            <TablePagination
-              component="div"
-              rowsPerPageOptions={[5, 10, 25]}
-              count={filteredExam?.length || 0}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              onPageChange={this.handleChangePage}
-              onRowsPerPageChange={this.handleChangeRowsPerPage}
+              {/* table pagination */}
+              <TablePagination
+                  rowsPerPageOptions={[5, 10, 25]}
+                  colSpan={7} // Adjust the colSpan value according to your table structure
+                  count={filteredExam.length}
+                  rowsPerPage={rowsPerPage}
+                  page={page}
+                  SelectProps={{
+                    inputProps: {
+                      'aria-label': 'rows per page',
+                    },
+                    native: true,
+                  }}
+                  onPageChange={this.handleChangePage}
+                  onRowsPerPageChange={this.handleChangeRowsPerPage}
+                  ActionsComponent={TablePaginationActions.default} // Imported component
             />
             
           </Paper>

@@ -148,8 +148,8 @@ class NewStudentRegistration extends Component {
       }
 
       if(name === "contact"){
-        const isEmailError = !(validation.isValidContact(this.state[name]));
-        if(isEmailError){
+        const isvalidContact = !(validation.isValidContact(this.state[name]));
+        if(isvalidContact){
           this.setState({errors:{...this.state.errors,contactError:true}})
         }else{
           this.setState({errors:{...this.state.errors,contactError:false}})
@@ -214,7 +214,7 @@ class NewStudentRegistration extends Component {
                   fullWidth
                   required
                   error={this.state.errors.fnameError }
-                  helperText={this.state.errors.fnameError && "Please enter a valid firstname"||"eg:John"}
+                  helperText={this.state.errors.fnameError && validation.errorText ("Please enter a valid firstname")||"eg:John"}
                 />
                  
                 <TextField
@@ -228,7 +228,7 @@ class NewStudentRegistration extends Component {
                   fullWidth
                   required
                   error={this.state.errors.lnameError }
-                  helperText={this.state.errors.lnameError && "Please enter a valid firstname"||"eg:Doe"}
+                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") ||'eg: Dev'}
                 />
                 {/* {this.state.errors.lnameError &&(<span>Please enter a valid lastname</span>)} */}
               </Stack>
@@ -245,7 +245,7 @@ class NewStudentRegistration extends Component {
                 required
                 sx={{ mb: 4 }}
                 error={this.state.errors.emailError}
-                helperText={this.state.errors.emailError && "Please enter a valid email"||"eg:jhon@123"}
+                helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email")||"eg:jhon@123"}
               />
                  {/* {this.state.errors.emailError &&(<span>Please enter a valid email</span>)} */}
               <TextField
@@ -260,7 +260,7 @@ class NewStudentRegistration extends Component {
                 required
                 sx={{ mb: 4 }}
                 error={this.state.errors.contactError}
-                helperText={this.state.errors.contactError && "Please enter a valid contact"||"eg:99223344222"}
+                helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact")||"eg:99223344222"}
               />
               <TextField
                 type="date"

@@ -117,7 +117,7 @@ class Usertable extends Component {
       }
 
       if(name === "contact"){
-        const isContactError = !(validation.isvalidContact(this.state[name]));
+        const isContactError = !(validation.isValidContact(this.state[name]));
         if(isContactError){
           this.setState({errors:{...this.state.errors,contactError:true}})
         }else{

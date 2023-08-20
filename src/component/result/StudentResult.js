@@ -14,7 +14,9 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, T
 import TextField from '@mui/material/TextField';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import * as TablePaginationActions from "../common/TablePaginationActions"
+import * as TablePaginationActions from "../common/TablePaginationActions";
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
 export class StudentResult extends Component {
   constructor(props) {
     super(props);
@@ -190,6 +192,7 @@ export class StudentResult extends Component {
                           Result module
                         </Grid>
                         <Grid item>
+
                           <TextField
                             className='searchinput'
                             type="text"
@@ -197,14 +200,23 @@ export class StudentResult extends Component {
                             onChange={this.handleSearchChange}
                             placeholder="Search Result"
                             // label="Search Result"
+
                             variant="standard"
                             sx={{
                               backgroundColor: 'white',
-                              padding: "2px 5px",
+                              padding: "2px 3px",
                               borderRadius: "4px",
                               width: "auto",
 
                             }}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="end">
+                                  <SearchIcon />
+                                </InputAdornment>
+                              ),
+                            }}
+
                           />
                         </Grid>
                       </Grid>

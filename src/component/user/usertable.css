@@ -15,13 +15,13 @@
     margin-left: 50px;
 }
 
-.addbtn{
-    right: 300px;
-    padding: 8px;
-    margin: 8px;
-    top: 50px;
-    margin-right: 50px; 
-}
+/* .addbtn{
+    /* right: 300px; */
+    /* padding: 8px; */
+    /* margin: 8px; */
+    /* top: 50px; */
+    /* margin-right: 50px;  */
+ */
 
  .errorText-wrapper{
     display: flex;

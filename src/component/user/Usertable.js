@@ -61,7 +61,8 @@ class Usertable extends Component {
         emailError: false,
         passwordError: false
       },
-      showPassword: false
+      showPassword: false,
+      severity:"success"
     }
   }
 
@@ -147,13 +148,13 @@ class Usertable extends Component {
 
   //to popup
   handleOpen = (id = null) => {
-    this.resetUserFormHandler();
 
     if (id !== null) {
       this.getsinglerecord(id);
       this.setState({ open: true, isAddUser: false });
     } else {
       this.setState({ open: true, isAddUser: true });
+      this.resetUserFormHandler();
     }
 
   };
@@ -215,7 +216,12 @@ class Usertable extends Component {
 
   updateuser = (event) => {
     event.preventDefault();
-
+  
+    if (this.state.errors.fnameError || this.state.errors.lnameError || this.state.errors.emailError || this.state.errors.contactError || this.state.errors.passwordError) {
+      this.setState({snackbarOpen:true,
+      snackbarMessage:"please fix validiation error before submiting", severity:"error"})
+      return;
+    }
     let uobj = {
       email: this.state.email,
       fname: this.state.fname,
@@ -230,7 +236,9 @@ class Usertable extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'User added successfully',
+        severity:"success"
       });
+      this.props.initUserRequest()
     } else {
       uobj['id'] = this.state.id;
       this.props.initUserRequest();
@@ -238,9 +246,13 @@ class Usertable extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'User updated successfully',
+        severity:"success"
       });
     }
+
     this.handleClose();
+    this.props.initUserRequest()
+
   };
 
   // close alert message 
@@ -269,18 +281,16 @@ class Usertable extends Component {
     );
     return (
 
-      <div className='container' style={{ marginRight: '25px' }}>
-        {/* add button */}
+      <div>
 
         {/* User table  */}
-        <Box sx={{ height: 100 }}>
+        <Box sx={{ marginRight: "25px", marginTop: 7, position: "relative", right: 20 }}>
           <Paper>
             <TableContainer>
-              <Table aria-label="simple table" sx={{ marginTop: 8 }}>
-                <TableHead style={{ maxHeight: '400px', overflowY: 'auto' }}>
+              <Table aria-label="simple table" sx={{}}>
+                <TableHead style={{ overflow: 'auto' }}>
                   <TableRow>
-                    <TableCell align="center" colSpan={8} sx={{ color: "white", backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
-                      {/* Manage User */}
+                    <TableCell align="center" colSpan={10} sx={{ color: "white", backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
 
                       <Grid container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
@@ -294,8 +304,6 @@ class Usertable extends Component {
                             value={searchQuery}
                             onChange={this.handleSearchQueryChange}
                             placeholder="Search User"
-                            // label="Search Result"
-
                             variant="standard"
                             sx={{
                               backgroundColor: 'white',
@@ -318,8 +326,8 @@ class Usertable extends Component {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                       <Button variant="contained" color="primary" size="small" type="button" sx={{ margin:"8px" ,padding: "4px 4px",}} onClick={() => (this.handleOpen())}><AddIcon />User</Button>
-                   </TableRow>
+                    <Button variant="contained" color="primary" size="small" type="button" sx={{ margin: "8px", padding: "4px 4px", }} onClick={() => (this.handleOpen())}><AddIcon />User</Button>
+                  </TableRow>
                   <TableRow>
                     <TableCell><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>
@@ -586,12 +594,13 @@ class Usertable extends Component {
         >
           <Alert
             onClose={this.closeSnackbar}
-            severity="success"
+            severity={this.state.severity}
             sx={{ width: '100%' }}
           >
             {this.state.snackbarMessage}
           </Alert>
         </Snackbar>
+
 
       </div >
     )

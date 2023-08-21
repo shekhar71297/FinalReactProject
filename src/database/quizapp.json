@@ -28,7 +28,7 @@
       "role": "trainer",
       "gender": "female",
       "contact": "8976453213",
-      "id": 3 
+      "id": 3
     },
     {
       "email": "rushikakdeforever@gmail.com",
@@ -593,7 +593,6 @@
       "pnr": "",
       "branch": "",
       "id": 24
-    
     }
   ],
   "examresult": [
@@ -613,11 +612,6 @@
       "id": 3
     },
     {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 3
-    },
-    {
       "studentName": "anmol chaware",
       "count": 0,
       "id": 4
@@ -626,28 +620,8 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
-    },
-    {
-      "studentName": "Sujit Gaikwad",
-      "count": 0,
-      "id": 35
-    },
-    {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 7
-    },
-    {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 36
-     
-    },
-    {
-      "studentName": "anmol chaware",
-      "count": 0,
-      "id": 37
     }
+    
   ],
   "feedback": [
     {

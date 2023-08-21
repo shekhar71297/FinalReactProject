@@ -163,6 +163,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
           label="Question"
           id="fullwidth"
           focused
+          required
           value={question}
           onChange={(e) => setquestion(e.target.value)}
           
@@ -175,6 +176,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
           id="fullwidth"
           label={`Option ${index + 1}`}
           focused
+          required
           value={option.text}
           onChange={(e) => handleOptionChange(e, index)}
          
@@ -188,6 +190,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
           label="Answer"
           value={answer}
           focused
+          required
           onChange={(e) => setanswer(e.target.value)}
         />
         </div>

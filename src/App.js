@@ -31,7 +31,7 @@ function App() {
               <Route path='user' element={<User />} />
               <Route path='feedback' element={<Feedback/>} />
             </Route>
-            <Route path='form' element={<FeedbackModule/>} />
+            <Route path='/form' element={<FeedbackModule/>} />
           </Routes>
         </BrowserRouter>
       </div>

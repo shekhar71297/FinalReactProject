@@ -21,6 +21,8 @@ import { connect } from 'react-redux';
 import WithRouter from '../../util/WithRouter';
 import * as validation from '../../util/validation'
 import { TextFields } from '@mui/icons-material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import Modal from '@mui/material/Modal';
 class NewStudentRegistration extends Component {
   constructor(props) {
@@ -40,6 +42,13 @@ class NewStudentRegistration extends Component {
       branch:'',
       term: false,
       open: false,
+      isAddStudent: true,
+      isDeletePopupOpen: false,
+      deletingRecordId: null,
+      isDetailsPopupOpen: false,
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: '',
       errors:{
         fnameError:false,
         lnameError:false,
@@ -67,6 +76,13 @@ class NewStudentRegistration extends Component {
       branch: '',
       pnr: "",
       showCdacTextField: false,
+      isAddStudent: true,
+      isDeletePopupOpen: false,
+      deletingRecordId: null,
+      isDetailsPopupOpen: false,
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: '',
 
     })
 
@@ -82,12 +98,20 @@ class NewStudentRegistration extends Component {
       branch: this.state.branch === " " || this.state.organization === "cdac" ? "" : this.state.branch
     }
     this.props.addStudentRequest(payload)
-    window.alert("Student Registered Successfully ")
-    this.props.router.navigate("/")
+    this.setState({
+          snackbarOpen: true,
+          snackbarMessage: 'Student Registered successfully',
+          severity: 'success',
+        });
+         
+    setTimeout(() => {
+      this.props.router.navigate("/");
+    }, 2000);
+    
   }
+  
 
-
-  handleClearForm = () => {
+  resetStudentFormHandler = () => {
     this.setState({
       firstname: (''),
       lastname: (''),
@@ -334,12 +358,15 @@ class NewStudentRegistration extends Component {
               </FormControl>
 
               <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
-              <Button onClick={this.handleClearForm} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" type="reset">Clear</Button>
+              <Button type="button" onClick={this.resetStudentFormHandler} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" >Clear</Button>
             </form>
 
           </div>
         </Box>
         
+
+
+        {/* footer */}
         <Box sx={{ flexGrow: 1, marginTop: 18 }}>
             <AppBar position="static">
               <Toolbar>
@@ -358,7 +385,16 @@ class NewStudentRegistration extends Component {
               </Toolbar>
             </AppBar>
           </Box>
-
+          <Snackbar
+              open={this.state.snackbarOpen}
+              autoHideDuration={3000} // You can adjust the duration as needed
+              onClose={() => this.setState({ snackbarOpen: false })}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+            >
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+                {this.state.snackbarMessage}
+              </Alert>
+            </Snackbar>
         </Box>
 
       // </Modal>

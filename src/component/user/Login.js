@@ -17,11 +17,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { MenuItem } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { MenuItem } from '@mui/material';
-
-
 
 const defaultTheme = createTheme();
 export class Login extends Component {
@@ -34,6 +32,9 @@ export class Login extends Component {
       role: "",
       fname: "",
       lname: "",
+      snackbarOpen: false,
+      snackbarMessage: '',
+      isLoggedIn: false,
       showPassword: false,
       showAlert: false,
       alertMessage: '',
@@ -57,7 +58,6 @@ export class Login extends Component {
             this.state.email === d.email &&
             this.state.password === d.password &&
             this.state.role === d.role
-
         );
 
         if (user) {
@@ -179,6 +179,8 @@ export class Login extends Component {
                     ),
                   }}
                 />
+                                
+
                 <TextField
                   select
                   margin="normal"

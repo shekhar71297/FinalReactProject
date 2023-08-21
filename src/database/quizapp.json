@@ -612,7 +612,6 @@
       "dob": "2002-02-02",
       "gender": "Male",
       "organization": "hematite"
-      
     },
     {
       "firstname": "Komal",
@@ -731,6 +730,7 @@
       "id": 34
     },
     {
+      "id": 35,
       "firstname": "Ruyuja",
       "lastname": "Abhana",
       "email": "sujitg1999@gmail.com",
@@ -739,8 +739,7 @@
       "gender": "Female",
       "organization": "hematite",
       "pnr": "",
-      "branch": "",
-      "id": 35
+      "branch": ""
     }
   ],
   "examresult": [

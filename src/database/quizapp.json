@@ -28,7 +28,7 @@
       "role": "trainer",
       "gender": "female",
       "contact": "8976453213",
-      "id": 3
+      "id": 3 
     },
     {
       "email": "rushikakdeforever@gmail.com",
@@ -571,14 +571,29 @@
       "id": 22
     },
     {
-      "id": 23,
-      "firstname": "tom",
-      "lastname": "harry",
-      "email": "tomharry@gmail.com",
-      "contact": "8668606212",
-      "dob": "1997-12-12",
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
       "gender": "Male",
-      "organization": "lighthouse"
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 23
+    },
+    {
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 24
+    
     }
   ],
   "examresult": [
@@ -623,9 +638,10 @@
       "id": 7
     },
     {
-      "studentName": "anmol chaware",
+      "studentName": "rushikesh kakde",
       "count": 0,
       "id": 36
+     
     },
     {
       "studentName": "anmol chaware",

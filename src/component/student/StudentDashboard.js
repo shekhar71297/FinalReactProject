@@ -79,6 +79,7 @@ class StudentDashboard extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
+      severity:'',
       errors: {
         fnameError: false,
         lnameError: false,
@@ -187,6 +188,22 @@ class StudentDashboard extends Component {
 
   updateStudent = (event) => {
     event.preventDefault();
+    if (
+      this.state.errors.fname ||
+      this.state.errors.emailError ||
+      this.state.errors.contactError ||
+      this.state.errors.lnameError
+      
+      
+    ) {
+      // Display an error message or take any necessary action
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Please fix the validation errors before submitting.",
+        severity: 'error',
+      });
+      return; // Prevent submission
+    }
     let sObj = {
       id: this.state.id,
       firstname: this.state.firstname,
@@ -205,9 +222,10 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student added successfully',
+        severity:'success'
       });
       this.props.initStudentRequest();
-
+     
     } else {
       sObj['id'] = this.state.id;
       this.props.addStudentRequest(sObj);
@@ -216,6 +234,7 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student updated successfully',
+        severity:'success'
       });
 
     }
@@ -270,6 +289,9 @@ class StudentDashboard extends Component {
         } else {
           this.setState({ errors: { ...this.state.errors, emailError: false } })
         }
+      }
+      if(name==="gender"){
+        this.setState({gender:value});
       }
 
       if (name === "contact") {
@@ -435,7 +457,7 @@ class StudentDashboard extends Component {
               onClose={() => this.setState({ snackbarOpen: false })}
               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
                 {this.state.snackbarMessage}
               </Alert>
             </Snackbar>

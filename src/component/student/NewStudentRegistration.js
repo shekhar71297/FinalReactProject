@@ -49,6 +49,7 @@ class NewStudentRegistration extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
+      severity:'',
       errors:{
         fnameError:false,
         lnameError:false,
@@ -63,6 +64,22 @@ class NewStudentRegistration extends Component {
 
   addResgisterStudent = (event) => {
     event.preventDefault();
+    if (
+      this.state.errors.fname ||
+      this.state.errors.emailError ||
+      this.state.errors.contactError ||
+      this.state.errors.lnameError
+      
+      
+    ) {
+      // Display an error message or take any necessary action
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Please fix the validation errors before submitting.",
+        severity: 'error',
+      });
+      return; // Prevent submission
+    }
     this.setState({
       students: [],
       firstname: '',
@@ -83,6 +100,7 @@ class NewStudentRegistration extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
+      severity:'success'
 
     })
 
@@ -129,7 +147,7 @@ class NewStudentRegistration extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     if (name === 'organization') {
       this.setState({
         [name]: value,

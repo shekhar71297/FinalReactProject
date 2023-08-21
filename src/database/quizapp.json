@@ -612,11 +612,6 @@
       "id": 3
     },
     {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 3
-    },
-    {
       "studentName": "anmol chaware",
       "count": 0,
       "id": 4
@@ -625,27 +620,8 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
-    },
-    {
-      "studentName": "Sujit Gaikwad",
-      "count": 0,
-      "id": 35
-    },
-    {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 7
-    },
-    {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 36
-    },
-    {
-      "studentName": "anmol chaware",
-      "count": 0,
-      "id": 37
     }
+    
   ],
   "feedback": [
     {
@@ -922,56 +898,17 @@
       "id": 21
     },
     {
-      "fname": "fdfkj",
-      "email": "jjj@gmail.com",
-      "contact": "9898888888",
-      "org": "jhhjkh",
-      "queOne": "hjhjhjhj",
-      "queTwo": "hhjhjjhjh",
-      "queThree": "jhjhjhjhj",
-      "queFour": "hjhjhjhjh",
-      "queFive": "hjhjhjhjh",
-      "queSix": "jhjhjhj",
-      "id": 22
-    },
-    {
-      "fname": "fdfs",
-      "email": "jkj@gmail.com",
-      "contact": "9999999999",
-      "org": "hjjk",
-      "queOne": "ljjjk",
-      "queTwo": "jjkjkjk",
-      "queThree": "kjkjkj",
-      "queFour": "kjkjkjkj",
-      "queFive": "kjkjkjkj",
-      "queSix": "jkjkjkj",
-      "id": 23
-    },
-    {
-      "fname": "hghjgjh",
-      "email": "gres@gmail.com",
-      "contact": "9099999999",
-      "org": "jkj",
-      "queOne": "kjkjjkj",
-      "queTwo": "jkjjkjkjk",
-      "queThree": "jkjkjkjkj",
-      "queFour": "kjkjkjkj",
-      "queFive": "kjkjkjkj",
-      "queSix": "jkjkjkjk",
-      "id": 24
-    },
-    {
-      "fname": "fdfd",
-      "email": "hjhs@gmail.com",
+      "fname": "abcdeee",
+      "email": "abc@gmail.com",
       "contact": "8888888888",
-      "org": "hjhjkh",
-      "queOne": "jhjhjkhjkh",
-      "queTwo": "jhjhjhjhj",
-      "queThree": "hjhjhjh",
-      "queFour": "jhjhjhjh",
-      "queFive": "jhjhjhjh",
-      "queSix": "hjhjh",
-      "id": 25
+      "org": "hemmm",
+      "queOne": "asaasaasa",
+      "queTwo": "asasasasas",
+      "queThree": "asasasasas",
+      "queFour": "asasaasas",
+      "queFive": "asasaasas",
+      "queSix": "asasasasasas",
+      "id": 22
     }
   ],
   "exams": [

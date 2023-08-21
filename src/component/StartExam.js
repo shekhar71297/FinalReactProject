@@ -23,8 +23,37 @@ class StartExam extends Component {
       studentName: '',
       endpage:false,
       openDialog: false,
+      currentQuestionIndex: 0,
     };
   }
+  goToNextQuestion = () => {
+    const { currentQuestionIndex, questions } = this.state;
+    if (currentQuestionIndex < questions.length - 1) {
+      this.setState((prevState) => ({
+        currentQuestionIndex: prevState.currentQuestionIndex + 1,
+      }));
+    }
+  };
+  goToLastQuestion = () => {
+    const { questions } = this.state;
+    this.setState({
+      currentQuestionIndex: questions.length - 1,
+    });
+  };
+  goToPreviousQuestion = () => {
+    const { currentQuestionIndex } = this.state;
+    if (currentQuestionIndex > 0) {
+      this.setState((prevState) => ({
+        currentQuestionIndex: prevState.currentQuestionIndex - 1,
+      }));
+    }
+  };
+  goToFirstQuestion = () => {
+    this.setState({
+      currentQuestionIndex: 0,
+    });
+  };
+
 
   componentDidMount() {
     // Fetch student name from sessionStorage
@@ -100,7 +129,9 @@ class StartExam extends Component {
       console.log(res.data);
       const questionsData = res.data;
       const selectedOptions = this.state.selectedOptions;
-  
+      sessionStorage.removeItem("isLogin");
+      sessionStorage.removeItem("studentName")
+      sessionStorage.removeItem("Voucher")
       const correctAnswers = questionsData.filter((question, index) => {
         return selectedOptions[index] === question.answer;
       });
@@ -118,9 +149,10 @@ class StartExam extends Component {
 
 
   render() {
-    const { timer, openDialog, questions, studentName, endpage, count } = this.state;
-  
-
+    const { timer, openDialog, questions, studentName, endpage, currentQuestionIndex } = this.state;
+    const isFirstQuestion = currentQuestionIndex === 0;
+    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+    const isExamSubmitted = this.state.endpage;
     return (
       <>
        {endpage ? (
@@ -136,20 +168,19 @@ class StartExam extends Component {
               <Typography variant="body2" sx={{ mr: 2, fontSize: '24px' }}>
                 {this.formatTimer(timer)}
               </Typography>
-              <Button variant='contained' color="warning" onClick={this.handleOpenDialog}>
-                Submit Exam
-              </Button>
+              {/* <Button variant='contained' color="warning" onClick={this.handleOpenDialog}>
+                
+              </Button> */}
             </Toolbar>
           </AppBar>
         </Box>
 
-        <Box sx={{ marginTop: 5, padding: 16  }}>
+        <Box sx={{ marginTop: 5, padding: 16 }}>
           <Typography variant="h5" gutterBottom>
             Questions
           </Typography>
-          {questions.map((question, index) => (
+          {questions.length > 0 && currentQuestionIndex < questions.length ? (
             <Box
-              key={index}
               sx={{
                 marginBottom: '20px',
                 padding: '16px',
@@ -157,24 +188,60 @@ class StartExam extends Component {
                 borderRadius: '8px',
               }}
             >
-              <Typography   sx={{ fontSize: "20px", textAlign: 'left' }}  variant="h6" color='primary' gutterBottom>
-                {index + 1} .{question.question}
+              <Typography sx={{ fontSize: "20px", textAlign: 'left' }} variant="h6" color='primary' gutterBottom>
+                {currentQuestionIndex + 1} .{questions[currentQuestionIndex].question}
               </Typography>
-           
-                <RadioGroup  sx={{ fontSize: "10px", textAlign: 'left' }}  aria-label={`question-${index}`} onChange={this.inputChangeHandler} name={`question-${index}`}>
-                  {question.options.map((option, optionIndex) => (
-                    <FormControlLabel
-                      key={optionIndex}
-                      value={option}
-                      control={<Radio />}
-                      label={option}
-                      
-                    />
-                  ))}
-                </RadioGroup>
-           
+              <RadioGroup
+                sx={{ fontSize: "10px", textAlign: 'left' }}
+                aria-label={`question-${currentQuestionIndex}`}
+                name={`question-${currentQuestionIndex}`}
+                value={this.state.selectedOptions[currentQuestionIndex]}
+                onChange={this.inputChangeHandler}
+              >
+                {questions[currentQuestionIndex].options.map((option, optionIndex) => (
+                  <FormControlLabel
+                    key={optionIndex}
+                    value={option}
+                    control={<Radio />}
+                    label={option}
+                  />
+                ))}
+              </RadioGroup>
+              {!isFirstQuestion && (
+                <Button variant="contained" color="primary" onClick={this.goToFirstQuestion} sx={{ marginRight: '10px' }}>
+                  First Question
+                </Button>
+              )}
+              {!isFirstQuestion && (
+                <Button variant="contained" color="primary" onClick={this.goToPreviousQuestion} sx={{ marginRight: '10px' }}>
+                  Previous
+                </Button>
+              )}
+              {!isLastQuestion && (
+                <Button variant="contained" color="primary" onClick={this.goToNextQuestion} sx={{ marginRight: '10px' }}>
+                  Next
+                </Button>
+              )}
+              {!isLastQuestion && (
+                <Button variant="contained" color="primary" onClick={this.goToLastQuestion} sx={{ marginRight: '10px' }}>
+                  Last Question
+                </Button>
+              )}
+              
             </Box>
-          ))}
+          ) : null}
+        {/* Submit or Logout Button */}
+        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+            {isExamSubmitted ? (
+              <Button variant="contained" color="secondary" onClick={this.handleLogout}>
+                Logout
+              </Button>
+            ) : (
+              <Button variant="contained" color="warning" onClick={this.handleOpenDialog}>
+                Submit Exam
+              </Button>
+            )}
+          </Box>
         </Box>
         {/* Dialog component */}
         <DialogBox 

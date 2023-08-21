@@ -24,7 +24,7 @@
       "email": "sam24@gmail.com",
       "fname": "samruddhi",
       "lname": "vaidya",
-      "password": "sam249",
+      "password": "samu2499",
       "role": "trainer",
       "gender": "female",
       "contact": "8976453213",
@@ -54,11 +54,41 @@
       "email": "sujitg1999@gmail.com",
       "fname": "sujit",
       "lname": "gaikwad",
-      "password": "123456",
+      "password": "123456aa",
       "role": "admin",
       "gender": "male",
       "contact": "9322403669",
       "id": 9
+    },
+    {
+      "email": "anmol123@gmail.com",
+      "fname": "samruddi",
+      "lname": "vaidya",
+      "password": "dfgghj234563545",
+      "role": "admin",
+      "gender": "female",
+      "contact": "8907654321",
+      "id": 10
+    },
+    {
+      "email": "sa@gmail.com",
+      "fname": "samruddhi",
+      "lname": "vaidya",
+      "password": "sam24566",
+      "role": "admin",
+      "gender": "female",
+      "contact": "8907654321",
+      "id": 11
+    },
+    {
+      "email": "anmol123@gmail.com",
+      "fname": "rushi",
+      "lname": "kakde",
+      "password": "rushi3455566",
+      "role": "trainer",
+      "gender": "male",
+      "contact": "8907654321",
+      "id": 12
     }
   ],
   "react": [

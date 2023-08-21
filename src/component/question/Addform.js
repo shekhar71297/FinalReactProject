@@ -16,6 +16,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import Snackbar from '@mui/material/Snackbar';
 
 
 const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionData }) => {
@@ -27,7 +28,8 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     { id: 3, text: '' },
     { id: 4, text: '' },
   ]);
-  
+  const [showSuccessSnackbar, setShowSuccessSnackbar] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
   const [selectedExam, setSelectedExam] = useState(null);
   const [answer, setanswer] = useState('');
   const [showPopup, setShowPopup] = useState(false);
@@ -47,7 +49,11 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       )
     );
   };
-          
+         
+  const showSnackbar = (message) => {
+    setSuccessMessage(message);
+    setShowSuccessSnackbar(true);
+  };
 
   useEffect(() => {
     if (isEditMode) {
@@ -90,7 +96,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     }
     
 
-    setShowPopup(true);
+    
     e.preventDefault();
     axios.post(examEndpoint,newQuestion).then((res)=>{
       console.log(res.data);
@@ -101,6 +107,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
           text,
         }))
       );
+      showSnackbar('Question added successfully');
       setanswer(res.data.answer);
       handleClearForm();
     })
@@ -132,6 +139,21 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
           
         </DialogContent>
       </Dialog>
+      <Snackbar
+        open={showSuccessSnackbar}
+        autoHideDuration={4000} // Adjust the duration as needed
+        onClose={() => setShowSuccessSnackbar(false)}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert
+          elevation={6}
+          variant="filled"
+          onClose={() => setShowSuccessSnackbar(false)}
+          severity="success"
+        >
+          {successMessage}
+        </Alert>
+      </Snackbar>
       
     {!isFormVisible && (
       <div className='pull-left' >
@@ -229,6 +251,8 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       </div>
     )}
 
+      
+
     <div>
       <FormControl variant="standard" sx={{ marginTop:2,  minWidth: 120 }}>
         <InputLabel  id="demo-simple-select-standard-label">Select Exam</InputLabel>
@@ -268,7 +292,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       </Dialog>
       </TableContainer>
 
-      <Popup show={showPopup} handleClose={handleClosePopup} />
+      {/* <Popup show={showPopup} handleClose={handleClosePopup} /> */}
       
     
       </div>

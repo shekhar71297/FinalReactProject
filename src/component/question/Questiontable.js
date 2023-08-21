@@ -218,7 +218,7 @@ const Questiontable = ({ allquestions }) => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setSelectedItemForDeletion(null)}>Cancel</Button>
-          <Button  color="error">
+          <Button variant='contained'  color="error">
             Delete
           </Button>
         </DialogActions>

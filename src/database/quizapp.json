@@ -192,6 +192,39 @@
       ],
       "answer": "kb",
       "id": 11
+    },
+    {
+      "question": "higuj",
+      "options": [
+        "vj",
+        "v ch",
+        "jv",
+        "hj "
+      ],
+      "answer": "  j",
+      "id": 12
+    },
+    {
+      "question": "vuv",
+      "options": [
+        "v ",
+        "hv",
+        "hv",
+        "hnvh"
+      ],
+      "answer": "vh",
+      "id": 13
+    },
+    {
+      "question": "vh",
+      "options": [
+        "vhv",
+        "hv",
+        "h",
+        "c"
+      ],
+      "answer": "gc",
+      "id": 14
     }
   ],
   "python": [
@@ -374,14 +407,14 @@
       "answer": "class"
     },
     {
-      "question": "ni",
+      "question": "bjjBJBjj",
       "options": [
-        "b",
-        "bik",
-        "bp",
-        "bip"
+        "bjjvyh",
+        "vh",
+        "gc",
+        "hc"
       ],
-      "answer": "bip",
+      "answer": "c",
       "id": 6
     }
   ],

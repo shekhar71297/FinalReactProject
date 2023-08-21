@@ -505,17 +505,6 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "id": 13,
-      "StudentName": "vijay kumar",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "python",
-      "TotalMark": 50,
-      "ObtainedMark": 28,
-      "Grade": "-",
-      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -570,16 +559,6 @@
       "organization": "lighthouse"
     },
     {
-      "id": 21,
-      "firstname": "Jhon",
-      "lastname": "Dev",
-      "email": "jhon123@gmail.com",
-      "contact": "9889345532",
-      "dob": "1995-03-12",
-      "gender": "Male",
-      "organization": "hematite"
-    },
-    {
       "firstname": "Sujit",
       "lastname": "Gaikwad",
       "email": "sujitg1313@gmail.com",
@@ -614,6 +593,7 @@
       "pnr": "",
       "branch": "",
       "id": 24
+    
     }
   ],
   "examresult": [
@@ -648,153 +628,6 @@
       "id": 5
     },
     {
-      "firstname": "test",
-      "lastname": "test",
-      "email": "test@123.gmail.com",
-      "contact": "test",
-      "dob": "1111-11-11",
-      "gender": "Male",
-      "organization": "cdac",
-      "branch": "",
-      "id": 26
-    },
-    {
-      "firstname": "test",
-      "lastname": "test",
-      "email": "admin@gmail.com",
-      "contact": "9898989898",
-      "dob": "2023-08-10",
-      "gender": "Female",
-      "organization": "cdac",
-      "branch": "",
-      "id": 27
-    },
-    {
-      "students": [],
-      "id": 29,
-      "firstname": "test",
-      "lastname": "test",
-      "email": "sujitg1999@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-11",
-      "gender": "Male",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
-    },
-    {
-      "students": [],
-      "id": 31,
-      "firstname": "test",
-      "lastname": "test",
-      "email": "sujitg1999@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-11",
-      "gender": "Male",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
-    },
-    {
-      "firstname": "2222",
-      "lastname": "4",
-      "email": "admin@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-04",
-      "gender": "Male",
-      "organization": "hematite",
-      "branch": "",
-      "id": 32
-    },
-    {
-      "students": [],
-      "id": 33,
-      "firstname": "Renuka",
-      "lastname": "Gaikwad",
-      "email": "admin@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-05-10",
-      "gender": "Female",
-      "organization": "Cdac",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
-    },
-    {
-      "students": [],
-      "id": 34,
-      "firstname": "Samrudhi",
-      "lastname": "Vaidya",
-      "email": "samrudhi24vaidya@gmail.com",
-      "contact": "8484854108",
-      "dob": "1999-04-27",
-      "gender": "Female",
-      "organization": "hematite",
-      "open": true,
-      "page": 0,
-      "rowsPerPage": 5,
-      "searchQuery": "",
-      "isAddStudent": true,
-      "fname": "",
-      "lname": "",
-      "role": "",
-      "password": ""
-    },
-    {
-      "firstname": "Sam",
-      "lastname": "Vaiduya",
-      "email": "sam@123.gmail.com",
-      "contact": "945678765432",
-      "dob": "222222-02-21",
-      "gender": "Female",
-      "organization": "Warje",
-      "branch": null,
-      "id": 32
-    },
-    {
-      "firstname": "Rutuja",
-      "lastname": "Sawant",
-      "email": "rutuja@123.gmail.com",
-      "contact": "23456987654321",
-      "dob": "23333-02-21",
-      "gender": "Female",
-      "organization": "cdac",
-      "branch": "",
-      "id": 33
-    },
-    {
-      "firstname": "werty",
-      "lastname": "qwertyu",
-      "email": "sujitg1999@gmail.com",
-      "contact": "234567",
-      "dob": "275760-04-23",
-      "gender": "Female",
-      "organization": "cdac",
-      "pnr": "sg23456",
-      "branch": "",
-      "id": 34
-    },
-    {
       "studentName": "Sujit Gaikwad",
       "count": 0,
       "id": 35
@@ -808,6 +641,12 @@
       "studentName": "rushikesh kakde",
       "count": 0,
       "id": 36
+     
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 37
     }
   ],
   "feedback": [
@@ -1057,6 +896,57 @@
       "queFive": "dfdfdf",
       "queSix": "fdfdfdfd",
       "id": 19
+    },
+    {
+      "fname": "abc efg",
+      "email": "adc@gmail.com",
+      "contact": "8888888888",
+      "org": "hematite",
+      "queOne": "test1",
+      "queTwo": "test1",
+      "queThree": "test1",
+      "queFour": "test1",
+      "queFive": "test1",
+      "queSix": "test1",
+      "id": 20
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "code": "HI-1",
+      "examname": "Java",
+      "examstatus": true
+    },
+    {
+      "id": 2,
+      "code": "HI-2",
+      "examname": "Phython",
+      "examstatus": true
+    },
+    {
+      "id": 3,
+      "code": "HI-3",
+      "examname": "PHP",
+      "examstatus": true
+    },
+    {
+      "id": 4,
+      "code": "HI-4",
+      "examname": "Angular",
+      "examstatus": true
+    },
+    {
+      "id": 5,
+      "code": "HI-5",
+      "examname": "React",
+      "examstatus": true
+    },
+    {
+      "id": 6,
+      "code": "HI-6",
+      "examname": "Vuejss",
+      "examstatus": true
     }
   ]
 }

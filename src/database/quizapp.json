@@ -183,70 +183,15 @@
       "answer": "The webpack command is a module bundler."
     },
     {
-      "question": "jo",
+      "question": "ikn",
       "options": [
-        "ojj",
-        "oj",
-        "oj",
-        "non"
-      ],
-      "answer": "oj",
-      "id": 11
-    },
-    {
-      "question": "hi",
-      "options": [
-        "hihip",
-        "vyv",
-        "vt",
-        "cy"
-      ],
-      "answer": "vt",
-      "id": 12
-    },
-    {
-      "question": "ii",
-      "options": [
-        "ii",
-        "ii",
         "ib",
-        "joj"
+        "bi",
+        "bi",
+        "bi"
       ],
-      "answer": "ib",
-      "id": 13
-    },
-    {
-      "question": "igi",
-      "options": [
-        "ii",
-        "iu",
-        "nolk",
-        "u"
-      ],
-      "answer": "bu",
-      "id": 14
-    },
-    {
-      "question": "gugu",
-      "options": [
-        "gugu",
-        "v",
-        "hv ",
-        "g"
-      ],
-      "answer": "c ",
-      "id": 15
-    },
-    {
-      "question": "hoh",
-      "options": [
-        "v",
-        "v",
-        "b",
-        "jb"
-      ],
-      "answer": "j",
-      "id": 16
+      "answer": "kb",
+      "id": 11
     }
   ],
   "python": [
@@ -348,6 +293,28 @@
         "sqrt()"
       ],
       "answer": "print()"
+    },
+    {
+      "question": "lnioiUVJUOJV",
+      "options": [
+        "ik",
+        "ikikbik",
+        "bipbk",
+        "ipokbk"
+      ],
+      "answer": "bio",
+      "id": 11
+    },
+    {
+      "question": "hii",
+      "options": [
+        "VV",
+        "JVJUV",
+        "XTGX",
+        "CGC"
+      ],
+      "answer": "GC",
+      "id": 12
     }
   ],
   "php": [
@@ -405,6 +372,17 @@
         "Object"
       ],
       "answer": "class"
+    },
+    {
+      "question": "ni",
+      "options": [
+        "b",
+        "bik",
+        "bp",
+        "bip"
+      ],
+      "answer": "bip",
+      "id": 6
     }
   ],
   "vcodes": [
@@ -570,17 +548,6 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "id": 12,
-      "StudentName": "sandeep thorat",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 25,
-      "Grade": "-",
-      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -655,7 +622,6 @@
       "dob": "2002-02-02",
       "gender": "Male",
       "organization": "hematite"
-      
     },
     {
       "id": 23,

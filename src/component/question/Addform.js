@@ -12,6 +12,11 @@ import { useEffect } from 'react';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
+import InputLabel from '@mui/material/InputLabel';
+import Select from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+
 
 const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionData }) => {
   const [isFormVisible, setFormVisible] = useState(false);
@@ -23,9 +28,16 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     { id: 4, text: '' },
   ]);
   
+  const [selectedExam, setSelectedExam] = useState(null);
   const [answer, setanswer] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
+  const examDatabaseEndpoints = {
+    react: 'http://localhost:8888/react',
+    python: 'http://localhost:8888/python',
+    php: 'http://localhost:8888/php',
+    // Add more exam endpoints as needed
+  };
 
   const handleOptionChange = (e, optionIndex) => {
     const newText = e.target.value;
@@ -35,6 +47,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       )
     );
   };
+          
 
   useEffect(() => {
     if (isEditMode) {
@@ -67,17 +80,19 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     answer,
   };
   
+  const examEndpoint = examDatabaseEndpoints[selectedExam];
   
 
   const handleAdd = (e) => {
-    if (!question || options.some(option => !option.text) || !answer) {
+    if (!selectedExam || !question || options.some(option => !option.text) || !answer) {
       setShowAlert(true);
       return;
     }
+    
 
     setShowPopup(true);
     e.preventDefault();
-    axios.post("http://localhost:8888/react",newQuestion).then((res)=>{
+    axios.post(examEndpoint,newQuestion).then((res)=>{
       console.log(res.data);
       setquestion({question: res.data})
       setOptions(
@@ -95,6 +110,8 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     
     setFormVisible(false);
   };
+
+  
   
   const handleClosePopup = () => {
     setShowPopup(false);
@@ -121,9 +138,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       <Button sx={{marginTop:5,marginBottom:2}} color='inherit'  variant='contained'  type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined/>}>Create</Button>
       </div>
     )}
-
     
-
     <TableContainer>
     <Dialog open={isFormVisible} onClose={() => setFormVisible(false)}>
         <DialogContent>
@@ -154,7 +169,12 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       <div  className=' mb-n4'>
         
         <div className="text-center mt-4 mb-2">
-            <h3 > Add Question</h3>
+        {isEditMode && (
+          <h3>Edit Question</h3>
+      )}
+      {!isEditMode && (
+        <h3 > Add Question</h3>
+      )}
           </div><br/>
             <div>
         <TextField 
@@ -208,6 +228,27 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       </Button>
       </div>
     )}
+
+    <div>
+      <FormControl variant="standard" sx={{ marginTop:2,  minWidth: 120 }}>
+        <InputLabel  id="demo-simple-select-standard-label">Select Exam</InputLabel>
+        <Select
+          labelId="demo-simple-select-standard-label"
+          id="demo-simple-select-standard"
+          value={selectedExam}
+          onChange={(e) => setSelectedExam(e.target.value)}
+          label="Select Exam"
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          <MenuItem value="react">React</MenuItem>
+          <MenuItem value="python">Python</MenuItem>
+          <MenuItem value="php">Php</MenuItem>
+        </Select>
+        </FormControl>
+        </div>
+
         {!isEditMode && (
         <div className='pull-left mb-3'><br/>
         <Button variant='contained' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
@@ -217,12 +258,11 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
         <div className='text-right'>
         <Button sx={{marginTop:3}}  variant='contained' color='error' type='button' onClick={handleClearForm}  className='btn btn-outline-danger pull-right btn-lg ' >Clear</Button>
         </div> 
-        )}     
-        
+        )}    
       </div>
       </div>
-      )}
       
+      )}
       </Box>
       </DialogContent>
       </Dialog>

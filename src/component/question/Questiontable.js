@@ -13,6 +13,8 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
+import * as TablePaginationActions from "../common/TablePaginationActions";
+
 
 const Questiontable = ({ allquestions }) => {
   const [data, setData] = useState([]);
@@ -26,6 +28,7 @@ const Questiontable = ({ allquestions }) => {
   const [selectedValue, setSelectedValue] = useState('');
 
 
+
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
 
@@ -34,16 +37,11 @@ const Questiontable = ({ allquestions }) => {
     const questionToEdit = data.find(item => item.id === itemId);
     setEditQuestionData(questionToEdit);
     setEditMode(true);
+    // setUpdatedQuestionData(questionToEdit);
   };
   
   const handleDelete = (itemId) => {
     setSelectedItemForDeletion(itemId); // Set the selected item for deletion
-  };
-  
-  const handleConfirmDelete = () => {
-    // setSelectedItemForDeletion(itemId);
-    
-    setSelectedItemForDeletion(null);
   };
   
 
@@ -58,12 +56,14 @@ const Questiontable = ({ allquestions }) => {
     
   },[allquestions])
 
+
   const handleCollapseToggle = (itemId) => {
     setSelectedOption((prevState) => ({
       ...prevState,
       [itemId]: !prevState[itemId]
     }));
   };
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -81,7 +81,7 @@ const Questiontable = ({ allquestions }) => {
   };
 
   const handleDropdownChange = (event) => {
-    setSelectedOption(event.target.value)
+    setSelectedOption({})
     const selectedValue = event.target.value;
     setSelectedValue(selectedValue);
     
@@ -93,7 +93,6 @@ const Questiontable = ({ allquestions }) => {
         .then((response) => {
           setData(response.data);
           setShowCreateButton(true); 
-
         })
         .catch((error) => {
           console.error(error);
@@ -104,6 +103,7 @@ const Questiontable = ({ allquestions }) => {
 
     };
   }
+
   return (
 
     <div className='question'>
@@ -125,9 +125,10 @@ const Questiontable = ({ allquestions }) => {
         </Select>
       </FormControl>
       <div>
-      {showCreateButton && (
-          <Addform/>
+        {showCreateButton && (
+        <Addform/>
         )}
+      
         {isEditMode && (
         <Addform
           isEditMode={isEditMode}
@@ -162,15 +163,17 @@ const Questiontable = ({ allquestions }) => {
                                 onChange={() => handleRadioChange(item.id, option)}
                               />
                               <label>{option}</label>
-
                             </div>
                           ))}<br></br>
                           Answer :  {item.answer}
+                          <div>
                           <Grid  marginLeft={100} item xs={4}>
                            <Button onClick={() => handleDelete(item.id)}>
                             <DeleteOutlineSharp   sx={{ color: dark[500] }} /></Button>
-                           <Button onClick={() => handleEdit(item.id)} ><EditNoteSharp sx={{ color: dark[500] }}/></Button>
+                           <Button onClick={() => { setEditMode(true); setEditQuestionData(item); }}>
+                            <EditNoteSharp sx={{ color: dark[500] }}/></Button>
                           </Grid>
+                          </div>
                         </TableCell>
                       </TableRow>
                     )}
@@ -181,28 +184,41 @@ const Questiontable = ({ allquestions }) => {
                   <TableCell height='100px' align='center' >NO DATA</TableCell>
                 </TableRow>
                  )}
+                 <TablePagination className='pull-right'
+              rowsPerPageOptions={[5, 10, 25]}
+              colSpan={7} // Adjust the colSpan value according to your table structure
+              count={data.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                native: true,
+              }}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              ActionsComponent={TablePaginationActions.default} // Imported component
+            />
               </TableBody>
             </Table>
           </TableContainer>
-          <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+          
         </Box>
       </div>     
       <Dialog open={selectedItemForDeletion !== null} onClose={() => setSelectedItemForDeletion(null)}>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
-          Are you sure you want to delete this question?
+        {selectedItemForDeletion && (
+          <div>
+          Are you sure you want to delete the following question?
+          <div>{data.find(item => item.id === selectedItemForDeletion)?.question}</div>
+          </div>
+        )}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setSelectedItemForDeletion(null)}>Cancel</Button>
-          <Button onClick={handleConfirmDelete} color="error">
+          <Button  color="error">
             Delete
           </Button>
         </DialogActions>

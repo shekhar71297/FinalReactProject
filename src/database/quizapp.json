@@ -28,7 +28,7 @@
       "role": "trainer",
       "gender": "female",
       "contact": "8976453213",
-      "id": 3 
+      "id": 3
     },
     {
       "email": "rushikakdeforever@gmail.com",
@@ -505,6 +505,30 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    
+    {
+      "id": 13,
+      "StudentName": "om patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 19,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    }
+    ,
+    {
+      "id": 14,
+      "StudentName": "nitin pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -593,7 +617,6 @@
       "pnr": "",
       "branch": "",
       "id": 24
-    
     }
   ],
   "examresult": [
@@ -641,7 +664,6 @@
       "studentName": "rushikesh kakde",
       "count": 0,
       "id": 36
-     
     },
     {
       "studentName": "anmol chaware",

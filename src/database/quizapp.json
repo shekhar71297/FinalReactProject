@@ -571,14 +571,28 @@
       "id": 22
     },
     {
-      "id": 23,
-      "firstname": "tom",
-      "lastname": "harry",
-      "email": "tomharry@gmail.com",
-      "contact": "8668606212",
-      "dob": "1997-12-12",
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
       "gender": "Male",
-      "organization": "lighthouse"
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 23
+    },
+    {
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 24
     }
   ],
   "examresult": [
@@ -623,7 +637,7 @@
       "id": 7
     },
     {
-      "studentName": "anmol chaware",
+      "studentName": "rushikesh kakde",
       "count": 0,
       "id": 36
     },
@@ -887,12 +901,77 @@
       "contact": "9876543212",
       "org": "Lighthouse",
       "queOne": "test1",
-      "queTwo": "test2",
-      "queThree": "test3",
-      "queFour": "test4",
-      "queFive": "test4",
-      "queSix": "dfsfs",
+      "queTwo": "test1",
+      "queThree": "test1",
+      "queFour": "test1",
+      "queFive": "test1",
+      "queSix": "test1",
+      "id": 20
+    },
+    {
+      "fname": "jkjjd",
+      "email": "jjkdj@gmail.com",
+      "contact": "9098988888",
+      "org": "jhjhjhj",
+      "queOne": "jjkjkjkjkj",
+      "queTwo": "jjkjkjkj",
+      "queThree": "jkjkjjkj",
+      "queFour": "jjkjkjkj",
+      "queFive": "jjkjkjkj",
+      "queSix": "jkjkjkjk",
       "id": 21
+    },
+    {
+      "fname": "fdfkj",
+      "email": "jjj@gmail.com",
+      "contact": "9898888888",
+      "org": "jhhjkh",
+      "queOne": "hjhjhjhj",
+      "queTwo": "hhjhjjhjh",
+      "queThree": "jhjhjhjhj",
+      "queFour": "hjhjhjhjh",
+      "queFive": "hjhjhjhjh",
+      "queSix": "jhjhjhj",
+      "id": 22
+    },
+    {
+      "fname": "fdfs",
+      "email": "jkj@gmail.com",
+      "contact": "9999999999",
+      "org": "hjjk",
+      "queOne": "ljjjk",
+      "queTwo": "jjkjkjk",
+      "queThree": "kjkjkj",
+      "queFour": "kjkjkjkj",
+      "queFive": "kjkjkjkj",
+      "queSix": "jkjkjkj",
+      "id": 23
+    },
+    {
+      "fname": "hghjgjh",
+      "email": "gres@gmail.com",
+      "contact": "9099999999",
+      "org": "jkj",
+      "queOne": "kjkjjkj",
+      "queTwo": "jkjjkjkjk",
+      "queThree": "jkjkjkjkj",
+      "queFour": "kjkjkjkj",
+      "queFive": "kjkjkjkj",
+      "queSix": "jkjkjkjk",
+      "id": 24
+    },
+    {
+      "fname": "fdfd",
+      "email": "hjhs@gmail.com",
+      "contact": "8888888888",
+      "org": "hjhjkh",
+      "queOne": "jhjhjkhjkh",
+      "queTwo": "jhjhjhjhj",
+      "queThree": "hjhjhjh",
+      "queFour": "jhjhjhjh",
+      "queFive": "jhjhjhjh",
+      "queSix": "hjhjh",
+      "id": 25
     }
   ],
   "exams": [

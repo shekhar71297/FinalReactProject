@@ -177,7 +177,7 @@ class StartExam extends Component {
           ))}
         </Box>
         {/* Dialog component */}
-        <DialogBox
+        <DialogBox 
               open={openDialog}
               onClose={this.handleCloseDialog}
               onConfirm={() => {

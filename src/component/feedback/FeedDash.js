@@ -16,6 +16,7 @@ import Button from '@mui/material/Button';
 import * as TablePaginationActions from "../common/TablePaginationActions"
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import zIndex from '@mui/material/styles/zIndex';
 
 const style = {
     position: 'absolute',
@@ -114,7 +115,7 @@ export class FeedDash extends Component {
                                             Manage feedback
                                         </Grid>
                                         <Grid item>
-
+ 
                                             <TextField
                                                 className='searchinput'
                                                 type="text"
@@ -188,7 +189,7 @@ export class FeedDash extends Component {
                         <Box sx={style}>
 
                             <TableRow>
-                                <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
+                                <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} style={{position:'relative', zIndex:'1'}}>
                                     <Grid item>
                                         Feedback Details
                                     </Grid></TableCell>
@@ -237,7 +238,7 @@ export class FeedDash extends Component {
                                 </Table>
                             )}
                             <Stack spacing={2} direction="row">
-                                <Button onClick={this.handleClose} style={{ marginLeft: '380px', marginTop: '10px', color: 'blue' }}>Close</Button>
+                                <Button onClick={this.handleClose} style={{ marginLeft: '370px', marginTop: '10px', }} variant='contained'>Close</Button>
                             </Stack>
                         </Box>
                     </Modal>

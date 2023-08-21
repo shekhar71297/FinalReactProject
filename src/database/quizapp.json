@@ -506,7 +506,6 @@
       "Grade": "-",
       "Date": "26/06/2023"
     },
-    
     {
       "id": 13,
       "StudentName": "om patil",
@@ -517,8 +516,7 @@
       "ObtainedMark": 19,
       "Grade": "-",
       "Date": "26/06/2023"
-    }
-    ,
+    },
     {
       "id": 14,
       "StudentName": "nitin pawar",
@@ -644,8 +642,12 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 2,
+      "id": 6
     }
-    
   ],
   "feedback": [
     {

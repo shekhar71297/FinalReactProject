@@ -17,6 +17,7 @@ import Alert from '@mui/material/Alert';
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+
 export class StudentResult extends Component {
   constructor(props) {
     super(props);
@@ -126,7 +127,7 @@ export class StudentResult extends Component {
     }
     );
     return (
-      <div >
+      <div > 
 
         {/* table pop up */}
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup} fullWidth maxWidth="md" PaperProps={{

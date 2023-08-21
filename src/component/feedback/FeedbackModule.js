@@ -182,7 +182,7 @@ export class FeedbackModule extends Component {
   addfeedback = (event) => {
     event.preventDefault();
 
-    // Check for any validation errors before submitting
+  // Check for any validation errors before submitting
   if (
     this.state.errors.fnameError ||
     this.state.errors.emailError ||
@@ -258,7 +258,6 @@ export class FeedbackModule extends Component {
                   <TextField id="fullname" type='text' label='Name' name='fname' variant="standard"
                     required placeholder='Enter Name' multiline
                     rows={1} onChange={this.handleChange} value={fname} error={this.state.errors.fnameError} helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid fullname")} />
-
 
                   <TextField id="email" type='email' name='email' label="Email" variant="standard"
                     required placeholder='Enter Email' multiline

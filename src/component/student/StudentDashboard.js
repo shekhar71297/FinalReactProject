@@ -26,6 +26,9 @@ import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Dialog from '@mui/material/Dialog';
 import * as validation from '../../util/validation'
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 import './studentdashboard.css'
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import SearchIcon from '@mui/icons-material/Search';
@@ -39,8 +42,8 @@ const style = {
   left: '50%',
   // marginTop:3,
   transform: 'translate(-50%, -50%)',
-  width: 400,
-  height: 500,
+  width: 600,
+  height: 700,
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -63,6 +66,8 @@ class StudentDashboard extends Component {
       dob: '',
       gender: '',
       organization: '',
+      pnr:'',
+      branch:'',
       open: false,
       page: 0,
       rowsPerPage: 5,
@@ -74,6 +79,7 @@ class StudentDashboard extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
+      severity:'',
       errors: {
         fnameError: false,
         lnameError: false,
@@ -112,13 +118,14 @@ class StudentDashboard extends Component {
 
 
   handleOpen = (id = null) => {
-    this.resetStudentFormHandler();
+    
 
     if (id !== null) {
       this.getSingleRecord(id);
       this.setState({ open: true, isAddStudent: false });
     } else {
       this.setState({ open: true, isAddStudent: true });
+      this.resetStudentFormHandler();
     }
 
 
@@ -163,21 +170,40 @@ class StudentDashboard extends Component {
 
 
   resetStudentFormHandler = () => {
-    this.setState({
-      students: [],
-      id: null,
-      fname: "",
-      lname: "",
-      role: "",
-      password: "",
-      contact: "",
-      gender: "",
-      email: ""
-    })
+
+      this.setState({
+        firstname: (''),
+        lastname: (''),
+        email: (''),
+        contact: (''),
+        dob: (''),
+        gender: (''),
+        organization: (''),
+        pnr:(''),
+        branch:('')
+  
+      })
+  
   }
 
   updateStudent = (event) => {
     event.preventDefault();
+    if (
+      this.state.errors.fname ||
+      this.state.errors.emailError ||
+      this.state.errors.contactError ||
+      this.state.errors.lnameError
+      
+      
+    ) {
+      // Display an error message or take any necessary action
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Please fix the validation errors before submitting.",
+        severity: 'error',
+      });
+      return; // Prevent submission
+    }
     let sObj = {
       id: this.state.id,
       firstname: this.state.firstname,
@@ -187,6 +213,8 @@ class StudentDashboard extends Component {
       dob: this.state.dob,
       gender: this.state.gender,
       organization: this.state.organization,
+      pnr:this.state.pnr,
+      branch:this.state.branch
 
     }
     if (this.state.isAddStudent) {
@@ -194,22 +222,25 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student added successfully',
+        severity:'success'
       });
-
-
+      this.props.initStudentRequest();
+     
     } else {
       sObj['id'] = this.state.id;
+      this.props.addStudentRequest(sObj);
       this.props.initStudentRequest()
       this.props.updateStudentRequest(sObj)
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student updated successfully',
+        severity:'success'
       });
 
     }
 
     this.handleClose()
-
+    this.props.initStudentRequest();
 
   }
 
@@ -259,6 +290,9 @@ class StudentDashboard extends Component {
           this.setState({ errors: { ...this.state.errors, emailError: false } })
         }
       }
+      if(name==="gender"){
+        this.setState({gender:value});
+      }
 
       if (name === "contact") {
         const isvalidContact = !(validation.isValidContact(this.state[name]));
@@ -285,7 +319,7 @@ class StudentDashboard extends Component {
 
   render() {
 
-    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen } = this.state;
+    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen ,branch,pnr} = this.state;
     const { searchQuery, page, rowsPerPage } = this.state;
     const filteredStudents = this.props.allstudent && this.props.allstudent.filter((data) => {
       const searchQuery = this.state.searchQuery.toLowerCase();
@@ -326,7 +360,7 @@ class StudentDashboard extends Component {
                             type="text"
                             value={searchQuery}
                             onChange={this.handleSearchChange}
-                            placeholder="Search Result"
+                            placeholder="Search Student"
                             // label="Search Result"
 
                             variant="standard"
@@ -388,8 +422,8 @@ class StudentDashboard extends Component {
                         <TableCell align='center' >{val.gender}</TableCell>
                         <TableCell align='center' >{val.organization}</TableCell>
 
-                        <TableCell className='tablebody' align="center">
-                          <Button onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>&nbsp;
+                        <TableCell  align="center">
+                          <Button onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>
                           <Button onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
                         </TableCell>
                       </TableRow>
@@ -423,7 +457,7 @@ class StudentDashboard extends Component {
               onClose={() => this.setState({ snackbarOpen: false })}
               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
                 {this.state.snackbarMessage}
               </Alert>
             </Snackbar>
@@ -481,7 +515,7 @@ class StudentDashboard extends Component {
                   fullWidth
                   required
                   error={this.state.errors.lnameError}
-                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Dev'}
+                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Doe'}
                 />
               </Stack>
               <br />
@@ -536,28 +570,59 @@ class StudentDashboard extends Component {
                 >
                   <FormControlLabel value="Male" checked={gender === "Male"} control={<Radio />} label="Male" />
                   <FormControlLabel value="Female" checked={gender === "Female"} control={<Radio />} label="Female" />
-                  <FormControlLabel value="Other" checked={gender === "Other"} control={<Radio />} label="Other" />
+                  <FormControlLabel value="Other" checked={gender === "Other"} control={<Radio />} label="Transgender" />
                 </RadioGroup>
               </FormControl>
 
 
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Organization</FormLabel>
+              
+              <FormControl fullWidth>
+                <p style={{ marginLeft: "-450px" }}>Select Organization</p>
+                <InputLabel id="demo-simple-select-label"></InputLabel>
                 <RadioGroup
-                  aria-lable="organization"
-                  value={this.state.organization}
-                  onChange={this.handleChange}
                   row
-                  name="organization" >
+                  aria-labelledby="demo-row-radio-buttons-group-label"
+                  name="organization"
+                  value={this.state.organization}
+                >
                   <br /><br />
-                  <FormControlLabel value="hematite" checked={organization === "hematite"} control={<Radio />} label="Hematite" />
-                  <FormControlLabel value="Lighthouse" checked={organization === "Lighthouse"} control={<Radio />} label="Lighthouse" />
-                  <FormControlLabel value="Cdac" checked={organization === "Cdac"} control={<Radio />} label="Cdac" />
+                  <FormControlLabel value="hematite" onChange={(e) => this.handleChange(e)} control={<Radio />} label="Hematite" />
+                  <FormControlLabel value="lighthouse" onChange={(e) => this.handleChange(e)} control={<Radio />} label="Lighthouse" />
+
+                  <FormControlLabel value="cdac" onChange={(e) => this.handleChange(e)} control={<Radio />} label="Cdac" />
                 </RadioGroup>
+                {
+                  this.state.organization === "lighthouse" && <Select
+                    name='branch'
+                    value={branch}
+                    onChange={this.handleChange}
+
+                  >
+                    <MenuItem value=''>Select Organizantion</MenuItem>
+                    <MenuItem value='Hadapsar'>Hadapsar</MenuItem>
+                    <MenuItem value='Warje'>Warje</MenuItem>
+                    <MenuItem value='Vadgoansheri'>Vadgoansheri</MenuItem>
+                    <MenuItem value='Vadgoansheri'>Pimpri</MenuItem>
+                  </Select>
+                }
+
+
+                {this.state.organization === 'cdac' && this.state.showCdacTextField && (
+                  <TextField
+                    id="standard-basic"
+                    variant="standard"
+                    name="pnr" 
+                    placeholder="pnr"
+                    value={pnr} 
+                    onChange={this.handleChange}
+                  />
+                )}
+
               </FormControl>
+
 
               <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
-              <Button style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" type="resrt">Clear</Button>
+              <Button style={{ marginTop: "20px", marginRight: "-352px" }} onClick={this.resetStudentFormHandler}  variant="contained" color="secondary" type="button">Clear</Button>
             </form>
           </Box>
         </Modal>

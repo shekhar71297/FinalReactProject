@@ -1,0 +1,25 @@
+     -----------------------------------------Note--------------------------------------------------
+Date:o2/08/23
+Name:Shekhar P
+story:
+1)Material UI library installed [npm install @mui/material @emotion/react @emotion/styled]
+2)Material icon Library installed[npm install @mui/icons-material]
+-------------------------------------------------------------------------
+below library installed
+1)bootstrap library installed [npm install bootstrap]
+2)Concurrently library installed [npm install concurrently]
+->concurrently is created run this command[npm run start-dev]
+3)react router dom library installed [npm i -D react-router-dom ]
+4)React bootstrap library installed [ npm install react-bootstrap bootstrap]
+5)Axios library installed [npm install axios]
+6)font-awesome library installed [npm install font-awesome]
+7)redux-devtools-extension library installed [npm install redux-devtools-extension]
+8)redux-thunk library installed [npm install redux-thunk]
+9)redux library installed [npm install redux]
+10)react-redux library installed [npm install react-redux]
+
+both library is imported in index.js file
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/font-awesome/css/font-awesome.min.css'
+
+

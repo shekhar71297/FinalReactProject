@@ -687,6 +687,18 @@
       "pnr": "",
       "branch": "",
       "id": 35
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujit@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-12-12",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 36
     }
   ],
   "examresult": [

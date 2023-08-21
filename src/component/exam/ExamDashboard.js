@@ -20,7 +20,10 @@ import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } 
 import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
+import * as TablePaginationActions from "../common/TablePaginationActions"
+import * as validation from '../../util/validation';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -64,6 +67,24 @@ class ExamDashboard extends Component {
     }
   }
 
+    handleClose = () => {
+      this.setState({ open: false });
+    };
+
+    componentDidUpdate(prevProps) {
+
+      if (prevProps.singleExam !== this.props.singleExam) {
+        const { id = 0, code = "", examname = "", examstatus=false  } = this.props.singleExam;
+        this.setState({
+          id, code, examname, examstatus
+        }, () => console.log(this.state))
+      }
+    }
+
+    componentDidMount() {
+      this.props.initExamRequest();
+    }
+    
   //for pagination
    handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
@@ -78,12 +99,27 @@ class ExamDashboard extends Component {
     this.setState({ searchQuery: event.target.value, page: 0 });
   }
 
-  // for add-update onchange method
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-    console.log(value);
+  // voucher code 
+  // handleChange = (index, status, event) => {
+  //   const { page, rowsPerPage } = this.state;
+  //   let vcodes = this.state.vcodes;
+  //   const dataIndex = page * rowsPerPage + index;
+  //   // console.log("before",vcodes,index,vcodes[index]);
+  //   vcodes[dataIndex].status = !status;
+  //   // console.log("after",vcodes);
+  //   this.setState({ vcodes: vcodes }, () => {
+  //     console.log(this.state.vcodes[dataIndex])
+  //     this.props.updateVoucherRequest(this.state.vcodes[dataIndex]);
+  //   });
 
+  // };
+  // for add-update onchange method
+  handleChange = (event,index,examname) => {
+    const { name, index,value } = event.target;
+    // let 
+    this.setState({ [name]: value });
+    console.log(value)
+    // vadlidation for exam code
     if(name === "code"){
       const codeError = !(validation.isValidName(this.state[name]));
       if(codeError){
@@ -92,6 +128,8 @@ class ExamDashboard extends Component {
         this.setState({errors:{...this.state.errors,codeError:false}})
       }
     }
+
+    // vadlidation for examname
     if(name === "examname"){
       const examnameError = !(validation.isValidExamname(this.state[name]));
       if(examnameError){
@@ -100,51 +138,24 @@ class ExamDashboard extends Component {
         this.setState({errors:{...this.state.errors,examnameError:false}})
       }
     }
-    // handleChange = (index) => {
-    // let allExams = this.props.allExams;
-    // allExams[index].examstatus = !allExams[index].examstatus;
-    // this.props.updateExamRequest(allExams[index]);
   }
 
-  //   inputChangeHandler=(e)=>{
-  //     const{name,value}=e.target;
-  //     this.setState({[name]:value})
-  // }
+    //to popup
+    handleOpen = (id = null) => {
+      this.resetExamFormHandler();
+  
+      if (id !== null) {
+        this.getsinglerecord(id);
+        this.setState({ open: true, isAddExam: false });
+      } else {
+        this.setState({ open: true, isAddExam: true });
+      }
+    };
 
-  handleOpen = (id = null) => {
-    this.resetExamFormHandler();
-
-    if (id !== null) {
-      this.getsinglerecord(id);
-      this.setState({ open: true, isAddExam: false });
-    } else {
-      this.setState({ open: true, isAddExam: true });
-    }
-  };
-
+    
   handleClose = () => {
     this.setState({ open: false });
   };
-
-  componentDidMount() {
-    // if(this.state.apiCallOnce){
-    //   this.setState({apiCallOnce:false},() => )
-    // }
-    this.props.initExamRequest();
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.singleExam !== this.props.singleExam) {
-      const { id = 0, code = "", examname = "", examstatus=false } = this.props.singleExam;
-      this.setState({
-        id, code, examname, examstatus
-      }, () => console.log(this.state))
-    }
-
-    if(prevProps.allExams !== this.props.allExams){
-      // this.props.initExamRequest();
-    }
-  }
 
   // Function to open the delete popup model
   openConfirmDialog = (id) => {
@@ -161,58 +172,6 @@ class ExamDashboard extends Component {
       recordToDeleteId: null,
     });
   };
-
-  getsinglerecord = (id) => {
-    this.props.getSingleExamRequest(id)
-  }
-
-  resetExamFormHandler = () => {
-    this.setState({
-      //exam: [],
-      id: null,
-      code: '',
-      examname: '',
-      examstatus: '',
-      action: ''
-    })
-  }
-
-  // close alert message 
-  closeSnackbar = () => {
-    this.setState({
-      snackbarOpen: false,
-      snackbarMessage: '',
-    });
-  };
-
-  //update exam 
-  updateExam = (event) => {
-    event.preventDefault();
-    let eobj = {
-      id: this.state.id,
-      code: this.state.code,
-      examname: this.state.examname,
-      examstatus: this.state.examstatus,
-      action: this.state.action
-    }
-    if (this.state.isAddExam) {
-      this.props.addExamRequest(eobj);
-      this.setState({
-        snackbarOpen: true,
-        snackbarMessage: 'User added successfully',
-      });
-    }
-    else {
-      eobj['id'] = this.state.id;
-      // this.props.initExamRequest();
-      this.props.updateExamRequest(eobj);
-      this.setState({
-        snackbarOpen: true,
-        snackbarMessage: 'User updated successfully',
-      });
-    }
-    this.handleClose();
-  }
 
   deletedata = (id) => {
     this.openConfirmDialog(id);
@@ -248,8 +207,79 @@ class ExamDashboard extends Component {
     });
   };
 
+  // single record 
+  getsinglerecord = (id) => {
+    this.props.getSingleExamRequest(id)
+  }
+
+   // update and add actions
+  resetExamFormHandler = () => {
+    this.setState({
+      id: null,
+      code: '',
+      examname: '',
+      examstatus: '',
+    })
+  }
+
+
+  //update exam 
+  updateExam = (event) => {
+    event.preventDefault();
+    let eobj = {
+      id: this.state.id,
+      code: this.state.code,
+      examname: this.state.examname,
+      examstatus: this.state.examstatus,
+      action: this.state.action
+    }
+    if (this.state.isAddExam) {
+      this.props.addExamRequest(eobj);
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'User added successfully',
+      });
+      // Refresh exam data after adding or updating
+    this.props.initExamRequest();
+    }
+    else {
+      eobj['id'] = this.state.id;
+      this.props.initExamRequest();
+      this.props.updateExamRequest(eobj);
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: 'User updated successfully',
+      });
+    }
+    this.handleClose();
+    // Refresh exam data after adding or updating
+  this.props.initExamRequest();
+  }
+
+  // close alert message 
+  closeSnackbar = () => {
+    this.setState({
+      snackbarOpen: false,
+      snackbarMessage: '',
+    });
+  };
+
+  // handleToggleExamstatus = (id) => {
+  //   const { exams } = this.state;
+  //   const updatedExams = exams.map(exam => {
+  //     if (exam.id === id) {
+  //       return {
+  //         ...exam,
+  //         examstatus: !exam.examstatus
+  //       };
+  //     }
+  //     return exam;
+  //   });
+  //   this.setState({ exams: updatedExams });
+  // };
+  
   render() {
-    const { exams, id, code, examname, examstatus, page, rowsPerPage, open, searchQuery, isDetailsPopupOpen, isDeletePopupOpen } = this.state;
+    const { exams, id, code, examname, examstatus, page, rowsPerPage, open, searchQuery } = this.state;
     const filteredExam = this.props.allExams && this.props.allExams.filter((data) => {
 
         const searchQuery = this.state.searchQuery;
@@ -262,34 +292,49 @@ class ExamDashboard extends Component {
       <div>
         {/* start table */}
         <Box sx={{ height: 100 }}>
-             {/*add exam form  */}
-        <Button className='addbtn' variant="contained" color="primary" onClick={() => (this.handleOpen())}><AddIcon />Exam</Button>
-          <br />
-          {/* search box */}
-          <TextField
-              className='searchinput'
-              type="text"
-              align="right"
-              value={searchQuery}
-              onChange={this.handleSearchChange}
-              placeholder="Search Result"
-              label="Search Result"
-              variant="outlined"
-              sx={{
-                paddingBottom: 4,
-              }}
-            />
           <Paper className='paper'>
             <TableContainer>
               <Table aria-label="simple table" className=''>
                 <TableHead>
+                  <TableRow>
+                    <TableCell align="center" colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
+                      <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                        <Grid item>
+                             Manage Exam
+                        </Grid>
+                        <Grid item>
 
-          <TableRow>
-            <TableCell align="center" colSpan={8} sx={{ backgroundColor:"#1976d2",color:"white" , fontSize:"25px" , textAlign:"start" , fontWeight:"bolder"}}>
-              Manage Exam
-            </TableCell>
-          
-          </TableRow>
+                          <TextField
+                            className='searchinput'
+                            type="text"
+                            value={searchQuery}
+                            onChange={this.handleSearchChange}
+                            placeholder="Search Exam"
+                            // label="Search Exam"
+
+                            variant="standard"
+                            sx={{
+                              backgroundColor: 'white',
+                              padding: "2px 3px",
+                              borderRadius: "4px",
+                              width: "auto",
+
+                            }}
+                            InputProps={{
+                              startAdornment: (
+                                <InputAdornment position="end">
+                                  <SearchIcon />
+                                </InputAdornment>
+                              ),
+                            }}
+                          />
+                        </Grid>
+                      </Grid>
+                      </TableCell>
+                  </TableRow>
+                  <TableRow>
+                  <Button variant="contained" color="primary" size="small" type="button" sx={{ margin:"8px" ,padding: "5px 5px",}} onClick={() => (this.handleOpen())}><AddIcon />Exam</Button>
+                  </TableRow>
                   <TableRow>
                     <TableCell align="center"><strong>Exam Id</strong></TableCell>
                     <TableCell align="center"><strong>Exam Code</strong></TableCell>
@@ -321,14 +366,30 @@ class ExamDashboard extends Component {
                           <TableCell className="tablebody" align="center">{data.examname}</TableCell >
                           {/* <TableCell className="tablebody" align="center">{data.examstatus}</TableCell> */}
                           <TableCell>
-                            {/* <Switch align="left"
+                          {/* <Switch align="left"
+                              key={index}
+                              // checked={this.state.examstatus}
+                              // checked={data.examstatus}
+                              // onChange={(e)=>this.handleChange(index,data.examstatus)}
+                              inputProps={{ 'aria-label': 'controlled' }}
+                            />
+                             {data.examstatus ? 'Enabled' : 'Disabled'}  */}
+                          {/* <Switch
+                                align="left"
+                                key={index}
+                                checked={data.examstatus}
+                                onChange={(e) => this.handleToggleExamstatus(e, currentindex)}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                              />
+                              {data.examstatus ? 'Enabled' : 'Disabled'} */}
+                            <Switch align="left"
                               key={index}
                               // checked={this.state.examstatus}
                               checked={data.examstatus ? true : false}
                               onChange={(e)=>this.handleChange(index)}
                               inputProps={{ 'aria-label': 'controlled' }}
                             />
-                            {data.examstatus ? "Enabled" : "Disabled"} */}
+                            {data.examstatus ? "Enabled" : "Disabled"}
                           </TableCell>
                           <TableCell className="tablebody" align='center'><Button
                             onClick={() => (this.handleOpen(data.id))} ><EditIcon />
@@ -342,7 +403,6 @@ class ExamDashboard extends Component {
                       )
                     })
                     )}
-
                 </TableBody>
               </Table>
             </TableContainer>
@@ -394,8 +454,8 @@ class ExamDashboard extends Component {
                           onChange={this.handleChange}
                           row
                         >
-                          <FormControlLabel value="disable" checked={examstatus === "false"} control={<Radio />} label="Disabled" />
-                          <FormControlLabel value="enable" checked={examstatus === "true"} control={<Radio />} label="Enabled" />
+                          <FormControlLabel value="disable" checked={examstatus === "disable"} control={<Radio />} label="Disabled" />
+                          <FormControlLabel value="enable" checked={examstatus === "enable"} control={<Radio />} label="Enabled" />
                         </RadioGroup>
                       </FormControl>
                     </Grid>

@@ -85,8 +85,6 @@ class StudentDashboard extends Component {
     }
   }
 
-
-
   componentDidUpdate(prevProps) {
     if (prevProps.singelStudent !== this.props.singelStudent) {
       const { id, firstname, lastname, email, contact, dob, gender, organization } = this.props.singelStudent;

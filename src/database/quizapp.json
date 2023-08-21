@@ -39,26 +39,6 @@
       "gender": "male",
       "contact": "8007419586",
       "id": 7
-    },
-    {
-      "email": "samadhan1234@gmail.com",
-      "fname": "samadhan",
-      "lname": "kakde",
-      "password": "sa123456",
-      "role": "trainer",
-      "gender": "male",
-      "contact": "984558999",
-      "id": 8
-    },
-    {
-      "email": "sujitg1999@gmail.com",
-      "fname": "sujit",
-      "lname": "gaikwad",
-      "password": "123456",
-      "role": "admin",
-      "gender": "male",
-      "contact": "9322403669",
-      "id": 9
     }
   ],
   "react": [
@@ -607,34 +587,40 @@
   "exams": [
     {
       "id": 1,
-      "code": "HI-1",
-      "examname": "Java"
+      "code": "HI-2",
+      "examname": "Phython",
+      "examstatus": "disable"
     },
     {
       "id": 2,
-      "code": "HI-2",
-      "examname": "Phython"
+      "code": "HI-3",
+      "examname": "PHP",
+      "examstatus": "disable"
     },
     {
       "id": 3,
-      "code": "HI-3",
-      "examname": "PHP"
+      "code": "HI-4",
+      "examname": "Angular",
+      "examstatus": "disable"
     },
     {
       "id": 4,
-      "code": "HI-4",
-      "examname": "Angular"
+      "code": "HI-5",
+      "examname": "React",
+      "examstatus": "disable"
     },
     {
       "id": 5,
-      "code": "HI-5",
-      "examname": "React"
+      "code": "HI-65",
+      "examname": "VueJs",
+      "examstatus": "disable",
+      "action": ""
     },
     {
       "id": 6,
-      "code": "HI-6",
-      "examname": "Vuejss",
-      "examstatus": false,
+      "code": "HI-19",
+      "examname": "Java",
+      "examstatus": "enable",
       "action": ""
     }
   ],
@@ -1055,27 +1041,6 @@
       "queFive": "test",
       "queSix": "test",
       "id": 18
-    },
-    {
-      "id": 7,
-      "code": "HI-7",
-      "examname": "Veu.js",
-      "examstatus": "disable",
-      "action": ""
-    },
-    {
-      "id": 8,
-      "code": "jkwabsxh",
-      "examname": "ncb",
-      "examstatus": "disable",
-      "action": ""
-    },
-    {
-      "id": 9,
-      "code": "HI-24",
-      "examname": "nbckdsb",
-      "examstatus": "",
-      "action": ""
     }
   ]
 }

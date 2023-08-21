@@ -65,7 +65,7 @@ export function updateexamerror(payload) {
 // DELETE Exam
 export function deleteExam(id) {
     return (dispatch) => {
-        const url = `${constants.baseURL}/user/${id}`
+        const url = `${constants.baseURL}/exams/${id}`
          Delete(url).then(response => dispatch(deleteexamsuccess(id)))
             .catch(error => dispatch(deleteexamError(error.response.data)))
     }

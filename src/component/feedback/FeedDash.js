@@ -8,15 +8,13 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Stack from '@mui/material/Stack';
-import { Grid, Typography, Box, Modal } from '@mui/material';
+import { Grid, Box, Modal } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import * as TablePaginationActions from "../common/TablePaginationActions"
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
-import zIndex from '@mui/material/styles/zIndex';
 
 const style = {
     position: 'absolute',
@@ -101,7 +99,7 @@ export class FeedDash extends Component {
         }) || [];
 
         return (
-            <div className='container' style={{ marginRight: '25px',marginLeft:"-25px" }}>
+            <div className='container' style={{ marginRight: '25px', marginLeft: "-25px" }}>
 
 
                 <TableContainer component={Paper} sx={{ marginTop: 5 }}>
@@ -115,7 +113,7 @@ export class FeedDash extends Component {
                                             Manage feedback
                                         </Grid>
                                         <Grid item>
- 
+
                                             <TextField
                                                 className='searchinput'
                                                 type="text"
@@ -187,27 +185,32 @@ export class FeedDash extends Component {
                         aria-describedby="modal-modal-description"
                     >
                         <Box sx={style}>
-
-                            <TableRow>
-                                <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} style={{position:'relative', zIndex:'1'}}>
-                                    <Grid item>
-                                        Feedback Details
-                                    </Grid></TableCell>
-                            </TableRow>
+                        <TableRow>
+                                        <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
+                                            <Grid item>
+                                                Feedback Details
+                                            </Grid></TableCell>
+                                    </TableRow>
 
                             {selectedFeedback && (
-                                <Table>
+                                <Table >
+                                    {/* <TableRow>
+                                        <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
+                                            <Grid item>
+                                                Feedback Details
+                                            </Grid></TableCell>
+                                    </TableRow> */}
                                     <TableRow>
                                         <TableCell>
-                                            Student Name: </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
+                                            <strong>Student Name:</strong> </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
                                     </TableRow>
 
                                     <TableRow>
-                                        <TableCell>Contact No: </TableCell><TableCell>{selectedFeedback.contact}</TableCell>
+                                        <TableCell><strong>Contact No:</strong> </TableCell><TableCell>{selectedFeedback.contact}</TableCell>
                                     </TableRow>
 
                                     <TableRow>
-                                        <TableCell>Organization: </TableCell><TableCell>{selectedFeedback.org}</TableCell>
+                                        <TableCell><strong>Organization:</strong> </TableCell><TableCell>{selectedFeedback.org}</TableCell>
                                     </TableRow>
 
                                     <TableRow>

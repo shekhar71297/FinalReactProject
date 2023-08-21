@@ -621,7 +621,6 @@
       "count": 0,
       "id": 5
     }
-    
   ],
   "feedback": [
     {
@@ -885,30 +884,17 @@
       "id": 20
     },
     {
-      "fname": "jkjjd",
-      "email": "jjkdj@gmail.com",
-      "contact": "9098988888",
-      "org": "jhjhjhj",
-      "queOne": "jjkjkjkjkj",
-      "queTwo": "jjkjkjkj",
-      "queThree": "jkjkjjkj",
-      "queFour": "jjkjkjkj",
-      "queFive": "jjkjkjkj",
-      "queSix": "jkjkjkjk",
+      "fname": "Renuka Kahane",
+      "email": "renuka@gmail.com",
+      "contact": "9898989898",
+      "org": "CDAC",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test4",
+      "queSix": "test6",
       "id": 21
-    },
-    {
-      "fname": "abcdeee",
-      "email": "abc@gmail.com",
-      "contact": "8888888888",
-      "org": "hemmm",
-      "queOne": "asaasaasa",
-      "queTwo": "asasasasas",
-      "queThree": "asasasasas",
-      "queFour": "asasaasas",
-      "queFive": "asasaasas",
-      "queSix": "asasasasasas",
-      "id": 22
     }
   ],
   "exams": [

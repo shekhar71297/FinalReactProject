@@ -590,6 +590,30 @@
       "pnr": "",
       "branch": "",
       "id": 22
+    },
+    {
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 23
+    },
+    {
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 24
     }
   ],
   "examresult": [
@@ -779,6 +803,11 @@
       "studentName": "rushikesh kakde",
       "count": 0,
       "id": 7
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 36
     }
   ],
   "feedback": [

@@ -128,65 +128,87 @@ export class StudentResult extends Component {
       <div >
 
         {/* table pop up */}
-        <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup}>
-          <DialogTitle>Result Details</DialogTitle>
+        <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup} fullWidth maxWidth="md" PaperProps={{
+          sx: {
+            width: '30%', // Adjust the width as needed
+            // Adjust the maximum height as needed
+          },
+        }}>
+          <DialogTitle sx={{ backgroundColor: '#1976d2', color: 'white', fontSize: '28px' }}>Result Details</DialogTitle>
           {selectedRecord && (
-            <DialogContent>
+            <DialogContent sx={{ fontSize: '23px' , marginTop:"7px" }} >
               {/* Show the details of the selected record here */}
-              <Typography >
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  Student Name:
+              <Typography  >
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' , }} >
+                  <span style={{ fontWeight: "bold" }}> Student Name:</span>
+                  {selectedRecord.StudentName} <br />
                 </Typography>{" "}
-                {selectedRecord.StudentName} <br />
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  Organization:
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}> Organization :</span>
+                  {selectedRecord.Orgnization} <br />
                 </Typography>{" "}
-                {selectedRecord.Orgnization} <br />
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  Branch:
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}> Branch:</span>
+                  {selectedRecord.Branch} <br />
                 </Typography>{" "}
-                {selectedRecord.Branch} <br />
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  Exam Name:
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>   Exam Name:</span>
+                  {selectedRecord.ExamName} <br />
                 </Typography>{" "}
-                {selectedRecord.ExamName} <br />
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  Total mark:
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>   Total mark:</span>
+                  {selectedRecord.TotalMark} <br />
                 </Typography>{" "}
-                {selectedRecord.TotalMark} <br />
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  ObtaineMark:
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>  ObtaineMark:</span>
+                  {selectedRecord.ObtainedMark} <br />
                 </Typography>{" "}
-                {selectedRecord.ObtainedMark} <br />
-                <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                  Status:
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>  Status:</span>
+                  {selectedRecord.status} <br />
                 </Typography>{" "}
-                {selectedRecord.status} <br />
+
               </Typography>
-              <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                Grade:
+              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                <span style={{ fontWeight: "bold" }}>   Grade:</span>
+                {grade} <br />
               </Typography>{" "}
-              {grade} <br />
-              <Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>
-                Date:
+
+              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                <span style={{ fontWeight: "bold" }}>  Date:</span>
+                {selectedRecord.Date} <br />
               </Typography>{" "}
-              {selectedRecord.Date} <br />
+
             </DialogContent>
           )}
           <DialogActions>
-            <Button onClick={this.closeDetailsPopup} color="primary">
+            <Button onClick={this.closeDetailsPopup} color="primary" sx={{ fontSize: "23px" }}>
               Close
             </Button>
           </DialogActions>
         </Dialog>
         {/* start table */}
-        <Box sx={{ height: 100 }}>
+        <Box sx={{ marginRight: "25px", marginTop: 7, position: "relative", right: 20 }}>
           <Paper>
             <TableContainer >
-              <Table aria-label="simple table" sx={{ marginTop: 8 }}>
-                <TableHead style={{ maxHeight: '400px', overflow: 'auto' }}>
+              <Table aria-label="simple table" sx={{}} >
+                <TableHead style={{ overflow: 'auto' }}>
                   <TableRow>
-                    <TableCell align="center" colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
+                    <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
                           Result module
@@ -223,13 +245,13 @@ export class StudentResult extends Component {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>StudentName</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Orgnization</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>ExamName</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Status</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Date</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
+                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>SrNo</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>StudentName</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Orgnization</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>ExamName</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Status</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Date</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Action</Typography></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

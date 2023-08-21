@@ -268,4 +268,4 @@ export class FeedDash extends Component {
     }
 }
 
-export default FeedDash;
+export default FeedDash

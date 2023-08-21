@@ -181,6 +181,28 @@ export class FeedbackModule extends Component {
   //method to make post request
   addfeedback = (event) => {
     event.preventDefault();
+
+    // Check for any validation errors before submitting
+  if (
+    this.state.errors.fnameError ||
+    this.state.errors.emailError ||
+    this.state.errors.contactError ||
+    this.state.errors.orgError ||
+    this.state.errors.queOneError ||
+    this.state.errors.queTwoError ||
+    this.state.errors.queThreeError ||
+    this.state.errors.queFourError ||
+    this.state.errors.queFiveError ||
+    this.state.errors.queSixError
+  ) {
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: "Please enter valid data before submitting.",
+      severity: 'error',
+    });
+    return; // Prevent submission
+  }
+
     const payload = {
       fname: this.state.fname,
       email: this.state.email,
@@ -190,7 +212,7 @@ export class FeedbackModule extends Component {
       queTwo: this.state.queTwo,
       queThree: this.state.queThree,
       queFour: this.state.queFour,
-      queFive: this.state.queFour,
+      queFive: this.state.queFive,
       queSix: this.state.queSix
     }
 

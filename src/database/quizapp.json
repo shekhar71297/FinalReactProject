@@ -965,10 +965,10 @@
       "id": 19
     },
     {
-      "fname": "abc efg",
-      "email": "adc@gmail.com",
-      "contact": "8888888888",
-      "org": "hematite",
+      "fname": "Shruti Kahane",
+      "email": "shruti16@gmail.com",
+      "contact": "9876543212",
+      "org": "Lighthouse",
       "queOne": "test1",
       "queTwo": "test1",
       "queThree": "test1",
@@ -978,30 +978,17 @@
       "id": 20
     },
     {
-      "fname": "abc bcs",
-      "email": "ac@gmail.com",
-      "contact": "8888888888",
-      "org": "hemat",
-      "queOne": "test",
-      "queTwo": "testtststststs",
-      "queThree": "tsetsgsgsgsgsg",
-      "queFour": "ssdfdffdsfsdf",
-      "queFive": "ssdfdffdsfsdf",
-      "queSix": "sfsdfdsfsdfsfsf",
+      "fname": "Renuka Kahane",
+      "email": "renuka@gmail.com",
+      "contact": "9898989898",
+      "org": "CDAC",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test4",
+      "queSix": "test6",
       "id": 21
-    },
-    {
-      "fname": "abcdeee",
-      "email": "abc@gmail.com",
-      "contact": "8888888888",
-      "org": "hemmm",
-      "queOne": "asaasaasa",
-      "queTwo": "asasasasas",
-      "queThree": "asasasasas",
-      "queFour": "asasaasas",
-      "queFive": "asasaasas",
-      "queSix": "asasasasasas",
-      "id": 22
     }
   ],
   "exams": [

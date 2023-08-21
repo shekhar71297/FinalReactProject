@@ -589,25 +589,27 @@
       "id": 1,
       "code": "HI-2",
       "examname": "Phython",
-      "examstatus": "disable"
+      "examstatus": true
     },
     {
       "id": 2,
       "code": "HI-3",
       "examname": "PHP",
-      "examstatus": "disable"
+      "examstatus": false
     },
     {
       "id": 3,
       "code": "HI-4",
       "examname": "Angular",
-      "examstatus": "disable"
+      "examstatus": false,
+      "action": ""
     },
     {
       "id": 4,
       "code": "HI-5",
       "examname": "React",
-      "examstatus": "disable"
+      "examstatus": false,
+      "action": ""
     },
     {
       "id": 5,
@@ -618,9 +620,16 @@
     },
     {
       "id": 6,
-      "code": "HI-19",
+      "code": "HI-7",
       "examname": "Java",
       "examstatus": "enable",
+      "action": ""
+    },
+    {
+      "id": 10,
+      "code": "HI-8",
+      "examname": "MySQL",
+      "examstatus": false,
       "action": ""
     }
   ],

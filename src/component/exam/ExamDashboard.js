@@ -12,12 +12,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import { Box } from '@mui/material';
-import Modal from '@mui/material/Modal';
-import Stack from '@mui/material/Stack';
 import { TextField, Button, Grid, Container, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel } from '@mui/material';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
-
-import Typography from '@mui/material/Typography';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
@@ -41,13 +37,13 @@ const style = {
 class ExamDashboard extends Component {
   constructor(props) {
     super(props)
-    console.log("anmol",this.props)
+    console.log("anmol", this.props)
     this.state = {
       exams: [],
       id: null,
       code: '',
       examname: '',
-      examstatus: '',
+      examstatus: true,
       action: '',
       searchQuery: "",
       isAddExam: true,
@@ -55,10 +51,10 @@ class ExamDashboard extends Component {
       snackbarMessage: '',
       confirmDialogOpen: false,
       recordToDeleteId: null,
-      errors:{
-        codeError:false,
-        examnameError:false,
-        examstatusError:false,
+      errors: {
+        codeError: false,
+        examnameError: false,
+        examstatusError: false,
       },
       status: true,
       open: false,
@@ -67,26 +63,26 @@ class ExamDashboard extends Component {
     }
   }
 
-    handleClose = () => {
-      this.setState({ open: false });
-    };
-
-    componentDidUpdate(prevProps) {
-
-      if (prevProps.singleExam !== this.props.singleExam) {
-        const { id = 0, code = "", examname = "", examstatus=false  } = this.props.singleExam;
-        this.setState({
-          id, code, examname, examstatus
-        }, () => console.log(this.state))
-      }
+  componentDidUpdate(prevProps) {
+    if(prevProps.allExams !== this.props.allExams){
+      this.setState({exams:this.props.allExams})
+      console.log("updated all exam data",this.props.allExams);
     }
 
-    componentDidMount() {
-      this.props.initExamRequest();
+    if (prevProps.singleExam !== this.props.singleExam) {
+      const { id = 0, code = "", examname = "", examstatus = false } = this.props.singleExam;
+      this.setState({
+        id, code, examname, examstatus
+      }, () => console.log(this.state))
     }
-    
+  }
+
+  componentDidMount() {
+    this.props.initExamRequest();
+  }
+
   //for pagination
-   handleChangePage = (event, newPage) => {
+  handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
   };
 
@@ -98,61 +94,55 @@ class ExamDashboard extends Component {
   handleSearchChange = (event) => {
     this.setState({ searchQuery: event.target.value, page: 0 });
   }
+  
+  // to toggle button
+  toggelChange = (index, newExamStatus) => {
+    const { page, rowsPerPage, exams } = this.state;
+    const dataIndex = page * rowsPerPage + index;
+    exams[dataIndex].examstatus = newExamStatus;
+    this.setState({ exams: exams }, () => {
+      const updatedExams = exams[dataIndex];
+      this.props.updateExamRequest(updatedExams);
+    });
+  }
 
-  // voucher code 
-  // handleChange = (index, status, event) => {
-  //   const { page, rowsPerPage } = this.state;
-  //   let vcodes = this.state.vcodes;
-  //   const dataIndex = page * rowsPerPage + index;
-  //   // console.log("before",vcodes,index,vcodes[index]);
-  //   vcodes[dataIndex].status = !status;
-  //   // console.log("after",vcodes);
-  //   this.setState({ vcodes: vcodes }, () => {
-  //     console.log(this.state.vcodes[dataIndex])
-  //     this.props.updateVoucherRequest(this.state.vcodes[dataIndex]);
-  //   });
-
-  // };
   // for add-update onchange method
-  handleChange = (event,index,examname) => {
-    const { name, index,value } = event.target;
-    // let 
+  handleChange = (event, index) => {
+    const { name, value } = event.target;
     this.setState({ [name]: value });
     console.log(value)
     // vadlidation for exam code
-    if(name === "code"){
+    if (name === "code") {
       const codeError = !(validation.isValidName(this.state[name]));
-      if(codeError){
-        this.setState({errors:{...this.state.errors,codeError:true}})
-      }else{
-        this.setState({errors:{...this.state.errors,codeError:false}})
+      if (codeError) {
+        this.setState({ errors: { ...this.state.errors, codeError: true } })
+      } else {
+        this.setState({ errors: { ...this.state.errors, codeError: false } })
       }
     }
-
     // vadlidation for examname
-    if(name === "examname"){
+    if (name === "examname") {
       const examnameError = !(validation.isValidExamname(this.state[name]));
-      if(examnameError){
-        this.setState({errors:{...this.state.errors,examnameError:true}})
-      }else{
-        this.setState({errors:{...this.state.errors,examnameError:false}})
+      if (examnameError) {
+        this.setState({ errors: { ...this.state.errors, examnameError: true } })
+      } else {
+        this.setState({ errors: { ...this.state.errors, examnameError: false } })
       }
     }
   }
-
-    //to popup
-    handleOpen = (id = null) => {
-      this.resetExamFormHandler();
   
-      if (id !== null) {
-        this.getsinglerecord(id);
-        this.setState({ open: true, isAddExam: false });
-      } else {
-        this.setState({ open: true, isAddExam: true });
-      }
-    };
+  //to popup add exam popup
+  handleOpen = (id = null) => {
+    if (id !== null) {
+      this.getsinglerecord(id);
+      this.setState({ open: true, isAddExam: false });
+    } else {
+      this.setState({ open: true, isAddExam: true });
+      this.resetExamFormHandler(
+      );
+    }
+  };
 
-    
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -173,10 +163,7 @@ class ExamDashboard extends Component {
     });
   };
 
-  deletedata = (id) => {
-    this.openConfirmDialog(id);
-  };
-
+  // delete action
   confirmDelete = () => {
     const id = this.state.recordToDeleteId;
     this.props.initExamRequest();
@@ -212,7 +199,7 @@ class ExamDashboard extends Component {
     this.props.getSingleExamRequest(id)
   }
 
-   // update and add actions
+  // update and add actions
   resetExamFormHandler = () => {
     this.setState({
       id: null,
@@ -221,7 +208,6 @@ class ExamDashboard extends Component {
       examstatus: '',
     })
   }
-
 
   //update exam 
   updateExam = (event) => {
@@ -237,23 +223,23 @@ class ExamDashboard extends Component {
       this.props.addExamRequest(eobj);
       this.setState({
         snackbarOpen: true,
-        snackbarMessage: 'User added successfully',
+        snackbarMessage: 'Add exam successfully',
       });
       // Refresh exam data after adding or updating
-    this.props.initExamRequest();
+      this.props.initExamRequest();
     }
     else {
       eobj['id'] = this.state.id;
-      this.props.initExamRequest();
+      // this.props.initExamRequest();
       this.props.updateExamRequest(eobj);
       this.setState({
         snackbarOpen: true,
-        snackbarMessage: 'User updated successfully',
+        snackbarMessage: 'Edit exam successfully',
       });
     }
     this.handleClose();
     // Refresh exam data after adding or updating
-  this.props.initExamRequest();
+    this.props.initExamRequest();
   }
 
   // close alert message 
@@ -264,30 +250,16 @@ class ExamDashboard extends Component {
     });
   };
 
-  // handleToggleExamstatus = (id) => {
-  //   const { exams } = this.state;
-  //   const updatedExams = exams.map(exam => {
-  //     if (exam.id === id) {
-  //       return {
-  //         ...exam,
-  //         examstatus: !exam.examstatus
-  //       };
-  //     }
-  //     return exam;
-  //   });
-  //   this.setState({ exams: updatedExams });
-  // };
-  
   render() {
     const { exams, id, code, examname, examstatus, page, rowsPerPage, open, searchQuery } = this.state;
     const filteredExam = this.props.allExams && this.props.allExams.filter((data) => {
 
-        const searchQuery = this.state.searchQuery;
-        const examCodeInclude = data.code.toLowerCase().includes(searchQuery)
-        const examNameIncludes = data.examname.toLowerCase().includes(searchQuery)
-       
-        return examCodeInclude || examNameIncludes 
-      });
+      const searchQuery = this.state.searchQuery;
+      const examCodeInclude = data.code.toLowerCase().includes(searchQuery)
+      const examNameIncludes = data.examname.toLowerCase().includes(searchQuery)
+
+      return examCodeInclude || examNameIncludes
+    });
     return (
       <div>
         {/* start table */}
@@ -300,54 +272,52 @@ class ExamDashboard extends Component {
                     <TableCell align="center" colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
-                             Manage Exam
+                          Manage Exam
                         </Grid>
                         <Grid item>
-
                           <TextField
                             className='searchinput'
                             type="text"
                             value={searchQuery}
                             onChange={this.handleSearchChange}
                             placeholder="Search Exam"
-                            // label="Search Exam"
-
                             variant="standard"
                             sx={{
                               backgroundColor: 'white',
                               padding: "2px 3px",
                               borderRadius: "4px",
                               width: "auto",
-
                             }}
+
                             InputProps={{
                               startAdornment: (
                                 <InputAdornment position="end">
                                   <SearchIcon />
                                 </InputAdornment>
-                              ),
+                              )
                             }}
                           />
                         </Grid>
                       </Grid>
-                      </TableCell>
+                    </TableCell>
                   </TableRow>
+
+                  {/* add exam button */}
                   <TableRow>
-                  <Button variant="contained" color="primary" size="small" type="button" sx={{ margin:"8px" ,padding: "5px 5px",}} onClick={() => (this.handleOpen())}><AddIcon />Exam</Button>
+                    <Button variant="contained" color="primary" size="small" type="button" sx={{ margin: "8px", padding: "5px 5px", }} onClick={() => (this.handleOpen())}><AddIcon />Exam</Button>
                   </TableRow>
                   <TableRow>
                     <TableCell align="center"><strong>Exam Id</strong></TableCell>
                     <TableCell align="center"><strong>Exam Code</strong></TableCell>
                     <TableCell align="center"><strong>Exam Name</strong></TableCell>
                     <TableCell align="center"><strong>Exam Staus</strong></TableCell>
-                    {/* <TableCell align="center"></TableCell> */}
                     <TableCell align="center"><strong>Action</strong></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
                   <TableBody>
                   </TableBody>
-                  
+
                   {filteredExam?.length === 0 ? (
                     <TableRow>
                       <TableCell colSpan={8} align='center'>
@@ -355,38 +325,20 @@ class ExamDashboard extends Component {
                       </TableCell>
                     </TableRow>
                   ) : (
-                  
-                   filteredExam?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
-                                      const currentindex= page*rowsPerPage + index ;
+
+                    filteredExam?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+                      const currentindex = page * rowsPerPage + index;
 
                       return (
                         <TableRow key={data.id} className="tablebody">
                           <TableCell className="tablebody" component="th" align="center" scope="row">{currentindex + 1}</TableCell>
                           <TableCell className="tablebody" align="center">{data.code}</TableCell >
                           <TableCell className="tablebody" align="center">{data.examname}</TableCell >
-                          {/* <TableCell className="tablebody" align="center">{data.examstatus}</TableCell> */}
                           <TableCell>
-                          {/* <Switch align="left"
-                              key={index}
-                              // checked={this.state.examstatus}
-                              // checked={data.examstatus}
-                              // onChange={(e)=>this.handleChange(index,data.examstatus)}
-                              inputProps={{ 'aria-label': 'controlled' }}
-                            />
-                             {data.examstatus ? 'Enabled' : 'Disabled'}  */}
-                          {/* <Switch
-                                align="left"
-                                key={index}
-                                checked={data.examstatus}
-                                onChange={(e) => this.handleToggleExamstatus(e, currentindex)}
-                                inputProps={{ 'aria-label': 'controlled' }}
-                              />
-                              {data.examstatus ? 'Enabled' : 'Disabled'} */}
-                            <Switch align="left"
-                              key={index}
-                              // checked={this.state.examstatus}
-                              checked={data.examstatus ? true : false}
-                              onChange={(e)=>this.handleChange(index)}
+                            <Switch
+                              align="left"
+                              checked={data.examstatus}
+                              onChange={() => this.toggelChange(index, !data.examstatus)}
                               inputProps={{ 'aria-label': 'controlled' }}
                             />
                             {data.examstatus ? "Enabled" : "Disabled"}
@@ -395,26 +347,26 @@ class ExamDashboard extends Component {
                             onClick={() => (this.handleOpen(data.id))} ><EditIcon />
                           </Button>
                             <Button
-                              onClick={() =>(this.deletedata(data.id))}
-                              ><DeleteIcon />
+                              onClick={() => (this.deletedata(data.id))}
+                            ><DeleteIcon />
                             </Button>
                           </TableCell>
                         </TableRow>
                       )
                     })
-                    )}
+                  )}
                 </TableBody>
               </Table>
             </TableContainer>
 
             {/* add-update user */}
             <Dialog open={open} onClose={this.handleClose} >
-              <DialogTitle sx={{ backgroundColor:"#1976d2",color:"white" , fontSize:"25px" , textAlign:"start" , fontWeight:"bolder"}}>{this.state.isAddExam ? 'Add Exam' : 'Update Exam'}</DialogTitle>
+              <DialogTitle sx={{ backgroundColor: "#1976d2", color: "white", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>{this.state.isAddExam ? 'Add Exam' : 'Update Exam'}</DialogTitle>
               <form onSubmit={this.updateExam}>
                 <DialogContent>
 
                   <Grid container spacing={2}>
-                  <Grid item xs={12} >
+                    <Grid item xs={12} >
                       <TextField
                         required
                         label="Exam Code"
@@ -423,10 +375,9 @@ class ExamDashboard extends Component {
                         name="code"
                         value={code}
                         onChange={this.handleChange}
-                        error={this.state.errors.codeError 
+                        error={this.state.errors.codeError
                         }
-                        helperText={this.state.errors.codeError && validation.errorText("Please enter a valid code ") ||'eg:HI-3'}
-    
+                        helperText={this.state.errors.codeError && validation.errorText("Please enter a valid code ") || 'eg:HI-3'}
                       />
                     </Grid>
                     <Grid item xs={12} >
@@ -438,12 +389,12 @@ class ExamDashboard extends Component {
                         name="examname"
                         value={examname}
                         onChange={this.handleChange}
-                        error={this.state.errors.examnameError 
+                        error={this.state.errors.examnameError
                         }
-                        helperText={this.state.errors.examnameError && validation.errorText("Please enter a exam name") ||'eg:Java,php'}
+                        helperText={this.state.errors.examnameError && validation.errorText("Please enter a exam name") || 'eg:Java,php'}
                       />
                     </Grid>
-                    
+
                     <Grid item xs={12}>
                       <FormControl component="fieldset">
                         <FormLabel component="legend">Exam Staus</FormLabel>
@@ -473,49 +424,49 @@ class ExamDashboard extends Component {
               </form>
             </Dialog>
 
-        {/* Delete pop up model  */}
-        <Dialog
-          open={this.state.confirmDialogOpen}
-          onClose={this.closeConfirmDialog}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Are you sure you want to delete this record?
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.closeConfirmDialog} color="primary">
-              Cancel
-            </Button>
-            <Button onClick={this.confirmDelete} color="primary" autoFocus>
-              Delete
-            </Button>
-          </DialogActions>
-        </Dialog>
+            {/* Delete pop up model  */}
+            <Dialog
+              open={this.state.confirmDialogOpen}
+              onClose={this.closeConfirmDialog}
+              aria-labelledby="alert-dialog-title"
+              aria-describedby="alert-dialog-description"
+            >
+              <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
+              <DialogContent>
+                <DialogContentText id="alert-dialog-description">
+                  Are you sure you want to delete this record?
+                </DialogContentText>
+              </DialogContent>
+              <DialogActions>
+                <Button onClick={this.closeConfirmDialog} color="primary">
+                  Cancel
+                </Button>
+                <Button onClick={this.confirmDelete} color="primary" autoFocus>
+                  Delete
+                </Button>
+              </DialogActions>
+            </Dialog>
 
-              {/* table pagination */}
-              <TablePagination
-                  rowsPerPageOptions={[5, 10, 25]}
-                  colSpan={7} // Adjust the colSpan value according to your table structure
-                  count={filteredExam.length}
-                  rowsPerPage={rowsPerPage}
-                  page={page}
-                  SelectProps={{
-                    inputProps: {
-                      'aria-label': 'rows per page',
-                    },
-                    native: true,
-                  }}
-                  onPageChange={this.handleChangePage}
-                  onRowsPerPageChange={this.handleChangeRowsPerPage}
-                  ActionsComponent={TablePaginationActions.default} // Imported component
+            {/* table pagination */}
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              colSpan={7} // Adjust the colSpan value according to your table structure
+              count={filteredExam.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              SelectProps={{
+                inputProps: {
+                  'aria-label': 'rows per page',
+                },
+                native: true,
+              }}
+              onPageChange={this.handleChangePage}
+              onRowsPerPageChange={this.handleChangeRowsPerPage}
+              ActionsComponent={TablePaginationActions.default} // Imported component
             />
-            
           </Paper>
         </Box>
+
         {/* alert message after action perform */}
         <Snackbar
           open={this.state.snackbarOpen}

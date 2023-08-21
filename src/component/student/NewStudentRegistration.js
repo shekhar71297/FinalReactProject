@@ -390,6 +390,7 @@ class NewStudentRegistration extends Component {
               autoHideDuration={3000} // You can adjust the duration as needed
               onClose={() => this.setState({ snackbarOpen: false })}
               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+              variant="filled"
             >
               <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
                 {this.state.snackbarMessage}

@@ -42,7 +42,7 @@ export class StudentLogin extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.allstudent !== this.props.allstudent) {
-      console.log("anmol updated")
+      // console.log("anmol updated")
       const istrue = this.props.allstudent.some((d) =>
         this.state.email === d.email && this.state.dob === d.dob
       );

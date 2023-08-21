@@ -636,11 +636,6 @@
       "id": 3
     },
     {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 3
-    },
-    {
       "studentName": "anmol chaware",
       "count": 0,
       "id": 4
@@ -649,27 +644,8 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
-    },
-    {
-      "studentName": "Sujit Gaikwad",
-      "count": 0,
-      "id": 35
-    },
-    {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 7
-    },
-    {
-      "studentName": "rushikesh kakde",
-      "count": 0,
-      "id": 36
-    },
-    {
-      "studentName": "anmol chaware",
-      "count": 0,
-      "id": 37
     }
+    
   ],
   "feedback": [
     {
@@ -944,6 +920,19 @@
       "queFive": "ssdfdffdsfsdf",
       "queSix": "sfsdfdsfsdfsfsf",
       "id": 21
+    },
+    {
+      "fname": "abcdeee",
+      "email": "abc@gmail.com",
+      "contact": "8888888888",
+      "org": "hemmm",
+      "queOne": "asaasaasa",
+      "queTwo": "asasasasas",
+      "queThree": "asasasasas",
+      "queFour": "asasaasas",
+      "queFive": "asasaasas",
+      "queSix": "asasasasasas",
+      "id": 22
     }
   ],
   "exams": [

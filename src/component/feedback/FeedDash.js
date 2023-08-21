@@ -100,11 +100,11 @@ export class FeedDash extends Component {
         }) || [];
 
         return (
-            <div className='container' style={{ marginRight: '25px' }}>
+            <div className='container' style={{ marginRight: '25px',marginLeft:"-25px" }}>
 
 
-                <TableContainer component={Paper}>
-                    <Table aria-label="simple table" sx={{ marginTop: 8 }}>
+                <TableContainer component={Paper} sx={{ marginTop: 5 }}>
+                    <Table aria-label="simple table" >
                         <TableHead>
 
                             <TableRow>
@@ -138,7 +138,6 @@ export class FeedDash extends Component {
                                                         </InputAdornment>
                                                     ),
                                                 }}
-
                                             />
                                         </Grid>
                                     </Grid>
@@ -188,12 +187,12 @@ export class FeedDash extends Component {
                     >
                         <Box sx={style}>
 
-                            <Stack spacing={2} direction="row">
-                                <Button onClick={this.handleClose} style={{ marginLeft: '395px', color: 'grey' }}><CloseIcon style={{ color: 'blue' }} /></Button>
-                            </Stack>
-                            <Typography id="modal-modal-title" variant="h6" component="h2" style={{ fontWeight: '700' }}>
-                                Feedback Details
-                            </Typography>
+                            <TableRow>
+                                <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
+                                    <Grid item>
+                                        Feedback Details
+                                    </Grid></TableCell>
+                            </TableRow>
 
                             {selectedFeedback && (
                                 <Table>

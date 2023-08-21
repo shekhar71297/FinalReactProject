@@ -13,6 +13,11 @@ import Alert from '@mui/material/Alert';
 import * as validation from '../../util/validation';
 import * as Action from '../../pages/feedback/Action';
 import Typography from '@mui/material/Typography';
+import { Dialog,DialogTitle, DialogContent, DialogContentText, DialogActions} from '@mui/material';
+// import DialogTitle from '@mui/material';
+// import DialogContent from '@mui/material';
+// import DialogContentText from '@mui/material';
+// import DialogActions from '@mui/material';
 
 export class FeedbackModule extends Component {
   constructor(props) {
@@ -65,7 +70,7 @@ export class FeedbackModule extends Component {
       }
 
       if (name === "org") {
-        const isOrgError = !(validation.isValidName(this.state[name]));
+        const isOrgError = !(validation.isValidFullName(this.state[name]));
         if (isOrgError) {
           this.setState({ errors: { ...this.state.errors, orgError: true } })
         } else {
@@ -153,9 +158,9 @@ export class FeedbackModule extends Component {
   }
 
   // method update state property
-  inputChangeHandler = (event) => {
-    this.setState({ [event.target.name]: event.target.value })
-  }
+  // inputChangeHandler = (event) => {
+  //   this.setState({ [event.target.name]: event.target.value })
+  // }
 
   // Method to reset the form
   resetForm = () => {
@@ -173,6 +178,7 @@ export class FeedbackModule extends Component {
       queSix: ''
     });
   };
+
 
   //method to make post request
   addfeedback = (event) => {
@@ -204,115 +210,119 @@ export class FeedbackModule extends Component {
     this.resetForm();
   }
 
+
+
   render() {
-    const { fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix, errorMessage } = this.state;
+    const { fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix } = this.state;
 
     const isSubmitDisabled = !fname || !email || !contact || !org || !queOne || !queTwo || !queThree || !queFour || !queFive || !queSix;
     return (
       <div>
-      <div style={{ marginTop: '80px' }}>
-        <Card elevation={3} style={{ margin: 'auto', maxWidth: '800px',padding: '20px' }}>
-        <CardHeader title={<Typography variant="h5" color="primary">Training Feedback</Typography>} />
-          <CardContent>
-            <form onSubmit={this.addfeedback} action={<Link to=" " />}>
-              <Box
-                sx={{
-                  '& > :not(style)': { m: 1, width: '73ch' },
-                }}
-                noValidate
-                autoComplete="off"
-              >
-                <TextField id="fullname" type='text' label='Name' name='fname' variant="standard"
-                  required placeholder='Enter Name' multiline
-                  rows={1} onChange={this.handleChange} value={fname} error={this.state.errors.fnameError} helperText={this.state.errors.fnameError && "Please enter a valid fullname"} />
+        <div style={{ marginTop: '80px' }}>
+          <Card elevation={3} style={{ margin: 'auto', maxWidth: '800px', padding: '20px' }}>
+            <CardHeader title={<Typography variant="h5" color="primary">Training Feedback</Typography>} />
+            <CardContent>
+              <form onSubmit={this.addfeedback}>
+                <Box
+                  sx={{
+                    '& > :not(style)': { m: 1, width: '73ch' },
+                  }}
+                  noValidate
+                  autoComplete="off"
+                >
+                  <TextField id="fullname" type='text' label='Name' name='fname' variant="standard"
+                    required placeholder='Enter Name' multiline
+                    rows={1} onChange={this.handleChange} value={fname} error={this.state.errors.fnameError} helperText={this.state.errors.fnameError && "Please enter a valid fullname"} />
 
 
-                <TextField id="email" type='email' name='email' label="Email" variant="standard"
-                  required placeholder='Enter Email' pattern='[a-z0-9._%+-]+@([a-z0-9.-]{5})+\.[a-z]{2,4}' multiline
-                  rows={1} onChange={this.handleChange} value={email} error={this.state.errors.emailError} helperText={this.state.errors.emailError && "Please enter a valid email"}
-                />
+                  <TextField id="email" type='email' name='email' label="Email" variant="standard"
+                    required placeholder='Enter Email' multiline
+                    rows={1} onChange={this.handleChange} value={email} error={this.state.errors.emailError} helperText={this.state.errors.emailError && "Please enter a valid email"}
+                  />
 
-                <TextField id="contact" type='tel' name='contact' label="Contact" variant="standard"
-                  required placeholder='Enter Contact' pattern='[0-9]{10}' multiline
-                  rows={1} onChange={this.handleChange} value={contact} error={this.state.errors.contactError} helperText={this.state.errors.contactError && "Please enter a valid contact"} />
+                  <TextField id="contact" type='tel' name='contact' label="Contact" variant="standard"
+                    required placeholder='Enter Contact' multiline
+                    rows={1} onChange={this.handleChange} value={contact} error={this.state.errors.contactError} helperText={this.state.errors.contactError && "Please enter a valid contact"} />
 
 
-                <TextField id="organization" type='text' name='org' label="Organization" variant="standard"
-                  required placeholder='Enter Organization' pattern='[a-zA-Z ]{2,30}' multiline
-                  rows={1} onChange={this.handleChange} value={org} error={this.state.errors.orgError} helperText={this.state.errors.orgError && "Please enter a valid Organization"} />
+                  <TextField id="organization" type='text' name='org' label="Organization" variant="standard"
+                    required placeholder='Enter Organization' multiline
+                    rows={1} onChange={this.handleChange} value={org} error={this.state.errors.orgError} helperText={this.state.errors.orgError && "Please enter a valid Organization"} />
 
-                <TextField
-                  name="queOne"
-                  type='text'
-                  label="1.What did you enjoy the most about the trainning?"
-                  variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
-                  rows={3} onChange={this.handleChange} value={queOne} error={this.state.errors.queOneError} helperText={this.state.errors.queOneError && "Please enter a valid answser"}
-                />
+                  <TextField
+                    name="queOne"
+                    type='text'
+                    label="1.What did you enjoy the most about the trainning?"
+                    variant="standard" required placeholder='Enter your comment here' multiline
+                    rows={3} onChange={this.handleChange} value={queOne} error={this.state.errors.queOneError} helperText={this.state.errors.queOneError && "Please enter a valid answser"}
+                  />
 
-                <TextField
-                  name="queTwo"
-                  type='text'
-                  label="2.How would you rate the quality of instruction provided by the faculty?"
-                  variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
-                  rows={3} onChange={this.handleChange} value={queTwo} error={this.state.errors.queTwoError} helperText={this.state.errors.queTwoError && "Please enter a valid answer"}
-                />
+                  <TextField
+                    name="queTwo"
+                    type='text'
+                    label="2.How would you rate the quality of instruction provided by the faculty?"
+                    variant="standard" required placeholder='Enter your comment here' multiline
+                    rows={3} onChange={this.handleChange} value={queTwo} error={this.state.errors.queTwoError} helperText={this.state.errors.queTwoError && "Please enter a valid answer"}
+                  />
 
-                <TextField
-                  name="queThree"
-                  label="3. Was there any subject matter that you found confusing? If so, please provide specific examples."
-                  variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
-                  rows={3} onChange={this.handleChange} value={queThree} error={this.state.errors.queThreeError} helperText={this.state.errors.queThreeError && "Please enter a valid answer"}
-                />
+                  <TextField
+                    name="queThree"
+                    label="3. Was there any subject matter that you found confusing? If so, please provide specific examples."
+                    variant="standard" required placeholder='Enter your comment here' multiline
+                    rows={3} onChange={this.handleChange} value={queThree} error={this.state.errors.queThreeError} helperText={this.state.errors.queThreeError && "Please enter a valid answer"}
+                  />
 
-                <TextField
-                  name="queFour"
-                  type='text'
-                  label="4. What is the most valuable thing you learned in course (knowledge or skills)?"
-                  variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
-                  rows={3} onChange={this.handleChange} value={queFour} error={this.state.errors.queFourError} helperText={this.state.errors.queFourError && "Please enter a valid answer"}
-                />
+                  <TextField
+                    name="queFour"
+                    type='text'
+                    label="4. What is the most valuable thing you learned in course (knowledge or skills)?"
+                    variant="standard" required placeholder='Enter your comment here' multiline
+                    rows={3} onChange={this.handleChange} value={queFour} error={this.state.errors.queFourError} helperText={this.state.errors.queFourError && "Please enter a valid answer"}
+                  />
 
-                <TextField
-                  name="queFive"
-                  type='text'
-                  label="5. Overall how is the faculty feedback? Any specific comments about faculty?"
-                  variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
-                  rows={3} onChange={this.handleChange} value={queFive} error={this.state.errors.queFiveError} helperText={this.state.errors.queFiveError && "Please enter a valid answer"}
-                />
+                  <TextField
+                    name="queFive"
+                    type='text'
+                    label="5. Overall how is the faculty feedback? Any specific comments about faculty?"
+                    variant="standard" required placeholder='Enter your comment here' multiline
+                    rows={3} onChange={this.handleChange} value={queFive} error={this.state.errors.queFiveError} helperText={this.state.errors.queFiveError && "Please enter a valid answer"}
+                  />
 
-                <TextField
-                  name="queSix"
-                  type='text'
-                  label="6. Any additional comments you wish to share?"
-                  variant="standard" required placeholder='Enter your comment here' pattern='[a-zA-Z ]{2,300}' multiline
-                  rows={3} onChange={this.handleChange} value={queSix} error={this.state.errors.queSixError} helperText={this.state.errors.queSixError && "Please enter a valid answer"}
-                />
+                  <TextField
+                    name="queSix"
+                    type='text'
+                    label="6. Any additional comments you wish to share?"
+                    variant="standard" required placeholder='Enter your comment here' multiline
+                    rows={3} onChange={this.handleChange} value={queSix} error={this.state.errors.queSixError} helperText={this.state.errors.queSixError && "Please enter a valid answer"}
+                  />
 
-                <Stack spacing={2} direction="row" style={{ margin: 'auto' }}>
-                
-                  
-                  <Button type='submit' variant="contained" color="primary" disabled={isSubmitDisabled}>Submit</Button>
-                  <Link to={'/'}>
-                  <Button variant="contained" color="primary" >Back</Button>
-                </Link>
-                </Stack>
-              </Box>
-            </form>
-          </CardContent>
-        </Card>
-        <Snackbar
-          open={this.state.snackbarOpen}
-          autoHideDuration={3000} // You can adjust the duration as needed
-          onClose={() => this.setState({ snackbarOpen: false })}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        >
-          <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
-            {this.state.snackbarMessage}
-          </Alert>
-        </Snackbar>
-      </div>
-            </div >
-        )
+                  <Stack spacing={2} direction="row" style={{ margin: 'auto' }}>
+
+                    <Link to={'/'}>
+                    <Button type='submit' variant="contained" color="primary" disabled={isSubmitDisabled}>Submit</Button>
+                    </Link>
+
+                    <Link to={'/'}>
+                      <Button variant="contained" color="primary" >Back</Button>
+                    </Link>
+                  </Stack>
+                </Box>
+              </form>
+            </CardContent>
+          </Card>
+          <Snackbar
+            open={this.state.snackbarOpen}
+            autoHideDuration={3000} // adjust the duration as needed
+            onClose={() => this.setState({ snackbarOpen: false })}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+          >
+            <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
+              {this.state.snackbarMessage}
+            </Alert>
+          </Snackbar>
+        </div>
+      </div >
+    )
   }
 }
 

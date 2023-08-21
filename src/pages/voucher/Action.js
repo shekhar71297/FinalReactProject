@@ -1,7 +1,7 @@
 import * as constants from '../../util/Constant';
 import { Get, Put } from '../../util/HttpService';
 import * as constant from "./Constant"
-import { baseURL } from "../../util/Constant"
+
 
 /////get method CRUd
 export function getAllVouchers(){
@@ -9,6 +9,7 @@ export function getAllVouchers(){
         const url = `${constants.baseURL}/vcodes`
         Get(url).then(response=>dispatch(getVoucherSuccess(response.data)))
         .catch(error=>dispatch(getVoucherError(error.response.data)))
+        
     }
 }
 

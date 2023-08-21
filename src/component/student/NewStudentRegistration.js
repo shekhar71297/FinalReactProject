@@ -19,6 +19,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import { connect } from 'react-redux';
 import WithRouter from '../../util/WithRouter';
+import * as validation from '../../util/validation'
 import { TextFields } from '@mui/icons-material';
 import Modal from '@mui/material/Modal';
 class NewStudentRegistration extends Component {
@@ -36,10 +37,15 @@ class NewStudentRegistration extends Component {
       gender: '',
       organization: '',
       pnr:'',
-      branch:null,
+      branch:'',
       term: false,
       open: false,
-      
+      errors:{
+        fnameError:false,
+        lnameError:false,
+        emailError:false,
+        contactError:false
+      }
 
     }
   }
@@ -73,7 +79,7 @@ class NewStudentRegistration extends Component {
       gender: this.state.gender,
       organization: this.state.organization,
       pnr:this.state.pnr,
-      branch: this.state.organization === "hematite" || this.state.organization === "cdac" ? "" : this.state.branch
+      branch: this.state.branch === " " || this.state.organization === "cdac" ? "" : this.state.branch
     }
     this.props.addStudentRequest(payload)
     window.alert("Student Registered Successfully ")
@@ -113,6 +119,43 @@ class NewStudentRegistration extends Component {
         [name]: value,
       });
     }
+
+    this.setState({ [name]: value }, () => {
+      if(name === "firstname"){
+        const isFnameError = !(validation.isValidName(this.state[name]));
+        if(isFnameError){
+          this.setState({errors:{...this.state.errors,fnameError:true}})
+        }else{
+          this.setState({errors:{...this.state.errors,fnameError:false}})
+        }
+      }
+       if(name === "lastname"){
+        const isLnameError = !(validation.isValidName(this.state[name]));
+        if(isLnameError){
+          this.setState({errors:{...this.state.errors,lnameError:true}})
+        }else{
+          this.setState({errors:{...this.state.errors,lnameError:false}})
+        }
+      }
+
+      if(name === "email"){
+        const isEmailError = !(validation.isValidEmail(this.state[name]));
+        if(isEmailError){
+          this.setState({errors:{...this.state.errors,emailError:true}})
+        }else{
+          this.setState({errors:{...this.state.errors,emailError:false}})
+        }
+      }
+
+      if(name === "contact"){
+        const isvalidContact = !(validation.isValidContact(this.state[name]));
+        if(isvalidContact){
+          this.setState({errors:{...this.state.errors,contactError:true}})
+        }else{
+          this.setState({errors:{...this.state.errors,contactError:false}})
+        }
+      }
+    });
   };
 
 
@@ -159,7 +202,7 @@ class NewStudentRegistration extends Component {
             </Typography>
             <form onSubmit={this.addResgisterStudent} action={<Link to="" />}>
               <Stack spacing={2} direction="row" >
-
+              
                 <TextField
                   type="text"
                   variant='outlined'
@@ -170,8 +213,10 @@ class NewStudentRegistration extends Component {
                   name='firstname'
                   fullWidth
                   required
+                  error={this.state.errors.fnameError }
+                  helperText={this.state.errors.fnameError && validation.errorText ("Please enter a valid firstname")||"eg:John"}
                 />
-
+                 
                 <TextField
                   type="text"
                   variant='outlined'
@@ -182,7 +227,10 @@ class NewStudentRegistration extends Component {
                   name='lastname'
                   fullWidth
                   required
+                  error={this.state.errors.lnameError }
+                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") ||'eg: Dev'}
                 />
+                {/* {this.state.errors.lnameError &&(<span>Please enter a valid lastname</span>)} */}
               </Stack>
               <br />
               <TextField
@@ -196,7 +244,10 @@ class NewStudentRegistration extends Component {
                 fullWidth
                 required
                 sx={{ mb: 4 }}
+                error={this.state.errors.emailError}
+                helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email")||"eg:jhon@123"}
               />
+                 {/* {this.state.errors.emailError &&(<span>Please enter a valid email</span>)} */}
               <TextField
                 type="tel"
                 variant='outlined'
@@ -208,6 +259,8 @@ class NewStudentRegistration extends Component {
                 fullWidth
                 required
                 sx={{ mb: 4 }}
+                error={this.state.errors.contactError}
+                helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact")||"eg:99223344222"}
               />
               <TextField
                 type="date"
@@ -243,6 +296,7 @@ class NewStudentRegistration extends Component {
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="organization"
+                  value={this.state.organization}
                 >
                   <br /><br />
                   <FormControlLabel value="hematite" onChange={(e) => this.handleChange(e)} control={<Radio />} label="Hematite" />
@@ -252,10 +306,10 @@ class NewStudentRegistration extends Component {
                 </RadioGroup>
                 {
                   this.state.organization === "lighthouse" && <Select
-                    name='organization'
-                    value={organization}
+                    name='branch'
+                    value={branch}
                     onChange={this.handleChange}
-                  // label='Select Organization'
+
                   >
                     <MenuItem value=''>Select Organizantion</MenuItem>
                     <MenuItem value='Hadapsar'>Hadapsar</MenuItem>

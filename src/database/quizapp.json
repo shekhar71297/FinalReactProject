@@ -32,7 +32,7 @@
     },
     {
       "email": "rushikakdeforever@gmail.com",
-      "fname": "rushikesh",
+      "fname": "Rushikesh",
       "lname": "kakde",
       "password": "rushi@26",
       "role": "admin",
@@ -49,6 +49,16 @@
       "gender": "male",
       "contact": "984558999",
       "id": 8
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "sujit",
+      "lname": "gaikwad",
+      "password": "123456",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9322403669",
+      "id": 9
     }
   ],
   "react": [
@@ -323,22 +333,22 @@
   ],
   "vcodes": [
     {
-      "status": true,
+      "status": false,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": true,
+      "status": false,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": true,
+      "status": false,
       "id": 4,
       "Vcode": "SgLBmw"
     },
@@ -348,22 +358,22 @@
       "Vcode": "TZkSCK"
     },
     {
-      "status": true,
+      "status": false,
       "id": 6,
       "Vcode": "rEOHy9"
     },
     {
-      "status": true,
+      "status": false,
       "id": 7,
       "Vcode": "gCoC7V"
     },
     {
-      "status": true,
+      "status": false,
       "id": 8,
       "Vcode": "M7ebg7"
     },
     {
-      "status": true,
+      "status": false,
       "id": 9,
       "Vcode": "vVOnxq"
     },
@@ -495,17 +505,6 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "id": 13,
-      "StudentName": "vijay kumar",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "python",
-      "TotalMark": 50,
-      "ObtainedMark": 28,
-      "Grade": "-",
-      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -514,22 +513,72 @@
       "firstname": "anmol",
       "lastname": "chaware",
       "email": "anmol@gmail.com",
-      "contact": "1234567891",
+      "contact": "7350537398",
       "dob": "1993-12-12",
       "gender": "Male",
       "organization": "hematite"
     },
     {
-      "firstname": "rushikesh",
-      "lastname": "kakde",
-      "email": "rushikakdeforever@gmail.com",
-      "contact": "8007419586",
-      "dob": "2001-06-26",
+      "id": 2,
+      "firstname": "Om",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "9421688541",
+      "dob": "1994-03-11",
+      "gender": "Male",
+      "organization": "hematite"
+    },
+    {
+      "id": 5,
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "sujit@gmail.com",
+      "contact": "9322403669",
+      "dob": "1992-04-23",
+      "gender": "Male",
+      "organization": "Hadapsar"
+    },
+    {
+      "id": 16,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujit123@gmail.com",
+      "contact": "9922506887",
+      "dob": "1994-03-12",
+      "gender": "Male",
+      "organization": "lighthouse"
+    },
+    {
+      "id": 20,
+      "firstname": "Anmol",
+      "lastname": "Sir",
+      "email": "As123@gmail.com",
+      "contact": "9889153532",
+      "dob": "1995-03-12",
+      "gender": "Male",
+      "organization": "lighthouse"
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
       "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
-      "id": 2
+      "id": 22
+    },
+    {
+      "id": 23,
+      "firstname": "tom",
+      "lastname": "harry",
+      "email": "tomharry@gmail.com",
+      "contact": "8668606212",
+      "dob": "1997-12-12",
+      "gender": "Male",
+      "organization": "lighthouse"
     }
   ],
   "examresult": [
@@ -539,9 +588,14 @@
       "id": 1
     },
     {
-      "studentName": "rushikesh kakde",
+      "studentName": "anmol chaware",
       "count": 0,
       "id": 2
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 3
     },
     {
       "studentName": "rushikesh kakde",
@@ -559,9 +613,24 @@
       "id": 5
     },
     {
+      "studentName": "Sujit Gaikwad",
+      "count": 0,
+      "id": 35
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 7
+    },
+    {
       "studentName": "anmol chaware",
-      "count": 10,
-      "id": 6
+      "count": 0,
+      "id": 36
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 37
     }
   ],
   "feedback": [
@@ -811,6 +880,57 @@
       "queFive": "dfdfdf",
       "queSix": "fdfdfdfd",
       "id": 19
+    },
+    {
+      "fname": "abc efg",
+      "email": "adc@gmail.com",
+      "contact": "8888888888",
+      "org": "hematite",
+      "queOne": "test1",
+      "queTwo": "test1",
+      "queThree": "test1",
+      "queFour": "test1",
+      "queFive": "test1",
+      "queSix": "test1",
+      "id": 20
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "code": "HI-1",
+      "examname": "Java",
+      "examstatus": true
+    },
+    {
+      "id": 2,
+      "code": "HI-2",
+      "examname": "Phython",
+      "examstatus": true
+    },
+    {
+      "id": 3,
+      "code": "HI-3",
+      "examname": "PHP",
+      "examstatus": true
+    },
+    {
+      "id": 4,
+      "code": "HI-4",
+      "examname": "Angular",
+      "examstatus": true
+    },
+    {
+      "id": 5,
+      "code": "HI-5",
+      "examname": "React",
+      "examstatus": true
+    },
+    {
+      "id": 6,
+      "code": "HI-6",
+      "examname": "Vuejss",
+      "examstatus": true
     }
   ]
 }

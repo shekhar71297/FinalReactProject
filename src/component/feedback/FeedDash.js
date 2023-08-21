@@ -8,12 +8,14 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Stack from '@mui/material/Stack';
-import { Typography, Box, Modal } from '@mui/material';
+import { Grid, Typography, Box, Modal } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import * as TablePaginationActions from "../common/TablePaginationActions"
+import SearchIcon from '@mui/icons-material/Search';
+import InputAdornment from '@mui/material/InputAdornment';
 
 const style = {
     position: 'absolute',
@@ -100,28 +102,47 @@ export class FeedDash extends Component {
         return (
             <div className='container' style={{ marginRight: '25px' }}>
 
-                {/* search box */}
-                <TextField
-                    className='searchinput'
-                    type="text"
-                    value={searchQuery}
-                    onChange={this.handleSearchChange}
-                    placeholder="Search Result"
-                    label="Search Result" // Optional label for the input field
-                    variant="outlined" // You can choose the variant based on your design
-                    sx={{
-                        paddingBottom: 1,
-                        marginTop: 4,
-                        marginLeft: 60
-                    }}
-                />
 
                 <TableContainer component={Paper}>
-                    <Table aria-label="simple table">
+                    <Table aria-label="simple table" sx={{ marginTop: 8 }}>
                         <TableHead>
+
                             <TableRow>
-                                <TableCell align="center" colSpan={8} sx={{ backgroundColor: "#1976d2", fontSize: "25px", textAlign: "start", fontWeight: "bolder", color: "white" }}>
-                                    Feedback module</TableCell>
+                                <TableCell align="center" colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
+                                    <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                                        <Grid item>
+                                            Manage feedback
+                                        </Grid>
+                                        <Grid item>
+
+                                            <TextField
+                                                className='searchinput'
+                                                type="text"
+                                                value={searchQuery}
+                                                onChange={this.handleSearchChange}
+                                                placeholder="Search feedback"
+                                                // label="Search Result"
+
+                                                variant="standard"
+                                                sx={{
+                                                    backgroundColor: 'white',
+                                                    padding: "2px 3px",
+                                                    borderRadius: "4px",
+                                                    width: "auto",
+
+                                                }}
+                                                InputProps={{
+                                                    startAdornment: (
+                                                        <InputAdornment position="end">
+                                                            <SearchIcon />
+                                                        </InputAdornment>
+                                                    ),
+                                                }}
+
+                                            />
+                                        </Grid>
+                                    </Grid>
+                                </TableCell>
                             </TableRow>
                             <TableRow>
                                 <TableCell align="center" style={{ fontWeight: '600' }}>SrNo</TableCell>
@@ -192,7 +213,7 @@ export class FeedDash extends Component {
                                     <TableRow>
                                         <TableCell colSpan={2}>
                                             1.What did you enjoy the most about the trainning?:  <br></br><strong>Ans:  &nbsp;</strong>{selectedFeedback.queOne}
-                                            </TableCell>                     
+                                        </TableCell>
                                     </TableRow>
 
                                     <TableRow>

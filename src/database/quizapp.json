@@ -539,16 +539,14 @@
       "organization": "Hadapsar"
     },
     {
+      "id": 22,
       "firstname": "Sujit",
       "lastname": "Gaikwad",
       "email": "sujitg1313@gmail.com",
       "contact": "9322403669",
       "dob": "1999-05-18",
       "gender": "Male",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 22
+      "organization": "cdac"
     },
     {
       "firstname": "rushikesh",
@@ -611,16 +609,84 @@
       "id": 28
     },
     {
-      "firstname": "test",
-      "lastname": "tses",
-      "email": "sujitg1999@gmail.com",
-      "contact": "7676767645",
-      "dob": "1222-11-12",
+      "firstname": "Kaka",
+      "lastname": "Mama",
+      "email": "kaka122@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-23",
       "gender": "Male",
       "organization": "cdac",
-      "pnr": "12345",
-      "branch": "",
       "id": 29
+    },
+    {
+      "firstname": "Kala",
+      "lastname": "Pila",
+      "email": "kaala123@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-07",
+      "gender": "Male",
+      "organization": "cdac",
+      "id": 30
+    },
+    {
+      "firstname": "Aliaya",
+      "lastname": "Bhaat",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-09-08",
+      "gender": "Female",
+      "organization": "lighthouse",
+      "pnr": "900900",
+      "branch": "Hadapsar",
+      "id": 31
+    },
+    {
+      "firstname": "Nila",
+      "lastname": "pila",
+      "email": "nila123@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-19",
+      "gender": "Female",
+      "organization": "cdac",
+      "pnr": "3456",
+      "branch": "",
+      "id": 32
+    },
+    {
+      "firstname": "ajajaka",
+      "lastname": "jsjsksk",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-10",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 33
+    },
+    {
+      "firstname": "Sonya",
+      "lastname": "aaaaaa",
+      "email": "sonya123@gmail.com",
+      "contact": "9898989898",
+      "dob": "2023-08-17",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "234567",
+      "branch": "",
+      "id": 34
+    },
+    {
+      "firstname": "Ruyuja",
+      "lastname": "Abhana",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-26",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 35
     }
   ],
   "examresult": [

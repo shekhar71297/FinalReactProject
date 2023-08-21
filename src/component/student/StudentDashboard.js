@@ -178,6 +178,8 @@ class StudentDashboard extends Component {
         dob: (''),
         gender: (''),
         organization: (''),
+        pnr:(''),
+        branch:('')
   
       })
   
@@ -194,6 +196,8 @@ class StudentDashboard extends Component {
       dob: this.state.dob,
       gender: this.state.gender,
       organization: this.state.organization,
+      pnr:this.state.pnr,
+      branch:this.state.branch
 
     }
     if (this.state.isAddStudent) {
@@ -206,6 +210,7 @@ class StudentDashboard extends Component {
 
     } else {
       sObj['id'] = this.state.id;
+      this.props.addStudentRequest(sObj);
       this.props.initStudentRequest()
       this.props.updateStudentRequest(sObj)
       this.setState({

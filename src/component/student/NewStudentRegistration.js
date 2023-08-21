@@ -120,6 +120,8 @@ class NewStudentRegistration extends Component {
       dob: (''),
       gender: (''),
       organization: (''),
+      pnr:(''),
+      branch:('')
 
     })
 

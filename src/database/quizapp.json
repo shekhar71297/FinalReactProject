@@ -61,16 +61,6 @@
       "id": 9
     },
     {
-      "email": "anmol123@gmail.com",
-      "fname": "samruddi",
-      "lname": "vaidya",
-      "password": "dfgghj234563545",
-      "role": "admin",
-      "gender": "female",
-      "contact": "8907654321",
-      "id": 10
-    },
-    {
       "email": "sa@gmail.com",
       "fname": "samruddhi",
       "lname": "vaidya",
@@ -756,6 +746,16 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
+    },
+    {
+      "studentName": "Renuka Kahane",
+      "count": 0,
+      "id": 6
+    },
+    {
+      "studentName": "Renuka Kahane",
+      "count": 0,
+      "id": 7
     }
   ],
   "feedback": [
@@ -1031,6 +1031,19 @@
       "queFive": "test4",
       "queSix": "test6",
       "id": 21
+    },
+    {
+      "fname": "Test test",
+      "email": "test@gmail.com",
+      "contact": "9898000090",
+      "org": "Hematite",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "fdfdf",
+      "queFour": "df",
+      "queFive": "fdfdfsf",
+      "queSix": "fdfdfdf",
+      "id": 22
     }
   ],
   "exams": [

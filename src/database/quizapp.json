@@ -751,6 +751,18 @@
       "pnr": "",
       "branch": "",
       "id": 36
+    },
+    {
+      "firstname": "manjunath",
+      "lastname": "pawar",
+      "email": "manjunath12@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-04-01",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 37
     }
   ],
   "examresult": [
@@ -783,6 +795,11 @@
       "studentName": "rushikesh kakde",
       "count": 2,
       "id": 6
+    },
+    {
+      "studentName": "manjunath pawar",
+      "count": 1,
+      "id": 7
     }
   ],
   "feedback": [

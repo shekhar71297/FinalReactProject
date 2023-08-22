@@ -59,6 +59,26 @@
       "gender": "male",
       "contact": "9322403669",
       "id": 9
+    },
+    {
+      "email": "renukakahane9@gmail.com",
+      "fname": "Renuka",
+      "lname": "Kahane",
+      "password": "@Renuka123",
+      "role": "trainer",
+      "gender": "female",
+      "contact": "8989898989",
+      "id": 10
+    },
+    {
+      "email": "renukakahane9@gmail.com",
+      "fname": "Renuka",
+      "lname": "Kahane",
+      "password": "h",
+      "role": "admin",
+      "gender": "female",
+      "contact": "9898989898",
+      "id": 11
     }
   ],
   "react": [
@@ -687,6 +707,18 @@
       "pnr": "",
       "branch": "",
       "id": 35
+    },
+    {
+      "firstname": "Renuka",
+      "lastname": "Kahane",
+      "email": "renukakahane9@gmail.com",
+      "contact": "9898989898",
+      "dob": "2000-05-09",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 36
     }
   ],
   "examresult": [
@@ -714,6 +746,16 @@
       "studentName": "anmol chaware",
       "count": 0,
       "id": 5
+    },
+    {
+      "studentName": "Renuka Kahane",
+      "count": 0,
+      "id": 6
+    },
+    {
+      "studentName": "Renuka Kahane",
+      "count": 0,
+      "id": 7
     }
   ],
   "feedback": [
@@ -989,6 +1031,19 @@
       "queFive": "test4",
       "queSix": "test6",
       "id": 21
+    },
+    {
+      "fname": "Test test",
+      "email": "test@gmail.com",
+      "contact": "9898000090",
+      "org": "Hematite",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "fdfdf",
+      "queFour": "df",
+      "queFive": "fdfdfsf",
+      "queSix": "fdfdfdf",
+      "id": 22
     }
   ],
   "exams": [

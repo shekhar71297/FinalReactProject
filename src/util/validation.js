@@ -1,6 +1,6 @@
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
 
-export const isValidFullName = (name) => /^[a-zA-Z ]{2,20}$/.test(name);
+export const isValidFullName = (name) => /^[a-zA-Z ]{2,40}$/.test(name);
 export const isValidQue = (que) => /^[a-zA-Z0-9 ]{5,100}$/.test(que);
 export const isValidName = (name) => /^[a-zA-Z]{2,10}$/.test(name);
 export const isValidContact = (contact) => /^[6789]\d{9}$/.test(contact);

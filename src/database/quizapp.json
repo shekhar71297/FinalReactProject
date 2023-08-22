@@ -79,6 +79,16 @@
       "gender": "male",
       "contact": "8907654321",
       "id": 12
+    },
+    {
+      "email": "sujit@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "Sujit@1233234",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9999998585",
+      "id": 13
     }
   ],
   "react": [
@@ -514,17 +524,6 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "id": 12,
-      "StudentName": "sandeep thorat",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 25,
-      "Grade": "-",
-      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -566,7 +565,9 @@
       "contact": "9322403669",
       "dob": "1999-05-18",
       "gender": "Male",
-      "organization": "cdac"
+      "organization": "cdac",
+      "pnr": "qaaass",
+      "branch": "Hadapsar"
     },
     {
       "firstname": "rushikesh",
@@ -649,16 +650,16 @@
       "id": 30
     },
     {
-      "firstname": "Aliaya",
-      "lastname": "Bhaat",
-      "email": "sujitg1999@gmail.com",
+      "id": 31,
+      "firstname": "Alia",
+      "lastname": "Bhatt",
+      "email": "aliabhatt@gmail.com",
       "contact": "9322403669",
       "dob": "2023-09-08",
       "gender": "Female",
       "organization": "lighthouse",
-      "pnr": "900900",
-      "branch": "Hadapsar",
-      "id": 31
+      "pnr": "",
+      "branch": ""
     },
     {
       "firstname": "Nila",
@@ -671,30 +672,6 @@
       "pnr": "3456",
       "branch": "",
       "id": 32
-    },
-    {
-      "firstname": "ajajaka",
-      "lastname": "jsjsksk",
-      "email": "sujitg1999@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-10",
-      "gender": "Female",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 33
-    },
-    {
-      "firstname": "Sonya",
-      "lastname": "aaaaaa",
-      "email": "sonya123@gmail.com",
-      "contact": "9898989898",
-      "dob": "2023-08-17",
-      "gender": "Male",
-      "organization": "cdac",
-      "pnr": "234567",
-      "branch": "",
-      "id": 34
     },
     {
       "firstname": "Ruyuja",

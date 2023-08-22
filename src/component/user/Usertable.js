@@ -268,6 +268,7 @@ class Usertable extends Component {
   render() {
 
     const { page, rowsPerPage, searchQuery, fname, open, lname, password, contact, email, gender, role } = this.state;
+    const isSubmitDisabled = !fname || !lname || !email || !contact || !role|| !gender || !password  ;
     const filteredUsers = this.props.allUser.filter((data) => {
 
       const searchQuery = this.state.searchQuery;
@@ -528,6 +529,7 @@ class Usertable extends Component {
                               }))
                             }
                             edge="end"
+                            
                           >
                             {this.state.showPassword ? (
                               <VisibilityIcon />
@@ -550,6 +552,7 @@ class Usertable extends Component {
                 type="submit"
                 variant="contained"
                 color="primary"
+                disabled={isSubmitDisabled}
               >
                 {this.state.isAddUser ? 'Add User' : 'Update User'}
               </Button>

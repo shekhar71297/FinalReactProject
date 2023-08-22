@@ -10,6 +10,9 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import axios from 'axios';
 import SubmitExam from './SubmitExam';
 import DialogBox from './common/DialogBox';
+import { BiSolidUserCircle } from 'react-icons/bi'
+import Chip from '@mui/material/Chip';
+
 
 
 class StartExam extends Component {
@@ -21,7 +24,7 @@ class StartExam extends Component {
       selectedOptions: [],
       count: 0,
       studentName: '',
-      endpage:false,
+      endpage: false,
       openDialog: false,
       currentQuestionIndex: 0,
     };
@@ -73,7 +76,7 @@ class StartExam extends Component {
         timer: Math.max(0, prevState.timer - 1),
       }));
     }, 1000);
-  // Add an event listener for the beforeunload event
+    // Add an event listener for the beforeunload event
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
   }
@@ -86,22 +89,22 @@ class StartExam extends Component {
     clearInterval(this.interval);
   }
   // Event handler for the beforeunload event
-   handleBeforeUnload = (e) => {
-  // If the exam hasn't been submitted yet
+  handleBeforeUnload = (e) => {
+    // If the exam hasn't been submitted yet
     if (!this.state.endpage) {
       e.preventDefault();
       e.returnValue = ""; // This is required for some browsers to show a confirmation dialog
-      this.submitExam();
+      // this.submitExam();
     }
   };
-  
- // Event handler for the visibilitychange event
- handleVisibilityChange = () => {
- // Check if the tab is hidden
-  if (document.visibilityState === "hidden" && !this.state.endpage) {
-    this.submitExam();
-  }
-};
+
+  // Event handler for the visibilitychange event
+  handleVisibilityChange = () => {
+    // Check if the tab is hidden
+    if (document.visibilityState === "hidden" && !this.state.endpage) {
+      // this.submitExam();
+    }
+  };
   formatTimer = timer => {
     const hours = Math.floor(timer / 3600);
     const minutes = Math.floor((timer % 3600) / 60);
@@ -135,17 +138,18 @@ class StartExam extends Component {
       const correctAnswers = questionsData.filter((question, index) => {
         return selectedOptions[index] === question.answer;
       });
-  
+
       const count = correctAnswers.length; // Count of correct answers
-  
+
       this.setState({ count, open: true });
-      this.setState({endpage:true})
+      this.setState({ endpage: true })
       console.log(count);
       axios.post("http://localhost:8888/examresult", {
         studentName: this.state.studentName,
         count: count,
       });
-    }) }
+    })
+  }
 
 
   render() {
@@ -155,96 +159,118 @@ class StartExam extends Component {
     const isExamSubmitted = this.state.endpage;
     return (
       <>
-       {endpage ? (
-        <SubmitExam />
-      ) : (
-      <div>
-        <Box sx={{ flexGrow: 1 }}>
-          <AppBar position="fixed">
-            <Toolbar>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                Welcome, {studentName} {/* Display studentName */}
-              </Typography>
-              <Typography variant="body2" sx={{ mr: 2, fontSize: '24px' }}>
-                {this.formatTimer(timer)}
-              </Typography>
-              {/* <Button variant='contained' color="warning" onClick={this.handleOpenDialog}>
+        {endpage ? (
+          <SubmitExam />
+        ) : (
+          <div>
+            <Box sx={{}}>
+              <AppBar position="fixed">
+                <Toolbar>
+
+                  <Typography
+                    variant="h6"
+                    component="div"
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'left',
+                      marginLeft: 5,
+                    }}
+                  >
+                    <Typography sx={{ fontSize: 47, marginTop: 1 }}><BiSolidUserCircle /></Typography>
+                    <span style={{ marginTop: "20px", marginLeft: "5px", fontFamily: "ubuntu", fontSize: '24px' }}>Welcome, {studentName}</span>
+                  </Typography>
+                  <Typography variant="body2" sx={{ fontSize: '24px', marginLeft: 'auto' }}>
+                    {this.formatTimer(timer)}
+                  </Typography>
+
+                  {/* <Button variant='contained' color="warning" onClick={this.handleOpenDialog}>
                 
               </Button> */}
-            </Toolbar>
-          </AppBar>
-        </Box>
-
-        <Box sx={{ marginTop: 5, padding: 16 }}>
-          <Typography variant="h5" gutterBottom>
-            Questions
-          </Typography>
-          {questions.length > 0 && currentQuestionIndex < questions.length ? (
-            <Box
-              sx={{
-                marginBottom: '20px',
-                padding: '16px',
-                boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.1)',
-                borderRadius: '8px',
-              }}
-            >
-              <Typography sx={{ fontSize: "20px", textAlign: 'left' }} variant="h6" color='primary' gutterBottom>
-                {currentQuestionIndex + 1} .{questions[currentQuestionIndex].question}
-              </Typography>
-              <RadioGroup
-                sx={{ fontSize: "10px", textAlign: 'left' }}
-                aria-label={`question-${currentQuestionIndex}`}
-                name={`question-${currentQuestionIndex}`}
-                value={this.state.selectedOptions[currentQuestionIndex]}
-                onChange={this.inputChangeHandler}
-              >
-                {questions[currentQuestionIndex].options.map((option, optionIndex) => (
-                  <FormControlLabel
-                    key={optionIndex}
-                    value={option}
-                    control={<Radio />}
-                    label={option}
-                  />
-                ))}
-              </RadioGroup>
-              {!isFirstQuestion && (
-                <Button variant="contained" color="primary" onClick={this.goToFirstQuestion} sx={{ marginRight: '10px' }}>
-                  First Question
-                </Button>
-              )}
-              {!isFirstQuestion && (
-                <Button variant="contained" color="primary" onClick={this.goToPreviousQuestion} sx={{ marginRight: '10px' }}>
-                  Previous
-                </Button>
-              )}
-              {!isLastQuestion && (
-                <Button variant="contained" color="primary" onClick={this.goToNextQuestion} sx={{ marginRight: '10px' }}>
-                  Next
-                </Button>
-              )}
-              {!isLastQuestion && (
-                <Button variant="contained" color="primary" onClick={this.goToLastQuestion} sx={{ marginRight: '10px' }}>
-                  Last Question
-                </Button>
-              )}
-              
+                </Toolbar>
+              </AppBar>
             </Box>
-          ) : null}
-        {/* Submit or Logout Button */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-            {isExamSubmitted ? (
-              <Button variant="contained" color="secondary" onClick={this.handleLogout}>
-                Logout
-              </Button>
-            ) : (
-              <Button variant="contained" color="warning" onClick={this.handleOpenDialog}>
-                Submit Exam
-              </Button>
-            )}
-          </Box>
-        </Box>
-        {/* Dialog component */}
-        <DialogBox 
+
+            <Box sx={{ marginTop: 5, padding: 16 }}>
+              <Typography variant="h5" gutterBottom>
+                Questions
+              </Typography>
+              {questions.length > 0 && currentQuestionIndex < questions.length ? (
+                <Box
+                  sx={{
+                    marginBottom: '20px',
+                    padding: '20px',
+                    boxShadow: '0px 8px 20px rgba(0, 0, 0, 0.1)',
+                    borderRadius: '8px',
+                  }}
+                >
+                  <Typography sx={{ fontSize: "20px", textAlign: 'left' }} variant="h6" color='primary' gutterBottom>
+                    {currentQuestionIndex + 1} .{questions[currentQuestionIndex].question}
+                  </Typography>
+                  <RadioGroup
+                    sx={{ fontSize: "10px", textAlign: 'left' }}
+                    aria-label={`question-${currentQuestionIndex}`}
+                    name={`question-${currentQuestionIndex}`}
+                    value={this.state.selectedOptions[currentQuestionIndex]}
+                    onChange={this.inputChangeHandler}
+                  >
+                    {questions[currentQuestionIndex].options.map((option, optionIndex) => (
+                      <FormControlLabel
+                        key={optionIndex}
+                        value={option}
+                        control={<Radio />}
+                        label={option}
+                      />
+                    ))}
+                  </RadioGroup>
+
+                  {!isFirstQuestion && (
+                    <Button variant="contained" color="primary" onClick={this.goToPreviousQuestion} sx={{ marginRight: '10px' }}>
+                      Previous
+                    </Button>
+                  )}
+                  {!isLastQuestion && (
+                    <Button variant="contained" color="primary" onClick={this.goToNextQuestion} sx={{ marginRight: '10px' }}>
+                      Next
+                    </Button>
+                  )}
+
+
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      marginTop: '20px',
+                      flexWrap: 'wrap', // Allow chips to wrap to the next line
+                      gap: '5px', // Add spacing between chips
+                    }}
+                  >
+                    {questions.map((id, index) => (
+                     <Chip
+                     key={id}
+                     label={`${index + 1}`}
+                     color={index === currentQuestionIndex ? 'primary' : 'default'}
+                     onClick={() => this.setState({ currentQuestionIndex: index })}
+                     sx={{ minWidth: '30px', height: '30px', fontSize: '12px' }} // Adjust the size of the chip
+                   />
+                    ))}
+                  </Box>
+                </Box>
+              ) : null}
+              {/* Submit or Logout Button */}
+              <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '20px', overflowX: 'auto' }}>
+                {isExamSubmitted ? (
+                  <Button variant="contained" color="secondary" onClick={this.handleLogout}>
+                    Logout
+                  </Button>
+                ) : (
+                  <Button variant="contained" color="warning" onClick={this.handleOpenDialog}>
+                    Submit Exam
+                  </Button>
+                )}
+              </Box>
+            </Box>
+            {/* Dialog component */}
+            <DialogBox
               open={openDialog}
               onClose={this.handleCloseDialog}
               onConfirm={() => {
@@ -253,8 +279,8 @@ class StartExam extends Component {
               }}
               message={`Are you sure you want to submit the exam?`}
             />
-        </div>
-      )}
+          </div>
+        )}
       </>
     );
   }

@@ -24,7 +24,7 @@
       "email": "sam24@gmail.com",
       "fname": "samruddhi",
       "lname": "vaidya",
-      "password": "sam249",
+      "password": "samu2499",
       "role": "trainer",
       "gender": "female",
       "contact": "8976453213",
@@ -54,31 +54,31 @@
       "email": "sujitg1999@gmail.com",
       "fname": "sujit",
       "lname": "gaikwad",
-      "password": "123456",
+      "password": "123456aa",
       "role": "admin",
       "gender": "male",
       "contact": "9322403669",
       "id": 9
     },
     {
-      "email": "renukakahane9@gmail.com",
-      "fname": "Renuka",
-      "lname": "Kahane",
-      "password": "@Renuka123",
-      "role": "trainer",
-      "gender": "female",
-      "contact": "8989898989",
-      "id": 10
-    },
-    {
-      "email": "renukakahane9@gmail.com",
-      "fname": "Renuka",
-      "lname": "Kahane",
-      "password": "h",
+      "email": "sa@gmail.com",
+      "fname": "samruddhi",
+      "lname": "vaidya",
+      "password": "sam24566",
       "role": "admin",
       "gender": "female",
-      "contact": "9898989898",
+      "contact": "8907654321",
       "id": 11
+    },
+    {
+      "email": "anmol123@gmail.com",
+      "fname": "rushi",
+      "lname": "kakde",
+      "password": "rushi3455566",
+      "role": "trainer",
+      "gender": "male",
+      "contact": "8907654321",
+      "id": 12
     }
   ],
   "react": [
@@ -709,11 +709,11 @@
       "id": 35
     },
     {
-      "firstname": "Renuka",
-      "lastname": "Kahane",
-      "email": "renukakahane9@gmail.com",
-      "contact": "9898989898",
-      "dob": "2000-05-09",
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujit@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-12-12",
       "gender": "Female",
       "organization": "hematite",
       "pnr": "",

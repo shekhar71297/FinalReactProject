@@ -1,9 +1,9 @@
 .paper {
     /* width: 100%; */
     overflow: auto;
-    /* position: relative; */
-    /* right: 30px; */
-    /* top: 50px; */
+    position: relative;
+    right: 30px;
+    top: 50px;
 }
 .search{
     left: 200px;

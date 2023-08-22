@@ -19,10 +19,34 @@ export default function questionreducer(state = initialState, action) {
 
             }
 
-        // delete ptoduct
+        // add question 
+        
+        case constant.ADD_QUESTION_SUCCESS: {
+            let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
+            return { ...state, allquestions: allquestions };
+        }
+
+        // put question 
+
+        case constant.UPDATE_QUESTION_SUCCESS: {
+            let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
+            return { ...state, allquestions: allquestions };
+        }
+    
+        // delete question
+
         case constant.DELETE_QUESTION_SUCCESS: {
             let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
             return { ...state, allquestions: allquestions };
+        }
+
+        
+        // Edit Question
+
+        case constant.GET_SINGLE_QUESTION: {
+            const index = state.allquestions.findIndex(d => d.id === action.payload );
+            const question =state.allquestions[index];
+            return {...state,questions:question}
         }
 
         default:

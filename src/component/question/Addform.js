@@ -2,7 +2,6 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { useState } from 'react';
-import Popup from './Popup';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import axios from 'axios';
@@ -17,9 +16,11 @@ import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Snackbar from '@mui/material/Snackbar';
+import { connect } from 'react-redux';
+import * as actions from '../../pages/question/action'
 
 
-const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionData }) => {
+const Addform = ({ isEditMode, editQuestionData,allquestions, addQuestionRequest, setEditMode, setEditQuestionData }) => {
   const [isFormVisible, setFormVisible] = useState(false);
   const [question, setquestion] = useState('');
   const [options, setOptions] = useState([
@@ -35,11 +36,13 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
   const [showPopup, setShowPopup] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const examDatabaseEndpoints = {
-    react: 'http://localhost:8888/react',
-    python: 'http://localhost:8888/python',
-    php: 'http://localhost:8888/php',
+    react: 'react',
+    python: 'python',
+    php: 'php',
     // Add more exam endpoints as needed
   };
+
+
 
   const handleOptionChange = (e, optionIndex) => {
     const newText = e.target.value;
@@ -84,6 +87,7 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
     question,
     options: options.map((option) => option.text),
     answer,
+    allquestions
   };
   
   const examEndpoint = examDatabaseEndpoints[selectedExam];
@@ -95,28 +99,29 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
       return;
     }
     
-
+    
     
     e.preventDefault();
-    axios.post(examEndpoint,newQuestion).then((res)=>{
-      console.log(res.data);
-      setquestion({question: res.data})
+    // axios.post(examEndpoint,newQuestion).then((res)=>{
+    //   console.log(res.data);
+      addQuestionRequest(examEndpoint,newQuestion);
+
+      setquestion({question: allquestions})
       setOptions(
-        res.data.options.map((text, index) => ({
+        allquestions.options && allquestions.options.map((text, index) => ({
           id: index + 1,
           text,
         }))
       );
-      showSnackbar('Question added successfully');
-      setanswer(res.data.answer);
+
+      setanswer(allquestions.answer);
       handleClearForm();
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    // })
+  
     
     setFormVisible(false);
-  };
+  };showSnackbar('Question added successfully');
+      
 
   
   
@@ -299,5 +304,17 @@ const Addform = ({ isEditMode, editQuestionData, setEditMode, setEditQuestionDat
   );
   
 }
+const mapStateToProps = (state) => ({
+  allquestions: state.questionStore.allquestions,
+  singlequestion: state.questionStore.questions
+})
+const mapDispatchToProps = (dispatch) => ({
+  addQuestionRequest:(data,examEndpoint)=>dispatch(actions.addQuestions(data,examEndpoint)),
+  getSinglequestionrequest:(id) => dispatch(actions.getSingleQuestion(id)),
+  updatequestionrequest:(data) => dispatch(actions.updateQuestion(data)),
+  initquestionrequest:(selectedValue) => dispatch(actions.getAllQuestions(selectedValue))
 
-export default  Addform;
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)  (Addform) ;

@@ -71,7 +71,7 @@
       "id": 9
     }
   ],
-  "react": [
+  "questions": [
     {
       "id": 1,
       "question": "Which of the following is the correct name of React.js?",
@@ -81,7 +81,8 @@
         "ReactJS",
         "All of the above"
       ],
-      "answer": "All of the above"
+      "answer": "All of the above",
+      "examId": 1
     },
     {
       "id": 2,
@@ -92,7 +93,8 @@
         "React.js can render both on client and server side.",
         "All of the above"
       ],
-      "answer": "All of the above"
+      "answer": "All of the above",
+      "examId": 1
     },
     {
       "id": 3,
@@ -103,7 +105,8 @@
         "The library of React.js is pretty large",
         "The learning curve can be steep in React.js"
       ],
-      "answer": "The library of React.js is pretty large"
+      "answer": "The library of React.js is pretty large",
+      "examId": 1
     },
     {
       "id": 4,
@@ -114,7 +117,8 @@
         "Both A and B.",
         "None of the above."
       ],
-      "answer": "Virtual DOM"
+      "answer": "Virtual DOM",
+      "examId": 1
     },
     {
       "id": 5,
@@ -125,7 +129,8 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "Class"
+      "answer": "Class",
+      "examId": 1
     },
     {
       "id": 6,
@@ -136,7 +141,8 @@
         "revokeDefault()",
         "Non of the above"
       ],
-      "answer": "preventDefault()"
+      "answer": "preventDefault()",
+      "examId": 1
     },
     {
       "id": 7,
@@ -147,7 +153,8 @@
         "install -g create-react-app",
         "Non of the above"
       ],
-      "answer": "npm install -g create-react-app"
+      "answer": "npm install -g create-react-app",
+      "examId": 1
     },
     {
       "id": 8,
@@ -158,7 +165,8 @@
         "Extends",
         "This"
       ],
-      "answer": "Extends"
+      "answer": "Extends",
+      "examId": 1
     },
     {
       "id": 9,
@@ -169,7 +177,8 @@
         "External storage of the component.",
         "None of the above."
       ],
-      "answer": "Internal storage of the component."
+      "answer": "Internal storage of the component.",
+      "examId": 1
     },
     {
       "id": 10,
@@ -180,56 +189,11 @@
         "It is a module bundler",
         "None of the above."
       ],
-      "answer": "The webpack command is a module bundler."
+      "answer": "The webpack command is a module bundler.",
+      "examId": 1
     },
     {
-      "question": "ikn",
-      "options": [
-        "ib",
-        "bi",
-        "bi",
-        "bi"
-      ],
-      "answer": "kb",
-      "id": 11
-    },
-    {
-      "question": "higuj",
-      "options": [
-        "vj",
-        "v ch",
-        "jv",
-        "hj "
-      ],
-      "answer": "  j",
-      "id": 12
-    },
-    {
-      "question": "vuv",
-      "options": [
-        "v ",
-        "hv",
-        "hv",
-        "hnvh"
-      ],
-      "answer": "vh",
-      "id": 13
-    },
-    {
-      "question": "vh",
-      "options": [
-        "vhv",
-        "hv",
-        "h",
-        "c"
-      ],
-      "answer": "gc",
-      "id": 14
-    }
-  ],
-  "python": [
-    {
-      "id": 1,
+      "id": 11,
       "question": "What is the maximum possible length of an identifier?",
       "options": [
         "16",
@@ -237,10 +201,11 @@
         "64",
         "None of these above"
       ],
-      "answer": "None of these above"
+      "answer": "None of these above",
+      "examId": 2
     },
     {
-      "id": 2,
+      "id": 12,
       "question": " Who developed the Python language?",
       "options": [
         "Zim Den",
@@ -248,10 +213,11 @@
         "Niene Stom",
         "Wick van Rossum"
       ],
-      "answer": "Guido van Rossum"
+      "answer": "Guido van Rossum",
+      "examId": 2
     },
     {
-      "id": 3,
+      "id": 13,
       "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
       "options": [
         "Constructor",
@@ -259,10 +225,11 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "Class"
+      "answer": "Class",
+      "examId": 2
     },
     {
-      "id": 5,
+      "id": 14,
       "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
       "options": [
         "Constructor",
@@ -270,10 +237,11 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": " Class"
+      "answer": " Class",
+      "examId": 2
     },
     {
-      "id": 6,
+      "id": 15,
       "question": " Which of the following character is used to give single-line comments in Python?",
       "options": [
         "//",
@@ -281,10 +249,11 @@
         "!",
         "/*"
       ],
-      "answer": "#"
+      "answer": "#",
+      "examId": 2
     },
     {
-      "id": 7,
+      "id": 16,
       "question": "Which keyword is used for function in Python language?",
       "options": [
         "Function",
@@ -292,10 +261,11 @@
         "Fun ",
         "define"
       ],
-      "answer": "def"
+      "answer": "def",
+      "examId": 2
     },
     {
-      "id": 8,
+      "id": 17,
       "question": "Which of the following functions can help us to find the version of python that we are currently working on?",
       "options": [
         "sys.version(1)",
@@ -303,10 +273,11 @@
         "sys.version()",
         "sys.version"
       ],
-      "answer": "sys.version"
+      "answer": "sys.version",
+      "examId": 2
     },
     {
-      "id": 9,
+      "id": 18,
       "question": "What does pip stand for python??",
       "options": [
         "Pip Installs Python",
@@ -314,10 +285,11 @@
         "Preferred Installer Program",
         "All of the mentioned"
       ],
-      "answer": "Preferred Installer Program"
+      "answer": "Preferred Installer Program",
+      "examId": 2
     },
     {
-      "id": 10,
+      "id": 19,
       "question": "Which of the following functions is a built-in function in python?",
       "options": [
         "factorial()",
@@ -325,34 +297,11 @@
         " seed()",
         "sqrt()"
       ],
-      "answer": "print()"
+      "answer": "print()",
+      "examId": 2
     },
     {
-      "question": "lnioiUVJUOJV",
-      "options": [
-        "ik",
-        "ikikbik",
-        "bipbk",
-        "ipokbk"
-      ],
-      "answer": "bio",
-      "id": 11
-    },
-    {
-      "question": "hii",
-      "options": [
-        "VV",
-        "JVJUV",
-        "XTGX",
-        "CGC"
-      ],
-      "answer": "GC",
-      "id": 12
-    }
-  ],
-  "php": [
-    {
-      "id": 1,
+      "id": 20,
       "question": "Which of the following statement is correct for AngularJS?",
       "options": [
         "AngularJS is an HTML framework",
@@ -360,10 +309,11 @@
         "AngularJS is a JavaScript framework",
         "AngularJS is a SQL framework"
       ],
-      "answer": " AngularJS is a JavaScript framework."
+      "answer": " AngularJS is a JavaScript framework.",
+      "examId": 3
     },
     {
-      "id": 2,
+      "id": 21,
       "question": " On which of the Architectural pattern AngularJS is based?",
       "options": [
         "Observer Pattern",
@@ -371,10 +321,11 @@
         "MVC Architecture pattern",
         "MVVM Architectural pattern"
       ],
-      "answer": "AngularJS is based on MVVM Architectural pattern."
+      "answer": "AngularJS is based on MVVM Architectural pattern.",
+      "examId": 3
     },
     {
-      "id": 3,
+      "id": 22,
       "question": "AngularJS is perfect for?",
       "options": [
         "SPAs",
@@ -382,10 +333,11 @@
         "DPAs",
         "CPAs"
       ],
-      "answer": " AngularJS is perfect for Single Page Applications (SPAs)."
+      "answer": " AngularJS is perfect for Single Page Applications (SPAs).",
+      "examId": 3
     },
     {
-      "id": 4,
+      "id": 23,
       "question": "Which of the following directive is used to bind the application data to the HTML view in AngularJS?",
       "options": [
         "ng-app directive",
@@ -393,10 +345,11 @@
         "ng-bind directive",
         "ng-init directive"
       ],
-      "answer": "ng-bind directive"
+      "answer": "ng-bind directive",
+      "examId": 3
     },
     {
-      "id": 5,
+      "id": 24,
       "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
       "options": [
         "Constructor",
@@ -404,18 +357,19 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "class"
+      "answer": "class",
+      "examId": 3
     },
     {
-      "question": "bjjBJBjj",
+      "question": "hihIhI",
       "options": [
-        "bjjvyh",
-        "vh",
-        "gc",
-        "hc"
+        "HI",
+        "HI",
+        "HI",
+        "H"
       ],
-      "answer": "c",
-      "id": 6
+      "answer": "IKH",
+      "id": 25
     }
   ],
   "vcodes": [
@@ -1126,6 +1080,26 @@
       "code": "HI-6",
       "examname": "Vuejss",
       "examstatus": true
+    }
+  ],
+  "examData": [
+    {
+      "id": 1,
+      "examName": "react",
+      "examCode": "E-1",
+      "examStatus": true
+    },
+    {
+      "id": 2,
+      "examName": "python",
+      "examCode": "E-2",
+      "examStatus": true
+    },
+    {
+      "id": 3,
+      "examName": "php",
+      "examCode": "E-3",
+      "examStatus": true
     }
   ]
 }

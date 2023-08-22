@@ -1,12 +1,12 @@
 import * as constants from '../../util/Constant';
-import { Get, Post, Put } from '../../util/HttpService';
+import { Get, Post, Put,Delete } from '../../util/HttpService';
 import * as actionTypes from './actiontype'
 
 /////get method CRUD
 
 export function getAllQuestions() {
     return (dispatch) => {
-        const url = `${constants.baseURL}`
+        const url = `${constants.baseURL}/examData`
         Get(url).then(response => dispatch(getQuestionSuccess(response.data)))
             .catch(error => dispatch(getQuestionError(error.response.data)))
     }
@@ -22,10 +22,10 @@ export function getQuestionError(payload) {
 
 //post data
 
-export function addQuestions(data) {
+export function addQuestions(data,examEndpoint) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}`
+        const url = `${constants.baseURL}/${examEndpoint}`
         Post(url, data).then(response => dispatch(addQuestionsuccess(data)))
             .catch(error => dispatch(addQuestionerror(error.response.data)))
 
@@ -47,7 +47,7 @@ export function addQuestionerror(payload) {
 export function updateQuestion(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/vcodes/${data.id}`
+        const url = `${constants.baseURL}/${data.id}`
         Put(url, data).then(response => dispatch(updateQuestionSuccess(response.data)))
             .catch(error => dispatch(updateQuestionError(error.response.data)))
     }
@@ -60,3 +60,30 @@ export function updateQuestionSuccess(payload) {
 export function updateQuestionError(payload) {
     return { type: actionTypes.UPDATE_QUESTION_ERROR, payload }
 };
+
+// Delete Data
+
+export function deleteAllQuestions(data){
+
+    return (dispatch)=>{  
+        const url=`${constants.baseURL}/${data.id}`
+       Delete(url,data)
+       .then(response => dispatch(deleteQuestionsuccess(response.data)))
+       .catch(error => dispatch(deleteQuestionerror(error.response.data)) )
+   
+    }
+   }
+
+export function deleteQuestionsuccess(payload){
+    return { type: actionTypes.DELETE_QUESTION_SUCCESS ,payload}
+}
+
+export function deleteQuestionerror(payload){
+    return { type: actionTypes.DELETE_QUESTION_ERROR ,payload}
+}
+
+export function getSingleQuestion(id) {
+    console.log(id);
+    return { type: actionTypes.GET_SINGLE_QUESTION ,payload:id}
+
+}

@@ -8,9 +8,8 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Stack from '@mui/material/Stack';
-import { Grid, Typography, Box, Modal } from '@mui/material';
+import { Grid, Box, Modal } from '@mui/material';
 import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
-import CloseIcon from '@mui/icons-material/Close';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import * as TablePaginationActions from "../common/TablePaginationActions"
@@ -100,11 +99,11 @@ export class FeedDash extends Component {
         }) || [];
 
         return (
-            <div className='container' style={{ marginRight: '25px' }}>
+            <div className='container' style={{ marginRight: '25px', marginLeft: "-25px" }}>
 
 
-                <TableContainer component={Paper}>
-                    <Table aria-label="simple table" sx={{ marginTop: 8 }}>
+                <TableContainer component={Paper} sx={{ marginTop: 5 }}>
+                    <Table aria-label="simple table" >
                         <TableHead>
 
                             <TableRow>
@@ -114,7 +113,7 @@ export class FeedDash extends Component {
                                             Manage feedback
                                         </Grid>
                                         <Grid item>
- 
+
                                             <TextField
                                                 className='searchinput'
                                                 type="text"
@@ -138,7 +137,6 @@ export class FeedDash extends Component {
                                                         </InputAdornment>
                                                     ),
                                                 }}
-
                                             />
                                         </Grid>
                                     </Grid>
@@ -187,27 +185,27 @@ export class FeedDash extends Component {
                         aria-describedby="modal-modal-description"
                     >
                         <Box sx={style}>
-
-                            <Stack spacing={2} direction="row">
-                                <Button onClick={this.handleClose} style={{ marginLeft: '395px', color: 'grey' }}><CloseIcon style={{ color: 'blue' }} /></Button>
-                            </Stack>
-                            <Typography id="modal-modal-title" variant="h6" component="h2" style={{ fontWeight: '700' }}>
-                                Feedback Details
-                            </Typography>
+                        <TableRow>
+                                        <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
+                                            <Grid item>
+                                                Feedback Details
+                                            </Grid></TableCell>
+                                    </TableRow>
 
                             {selectedFeedback && (
-                                <Table>
+                                <Table >
+                                    
                                     <TableRow>
                                         <TableCell>
-                                            Student Name: </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
+                                            <strong>Student Name:</strong> </TableCell><TableCell>{selectedFeedback.fname}</TableCell>
                                     </TableRow>
 
                                     <TableRow>
-                                        <TableCell>Contact No: </TableCell><TableCell>{selectedFeedback.contact}</TableCell>
+                                        <TableCell><strong>Contact No:</strong> </TableCell><TableCell>{selectedFeedback.contact}</TableCell>
                                     </TableRow>
 
                                     <TableRow>
-                                        <TableCell>Organization: </TableCell><TableCell>{selectedFeedback.org}</TableCell>
+                                        <TableCell><strong>Organization:</strong> </TableCell><TableCell>{selectedFeedback.org}</TableCell>
                                     </TableRow>
 
                                     <TableRow>
@@ -238,7 +236,7 @@ export class FeedDash extends Component {
                                 </Table>
                             )}
                             <Stack spacing={2} direction="row">
-                                <Button onClick={this.handleClose} style={{ marginLeft: '380px', marginTop: '10px', color: 'blue' }}>Close</Button>
+                                <Button onClick={this.handleClose} style={{ marginLeft: '370px', marginTop: '10px', }} variant='contained'>Close</Button>
                             </Stack>
                         </Box>
                     </Modal>
@@ -265,4 +263,4 @@ export class FeedDash extends Component {
     }
 }
 
-export default FeedDash;
+export default FeedDash

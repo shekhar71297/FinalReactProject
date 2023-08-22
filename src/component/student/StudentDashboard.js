@@ -79,6 +79,7 @@ class StudentDashboard extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
+      severity:'',
       errors: {
         fnameError: false,
         lnameError: false,
@@ -187,6 +188,22 @@ class StudentDashboard extends Component {
 
   updateStudent = (event) => {
     event.preventDefault();
+    if (
+      this.state.errors.fname ||
+      this.state.errors.emailError ||
+      this.state.errors.contactError ||
+      this.state.errors.lnameError
+      
+      
+    ) {
+      // Display an error message or take any necessary action
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Please fix the validation errors before submitting.",
+        severity: 'error',
+      });
+      return; // Prevent submission
+    }
     let sObj = {
       id: this.state.id,
       firstname: this.state.firstname,
@@ -205,9 +222,10 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student added successfully',
+        severity:'success'
       });
       this.props.initStudentRequest();
-
+     
     } else {
       sObj['id'] = this.state.id;
       this.props.addStudentRequest(sObj);
@@ -216,6 +234,7 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student updated successfully',
+        severity:'success'
       });
 
     }
@@ -271,6 +290,9 @@ class StudentDashboard extends Component {
           this.setState({ errors: { ...this.state.errors, emailError: false } })
         }
       }
+      if(name==="gender"){
+        this.setState({gender:value});
+      }
 
       if (name === "contact") {
         const isvalidContact = !(validation.isValidContact(this.state[name]));
@@ -297,7 +319,8 @@ class StudentDashboard extends Component {
 
   render() {
 
-    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen ,branch,pnr} = this.state;
+    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen ,branch,pnr,email,contact,dob} = this.state;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization  ;
     const { searchQuery, page, rowsPerPage } = this.state;
     const filteredStudents = this.props.allstudent && this.props.allstudent.filter((data) => {
       const searchQuery = this.state.searchQuery.toLowerCase();
@@ -313,13 +336,13 @@ class StudentDashboard extends Component {
 
 
     return (
-      <div>
+      <div className='container' style={{ marginRight: '25px', marginLeft: "-25px" }}>
         
 
 
         <Box sx={{ height: 100 }}>
-          <Paper className='paper'>
-            <TableContainer  >
+          {/* <Paper className='paper'> */}
+            <TableContainer component={Paper} sx={{ marginTop: 5 }} >
 
               <Table aria-label="simple table">
                 <TableHead>
@@ -329,7 +352,7 @@ class StudentDashboard extends Component {
                   <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
-                          Student module
+                          Manage  Student
                         </Grid>
                         <Grid item>
 
@@ -362,9 +385,10 @@ class StudentDashboard extends Component {
                       </Grid>
                     </TableCell>
                   </TableRow>
-                  <Button variant="contained" color="primary" sx={{ marginTop: 4 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
+                
+                  <Button variant="contained" color="primary" sx={{ marginTop: 2,marginLeft:2 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
                   <TableRow>
-                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                    <TableCell align='center'><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Last Name</Typography></TableCell>
                     <TableCell align="center" ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Email</Typography></TableCell>
@@ -391,7 +415,7 @@ class StudentDashboard extends Component {
                     filteredStudents && filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
                       const currentIndex = page * rowsPerPage + index + 1;
                       return <TableRow key={val.id}>
-                        <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                        <TableCell align='center' component="th" scope="row">{currentIndex}</TableCell>
                         <TableCell align='center' >{val.firstname}</TableCell >
                         <TableCell align='center'>{val.lastname}</TableCell >
                         <TableCell align='center'>{val.email}</TableCell>
@@ -400,7 +424,7 @@ class StudentDashboard extends Component {
                         <TableCell align='center' >{val.gender}</TableCell>
                         <TableCell align='center' >{val.organization}</TableCell>
 
-                        <TableCell  align="center">
+                        <TableCell  align="center" style={{fontSize:'5px'}}>
                           <Button onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>
                           <Button onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
                         </TableCell>
@@ -435,7 +459,7 @@ class StudentDashboard extends Component {
               onClose={() => this.setState({ snackbarOpen: false })}
               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
                 {this.state.snackbarMessage}
               </Alert>
             </Snackbar>
@@ -455,7 +479,7 @@ class StudentDashboard extends Component {
               onRowsPerPageChange={this.handleChangeRowsPerPage}
               ActionsComponent={TablePaginationActions.default} // Imported component
             />
-          </Paper>
+          {/* </Paper> */}
         </Box>
 
 
@@ -599,7 +623,7 @@ class StudentDashboard extends Component {
               </FormControl>
 
 
-              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
+              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit" disabled={isSubmitDisabled}>Submit</Button>
               <Button style={{ marginTop: "20px", marginRight: "-352px" }} onClick={this.resetStudentFormHandler}  variant="contained" color="secondary" type="button">Clear</Button>
             </form>
           </Box>

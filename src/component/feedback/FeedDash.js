@@ -173,8 +173,7 @@ export class FeedDash extends Component {
                                         </TableCell>
                                     </TableRow>
                                 })
-                            )
-                            }
+                            )}
                         </TableBody>
                     </Table>
 
@@ -194,12 +193,6 @@ export class FeedDash extends Component {
 
                             {selectedFeedback && (
                                 <Table >
-                                    {/* <TableRow>
-                                        <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
-                                            <Grid item>
-                                                Feedback Details
-                                            </Grid></TableCell>
-                                    </TableRow> */}
                                     <TableRow>
                                         <TableCell>
                                             <strong>Student Name:</strong> </TableCell><TableCell>{selectedFeedback.fname}</TableCell>

@@ -319,7 +319,8 @@ class StudentDashboard extends Component {
 
   render() {
 
-    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen ,branch,pnr} = this.state;
+    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen ,branch,pnr,email,contact,dob} = this.state;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization  ;
     const { searchQuery, page, rowsPerPage } = this.state;
     const filteredStudents = this.props.allstudent && this.props.allstudent.filter((data) => {
       const searchQuery = this.state.searchQuery.toLowerCase();
@@ -384,7 +385,7 @@ class StudentDashboard extends Component {
                       </Grid>
                     </TableCell>
                   </TableRow>
-                  <Button variant="contained" color="primary" sx={{ marginTop: 2 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
+                
                   <Button variant="contained" color="primary" sx={{ marginTop: 2,marginLeft:2 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
                   <TableRow>
                     <TableCell align='center'><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
@@ -622,7 +623,7 @@ class StudentDashboard extends Component {
               </FormControl>
 
 
-              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
+              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit" disabled={isSubmitDisabled}>Submit</Button>
               <Button style={{ marginTop: "20px", marginRight: "-352px" }} onClick={this.resetStudentFormHandler}  variant="contained" color="secondary" type="button">Clear</Button>
             </form>
           </Box>

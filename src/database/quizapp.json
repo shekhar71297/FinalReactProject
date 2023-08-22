@@ -79,6 +79,16 @@
       "gender": "male",
       "contact": "8907654321",
       "id": 12
+    },
+    {
+      "email": "sujit@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "Sujit@1233234",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9999998585",
+      "id": 13
     }
   ],
   "react": [

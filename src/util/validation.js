@@ -12,7 +12,6 @@ export const isValidExamname = (examname) => /^[a-zA-Z]{2,10}$/.test(examname);
 =======
 // export const isValidPassword=(Password)=>/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(Password);
 export const isValidPassword=(Password)=>/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/.test(Password);
->>>>>>> 3f8cc8b09f65370012f3aaf3eebf1e0ddc293854
 export const errorText = (message) => {
     return (<span style={{'display':'flex','alignItems':'center'}}>
       <ErrorOutlineIcon /> <span style={{'paddingLeft':'5px'}}>{message}</span>

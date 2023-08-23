@@ -12,6 +12,7 @@ export default function questionreducer(state = initialState, action) {
 
             return { ...state, questions: {}, allquestions: action.payload };
         }
+        
         case constant.GET_QUESTION_ERROR,
             constant.DELETE_QUESTION_ERROR: {
 

@@ -95,8 +95,6 @@ const Questiontable = ({ allquestions }) => {
     if (!(selectedExam) || !(question) || !(options[0].text) || !(options[1].text) || !answer) {
       return;
     }
-
-
     const newQuestion = {
       question,
       options: options.map((option) => option.text),
@@ -109,6 +107,7 @@ const Questiontable = ({ allquestions }) => {
       setShowSuccessSnackbar(true);
     };
 
+    
     axios.post('http://localhost:8888/questions', newQuestion).then((res) => {
       console.log(res.data);
       setquestion({ question: allquestions })
@@ -125,15 +124,14 @@ const Questiontable = ({ allquestions }) => {
 
     setFormVisible(false);
 
+  
+
   };
 
-  // const handleClosePopup = () => {
-  //   setShowPopup(false);
-  // };
-
+  
   const handleUpdate = () => {
     const updatedQuestion = {
-      id: editQuestionData.id, // Assuming your question data has an 'id' field
+      id: editQuestionData.id, 
       question,
       options: options.map(option => option.text),
       answer,
@@ -151,7 +149,11 @@ const Questiontable = ({ allquestions }) => {
         setEditMode(false);
       })
 
-  };
+
+  }
+
+
+  // ADD FORM COMP
 
   const renderAddQueForm = () => {
     return (
@@ -305,6 +307,7 @@ const Questiontable = ({ allquestions }) => {
       .catch(error => {
         console.error('Error deleting question:', error);
       });
+    
   };
 
 
@@ -444,7 +447,7 @@ const Questiontable = ({ allquestions }) => {
       </div>
       <Snackbar
         open={showSuccessSnackbar}
-        autoHideDuration={4000} // Adjust the duration as needed
+        autoHideDuration={2000} // Adjust the duration as needed
         onClose={() => setShowSuccessSnackbar(false)}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >
@@ -457,7 +460,6 @@ const Questiontable = ({ allquestions }) => {
           {successMessage}
         </Alert>
       </Snackbar>
-
 
       <Dialog open={selectedItemForDeletion !== null} onClose={() => setSelectedItemForDeletion(null)}>
         <DialogTitle>Confirm Delete</DialogTitle>

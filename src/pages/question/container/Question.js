@@ -24,13 +24,12 @@ const mapStateToProps = (state) => ({
   singlequestion: state.questionStore.questions
 })
 const mapDispatchToProps = (dispatch) => ({
-  // getAllQuestionsSuccess: (data) => dispatch(actions.getQuestionSuccess(data,)),
-  // getAllQuestionsError: (data) => dispatch(actions.getQuestionError(data)),
   addQuestionRequest:(data)=>dispatch(actions.addQuestions(data)),
   getSinglequestionrequest:(id) => dispatch(actions.getSingleQuestion(id)),
   updatequestionrequest:(data) => dispatch(actions.updateQuestion(data)),
   deletequestionrequest:(id) => dispatch(actions.deleteAllQuestions(id)),
-  initquestionrequest:(selectedValue) => dispatch(actions.getAllQuestions(selectedValue))
+  initquestionrequest:(selectedExam) => dispatch(actions.getAllQuestions(selectedExam)),
+  
 
 
 }) 

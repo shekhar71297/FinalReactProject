@@ -52,7 +52,6 @@ export class Datatable extends Component {
 
   };
 
-
   // pagination function
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
@@ -106,10 +105,7 @@ export class Datatable extends Component {
                           onChange={(e) => this.handleChange(index, data.status)}
                           inputProps={{ 'aria-label': 'controlled' }}
                         />
-
-
                       </TableCell>
-
                     </TableRow>
                   )
                 })
@@ -118,7 +114,6 @@ export class Datatable extends Component {
           </Table> 
 
           <TablePagination
-
             rowsPerPageOptions={[5, 10, 25]}
             colSpan={6} // Adjust the colSpan value according to your table structure
             count={this.props.allvouchers.length}

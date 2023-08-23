@@ -96,12 +96,42 @@ class ExamDashboard extends Component {
   }
   
   // to toggle button
-  toggelChange = (index, newExamStatus) => {
+  // handleChangeevent = (index, exams,examstatus, event) => {
+  //   const { page, rowsPerPage } = this.state;
+  //   let vcodes = this.state.examstatus;
+  //   const dataIndex = page * rowsPerPage + index;
+  //   console.log("before",exams,index,exams[index]);
+  //   exams[dataIndex].examstatus = !examstatus;
+  //   // console.log("after",vcodes);
+  //   this.setState({ exams: exams }, () => {
+  //     console.log(this.state.exams[dataIndex])
+  //     this.props.updateVoucherRequest(this.state.exams[dataIndex]);
+  //   });
+
+  // };
+  // handleToggleVoucher = (index) => {
+  //   const { exams } = this.state;
+  //   const updatedexamstatus = [...exams];
+  //   updatedexamstatus[index].enabled = !updatedexamstatus[index].enabled;
+  //   this.setState({ exams: updatedexamstatus });
+  // };
+
+  // toggelChange = (index, newExamStatus) => {
+  //   const { page, rowsPerPage, exams } = this.state;
+  //   const dataIndex = page * rowsPerPage + index;
+  //   exams[dataIndex].examstatus = newExamStatus;
+  //   this.setState({ exams: exams }, () => {
+  //     const updatedExam = exams[dataIndex];
+  //     this.props.updateExamRequest(updatedExam); // Make sure to update the exam status in your data source
+  //   });
+  // }
+  
+    toggelChange = (index, newExamStatus) => {
     const { page, rowsPerPage, exams } = this.state;
     const dataIndex = page * rowsPerPage + index;
     exams[dataIndex].examstatus = newExamStatus;
     this.setState({ exams: exams }, () => {
-      const updatedExams = exams[dataIndex];
+      const updatedExams = exams[dataIndex];  
       this.props.updateExamRequest(updatedExams);
     });
   }
@@ -131,7 +161,7 @@ class ExamDashboard extends Component {
     }
   }
   
-  //to popup add exam popup
+  //to popup add exam popup 
   handleOpen = (id = null) => {
     if (id !== null) {
       this.getsinglerecord(id);
@@ -335,13 +365,13 @@ class ExamDashboard extends Component {
                           <TableCell className="tablebody" align="center">{data.code}</TableCell >
                           <TableCell className="tablebody" align="center">{data.examname}</TableCell >
                           <TableCell>
-                            <Switch
-                              align="left"
-                              checked={data.examstatus}
-                              onChange={() => this.toggelChange(index, !data.examstatus)}
-                              inputProps={{ 'aria-label': 'controlled' }}
-                            />
-                            {data.examstatus ? "Enabled" : "Disabled"}
+                          <Switch
+                                checked={data.examstatus}
+                                onChange={() => this.toggelChange(index, !data.examstatus)}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                              />
+                              {data.examstatus ? "Enabled" : "Disabled"}
+
                           </TableCell>
                           <TableCell className="tablebody" align='center'><Button
                             onClick={() => (this.handleOpen(data.id))} ><EditIcon />
@@ -405,8 +435,8 @@ class ExamDashboard extends Component {
                           onChange={this.handleChange}
                           row
                         >
-                          <FormControlLabel value="disable" checked={examstatus === "disable"} control={<Radio />} label="Disabled" />
-                          <FormControlLabel value="enable" checked={examstatus === "enable"} control={<Radio />} label="Enabled" />
+                          <FormControlLabel value="true" checked={examstatus === "disable"} control={<Radio />} label="Disabled" />
+                          <FormControlLabel value="false" checked={examstatus === "enable"} control={<Radio />} label="Enabled" />
                         </RadioGroup>
                       </FormControl>
                     </Grid>

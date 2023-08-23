@@ -6,7 +6,7 @@ export const isValidName = (name) => /^[a-zA-Z]{2,10}$/.test(name);
 export const isValidContact = (contact) => /^[6789]\d{9}$/.test(contact);
 export const isValidEmail=(email)=>/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,15}$/.test(email);
 export const isValidPassword=(Password)=>/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(Password);
-export const isVaildExamcode=(code)=>/^ [A-Za-z0-9]+(-[A-Za-z0-9]+)^$/.test(code); 
+export const isVaildExamcode=(code)=>/^[A-Za-z0-9-]+$/.test(code); 
 export const isValidExamname = (examname) => /^[a-zA-Z]{2,10}$/.test(examname);
 export const errorText = (message) => {
     return (<span style={{'display':'flex','alignItems':'center'}}>

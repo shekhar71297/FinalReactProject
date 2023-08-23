@@ -144,6 +144,9 @@ const Dashboard = () => {
   const handleLogout = () => {
   if (isAdminLog || isTrainerLog || isCounsellorLog) {
     const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
+    sessionStorage.removeItem("admin");
+    sessionStorage.removeItem("trainer");
+    sessionStorage.removeItem("counsellor");
     setAlertSeverity('warning'); // or 'info', 'error', etc. based on your needs
     setAlertMessage(`Are you sure you want to logout as ${role}?`);
     setShowAlert(true);

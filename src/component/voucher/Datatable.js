@@ -62,13 +62,6 @@ export class Datatable extends Component {
 
   };
 
-  handleToggleVoucher = (index) => {
-    const { vcodes } = this.state;
-    const updatedVcodes = [...vcodes];
-    updatedVcodes[index].enabled = !updatedVcodes[index].enabled;
-    this.setState({ vcodes: updatedVcodes });
-  };
-
   render() {
     const { page, rowsPerPage, vcodes } = this.state;
 

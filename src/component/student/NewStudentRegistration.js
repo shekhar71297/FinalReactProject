@@ -21,6 +21,8 @@ import { connect } from 'react-redux';
 import WithRouter from '../../util/WithRouter';
 import * as validation from '../../util/validation'
 import { TextFields } from '@mui/icons-material';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 import Modal from '@mui/material/Modal';
 class NewStudentRegistration extends Component {
   constructor(props) {
@@ -40,6 +42,14 @@ class NewStudentRegistration extends Component {
       branch:'',
       term: false,
       open: false,
+      isAddStudent: true,
+      isDeletePopupOpen: false,
+      deletingRecordId: null,
+      isDetailsPopupOpen: false,
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: '',
+      severity:'',
       errors:{
         fnameError:false,
         lnameError:false,
@@ -54,6 +64,22 @@ class NewStudentRegistration extends Component {
 
   addResgisterStudent = (event) => {
     event.preventDefault();
+    if (
+      this.state.errors.fname ||
+      this.state.errors.emailError ||
+      this.state.errors.contactError ||
+      this.state.errors.lnameError
+      
+      
+    ) {
+      // Display an error message or take any necessary action
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Please fix the validation errors before submitting.",
+        severity: 'error',
+      });
+      return; // Prevent submission
+    }
     this.setState({
       students: [],
       firstname: '',
@@ -67,6 +93,14 @@ class NewStudentRegistration extends Component {
       branch: '',
       pnr: "",
       showCdacTextField: false,
+      isAddStudent: true,
+      isDeletePopupOpen: false,
+      deletingRecordId: null,
+      isDetailsPopupOpen: false,
+      selectedRecord: "",
+      snackbarOpen: false,
+      snackbarMessage: '',
+      severity:'success'
 
     })
 
@@ -82,12 +116,20 @@ class NewStudentRegistration extends Component {
       branch: this.state.branch === " " || this.state.organization === "cdac" ? "" : this.state.branch
     }
     this.props.addStudentRequest(payload)
-    window.alert("Student Registered Successfully ")
-    this.props.router.navigate("/")
+    this.setState({
+          snackbarOpen: true,
+          snackbarMessage: 'Student Registered successfully',
+          severity: 'success',
+        });
+         
+    setTimeout(() => {
+      this.props.router.navigate("/");
+    }, 2000);
+    
   }
+  
 
-
-  handleClearForm = () => {
+  resetStudentFormHandler = () => {
     this.setState({
       firstname: (''),
       lastname: (''),
@@ -96,6 +138,8 @@ class NewStudentRegistration extends Component {
       dob: (''),
       gender: (''),
       organization: (''),
+      pnr:(''),
+      branch:('')
 
     })
 
@@ -103,7 +147,7 @@ class NewStudentRegistration extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     if (name === 'organization') {
       this.setState({
         [name]: value,
@@ -162,6 +206,7 @@ class NewStudentRegistration extends Component {
 
   render() {
     const { pnr, firstname, lastname, email, contact, dob, gender, organization,branch} = this.state;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization  ;
     return (
       // <Modal
       //   open={open}
@@ -291,7 +336,7 @@ class NewStudentRegistration extends Component {
 
               <FormControl fullWidth>
                 <p style={{ marginLeft: "-450px" }}>Select Organization</p>
-                <InputLabel id="demo-simple-select-label"></InputLabel>
+                <InputLabel id="demo-simple-select-label"> </InputLabel>
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
@@ -309,9 +354,9 @@ class NewStudentRegistration extends Component {
                     name='branch'
                     value={branch}
                     onChange={this.handleChange}
-
+                    aria-label='Choose branch'
                   >
-                    <MenuItem value=''>Select Organizantion</MenuItem>
+                    <MenuItem value=''aria-label='Choose branch'>Select Organizantion</MenuItem>
                     <MenuItem value='Hadapsar'>Hadapsar</MenuItem>
                     <MenuItem value='Warje'>Warje</MenuItem>
                     <MenuItem value='Vadgoansheri'>Vadgoansheri</MenuItem>
@@ -333,13 +378,16 @@ class NewStudentRegistration extends Component {
 
               </FormControl>
 
-              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
-              <Button onClick={this.handleClearForm} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" type="reset">Clear</Button>
+              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit" disabled={isSubmitDisabled}>Submit</Button>
+              <Button type="button" onClick={this.resetStudentFormHandler} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" >Clear</Button>
             </form>
 
           </div>
         </Box>
         
+
+
+        {/* footer */}
         <Box sx={{ flexGrow: 1, marginTop: 18 }}>
             <AppBar position="static">
               <Toolbar>
@@ -358,7 +406,17 @@ class NewStudentRegistration extends Component {
               </Toolbar>
             </AppBar>
           </Box>
-
+          <Snackbar
+              open={this.state.snackbarOpen}
+              autoHideDuration={3000} // You can adjust the duration as needed
+              onClose={() => this.setState({ snackbarOpen: false })}
+              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+              variant="filled"
+            >
+              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+                {this.state.snackbarMessage}
+              </Alert>
+            </Snackbar>
         </Box>
 
       // </Modal>

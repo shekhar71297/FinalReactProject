@@ -109,22 +109,7 @@ class ExamDashboard extends Component {
   //   });
 
   // };
-  // handleToggleVoucher = (index) => {
-  //   const { exams } = this.state;
-  //   const updatedexamstatus = [...exams];
-  //   updatedexamstatus[index].enabled = !updatedexamstatus[index].enabled;
-  //   this.setState({ exams: updatedexamstatus });
-  // };
 
-  // toggelChange = (index, newExamStatus) => {
-  //   const { page, rowsPerPage, exams } = this.state;
-  //   const dataIndex = page * rowsPerPage + index;
-  //   exams[dataIndex].examstatus = newExamStatus;
-  //   this.setState({ exams: exams }, () => {
-  //     const updatedExam = exams[dataIndex];
-  //     this.props.updateExamRequest(updatedExam); // Make sure to update the exam status in your data source
-  //   });
-  // }
   
     toggelChange = (index, newExamStatus) => {
     const { page, rowsPerPage, exams } = this.state;

@@ -9,7 +9,6 @@ import TablePagination from '@mui/material/TablePagination';
 import { DeleteOutlineSharp, EditNoteSharp } from '@mui/icons-material';
 import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
-import Addform from './Addform';
 import Alert from '@mui/material/Alert';
 import Dialog from '@mui/material/Dialog';
 import Snackbar from '@mui/material/Snackbar';
@@ -26,7 +25,6 @@ const Questiontable = ({ allquestions }) => {
   const [selectedOption, setSelectedOption] = useState({});
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
-  const [showCreateButton, setShowCreateButton] = useState(false);
   const [selectedItemForDeletion, setSelectedItemForDeletion] = useState(null); // New state for selected item
   const [isEditMode, setEditMode] = useState(false);
   const [editQuestionData, setEditQuestionData] = useState({});
@@ -36,7 +34,6 @@ const Questiontable = ({ allquestions }) => {
   const [showSuccessSnackbar, setShowSuccessSnackbar] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [answer, setanswer] = useState('');
-  const [showAlert, setShowAlert] = useState(false);
   const [options, setOptions] = useState([
 
     { id: 1, text: '' },
@@ -45,19 +42,16 @@ const Questiontable = ({ allquestions }) => {
     { id: 4, text: '' },
   ]);
 
-
-
-
   const startIndex = page * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
 
   const handleEdit = (itemId) => {
-    // Find the question data based on itemId
-    const questionToEdit = data.find(item => item.id === itemId);
+    const questionToEdit = questions.find(item => item.id === itemId);
     setEditQuestionData(questionToEdit);
     setEditMode(true);
-    // setUpdatedQuestionData(questionToEdit);
+    setFormVisible(true); // Show the form when editing
   };
+
   const handleOptionChange = (e, optionIndex) => {
     const newText = e.target.value;
     setOptions((prevOptions) =>
@@ -67,11 +61,6 @@ const Questiontable = ({ allquestions }) => {
     );
   };
 
-
-  const showSnackbar = (message) => {
-    setSuccessMessage(message);
-    setShowSuccessSnackbar(true);
-  };
 
   const handleClearForm = () => {
     setquestion('');
@@ -84,12 +73,7 @@ const Questiontable = ({ allquestions }) => {
     setanswer('');
   };
 
-  const newQuestion = {
-    question,
-    options: options.map((option) => option.text),
-    answer,
-    allquestions
-  };
+
 
   useEffect(() => {
     if (isEditMode) {
@@ -108,28 +92,66 @@ const Questiontable = ({ allquestions }) => {
   // ADD FORM CODE
 
   const handleAdd = (e) => {
-    if (!selectedExam || !question || options.some(option => !option.text) || !answer) {
-      setShowAlert(true);
+    if (!(selectedExam) || !(question) || !(options[0].text) || !(options[1].text) || !answer) {
       return;
     }
-    e.preventDefault();
-    axios.post('http://localhost:8888/questions',newQuestion).then((res)=>{
-    console.log(res.data);
-    setquestion({ question: allquestions })
-    setOptions(
-      allquestions.options && allquestions.options.map((text, index) => ({
-        id: index + 1,
-        text,
-      }))
-    );
 
-    setanswer(allquestions.answer);
-    handleClearForm();
+
+    const newQuestion = {
+      question,
+      options: options.map((option) => option.text),
+      answer,
+      examId: selectedExam,
+    };
+
+    const showSnackbar = (message) => {
+      setSuccessMessage(message);
+      setShowSuccessSnackbar(true);
+    };
+
+    axios.post('http://localhost:8888/questions', newQuestion).then((res) => {
+      console.log(res.data);
+      setquestion({ question: allquestions })
+      setOptions(
+        allquestions.options && allquestions.options.map((text, index) => ({
+          id: index + 1,
+          text,
+        }))
+      );
+      showSnackbar('Question added successfully');
+      setanswer(allquestions.answer);
+      handleClearForm();
     })
 
-    showSnackbar('Question added successfully');
     setFormVisible(false);
+
+  };
+
+  // const handleClosePopup = () => {
+  //   setShowPopup(false);
+  // };
+
+  const handleUpdate = () => {
+    const updatedQuestion = {
+      id: editQuestionData.id, // Assuming your question data has an 'id' field
+      question,
+      options: options.map(option => option.text),
+      answer,
+      examId: selectedExam,
     };
+    const showSnackbar = (message) => {
+      setSuccessMessage(message);
+      setShowSuccessSnackbar(true);
+    };
+
+    axios.put(`http://localhost:8888/questions/${updatedQuestion.id}`, updatedQuestion)
+      .then(response => {
+        showSnackbar('Question updated successfully');
+        setFormVisible(false);
+        setEditMode(false);
+      })
+
+  };
 
   const renderAddQueForm = () => {
     return (
@@ -146,23 +168,8 @@ const Questiontable = ({ allquestions }) => {
             noValidate
             autoComplete="off"
           >
-            <Snackbar
-              open={showSuccessSnackbar}
-              autoHideDuration={4000} // Adjust the duration as needed
-              onClose={() => setShowSuccessSnackbar(false)}
-              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            >
-              <Alert
-                elevation={6}
-                variant="filled"
-                onClose={() => setShowSuccessSnackbar(false)}
-                severity="success"
-              >
-                {successMessage}
-              </Alert>
-            </Snackbar>{ }
-            {isFormVisible && (
 
+            {isFormVisible && (
               <div>
                 <div className='pull-right'>
                   <Button
@@ -170,12 +177,10 @@ const Questiontable = ({ allquestions }) => {
                     onClick={() => setFormVisible(false)}
                     endIcon={<Cancel />}
                   >
-
                   </Button>
                 </div>
 
                 <div className=' mb-n4'>
-
                   <div className="text-center mt-4 mb-2">
                     {isEditMode && (
                       <h3>Edit Question</h3>
@@ -186,12 +191,12 @@ const Questiontable = ({ allquestions }) => {
                   </div><br />
                   <div>
                     <TextField
+                      required
                       variant='standard'
                       fullWidth
                       label="Question"
                       id="fullwidth"
                       focused
-                      required
                       value={question}
                       onChange={(e) => setquestion(e.target.value)}
 
@@ -204,7 +209,7 @@ const Questiontable = ({ allquestions }) => {
                           id="fullwidth"
                           label={`Option ${index + 1}`}
                           focused
-                          required
+                          required={index > 1 ? false : true}
                           value={option.text}
                           onChange={(e) => handleOptionChange(e, index)}
 
@@ -229,7 +234,7 @@ const Questiontable = ({ allquestions }) => {
                         variant='contained'
                         color='primary'
                         type='button'
-                        // onClick={handleUpdate}
+                        onClick={() => handleUpdate()}
                         className='btn btn-outline-primary ml-5 btn-lg'
                       >
                         Update
@@ -239,12 +244,12 @@ const Questiontable = ({ allquestions }) => {
 
                   {!isEditMode && (
                     <div className='pull-left mb-3'><br />
-                      <Button variant='contained' color='secondary' type='button' onClick={handleAdd} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
+                      <Button variant='contained' color='secondary' type='button' onClick={() => handleAdd()} className='btn btn-outline-success ml-5 btn-lg ' >Add</Button>
                     </div>
                   )}
                   {!isEditMode && (
                     <div className='text-right'>
-                      <Button sx={{ marginTop: 3 }} variant='contained' color='error' type='button' onClick={handleClearForm} className='btn btn-outline-danger pull-right btn-lg ' >Clear</Button>
+                      <Button sx={{ marginTop: 3 }} variant='contained' color='error' type='button' onClick={() => handleClearForm()} className='btn btn-outline-danger pull-right btn-lg ' >Clear</Button>
                     </div>
                   )}
                 </div>
@@ -258,7 +263,7 @@ const Questiontable = ({ allquestions }) => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8888/examData/`) // Replace with your actual API URL
+    axios.get(`http://localhost:8888/examData/`)
       .then(response => {
         const examData = response.data;
         setData(examData);
@@ -270,10 +275,9 @@ const Questiontable = ({ allquestions }) => {
 
   useEffect(() => {
     if (selectedExam) {
-      axios.get(`http://localhost:8888/questions`) // Replace with your actual API URL
+      axios.get(`http://localhost:8888/questions`)
         .then(response => {
           const questions = response.data && response.data.filter((item) => item.examId === selectedExam);
-
           setquestions(questions);
         })
         .catch(error => {
@@ -285,6 +289,22 @@ const Questiontable = ({ allquestions }) => {
 
   const handleDelete = (itemId) => {
     setSelectedItemForDeletion(itemId); // Set the selected item for deletion
+  };
+
+  const showSnackbar = (message) => {
+    setSuccessMessage(message);
+    setShowSuccessSnackbar(true);
+  };
+
+  const confirmDelete = () => {
+    axios.delete(`http://localhost:8888/questions/${selectedItemForDeletion}`)
+      .then(response => {
+        showSnackbar('Question deleted successfully');
+        setSelectedItemForDeletion(null);
+      })
+      .catch(error => {
+        console.error('Error deleting question:', error);
+      });
   };
 
 
@@ -316,19 +336,14 @@ const Questiontable = ({ allquestions }) => {
     setPage(0);
   };
 
-  const handleRadioChange = (questionId, option) => {
-    setSelectedOption((prevState) => ({
-      ...prevState,
-      [questionId]: option
-    }));
-  };
-
   const handleDropdownChange = (event) => {
     setSelectedOption({})
     const selectedExam = event.target.value;
     setExam(selectedExam);
 
   }
+
+  /* QUESTION TABLE CODE */
 
   return (
 
@@ -353,16 +368,6 @@ const Questiontable = ({ allquestions }) => {
         </Select>
       </FormControl>
       <div>
-
-        {/* {isEditMode && (
-          
-            isEditMode={isEditMode}
-            editQuestionData={editQuestionData}
-            setEditMode={setEditMode}
-            setEditQuestionData={setEditQuestionData}
-
-          />
-        )} */}
         <Box marginRight={10}>
           {selectedExam && (
             <div className='pull-left' >
@@ -385,15 +390,11 @@ const Questiontable = ({ allquestions }) => {
                       {selectedOption[item.id] && (
                         <TableRow >
                           <TableCell height={2}>
-                            {item.options.map((option) => (
+                            {item.options.map((option, index) => (
                               <div key={option}>
-                                <input
-                                  type="radio"
-                                  name={`radio-${item.id}`}
-                                  value={option}
-                                  checked={selectedOption[item.id] === option}
-                                  onChange={() => handleRadioChange(item.id, option)}
-                                />
+                                {item.options.length > 2 && (
+                                  <label>{String.fromCharCode(97 + index)}.</label>
+                                )}
                                 <label>{option}</label>
                               </div>
                             ))}<br></br>
@@ -402,7 +403,7 @@ const Questiontable = ({ allquestions }) => {
                               <Grid marginLeft={100} item xs={4}>
                                 <Button onClick={() => handleDelete(item.id)}>
                                   <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
-                                <Button onClick={() => handleEdit}>
+                                <Button onClick={() => handleEdit(item.id)}>
                                   <EditNoteSharp sx={{ color: dark[500] }} /></Button>
                               </Grid>
                             </div>
@@ -441,19 +442,36 @@ const Questiontable = ({ allquestions }) => {
           renderAddQueForm()
         }
       </div>
+      <Snackbar
+        open={showSuccessSnackbar}
+        autoHideDuration={4000} // Adjust the duration as needed
+        onClose={() => setShowSuccessSnackbar(false)}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+      >
+        <Alert
+          elevation={6}
+          variant="filled"
+          onClose={() => setShowSuccessSnackbar(false)}
+          severity="success"
+        >
+          {successMessage}
+        </Alert>
+      </Snackbar>
+
+
       <Dialog open={selectedItemForDeletion !== null} onClose={() => setSelectedItemForDeletion(null)}>
         <DialogTitle>Confirm Delete</DialogTitle>
         <DialogContent>
           {selectedItemForDeletion && (
             <div>
               Are you sure you want to delete the following question?
-              <div>{data.find(item => item.id === selectedItemForDeletion)?.question}</div>
+              <div>{questions.find(item => item.id === selectedItemForDeletion)?.question}</div>
             </div>
           )}
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setSelectedItemForDeletion(null)}>Cancel</Button>
-          <Button variant='contained' color="error">
+          <Button variant='contained' color="error" onClick={() => confirmDelete()}>
             Delete
           </Button>
         </DialogActions>

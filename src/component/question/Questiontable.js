@@ -19,7 +19,7 @@ import DialogActions from '@mui/material/DialogActions';
 import * as TablePaginationActions from "../common/TablePaginationActions";
 
 
-const Questiontable = ({ allquestions }) => {
+const Questiontable = ({ allquestions,initquestionrequest }) => {
   const [data, setData] = useState([]);
   const [isFormVisible, setFormVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
@@ -265,26 +265,29 @@ const Questiontable = ({ allquestions }) => {
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8888/examData/`)
-      .then(response => {
-        const examData = response.data;
-        setData(examData);
-      })
-      .catch(error => {
-        console.error('Error fetching exam data:', error);
-      });
-  }, []);
+    initquestionrequest();
+
+    // axios.get(`http://localhost:8888/examData/`)
+    //   .then(response => {
+    //     const examData = response.data;
+    //     setData(examData);
+    //   })
+    //   .catch(error => {
+    //     console.error('Error fetching exam data:', error);
+    //   });
+  }, [initquestionrequest]);
 
   useEffect(() => {
     if (selectedExam) {
-      axios.get(`http://localhost:8888/questions`)
-        .then(response => {
-          const questions = response.data && response.data.filter((item) => item.examId === selectedExam);
+      initquestionrequest()
+      // axios.get(`http://localhost:8888/questions`)
+      //   .then(response => {
+          const questions = allquestions && allquestions.filter((item) => item.examId === selectedExam);
           setquestions(questions);
-        })
-        .catch(error => {
-          console.error('Error fetching exam data:', error);
-        });
+      //   })
+      //   .catch(error => {
+      //     console.error('Error fetching exam data:', error);
+      //   });
     }
   }, [selectedExam]);
 

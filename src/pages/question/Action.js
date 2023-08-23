@@ -6,7 +6,7 @@ import * as actionTypes from './actiontype'
 
 export function getAllQuestions() {
     return (dispatch) => {
-        const url = `${constants.baseURL}/examData`
+        const url = `${constants.baseURL}/questions`
         Get(url).then(response => dispatch(getQuestionSuccess(response.data)))
             .catch(error => dispatch(getQuestionError(error.response.data)))
     }
@@ -22,10 +22,10 @@ export function getQuestionError(payload) {
 
 //post data
 
-export function addQuestions(data,examEndpoint) {
+export function addQuestions(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/${examEndpoint}`
+        const url = `${constants.baseURL}/questions`
         Post(url, data).then(response => dispatch(addQuestionsuccess(data)))
             .catch(error => dispatch(addQuestionerror(error.response.data)))
 
@@ -47,8 +47,8 @@ export function addQuestionerror(payload) {
 export function updateQuestion(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/${data.id}`
-        Put(url, data).then(response => dispatch(updateQuestionSuccess(response.data)))
+        const url = `${constants.baseURL}/questions/${data.id}`
+        Put(url, data).then(response => dispatch(updateQuestionSuccess(data)))
             .catch(error => dispatch(updateQuestionError(error.response.data)))
     }
 
@@ -63,12 +63,12 @@ export function updateQuestionError(payload) {
 
 // Delete Data
 
-export function deleteAllQuestions(data){
+export function deleteAllQuestions(id){
 
     return (dispatch)=>{  
-        const url=`${constants.baseURL}/${data.id}`
-       Delete(url,data)
-       .then(response => dispatch(deleteQuestionsuccess(response.data)))
+        const url=`${constants.baseURL}/questions/${id}`
+       Delete(url)
+       .then(response => dispatch(deleteQuestionsuccess(id)))
        .catch(error => dispatch(deleteQuestionerror(error.response.data)) )
    
     }

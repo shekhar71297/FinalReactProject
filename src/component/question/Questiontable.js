@@ -17,9 +17,10 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import * as TablePaginationActions from "../common/TablePaginationActions";
+import * as action from "../../pages/exam/Action"
 
 
-const Questiontable = ({ allquestions,initquestionrequest }) => {
+const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, deletequestionrequest, initexamRequest, initquestionrequest, allExam }) => {
   const [data, setData] = useState([]);
   const [isFormVisible, setFormVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
@@ -107,9 +108,7 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
       setShowSuccessSnackbar(true);
     };
 
-    
-    axios.post('http://localhost:8888/questions', newQuestion).then((res) => {
-      console.log(res.data);
+    addQuestionRequest(newQuestion)
       setquestion({ question: allquestions })
       setOptions(
         allquestions.options && allquestions.options.map((text, index) => ({
@@ -120,18 +119,16 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
       showSnackbar('Question added successfully');
       setanswer(allquestions.answer);
       handleClearForm();
-    })
+    
 
     setFormVisible(false);
-
-  
-
   };
 
-  
+
   const handleUpdate = () => {
+    console.log("update call");
     const updatedQuestion = {
-      id: editQuestionData.id, 
+      id: editQuestionData.id,
       question,
       options: options.map(option => option.text),
       answer,
@@ -141,13 +138,13 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
       setSuccessMessage(message);
       setShowSuccessSnackbar(true);
     };
-
-    axios.put(`http://localhost:8888/questions/${updatedQuestion.id}`, updatedQuestion)
-      .then(response => {
+    updatequestionrequest(updatedQuestion)
+    // axios.put(`http://localhost:8888/questions/${updatedQuestion.id}`, updatedQuestion)
+    //   .then(response => 
         showSnackbar('Question updated successfully');
         setFormVisible(false);
         setEditMode(false);
-      })
+      
 
 
   }
@@ -265,31 +262,31 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
   }
 
   useEffect(() => {
-    initquestionrequest();
+    initexamRequest();
 
     // axios.get(`http://localhost:8888/examData/`)
     //   .then(response => {
-    //     const examData = response.data;
-    //     setData(examData);
+    const examData = allExam;
+    setData(examData);
     //   })
     //   .catch(error => {
     //     console.error('Error fetching exam data:', error);
     //   });
-  }, [initquestionrequest]);
+  }, [initexamRequest]);
 
   useEffect(() => {
     if (selectedExam) {
       initquestionrequest()
       // axios.get(`http://localhost:8888/questions`)
       //   .then(response => {
-          const questions = allquestions && allquestions.filter((item) => item.examId === selectedExam);
-          setquestions(questions);
+      const questions = allquestions && allquestions.filter((item) => item.examId === selectedExam);
+      setquestions(questions);
       //   })
       //   .catch(error => {
       //     console.error('Error fetching exam data:', error);
       //   });
     }
-  }, [selectedExam]);
+  }, [selectedExam, initquestionrequest]);
 
 
   const handleDelete = (itemId) => {
@@ -301,17 +298,16 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
     setShowSuccessSnackbar(true);
   };
 
-  const confirmDelete = () => {
-    axios.delete(`http://localhost:8888/questions/${selectedItemForDeletion}`)
-      .then(response => {
-        showSnackbar('Question deleted successfully');
-        setSelectedItemForDeletion(null);
-      })
-      .catch(error => {
-        console.error('Error deleting question:', error);
-      });
-    
-  };
+  
+    const confirmDelete = () => {
+      console.log(selectedItemForDeletion)
+      deletequestionrequest(selectedItemForDeletion)
+      showSnackbar('Question deleted successfully');
+      setSelectedItemForDeletion(null);
+      
+
+
+    };
 
 
   // useEffect(() => {
@@ -366,8 +362,8 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {data.map(exam => (
-            <MenuItem key={exam.examCode} value={exam.id}>
+          {allExam.map(exam => (
+            <MenuItem key={exam.id} value={exam.id}>
               {exam.examName}
             </MenuItem>
           ))}
@@ -387,7 +383,7 @@ const Questiontable = ({ allquestions,initquestionrequest }) => {
                 Questions
               </TableHead>
               <TableBody color='secondary-color'>
-                {questions.length > 0 ? (
+                {selectedExam && questions.length > 0 ? (
                   questions.slice(startIndex, endIndex).map((item) => (
                     <React.Fragment key={item.id}>
                       <TableRow hover onClick={() => handleCollapseToggle(item.id)} >

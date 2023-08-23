@@ -6,7 +6,7 @@ import { Delete, Get, Post, Put } from '../../util/HttpService'
 
 export function getAllExam() {
     return (dispatch) => {
-        const url = `${Constant.baseURL}/exams`;
+        const url = `${Constant.baseURL}/examData`;
 
         Get(url).then(response => {
             const reversedexam = response.data.reverse(); // Reverse the array of users

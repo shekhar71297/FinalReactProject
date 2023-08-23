@@ -391,18 +391,6 @@
       "examId": 3
     },
     {
-      "id": 25,
-      "question": "State whether true or false:  Props are methods into other components?",
-      "options": [
-        "True",
-        "False",
-        "",
-        ""
-      ],
-      "answer": "True",
-      "examId": 1
-    },
-    {
       "id": 26,
       "question": "Which of the following function is used to sort an array in descending order?",
       "options": [
@@ -473,6 +461,18 @@
       "answer": "c Both (a) and (b)",
       "examId": 3,
       "id": 33
+    },
+    {
+      "question": "giugi",
+      "options": [
+        "ogou",
+        "gou",
+        "gou",
+        "go"
+      ],
+      "answer": "gug",
+      "examId": 3,
+      "id": 34
     }
   ],
   "vcodes": [
@@ -1152,104 +1152,6 @@
       "queFive": "fdfdfsf",
       "queSix": "fdfdfdf",
       "id": 22
-    }
-  ],
-  "exams": [
-    {
-      "id": 1,
-      "examCode": "110",
-      "examName": "Python",
-      "examStatus": false
-    },
-    {
-      "id": 2,
-      "examCode": "101",
-      "examName": "c++",
-      "examStatus": false
-    },
-    {
-      "id": 3,
-      "examCode": "102",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 4,
-      "examCode": "103",
-      "examName": "html",
-      "examStatus": false
-    },
-    {
-      "id": 5,
-      "examCode": "104",
-      "examName": "css+sass+",
-      "examStatus": false
-    },
-    {
-      "id": 6,
-      "examCode": "105",
-      "examName": "angular",
-      "examStatus": false
-    },
-    {
-      "id": 7,
-      "examCode": "106",
-      "examName": "c",
-      "examStatus": false
-    },
-    {
-      "id": 8,
-      "examCode": "107",
-      "examName": "sql",
-      "examStatus": false
-    },
-    {
-      "id": 9,
-      "examCode": "108",
-      "examName": "swift",
-      "examStatus": false
-    },
-    {
-      "id": 10,
-      "examCode": "109",
-      "examName": "next js",
-      "examStatus": false
-    },
-    {
-      "id": 11,
-      "examCode": "111",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 12,
-      "examCode": "112",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 13,
-      "examCode": "245",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 14,
-      "examCode": "h1",
-      "examName": "R language",
-      "examStatus": false
-    },
-    {
-      "id": 15,
-      "examCode": "ab-1012",
-      "examName": "html+css+js+bootstarp",
-      "examStatus": false
-    },
-    {
-      "id": 16,
-      "examCode": "c1-123",
-      "examName": "django+python",
-      "examStatus": false
     }
   ],
   "examData": [

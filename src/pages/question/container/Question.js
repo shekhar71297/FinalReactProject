@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Questiontable from '../../../component/question/Questiontable';
 import * as actions from '../action'
 import { connect } from 'react-redux';
+import * as exam from '../../exam/Action'
 
 
 
@@ -20,10 +21,12 @@ class Question extends Component {
 
 
 const mapStateToProps = (state) => ({
+  allExam: state.ExamStore.allExam,
   allquestions: state.questionStore.allquestions,
   singlequestion: state.questionStore.questions
 })
 const mapDispatchToProps = (dispatch) => ({
+  initexamRequest: () => dispatch(exam.getAllExam()),
   addQuestionRequest:(data)=>dispatch(actions.addQuestions(data)),
   getSinglequestionrequest:(id) => dispatch(actions.getSingleQuestion(id)),
   updatequestionrequest:(data) => dispatch(actions.updateQuestion(data)),

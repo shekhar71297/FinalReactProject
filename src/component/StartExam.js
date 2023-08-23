@@ -21,12 +21,14 @@ class StartExam extends Component {
     this.state = {
       timer: 3600,
       questions: [],
-      selectedOptions: [],
+      selectedOptions: [],// Store selected options as objects: { questionIndex: 0, optionValue: 'optionA' }
       count: 0,
       studentName: '',
       endpage: false,
       openDialog: false,
       currentQuestionIndex: 0,
+      intervalId: null, // Add this property to track the interval
+
     };
   }
   goToNextQuestion = () => {
@@ -71,11 +73,14 @@ class StartExam extends Component {
     });
 
     // Timer logic
-    this.interval = setInterval(() => {
+    const intervalId = setInterval(() => {
       this.setState(prevState => ({
         timer: Math.max(0, prevState.timer - 1),
       }));
     }, 1000);
+    
+    // Store the interval ID in the state
+    this.setState({ intervalId });
     // Add an event listener for the beforeunload event
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
@@ -94,7 +99,7 @@ class StartExam extends Component {
     if (!this.state.endpage) {
       e.preventDefault();
       e.returnValue = ""; // This is required for some browsers to show a confirmation dialog
-      // this.submitExam();
+      this.submitExam();
     }
   };
 
@@ -102,7 +107,7 @@ class StartExam extends Component {
   handleVisibilityChange = () => {
     // Check if the tab is hidden
     if (document.visibilityState === "hidden" && !this.state.endpage) {
-      // this.submitExam();
+      this.submitExam();
     }
   };
   formatTimer = timer => {
@@ -114,10 +119,22 @@ class StartExam extends Component {
 
   inputChangeHandler = (e) => {
     const { value } = e.target;
-    this.setState((prevState) => ({
-      selectedOptions: [...prevState.selectedOptions, value],
-    }));
+    const { currentQuestionIndex } = this.state;
+    
+    // Remove previous selection for the same question index, if any
+    const updatedSelectedOptions = this.state.selectedOptions.filter(
+      option => option.questionIndex !== currentQuestionIndex
+    );
+    
+    // Add the new selection for the current question
+    updatedSelectedOptions.push({
+      questionIndex: currentQuestionIndex,
+      optionValue: value,
+    });
+    
+    this.setState({ selectedOptions: updatedSelectedOptions });
   };
+  
 
   // Inside your submitExam function
   handleOpenDialog = () => {
@@ -135,9 +152,11 @@ class StartExam extends Component {
       sessionStorage.removeItem("isLogin");
       sessionStorage.removeItem("studentName")
       sessionStorage.removeItem("Voucher")
-      const correctAnswers = questionsData.filter((question, index) => {
-        return selectedOptions[index] === question.answer;
+      const correctAnswers = selectedOptions.filter(option => {
+        const question = questionsData[option.questionIndex];
+        return option.optionValue === question.answer;
       });
+  
 
       const count = correctAnswers.length; // Count of correct answers
 
@@ -210,7 +229,8 @@ class StartExam extends Component {
                     sx={{ fontSize: "10px", textAlign: 'left' }}
                     aria-label={`question-${currentQuestionIndex}`}
                     name={`question-${currentQuestionIndex}`}
-                    value={this.state.selectedOptions[currentQuestionIndex]}
+                    // By storing selected options as objects that include the question index, you ensure that each question's selected option is tracked separately. This should help avoid issues when questions or options are the same.
+                    value={this.state.selectedOptions.find(option => option.questionIndex === currentQuestionIndex)?.optionValue || ''}
                     onChange={this.inputChangeHandler}
                   >
                     {questions[currentQuestionIndex].options.map((option, optionIndex) => (

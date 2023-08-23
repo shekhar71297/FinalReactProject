@@ -110,9 +110,9 @@
         "React.js can increase the application's performance with Virtual DOM",
         "React.js is easy to integrate with other frameworks such as Angular, BackboneJS since it is only a view library",
         "React.js can render both on client and server side.",
-        "All of the above"
+        "All of the above."
       ],
-      "answer": "All of the above"
+      "answer": "All of the above."
     },
     {
       "id": 3,
@@ -1127,6 +1127,56 @@
       "studentName": "",
       "count": 0,
       "id": 9
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 7,
+      "id": 10
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 11
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 12
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 3,
+      "id": 13
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 20,
+      "id": 14
+    },
+    {
+      "studentName": "",
+      "count": 0,
+      "id": 15
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 16
+    },
+    {
+      "studentName": "",
+      "count": 0,
+      "id": 17
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 18
+    },
+    {
+      "studentName": "anmol chaware",
+      "count": 46,
+      "id": 19
     }
   ],
   "feedback": [

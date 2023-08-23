@@ -16,7 +16,6 @@ export class Exam extends Component {
 // redux code
 const mapStateToProps = (state) => ({
     allExam: state.ExamStore.allExam,
-    
 });
 
 const mapDispatchToprops = (dispatch) => ({

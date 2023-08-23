@@ -193,6 +193,7 @@ export class ExamModule extends Component {
             });
         }
         this.handleClose();
+        this.props.initexamRequest()
     };
     // validation for exam code 
     handleClose = () => {

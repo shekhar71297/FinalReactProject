@@ -368,12 +368,12 @@
       "Vcode": "7aqvnU"
     },
     {
-      "status": true,
+      "status": false,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
@@ -778,6 +778,11 @@
       "studentName": "manjunath pawar",
       "count": 1,
       "id": 7
+    },
+    {
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 8
     }
   ],
   "feedback": [
@@ -1162,7 +1167,13 @@
     {
       "id": 16,
       "examCode": "c1-123",
-      "examName": "django+python",
+      "examName": "django+python+sql",
+      "examStatus": false
+    },
+    {
+      "id": 17,
+      "examCode": "hk-45",
+      "examName": "rubi",
       "examStatus": false
     }
   ]

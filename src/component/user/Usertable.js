@@ -172,6 +172,7 @@ class Usertable extends Component {
     this.setState({
       snackbarOpen: true,
       snackbarMessage: 'User deleted successfully',
+      severity:'error'
     });
   };
 
@@ -267,6 +268,7 @@ class Usertable extends Component {
   render() {
 
     const { page, rowsPerPage, searchQuery, fname, open, lname, password, contact, email, gender, role } = this.state;
+    const isSubmitDisabled = !fname || !lname || !email || !contact || !role|| !gender || !password  ;
     const filteredUsers = this.props.allUser.filter((data) => {
 
       const searchQuery = this.state.searchQuery;
@@ -281,12 +283,14 @@ class Usertable extends Component {
     );
     return (
 
-      <div>
+      <div className='container' style={{ marginRight: '25px', marginLeft: "-25px" }}>
 
         {/* User table  */}
-        <Box sx={{ marginRight: "25px", marginTop: 7, position: "relative", right: 20 }}>
+        <Box 
+        // sx={{ marginRight: "25px", marginTop:'20px' }}
+        >
           <Paper>
-            <TableContainer>
+            <TableContainer sx={{ marginTop: 5 }}>
               <Table aria-label="simple table" sx={{}}>
                 <TableHead style={{ overflow: 'auto' }}>
                   <TableRow>
@@ -329,7 +333,7 @@ class Usertable extends Component {
                     <Button variant="contained" color="primary" size="small" type="button" sx={{ margin: "8px", padding: "4px 4px", }} onClick={() => (this.handleOpen())}><AddIcon />User</Button>
                   </TableRow>
                   <TableRow>
-                    <TableCell><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1"  sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Last Name</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Email</Typography></TableCell>
@@ -355,7 +359,7 @@ class Usertable extends Component {
                       const currentIndex = page * rowsPerPage + index + 1;
 
                       return (<TableRow key={index}>
-                        <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                        <TableCell component="th" align="center" scope="row">{currentIndex}</TableCell>
                         <TableCell className="tablebody" align="center">{data.fname}</TableCell >
                         <TableCell className="tablebody" align="center">{data.lname}</TableCell >
                         <TableCell className="tablebody" align="center">{data.email}</TableCell>
@@ -525,6 +529,7 @@ class Usertable extends Component {
                               }))
                             }
                             edge="end"
+                            
                           >
                             {this.state.showPassword ? (
                               <VisibilityIcon />
@@ -547,6 +552,7 @@ class Usertable extends Component {
                 type="submit"
                 variant="contained"
                 color="primary"
+                disabled={isSubmitDisabled}
               >
                 {this.state.isAddUser ? 'Add User' : 'Update User'}
               </Button>

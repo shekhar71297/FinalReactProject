@@ -203,7 +203,7 @@ export class StudentResult extends Component {
           </DialogActions>
         </Dialog>
         {/* start table */}
-        <Box sx={{ marginRight: "25px", marginTop: 7, position: "relative", right: 20 }}>
+        <Box sx={{ marginRight: "25px", marginTop: 5, position: "relative", right: 20 }}>
           <Paper>
             <TableContainer >
               <Table aria-label="simple table" sx={{}} >
@@ -212,7 +212,7 @@ export class StudentResult extends Component {
                     <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
-                          Result module
+                        Manage Result 
                         </Grid>
                         <Grid item>
 
@@ -246,9 +246,9 @@ export class StudentResult extends Component {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell ><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>SrNo</Typography></TableCell>
+                    <TableCell align="center" ><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>SrNo</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>StudentName</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Orgnization</Typography></TableCell>
+                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Organization</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>ExamName</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Status</Typography></TableCell>
                     <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: "bold" }}>Date</Typography></TableCell>
@@ -268,7 +268,7 @@ export class StudentResult extends Component {
                       const currentIndex = page * rowsPerPage + index + 1;
                       return (
                         <TableRow key={val.id} >
-                          <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                          <TableCell align="center" component="th" scope="row">{currentIndex}</TableCell>
                           <TableCell align="center">{val.StudentName}</TableCell >
                           <TableCell align="center">{val.Orgnization}</TableCell >
                           <TableCell align="center">{val.ExamName}</TableCell>

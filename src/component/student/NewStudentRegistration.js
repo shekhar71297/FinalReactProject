@@ -206,6 +206,7 @@ class NewStudentRegistration extends Component {
 
   render() {
     const { pnr, firstname, lastname, email, contact, dob, gender, organization,branch} = this.state;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization  ;
     return (
       // <Modal
       //   open={open}
@@ -335,7 +336,7 @@ class NewStudentRegistration extends Component {
 
               <FormControl fullWidth>
                 <p style={{ marginLeft: "-450px" }}>Select Organization</p>
-                <InputLabel id="demo-simple-select-label"></InputLabel>
+                <InputLabel id="demo-simple-select-label"> </InputLabel>
                 <RadioGroup
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
@@ -353,9 +354,9 @@ class NewStudentRegistration extends Component {
                     name='branch'
                     value={branch}
                     onChange={this.handleChange}
-
+                    aria-label='Choose branch'
                   >
-                    <MenuItem value=''>Select Organizantion</MenuItem>
+                    <MenuItem value=''aria-label='Choose branch'>Select Organizantion</MenuItem>
                     <MenuItem value='Hadapsar'>Hadapsar</MenuItem>
                     <MenuItem value='Warje'>Warje</MenuItem>
                     <MenuItem value='Vadgoansheri'>Vadgoansheri</MenuItem>
@@ -377,7 +378,7 @@ class NewStudentRegistration extends Component {
 
               </FormControl>
 
-              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit">Submit</Button>
+              <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit" disabled={isSubmitDisabled}>Submit</Button>
               <Button type="button" onClick={this.resetStudentFormHandler} style={{ marginTop: "20px", marginRight: "-352px" }} variant="contained" color="secondary" >Clear</Button>
             </form>
 

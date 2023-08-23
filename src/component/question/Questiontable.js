@@ -398,17 +398,20 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
                                   <label>{String.fromCharCode(97 + index)}.</label>
                                 )}
                                 <label>{option}</label>
+                              
                               </div>
+                              
                             ))}<br></br>
                             Answer :  {item.answer}
-                            <div>
-                              <Grid marginLeft={100} item xs={4}>
+                            <Grid marginLeft={100} item xs={4}>
                                 <Button onClick={() => handleDelete(item.id)}>
                                   <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
                                 <Button onClick={() => handleEdit(item.id)}>
                                   <EditNoteSharp sx={{ color: dark[500] }} /></Button>
                               </Grid>
-                            </div>
+                            
+                              
+                          
                           </TableCell>
                         </TableRow>
                       )}

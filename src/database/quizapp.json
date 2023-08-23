@@ -363,17 +363,17 @@
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": false,
+      "status": true,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
@@ -696,6 +696,18 @@
       "pnr": "",
       "branch": "",
       "id": 36
+    },
+    {
+      "firstname": "aditya",
+      "lastname": "kamble",
+      "email": "kambleadity749@gmail.com",
+      "contact": "9168548429",
+      "dob": "2002-06-19",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 37
     }
   ],
   "examresult": [
@@ -725,14 +737,9 @@
       "id": 5
     },
     {
-      "studentName": "Renuka Kahane",
-      "count": 0,
+      "studentName": "aditya kamble",
+      "count": 1,
       "id": 6
-    },
-    {
-      "studentName": "Renuka Kahane",
-      "count": 0,
-      "id": 7
     }
   ],
   "feedback": [
@@ -1026,39 +1033,99 @@
   "exams": [
     {
       "id": 1,
-      "code": "HI-1",
-      "examname": "Java",
-      "examstatus": true
+      "examCode": "110",
+      "examName": "Python",
+      "examStatus": false
     },
     {
       "id": 2,
-      "code": "HI-2",
-      "examname": "Phython",
-      "examstatus": true
+      "examCode": "101",
+      "examName": "c++",
+      "examStatus": false
     },
     {
       "id": 3,
-      "code": "HI-3",
-      "examname": "PHP",
-      "examstatus": true
+      "examCode": "102",
+      "examName": "java",
+      "examStatus": false
     },
     {
       "id": 4,
-      "code": "HI-4",
-      "examname": "Angular",
-      "examstatus": true
+      "examCode": "103",
+      "examName": "html",
+      "examStatus": false
     },
     {
       "id": 5,
-      "code": "HI-5",
-      "examname": "React",
-      "examstatus": true
+      "examCode": "104",
+      "examName": "css+sass+",
+      "examStatus": false
     },
     {
       "id": 6,
-      "code": "HI-6",
-      "examname": "Vuejss",
-      "examstatus": true
+      "examCode": "105",
+      "examName": "angular",
+      "examStatus": false
+    },
+    {
+      "id": 7,
+      "examCode": "106",
+      "examName": "c",
+      "examStatus": false
+    },
+    {
+      "id": 8,
+      "examCode": "107",
+      "examName": "sql",
+      "examStatus": false
+    },
+    {
+      "id": 9,
+      "examCode": "108",
+      "examName": "swift",
+      "examStatus": false
+    },
+    {
+      "id": 10,
+      "examCode": "109",
+      "examName": "next js",
+      "examStatus": false
+    },
+    {
+      "id": 11,
+      "examCode": "111",
+      "examName": "java",
+      "examStatus": false
+    },
+    {
+      "id": 12,
+      "examCode": "112",
+      "examName": "java",
+      "examStatus": false
+    },
+    {
+      "id": 13,
+      "examCode": "245",
+      "examName": "java",
+      "examStatus": false
+    },
+    {
+      "id": 14,
+      "examCode": "h1",
+      "examName": "R language",
+      "examStatus": false
+    },
+    {
+      "id": 15,
+      "examCode": "ab-1012",
+      "examName": "html+css+js+bootstarp",
+      "examStatus": false
+    },
+    {
+      "id": 16,
+      "examCode": "c1-123",
+      "examName": "django+python",
+      "examStatus": false
     }
   ]
 }

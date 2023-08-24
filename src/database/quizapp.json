@@ -1171,7 +1171,7 @@
       "id": 3,
       "examName": "php",
       "examCode": "E-3",
-      "examStatus": true
+      "examStatus": false
     }
   ]
 }

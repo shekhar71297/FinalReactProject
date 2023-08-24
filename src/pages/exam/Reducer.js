@@ -37,7 +37,7 @@ export default function ExamReducer(state = initialstate, action) {
             // // draft.allExam[index]=action.payload
             // // let allExam = state.allExam;
             // draft.allExam.splice(index , 1,action.payload);
-            // return draft
+             // return draft
             // }
             case constant.UPDATE_EXAM_SUCCESS:{
                 const draft = state;

@@ -1082,13 +1082,13 @@
       "id": 3,
       "examCode": "ab-45",
       "examName": "php+html",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 4,
       "examCode": "ab-46",
       "examName": "php",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 5,

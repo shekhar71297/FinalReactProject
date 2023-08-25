@@ -17,7 +17,7 @@ export class Exam extends Component {
 const mapStateToProps = (state) => ({
     allExam: state.ExamStore.allExam,
 });
-
+ 
 const mapDispatchToprops = (dispatch) => ({
     initexamRequest: () => dispatch(examaction.getAllExam()),
     deleteexamRequest: (id) => dispatch(examaction.deleteExam(id)),

@@ -1070,31 +1070,31 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 2,
       "examName": "python",
       "examCode": "E-2",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 3,
       "examCode": "ab-45",
       "examName": "php+html",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 4,
       "examCode": "ab-46",
       "examName": "php",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": true
+      "examStatus": false
     }
   ]
 }

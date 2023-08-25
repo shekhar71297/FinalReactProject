@@ -71,7 +71,7 @@ export class StudentResult extends Component {
     this.closeDeletePopup();
     this.setState({
       snackbarOpen: true,
-      snackbarMessage: 'Result deleted successfully',
+      snackbarMessage:'Result deleted successfully',
     });
   };
   // pagination function
@@ -110,6 +110,7 @@ export class StudentResult extends Component {
       return "fail"
     }
   }
+
   render() {
     const { searchQuery, page, rowsPerPage, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen } = this.state;
     const grade = this.calculateGrade(selectedRecord.TotalMark, selectedRecord.ObtainedMark);
@@ -215,7 +216,6 @@ export class StudentResult extends Component {
                         Manage Result 
                         </Grid>
                         <Grid item>
-
                           <TextField
                             className='searchinput'
                             type="text"
@@ -239,7 +239,6 @@ export class StudentResult extends Component {
                                 </InputAdornment>
                               ),
                             }}
-
                           />
                         </Grid>
                       </Grid>
@@ -316,9 +315,7 @@ export class StudentResult extends Component {
               </Alert>
             </Snackbar>
             {/* table pagination */}
-
             <TablePagination
-
               rowsPerPageOptions={[5, 10, 25]}
               colSpan={7} // Adjust the colSpan value according to your table structure
               count={filteredResults.length}

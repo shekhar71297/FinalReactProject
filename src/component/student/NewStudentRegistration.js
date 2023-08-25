@@ -128,7 +128,6 @@ class NewStudentRegistration extends Component {
     
   }
   
-
   resetStudentFormHandler = () => {
     this.setState({
       firstname: (''),

@@ -1086,8 +1086,14 @@
     },
     {
       "id": 4,
+      "examCode": "ab-46",
       "examName": "php",
-      "examCode": "E-3",
+      "examStatus": false
+    },
+    {
+      "id": 5,
+      "examCode": "ab-45",
+      "examName": "angular",
       "examStatus": true
     }
   ]

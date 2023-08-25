@@ -39,7 +39,7 @@ export default function StudentReducer(state = initialstate, action) {
             return {...state,STUDENT:{},allstudent:allstudent};
             }
 
-            // delete ptoduct
+            // delete student
             case constant.DELETE_STUDENT_SUCCESS:{
                
             let allstudent =state.allstudent.filter((d)=>d.id !== action.payload)

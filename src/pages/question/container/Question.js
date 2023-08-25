@@ -1,13 +1,18 @@
-import Questiontable from '../../../component/question/Questiontable'
-import Popup from '../../../component/question/Popup'
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Questiontable from '../../../component/question/Questiontable';
+import * as actions from '../Action'
+import { connect } from 'react-redux';
+import * as exam from '../../exam/Action'
+
+
+
+
 class Question extends Component {
   render() {
     return (
       <div>
-
-        <Popup />
-        <Questiontable {...this.props}/>
+        <Questiontable {...this.props} />
+      
       </div>
     )
   }
@@ -15,12 +20,21 @@ class Question extends Component {
 
 
 
-// const mapStateToProps = (state) => ({
-//   allquestions: state.questionStore.allquestions
-// })
-//   const  mapDispatchToProps = (dispatch) =>({
-//     initquestionRequest: ()=> dispatch(Action.getAllQuestions()),
-//     addQuestionRequest: (data)=> dispatch(Action.addAllQuestions(data))
-//   })
+const mapStateToProps = (state) => ({
+  allExam: state.ExamStore.allExam,
+  allquestions: state.questionStore.allquestions,
+  singlequestion: state.questionStore.questions
+})
+const mapDispatchToProps = (dispatch) => ({
+  initexamRequest: () => dispatch(exam.getAllExam()),
+  addQuestionRequest:(data)=>dispatch(actions.addQuestions(data)),
+  getSinglequestionrequest:(id) => dispatch(actions.getSingleQuestion(id)),
+  updatequestionrequest:(data) => dispatch(actions.updateQuestion(data)),
+  deletequestionrequest:(id) => dispatch(actions.deleteAllQuestions(id)),
+  initquestionrequest:(selectedExam) => dispatch(actions.getAllQuestions(selectedExam)),
+  
 
-export default Question;
+
+}) 
+
+export default connect(mapStateToProps, mapDispatchToProps)(Question);

@@ -1094,7 +1094,7 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
     }
   ]
 }

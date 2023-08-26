@@ -339,7 +339,7 @@
         "AngularJS is a JavaScript framework",
         "AngularJS is a SQL framework"
       ],
-      "answer": " AngularJS is a JavaScript framework.",
+      "answer": "AngularJS is a JavaScript framework",
       "examId": 3
     },
     {
@@ -463,16 +463,76 @@
       "id": 33
     },
     {
-      "question": "giugi",
+      "question": "gi",
       "options": [
-        "ogou",
-        "gou",
-        "gou",
-        "go"
+        "ig",
+        "io",
+        "goig",
+        "og"
       ],
-      "answer": "gug",
+      "answer": "g",
       "examId": 3,
-      "id": 34
+      "id": 36
+    },
+    {
+      "question": "iv",
+      "options": [
+        "uivu",
+        "ju",
+        "j",
+        "i"
+      ],
+      "answer": "i",
+      "examId": 3,
+      "id": 37
+    },
+    {
+      "question": "vhc",
+      "options": [
+        "yc",
+        "hc",
+        "jcj",
+        "cj"
+      ],
+      "answer": "c",
+      "examId": 2,
+      "id": 38
+    },
+    {
+      "question": "bjkbjb",
+      "options": [
+        "jb",
+        "jb",
+        "jb",
+        "jb"
+      ],
+      "answer": "jb",
+      "examId": 1,
+      "id": 39
+    },
+    {
+      "question": "hv",
+      "options": [
+        "hv",
+        "jhv",
+        "h",
+        "jv"
+      ],
+      "answer": "v",
+      "examId": 2,
+      "id": 40
+    },
+    {
+      "question": "ugtugu",
+      "options": [
+        "ug",
+        "ui",
+        "gu",
+        "gu"
+      ],
+      "answer": "jugj",
+      "examId": 3,
+      "id": 41
     }
   ],
   "vcodes": [

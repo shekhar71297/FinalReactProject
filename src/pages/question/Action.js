@@ -82,8 +82,4 @@ export function deleteQuestionerror(payload){
     return { type: actionTypes.DELETE_QUESTION_ERROR ,payload}
 }
 
-export function getSingleQuestion(id) {
-    console.log(id);
-    return { type: actionTypes.GET_SINGLE_QUESTION ,payload:id}
 
-}

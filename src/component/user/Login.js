@@ -3,19 +3,21 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-
-import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import axios from 'axios';
-import { Link } from "react-router-dom";
 import WithRouter from '../../util/WithRouter';
 import * as useraction from '../../pages/user/action'
 import { connect } from 'react-redux';
-
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import { MenuItem } from '@mui/material';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const defaultTheme = createTheme();
 export class Login extends Component {
@@ -28,15 +30,78 @@ export class Login extends Component {
       role: "",
       fname: "",
       lname: "",
-      alertOpen: false,
-      alertMessage: "",
-      alertSeverity: "success",
+      snackbarOpen: false,
+      snackbarMessage: '',
+      isLoggedIn: false,
+      showPassword: false,
+      showAlert: false,
+      alertMessage: '',
+      alertSeverity: 'info',
     }
   }
 
-  handleAlertClose = () => {
-    this.setState({ alertOpen: false });
+  componentDidMount() {
+    // this.props.initUserRequest();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.allUser !== this.props.allUser) {
+      const isTrue = this.props.allUser.some((d) =>
+        this.state.email === d.email && this.state.password === d.password && this.state.role === d.role
+      );
+
+      if (isTrue) {
+        const user = this.props.allUser.find(
+          (d) =>
+            this.state.email === d.email &&
+            this.state.password === d.password &&
+            this.state.role === d.role
+        );
+
+        if (user) {
+          const isAdmin = user.role === "admin";
+          const isTrainer = user.role === "trainer";
+          const isCounsellor = user.role === "counsellor";
+
+          if (isAdmin || isTrainer || isCounsellor) {
+            sessionStorage.setItem(user.role, "true");
+            sessionStorage.setItem("user", `${user.fname} ${user.lname}`);
+            this.handleShowAlert(`${user.role} Login Successfully`, 'success');
+
+            setTimeout(() => {
+              if (isAdmin) {
+                // Redirect to the user module for admin
+                this.props.router.navigate('/dashboard/user');
+              } else {
+                // Redirect to the student module for trainer and counsellors
+                this.props.router.navigate('/dashboard/student');
+              }
+            }, 1000);
+
+          }
+
+        }
+      } else {
+        this.handleShowAlert('Please check your registered email,password and role', 'error');
+
+      }
+    }
+  }
+  handleShowAlert = (message, severity) => {
+    this.setState({
+      showAlert: true,
+      alertMessage: message,
+      alertSeverity: severity,
+    });
   };
+
+  handleCloseAlert = () => {
+    this.setState({
+      showAlert: false,
+      alertMessage: '',
+    });
+  };
+
 
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -46,32 +111,7 @@ export class Login extends Component {
     e.preventDefault();
     this.props.initUserRequest();
 
-    const isTrue = this.props.allUser.some((d) =>
-      this.state.email === d.email && this.state.password === d.password
-    );
 
-    if (isTrue) {
-      const user = this.props.allUser.find(
-        (d) =>
-          this.state.email === d.email &&
-          this.state.password === d.password
-      );
-
-      if (user) {
-        const isAdmin = user.role === "admin";
-        const isTrainer = user.role === "trainer";
-        const isCounsellor = user.role === "counsellor";
-
-        if (isAdmin || isTrainer || isCounsellor) {
-          sessionStorage.setItem(user.role, "true");
-          sessionStorage.setItem("user", `${user.fname} ${user.lname}`);
-          window.alert(`${user.role} Login Successfully`);
-          this.props.router.navigate('/dashboard');
-        }
-      }
-    } else {
-      window.alert("Please check your registered email and dob");
-    }
   }
 
 
@@ -111,12 +151,50 @@ export class Login extends Component {
                   margin="normal"
                   required
                   fullWidth
-                  label="password"
+                  label="Password"
                   name="password"
-                  type="password"
-                  id="dob"
+                  type={this.state.showPassword ? 'text' : 'password'}
+                  id="pass"
                   onChange={this.inputChangeHandler}
+                  InputProps={{
+                    endAdornment: (
+                      <InputAdornment position="end">
+                        <IconButton
+                          onClick={() =>
+                            this.setState((prevState) => ({
+                              showPassword: !prevState.showPassword,
+                            }))
+                          }
+                          edge="end"
+                        >
+                          {this.state.showPassword ? (
+                            <VisibilityIcon />
+                          ) : (
+                            <VisibilityOffIcon />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
+                  }}
                 />
+                                
+
+                <TextField
+                  select
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="Role"
+                  name="role"
+                  id="role"
+                  value={this.state.role}
+                  onChange={this.inputChangeHandler}
+                >
+                  <MenuItem value="admin">Admin</MenuItem>
+                  <MenuItem value="trainer">Trainer</MenuItem>
+                  <MenuItem value="counsellor">Counsellor</MenuItem>
+                </TextField>
+
 
 
                 <Button
@@ -127,19 +205,25 @@ export class Login extends Component {
                 >
                   Login In
                 </Button>
-
-                <Grid container>
-                  <Grid item xs>
-                    <p>Feedback Form</p>
-                  </Grid>
-                  <Grid item>
-                    <Link to='/userreg'>  <p>don't have account ? Register here</p></Link>
-                  </Grid>
-                </Grid>
               </Box>
             </Box>
           </Container>
         </ThemeProvider>
+        <Snackbar
+          open={this.state.showAlert}
+          autoHideDuration={4000}
+          onClose={this.handleCloseAlert}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <MuiAlert
+            elevation={6}
+            variant="filled"
+            onClose={this.handleCloseAlert}
+            severity={this.state.alertSeverity}
+          >
+            {this.state.alertMessage}
+          </MuiAlert>
+        </Snackbar>
       </div>
     )
   }

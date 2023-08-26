@@ -13,11 +13,11 @@ export class Vouchermodule extends Component {
     }
 }
 const mapStateToProps =(state)=>({
-    allvouchers: state.voucherStore.allvouchers,
+    allvouchers: state.VoucherStore.allvouchers,
 });
 const mapDispatchToprops = (dispatch) => ({
     initVoucherRequest: () => dispatch(voucheraction.getAllVouchers()),
-    updateVoucherRequest: (id) => dispatch(voucheraction.updateAllVoucher(id)),
+    updateVoucherRequest: (data) => dispatch(voucheraction.updateAllVoucher(data)),
   });
 
 export default connect(mapStateToProps, mapDispatchToprops) (Vouchermodule);

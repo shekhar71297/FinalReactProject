@@ -27,7 +27,7 @@ export function  updateAllVoucher(data) {
 
     return (dispatch)=>{
         const url = `${constants.baseURL}/vcodes/${data.id}`
-           Put(url,data).then(response=>dispatch(updateVoucherSuccess(data)))
+           Put(url,data).then(response=>dispatch(updateVoucherSuccess(response.data)))
             .catch(error=>dispatch(updateVocuherError(error.response.data)))
     } 
         

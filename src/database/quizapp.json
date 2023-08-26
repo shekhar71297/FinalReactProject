@@ -3,7 +3,7 @@
     {
       "email": "anmol123@gmail.com",
       "fname": "anmol",
-      "lname": "chaure",
+      "lname": "chaware",
       "password": "anmol123",
       "role": "admin",
       "gender": "male",
@@ -31,8 +31,18 @@
       "id": 3
     },
     {
+      "email": "ompacharne9@gmail.com",
+      "fname": "Om",
+      "lname": "Pacharne",
+      "password": "Om@112233",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9998887770",
+      "id": 6
+    },
+    {
       "email": "rushikakdeforever@gmail.com",
-      "fname": "rushikesh",
+      "fname": "Rushikesh",
       "lname": "kakde",
       "password": "rushi@26",
       "role": "admin",
@@ -49,9 +59,49 @@
       "gender": "male",
       "contact": "984558999",
       "id": 8
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "sujit",
+      "lname": "gaikwad",
+      "password": "123456",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9322403669",
+      "id": 9
+    },
+    {
+      "email": "sa@gmail.com",
+      "fname": "samruddhi",
+      "lname": "vaidya",
+      "password": "sam24566",
+      "role": "admin",
+      "gender": "female",
+      "contact": "8907654321",
+      "id": 11
+    },
+    {
+      "email": "anmol123@gmail.com",
+      "fname": "rushi",
+      "lname": "kakde",
+      "password": "rushi3455566",
+      "role": "trainer",
+      "gender": "male",
+      "contact": "8907654321",
+      "id": 12
+    },
+    {
+      "email": "sujit@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "Sujit@1233234",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9999998585",
+      "id": 13
     }
   ],
-  "react": [
+  "questions": [
     {
       "id": 1,
       "question": "Which of the following is the correct name of React.js?",
@@ -61,7 +111,8 @@
         "ReactJS",
         "All of the above"
       ],
-      "answer": "All of the above."
+      "answer": "All of the above",
+      "examId": 1
     },
     {
       "id": 2,
@@ -70,9 +121,10 @@
         "React.js can increase the application's performance with Virtual DOM",
         "React.js is easy to integrate with other frameworks such as Angular, BackboneJS since it is only a view library",
         "React.js can render both on client and server side.",
-        "All of the above"
+        "all of the above"
       ],
-      "answer": "All of the above."
+      "answer": "all of the above",
+      "examId": 1
     },
     {
       "id": 3,
@@ -83,7 +135,8 @@
         "The library of React.js is pretty large",
         "The learning curve can be steep in React.js"
       ],
-      "answer": "C is the correct answer.The JSX in React.js makes code easy to read and write is an advantage of React.js."
+      "answer": "The library of React.js is pretty large",
+      "examId": 1
     },
     {
       "id": 4,
@@ -94,7 +147,8 @@
         "Both A and B.",
         "None of the above."
       ],
-      "answer": "B is the correct answer. Virtual DOM is used in React.js to increase performance."
+      "answer": "Virtual DOM",
+      "examId": 1
     },
     {
       "id": 5,
@@ -105,7 +159,8 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "Class",
+      "examId": 1
     },
     {
       "id": 6,
@@ -116,7 +171,8 @@
         "revokeDefault()",
         "Non of the above"
       ],
-      "answer": "preventDefault()"
+      "answer": "preventDefault()",
+      "examId": 1
     },
     {
       "id": 7,
@@ -127,7 +183,8 @@
         "install -g create-react-app",
         "Non of the above"
       ],
-      "answer": "npm install -g create-react-app"
+      "answer": "npm install -g create-react-app",
+      "examId": 1
     },
     {
       "id": 8,
@@ -138,7 +195,8 @@
         "Extends",
         "This"
       ],
-      "answer": "Extends"
+      "answer": "Extends",
+      "examId": 1
     },
     {
       "id": 9,
@@ -149,7 +207,8 @@
         "External storage of the component.",
         "None of the above."
       ],
-      "answer": "Internal storage of the component."
+      "answer": "Internal storage of the component.",
+      "examId": 1
     },
     {
       "id": 10,
@@ -157,15 +216,14 @@
       "options": [
         "The webpack command is used to transpile all the JavaScript down into one file.",
         "It runs React local development server.",
-        "It is a module bundler.",
+        "It is a module bundler",
         "None of the above."
       ],
-      "answer": "C is the correct answer. The webpack command is a module bundler."
-    }
-  ],
-  "python": [
+      "answer": "The webpack command is a module bundler.",
+      "examId": 1
+    },
     {
-      "id": 1,
+      "id": 11,
       "question": "What is the maximum possible length of an identifier?",
       "options": [
         "16",
@@ -173,10 +231,11 @@
         "64",
         "None of these above"
       ],
-      "answer": "(d) None of these above"
+      "answer": "None of these above",
+      "examId": 2
     },
     {
-      "id": 2,
+      "id": 12,
       "question": " Who developed the Python language?",
       "options": [
         "Zim Den",
@@ -184,10 +243,11 @@
         "Niene Stom",
         "Wick van Rossum"
       ],
-      "answer": "(b) Guido van Rossum"
+      "answer": "Guido van Rossum",
+      "examId": 2
     },
     {
-      "id": 3,
+      "id": 13,
       "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
       "options": [
         "Constructor",
@@ -195,21 +255,23 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "Class",
+      "examId": 2
     },
     {
-      "id": 5,
-      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+      "id": 14,
+      "question": "Which one of the following is not a keyword in Python language?",
       "options": [
-        "Constructor",
-        "Class",
-        "Both A and B.",
-        "Object"
+        "Pass",
+        "Eval",
+        "Asert",
+        "Nonlocal"
       ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": " Eval",
+      "examId": 2
     },
     {
-      "id": 6,
+      "id": 15,
       "question": " Which of the following character is used to give single-line comments in Python?",
       "options": [
         "//",
@@ -217,10 +279,11 @@
         "!",
         "/*"
       ],
-      "answer": "b"
+      "answer": "#",
+      "examId": 2
     },
     {
-      "id": 7,
+      "id": 16,
       "question": "Which keyword is used for function in Python language?",
       "options": [
         "Function",
@@ -228,10 +291,11 @@
         "Fun ",
         "define"
       ],
-      "answer": "b"
+      "answer": "def",
+      "examId": 2
     },
     {
-      "id": 8,
+      "id": 17,
       "question": "Which of the following functions can help us to find the version of python that we are currently working on?",
       "options": [
         "sys.version(1)",
@@ -239,10 +303,11 @@
         "sys.version()",
         "sys.version"
       ],
-      "answer": "d"
+      "answer": "sys.version",
+      "examId": 2
     },
     {
-      "id": 9,
+      "id": 18,
       "question": "What does pip stand for python??",
       "options": [
         "Pip Installs Python",
@@ -250,10 +315,11 @@
         "Preferred Installer Program",
         "All of the mentioned"
       ],
-      "answer": "c"
+      "answer": "Preferred Installer Program",
+      "examId": 2
     },
     {
-      "id": 10,
+      "id": 19,
       "question": "Which of the following functions is a built-in function in python?",
       "options": [
         "factorial()",
@@ -261,69 +327,25 @@
         " seed()",
         "sqrt()"
       ],
-      "answer": "b"
-    }
-  ],
-  "php": [
-    {
-      "id": 1,
-      "question": "Which of the following statement is correct for AngularJS?",
-      "options": [
-        "AngularJS is an HTML framework",
-        "AngularJS is a Java framework",
-        "AngularJS is a JavaScript framework",
-        "AngularJS is a SQL framework"
-      ],
-      "answer": " C is the correct option. AngularJS is a JavaScript framework."
+      "answer": "print()",
+      "examId": 2
     },
     {
-      "id": 2,
-      "question": " On which of the Architectural pattern AngularJS is based?",
+      "question": "What is the order of precedence in python?",
       "options": [
-        "Observer Pattern",
-        "Decorator pattern",
-        "MVC Architecture pattern",
-        "MVVM Architectural pattern"
+        "Exponential, Parentheses, Multiplication, Division, Addition, Subtraction",
+        "Exponential, Parentheses, Division, Multiplication, Addition, Subtraction",
+        "Parentheses, Exponential, Multiplication, Division, Subtraction, Addition",
+        " Parentheses, Exponential, Multiplication, Division, Addition, Subtraction"
       ],
-      "answer": "D is the correct option. AngularJS is based on MVVM Architectural pattern."
-    },
-    {
-      "id": 3,
-      "question": "AngularJS is perfect for?",
-      "options": [
-        "SPAs",
-        "MPAs",
-        "DPAs",
-        "CPAs"
-      ],
-      "answer": " A is the correct option. AngularJS is perfect for Single Page Applications (SPAs)."
-    },
-    {
-      "id": 4,
-      "question": "Which of the following directive is used to bind the application data to the HTML view in AngularJS?",
-      "options": [
-        "ng-app directive",
-        "ng-model directive",
-        "ng-bind directive",
-        "ng-init directive"
-      ],
-      "answer": " C is the correct option. The ng-bind directive is used to bind the application data to the HTML view in the AngularJS application."
-    },
-    {
-      "id": 5,
-      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
-      "options": [
-        "Constructor",
-        "Class",
-        "Both A and B.",
-        "Object"
-      ],
-      "answer": "B is the correct answer. A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class."
+      "answer": "d",
+      "examId": 2,
+      "id": 31
     }
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
@@ -338,39 +360,40 @@
       "Vcode": "yUapUy"
     },
     {
+    
       "id": 4,
       "Vcode": "SgLBmw",
       "status": true
     },
     {
-      "status": false,
+      "status": true,
       "id": 5,
       "Vcode": "TZkSCK"
     },
     {
-      "status": true,
+      "status": false,
       "id": 6,
       "Vcode": "rEOHy9"
     },
     {
-      "status": true,
+      "status": false,
       "id": 7,
       "Vcode": "gCoC7V"
     },
     {
-      "status": true,
+      "status": false,
       "id": 8,
       "Vcode": "M7ebg7"
     },
     {
-      "status": true,
+      "status": false,
       "id": 9,
       "Vcode": "vVOnxq"
     },
     {
       "status": true,
       "id": 10,
-      "Vcode": "MnF9q8"
+      "Vcode": "aaaaa"
     },
     {
       "status": true,
@@ -401,7 +424,7 @@
   "StudentResult": [
     {
       "id": 1,
-      "StudentName": "ravindra patil",
+      "StudentName": "sainath tayade",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -412,29 +435,7 @@
     },
     {
       "id": 2,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 3,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 4,
-      "StudentName": "Mayuri kakde",
+      "StudentName": "amol pawar",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "C++",
@@ -445,7 +446,7 @@
     },
     {
       "id": 5,
-      "StudentName": "ravindra patil",
+      "StudentName": "vinod daud",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -455,19 +456,8 @@
       "Date": "26/06/2023"
     },
     {
-      "id": 6,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
       "id": 7,
-      "StudentName": "pawan jadhav",
+      "StudentName": "sankett jadhav",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -477,7 +467,7 @@
     },
     {
       "id": 8,
-      "StudentName": "ravindra patil",
+      "StudentName": "rohan patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
@@ -520,344 +510,592 @@
     },
     {
       "id": 12,
-      "StudentName": "Mayuri kakde",
+      "StudentName": "sandeep thorat",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
-      "ExamName": "C++",
+      "ExamName": "React js",
       "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
+      "ObtainedMark": 25,
+      "Grade": "-",
       "Date": "26/06/2023"
     },
     {
       "id": 13,
-      "StudentName": "pawan jadhav",
+      "StudentName": "om patil",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
       "TotalMark": 50,
-      "ObtainedMark": 45,
+      "ObtainedMark": 19,
+      "Grade": "-",
       "Date": "26/06/2023"
     },
     {
       "id": 14,
-      "StudentName": "ravindra patil",
+      "StudentName": "nitin pawar",
       "Orgnization": "Hematite",
       "Branch": "Chandannagar",
       "ExamName": "React js",
       "TotalMark": 50,
-      "ObtainedMark": 10,
+      "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "firstname": "anmol",
+      "lastname": "chaware",
+      "email": "anmol@gmail.com",
+      "contact": "7350537398",
+      "dob": "1993-12-12",
+      "gender": "Male",
+      "organization": "hematite"
     },
     {
-      "id": 15,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "id": 2,
+      "firstname": "Om",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "9421688541",
+      "dob": "1994-03-11",
+      "gender": "Male",
+      "organization": "hematite"
     },
     {
-      "id": 16,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 17,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 18,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 19,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 20,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 21,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "id": 5,
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "sujit@gmail.com",
+      "contact": "9322403669",
+      "dob": "1992-04-23",
+      "gender": "Male",
+      "organization": "Hadapsar"
     },
     {
       "id": 22,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "qaaass",
+      "branch": "Hadapsar"
     },
     {
-      "id": 23,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
+      "firstname": "rushikesh",
+      "lastname": "kakde",
+      "email": "rushikakdeforever@gmail.com",
+      "contact": "8007419586",
+      "dob": "2001-06-26",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 2
     },
     {
-      "id": 24,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "id": 3,
+      "firstname": "om ",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "7028347679",
+      "dob": "2002-02-02",
+      "gender": "Male",
+      "organization": "hematite"
     },
     {
-      "id": 25,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "firstname": "Komal",
+      "lastname": "Tamane",
+      "email": "komal123@gmail.com",
+      "contact": "9898989898",
+      "dob": "2023-08-18",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 25
     },
     {
-      "id": 26,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
+      "firstname": "Sammrudhi",
+      "lastname": "Divase",
+      "email": "sam123@gmail.com",
+      "contact": "9899867844",
+      "dob": "2023-08-27",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 26
     },
     {
-      "id": 28,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "firstname": "Sanjana",
+      "lastname": "Jha",
+      "email": "sujitg1999@gmail.com",
+      "contact": "8995947489",
+      "dob": "2023-08-11",
+      "gender": "Female",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": "Hadapsar",
+      "id": 27
     },
     {
-      "id": 30,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
+      "firstname": "Sujit",
+      "lastname": "Kumar",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-16",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 28
+    },
+    {
+      "firstname": "Kaka",
+      "lastname": "Mama",
+      "email": "kaka122@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-23",
+      "gender": "Male",
+      "organization": "cdac",
+      "id": 29
+    },
+    {
+      "firstname": "Kala",
+      "lastname": "Pila",
+      "email": "kaala123@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-07",
+      "gender": "Male",
+      "organization": "cdac",
+      "id": 30
     },
     {
       "id": 31,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "firstname": "Alia",
+      "lastname": "Bhatt",
+      "email": "aliabhatt@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-09-08",
+      "gender": "Female",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": ""
     },
     {
-      "id": 32,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "firstname": "Nila",
+      "lastname": "pila",
+      "email": "nila123@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-19",
+      "gender": "Female",
+      "organization": "cdac",
+      "pnr": "3456",
+      "branch": "",
+      "id": 32
     },
     {
-      "id": 33,
-      "StudentName": "sujit gaikwad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 26,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "firstname": "Ruyuja",
+      "lastname": "Abhana",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "2023-08-26",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 35
     },
     {
-      "id": 35,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujit@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-12-12",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 36
     },
     {
-      "id": 36,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "firstname": "manjunath",
+      "lastname": "pawar",
+      "email": "manjunath12@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-04-01",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 37
+    }
+  ],
+  "examresult": [
+    {
+      "studentName": "anmol chaware",
+      "count": 1,
+      "id": 1
     },
     {
-      "id": 37,
-      "StudentName": "sujit gaikwad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 26,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 2
     },
     {
-      "id": 38,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 3
     },
     {
-      "id": 39,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "studentName": "anmol chaware",
+      "count": 0,
+      "id": 4
     },
     {
-      "id": 40,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "studentName": "",
+      "count": 0,
+      "id": 5
     },
     {
-      "id": 41,
-      "StudentName": "sujit gaikwad",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "java",
-      "TotalMark": 50,
-      "ObtainedMark": 26,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "studentName": "rushikesh kakde",
+      "count": 2,
+      "id": 6
     },
     {
-      "id": 42,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
+      "studentName": "manjunath pawar",
+      "count": 1,
+      "id": 7
     },
     {
-      "id": 43,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
+      "studentName": "rushikesh kakde",
+      "count": 0,
+      "id": 8
+    }
+  ],
+  "feedback": [
+    {
+      "fname": "Renuka",
+      "email": "renukakahane9@gmail.com",
+      "contact": "8787876765",
+      "org": "Hematite",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test4",
+      "queSix": "test6",
+      "id": 1
     },
     {
-      "id": 44,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "fname": "Rutuja",
+      "email": "rutuja12@gmail.com",
+      "contact": "9898787678",
+      "org": "Lighthouse",
+      "queOne": "test1",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 2
     },
     {
-      "id": 47,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
+      "fname": "Sujit",
+      "email": "sujit12@gmail.com",
+      "contact": "9876543212",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 3
     },
     {
-      "id": 49,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
+      "fname": "Samruddhi",
+      "email": "sam12@gmail.com",
+      "contact": "9898989898",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 4
+    },
+    {
+      "fname": "Shekhar",
+      "email": "shekhar1@gmail.com",
+      "contact": "8767656545",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 5
+    },
+    {
+      "fname": "Renuka",
+      "email": "renukakahane9@gmail.com",
+      "contact": "8787876765",
+      "org": "Hematite",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test4",
+      "queSix": "test6",
+      "id": 6
+    },
+    {
+      "fname": "Rutuja",
+      "email": "rutuja12@gmail.com",
+      "contact": "9898787678",
+      "org": "Lighthouse",
+      "queOne": "test1",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 7
+    },
+    {
+      "fname": "Sujit",
+      "email": "sujit12@gmail.com",
+      "contact": "9876543212",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 8
+    },
+    {
+      "fname": "Samruddhi",
+      "email": "sam12@gmail.com",
+      "contact": "9898989898",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 9
+    },
+    {
+      "fname": "Shekhar",
+      "email": "shekhar1@gmail.com",
+      "contact": "8767656545",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 10
+    },
+    {
+      "fname": "Shruti",
+      "email": "shruti12@gmail.com",
+      "contact": "8787878787",
+      "org": "Lighthouse",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 11
+    },
+    {
+      "fname": "Riya",
+      "email": "riya12@gmail.com",
+      "contact": "9898989898",
+      "org": "CDAC",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 12
+    },
+    {
+      "fname": "Divya",
+      "email": "divya@gmail.com",
+      "contact": "8776565656",
+      "org": "CDAC",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 13
+    },
+    {
+      "fname": "Akansha",
+      "email": "ak@gmail.com",
+      "contact": "9809898909",
+      "org": "Lighthouse",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 14
+    },
+    {
+      "fname": "Krishna",
+      "email": "krishna@gmail.com",
+      "contact": "9809090909",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 15
+    },
+    {
+      "fname": "Nakul",
+      "email": "nakul12@gmail.com",
+      "contact": "7656565656",
+      "org": "CDAC",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 16
+    },
+    {
+      "fname": "renuka",
+      "email": "renuka12@gmail.com",
+      "contact": "9898989898",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 17
+    },
+    {
+      "fname": "Samruddhi",
+      "email": "sam@gmail.com",
+      "contact": "8787676787",
+      "org": "Hematite",
+      "queOne": "test",
+      "queTwo": "test",
+      "queThree": "test",
+      "queFour": "test",
+      "queFive": "test",
+      "queSix": "test",
+      "id": 18
+    },
+    {
+      "fname": "Renuka Kahane",
+      "email": "renuka1@gmail.com",
+      "contact": "8987676565",
+      "org": "Hematite",
+      "queOne": "testee",
+      "queTwo": "dfsdfsf",
+      "queThree": "dfdfd",
+      "queFour": "dfdfdf",
+      "queFive": "dfdfdf",
+      "queSix": "fdfdfdfd",
+      "id": 19
+    },
+    {
+      "fname": "abc efg",
+      "email": "adc@gmail.com",
+      "contact": "8888888888",
+      "org": "hematite",
+      "queOne": "test1",
+      "queTwo": "test1",
+      "queThree": "test1",
+      "queFour": "test1",
+      "queFive": "test1",
+      "queSix": "test1",
+      "id": 20
+    },
+    {
+      "fname": "abc bcs",
+      "email": "ac@gmail.com",
+      "contact": "8888888888",
+      "org": "hemat",
+      "queOne": "test",
+      "queTwo": "testtststststs",
+      "queThree": "tsetsgsgsgsgsg",
+      "queFour": "ssdfdffdsfsdf",
+      "queFive": "ssdfdffdsfsdf",
+      "queSix": "sfsdfdsfsdfsfsf",
+      "id": 21
+    },
+    {
+      "fname": "abcdeee",
+      "email": "abc@gmail.com",
+      "contact": "8888888888",
+      "org": "hemmm",
+      "queOne": "asaasaasa",
+      "queTwo": "asasasasas",
+      "queThree": "asasasasas",
+      "queFour": "asasaasas",
+      "queFive": "asasaasas",
+      "queSix": "asasasasasas",
+      "id": 22
+    }
+  ],
+  "exams": [
+    {
+      "id": 1,
+      "examName": "react",
+      "examCode": "E-1",
+      "examStatus": false
+    },
+    {
+      "id": 2,
+      "examName": "python",
+      "examCode": "E-2",
+      "examStatus": false
+    },
+    {
+      "id": 3,
+      "examCode": "ab-45",
+      "examName": "php+html",
+      "examStatus": false
+    },
+    {
+      "id": 4,
+      "examCode": "ab-46",
+      "examName": "php",
+      "examStatus": false
+    },
+    {
+      "id": 5,
+      "examCode": "ab-45",
+      "examName": "angular",
+      "examStatus": true
     }
   ]
 }

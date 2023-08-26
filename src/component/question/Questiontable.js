@@ -272,7 +272,7 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
     //   .catch(error => {
     //     console.error('Error fetching exam data:', error);
     //   });
-  }, [initexamRequest]);
+  }, []);
 
   useEffect(() => {
     if (selectedExam) {
@@ -286,7 +286,7 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
       //     console.error('Error fetching exam data:', error);
       //   });
     }
-  }, [selectedExam, initquestionrequest]);
+  }, [selectedExam]);
 
 
   const handleDelete = (itemId) => {
@@ -315,11 +315,11 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
   //   setData(data);
   // },[]);
 
-  // useEffect(() => {
-  //   const data = allquestions && allquestions.length > 0 ? allquestions : [];
-  //   setData(data);
+  useEffect(() => {
+    const data = allquestions && allquestions.length > 0 ? allquestions : [];
+    setquestion(data);
 
-  // },[allquestions])
+  },[allquestions])
 
 
   const handleCollapseToggle = (itemId) => {

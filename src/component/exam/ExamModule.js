@@ -40,7 +40,7 @@ export class ExamModule extends Component {
             page: 0,
             rowsPerPage: 5,
             searchQuery: '',
-            toggle: [],
+        
             examStatus: true,
 
            

@@ -9,7 +9,7 @@ export function getAllExam() {
         const url = `${Constant.baseURL}/exams`;
 
         Get(url).then(response => {
-            const reversedexam = response.data.reverse(); // Reverse the array of users
+            const reversedexam = response.data.reverse(); 
             dispatch(getExamsuccess(reversedexam));
         })
             .catch(error => dispatch(getExamerror(error.response.data)));

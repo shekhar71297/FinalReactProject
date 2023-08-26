@@ -1070,7 +1070,7 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 2,
@@ -1094,7 +1094,7 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
     }
   ]
 }

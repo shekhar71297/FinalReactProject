@@ -78,7 +78,7 @@ class ExamDashboard extends Component {
   }
 
   componentDidMount() {
-    this.props.initExamRequest();
+    this.props.initExamRequest;
   }
 
   //for pagination
@@ -95,22 +95,7 @@ class ExamDashboard extends Component {
     this.setState({ searchQuery: event.target.value, page: 0 });
   }
   
-  // to toggle button
-  // handleChangeevent = (index, exams,examstatus, event) => {
-  //   const { page, rowsPerPage } = this.state;
-  //   let vcodes = this.state.examstatus;
-  //   const dataIndex = page * rowsPerPage + index;
-  //   console.log("before",exams,index,exams[index]);
-  //   exams[dataIndex].examstatus = !examstatus;
-  //   // console.log("after",vcodes);
-  //   this.setState({ exams: exams }, () => {
-  //     console.log(this.state.exams[dataIndex])
-  //     this.props.updateVoucherRequest(this.state.exams[dataIndex]);
-  //   });
-
-  // };
-
-  
+   // to toggle button  
     toggelChange = (index, newExamStatus) => {
     const { page, rowsPerPage, exams } = this.state;
     const dataIndex = page * rowsPerPage + index;

@@ -11,7 +11,7 @@ export default function SubmitExam() {
   // After 3 seconds, navigate to the login page
   React.useEffect(() => {
     const timeoutId = setTimeout(() => {
-      navigate('/'); // Replace with your login route
+      // navigate('/'); // Replace with your login route
     }, 3000);
 
     // Clear the timeout if the component unmounts

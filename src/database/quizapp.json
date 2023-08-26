@@ -3,7 +3,7 @@
     {
       "email": "anmol123@gmail.com",
       "fname": "anmol",
-      "lname": "chaure",
+      "lname": "chaware",
       "password": "anmol123",
       "role": "admin",
       "gender": "male",
@@ -24,11 +24,21 @@
       "email": "sam24@gmail.com",
       "fname": "samruddhi",
       "lname": "vaidya",
-      "password": "samu2499",
+      "password": "sam249",
       "role": "trainer",
       "gender": "female",
       "contact": "8976453213",
       "id": 3
+    },
+    {
+      "email": "ompacharne9@gmail.com",
+      "fname": "Om",
+      "lname": "Pacharne",
+      "password": "Om@112233",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9998887770",
+      "id": 6
     },
     {
       "email": "rushikakdeforever@gmail.com",
@@ -54,7 +64,7 @@
       "email": "sujitg1999@gmail.com",
       "fname": "sujit",
       "lname": "gaikwad",
-      "password": "123456aa",
+      "password": "123456",
       "role": "admin",
       "gender": "male",
       "contact": "9322403669",
@@ -91,7 +101,7 @@
       "id": 13
     }
   ],
-  "react": [
+  "questions": [
     {
       "id": 1,
       "question": "Which of the following is the correct name of React.js?",
@@ -101,7 +111,8 @@
         "ReactJS",
         "All of the above"
       ],
-      "answer": "All of the above"
+      "answer": "All of the above",
+      "examId": 1
     },
     {
       "id": 2,
@@ -110,9 +121,10 @@
         "React.js can increase the application's performance with Virtual DOM",
         "React.js is easy to integrate with other frameworks such as Angular, BackboneJS since it is only a view library",
         "React.js can render both on client and server side.",
-        "All of the above"
+        "all of the above"
       ],
-      "answer": "All of the above"
+      "answer": "all of the above",
+      "examId": 1
     },
     {
       "id": 3,
@@ -123,7 +135,8 @@
         "The library of React.js is pretty large",
         "The learning curve can be steep in React.js"
       ],
-      "answer": "The library of React.js is pretty large"
+      "answer": "The library of React.js is pretty large",
+      "examId": 1
     },
     {
       "id": 4,
@@ -134,7 +147,8 @@
         "Both A and B.",
         "None of the above."
       ],
-      "answer": "Virtual DOM"
+      "answer": "Virtual DOM",
+      "examId": 1
     },
     {
       "id": 5,
@@ -145,7 +159,8 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "Class"
+      "answer": "Class",
+      "examId": 1
     },
     {
       "id": 6,
@@ -156,7 +171,8 @@
         "revokeDefault()",
         "Non of the above"
       ],
-      "answer": "preventDefault()"
+      "answer": "preventDefault()",
+      "examId": 1
     },
     {
       "id": 7,
@@ -167,7 +183,8 @@
         "install -g create-react-app",
         "Non of the above"
       ],
-      "answer": "npm install -g create-react-app"
+      "answer": "npm install -g create-react-app",
+      "examId": 1
     },
     {
       "id": 8,
@@ -178,7 +195,8 @@
         "Extends",
         "This"
       ],
-      "answer": "Extends"
+      "answer": "Extends",
+      "examId": 1
     },
     {
       "id": 9,
@@ -189,7 +207,8 @@
         "External storage of the component.",
         "None of the above."
       ],
-      "answer": "Internal storage of the component."
+      "answer": "Internal storage of the component.",
+      "examId": 1
     },
     {
       "id": 10,
@@ -200,12 +219,11 @@
         "It is a module bundler",
         "None of the above."
       ],
-      "answer": "It is a module bundler"
-    }
-  ],
-  "python": [
+      "answer": "The webpack command is a module bundler.",
+      "examId": 1
+    },
     {
-      "id": 1,
+      "id": 11,
       "question": "What is the maximum possible length of an identifier?",
       "options": [
         "16",
@@ -213,10 +231,11 @@
         "64",
         "None of these above"
       ],
-      "answer": "None of these above"
+      "answer": "None of these above",
+      "examId": 2
     },
     {
-      "id": 2,
+      "id": 12,
       "question": " Who developed the Python language?",
       "options": [
         "Zim Den",
@@ -224,10 +243,11 @@
         "Niene Stom",
         "Wick van Rossum"
       ],
-      "answer": "Guido van Rossum"
+      "answer": "Guido van Rossum",
+      "examId": 2
     },
     {
-      "id": 3,
+      "id": 13,
       "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
       "options": [
         "Constructor",
@@ -235,21 +255,23 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "Class"
+      "answer": "Class",
+      "examId": 2
     },
     {
-      "id": 5,
-      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
+      "id": 14,
+      "question": "Which one of the following is not a keyword in Python language?",
       "options": [
-        "Constructor",
-        "Class",
-        "Both A and B.",
-        "Object"
+        "Pass",
+        "Eval",
+        "Asert",
+        "Nonlocal"
       ],
-      "answer": " Class"
+      "answer": " Eval",
+      "examId": 2
     },
     {
-      "id": 6,
+      "id": 15,
       "question": " Which of the following character is used to give single-line comments in Python?",
       "options": [
         "//",
@@ -257,10 +279,11 @@
         "!",
         "/*"
       ],
-      "answer": "#"
+      "answer": "#",
+      "examId": 2
     },
     {
-      "id": 7,
+      "id": 16,
       "question": "Which keyword is used for function in Python language?",
       "options": [
         "Function",
@@ -268,10 +291,11 @@
         "Fun ",
         "define"
       ],
-      "answer": "def"
+      "answer": "def",
+      "examId": 2
     },
     {
-      "id": 8,
+      "id": 17,
       "question": "Which of the following functions can help us to find the version of python that we are currently working on?",
       "options": [
         "sys.version(1)",
@@ -279,10 +303,11 @@
         "sys.version()",
         "sys.version"
       ],
-      "answer": "sys.version"
+      "answer": "sys.version",
+      "examId": 2
     },
     {
-      "id": 9,
+      "id": 18,
       "question": "What does pip stand for python??",
       "options": [
         "Pip Installs Python",
@@ -290,10 +315,11 @@
         "Preferred Installer Program",
         "All of the mentioned"
       ],
-      "answer": "Preferred Installer Program"
+      "answer": "Preferred Installer Program",
+      "examId": 2
     },
     {
-      "id": 10,
+      "id": 19,
       "question": "Which of the following functions is a built-in function in python?",
       "options": [
         "factorial()",
@@ -301,89 +327,45 @@
         " seed()",
         "sqrt()"
       ],
-      "answer": "print()"
-    }
-  ],
-  "php": [
-    {
-      "id": 1,
-      "question": "Which of the following statement is correct for AngularJS?",
-      "options": [
-        "AngularJS is an HTML framework",
-        "AngularJS is a Java framework",
-        "AngularJS is a JavaScript framework",
-        "AngularJS is a SQL framework"
-      ],
-      "answer": " C is the correct option. AngularJS is a JavaScript framework."
+      "answer": "print()",
+      "examId": 2
     },
     {
-      "id": 2,
-      "question": " On which of the Architectural pattern AngularJS is based?",
+      "question": "What is the order of precedence in python?",
       "options": [
-        "Observer Pattern",
-        "Decorator pattern",
-        "MVC Architecture pattern",
-        "MVVM Architectural pattern"
+        "Exponential, Parentheses, Multiplication, Division, Addition, Subtraction",
+        "Exponential, Parentheses, Division, Multiplication, Addition, Subtraction",
+        "Parentheses, Exponential, Multiplication, Division, Subtraction, Addition",
+        " Parentheses, Exponential, Multiplication, Division, Addition, Subtraction"
       ],
-      "answer": "D is the correct option. AngularJS is based on MVVM Architectural pattern."
-    },
-    {
-      "id": 3,
-      "question": "AngularJS is perfect for?",
-      "options": [
-        "SPAs",
-        "MPAs",
-        "DPAs",
-        "CPAs"
-      ],
-      "answer": " A is the correct option. AngularJS is perfect for Single Page Applications (SPAs)."
-    },
-    {
-      "id": 4,
-      "question": "Which of the following directive is used to bind the application data to the HTML view in AngularJS?",
-      "options": [
-        "ng-app directive",
-        "ng-model directive",
-        "ng-bind directive",
-        "ng-init directive"
-      ],
-      "answer": "ng-bind directive"
-    },
-    {
-      "id": 5,
-      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
-      "options": [
-        "Constructor",
-        "Class",
-        "Both A and B.",
-        "Object"
-      ],
-      "answer": "class"
+      "answer": "d",
+      "examId": 2,
+      "id": 31
     }
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": false,
+      "status": true,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
+      "status": true,
       "id": 4,
       "Vcode": "SgLBmw"
     },
     {
-      "status": false,
+      "status": true,
       "id": 5,
       "Vcode": "TZkSCK"
     },
@@ -524,6 +506,39 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "sandeep thorat",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 13,
+      "StudentName": "om patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 19,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 14,
+      "StudentName": "nitin pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -579,7 +594,17 @@
       "organization": "hematite",
       "pnr": "",
       "branch": "",
-      "id": 24
+      "id": 2
+    },
+    {
+      "id": 3,
+      "firstname": "om ",
+      "lastname": "Pacharne",
+      "email": "ompacharne9@gmail.com",
+      "contact": "7028347679",
+      "dob": "2002-02-02",
+      "gender": "Male",
+      "organization": "hematite"
     },
     {
       "firstname": "Komal",
@@ -698,12 +723,12 @@
       "id": 36
     },
     {
-      "firstname": "Renuka",
-      "lastname": "Kahane",
-      "email": "renuka@gmail.com",
-      "contact": "8989898989",
-      "dob": "2000-05-09",
-      "gender": "Female",
+      "firstname": "manjunath",
+      "lastname": "pawar",
+      "email": "manjunath12@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-04-01",
+      "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
@@ -732,29 +757,24 @@
       "id": 4
     },
     {
-      "studentName": "anmol chaware",
+      "studentName": "",
       "count": 0,
       "id": 5
     },
     {
-      "studentName": "Renuka Kahane",
-      "count": 0,
+      "studentName": "rushikesh kakde",
+      "count": 2,
       "id": 6
     },
     {
-      "studentName": "Renuka Kahane",
-      "count": 0,
+      "studentName": "manjunath pawar",
+      "count": 1,
       "id": 7
     },
     {
-      "studentName": "Renuka Kahane",
-      "count": 1,
+      "studentName": "rushikesh kakde",
+      "count": 0,
       "id": 8
-    },
-    {
-      "studentName": "Renuka Kahane",
-      "count": 1,
-      "id": 9
     }
   ],
   "feedback": [
@@ -1006,10 +1026,10 @@
       "id": 19
     },
     {
-      "fname": "Shruti Kahane",
-      "email": "shruti16@gmail.com",
-      "contact": "9876543212",
-      "org": "Lighthouse",
+      "fname": "abc efg",
+      "email": "adc@gmail.com",
+      "contact": "8888888888",
+      "org": "hematite",
       "queOne": "test1",
       "queTwo": "test1",
       "queThree": "test1",
@@ -1019,68 +1039,62 @@
       "id": 20
     },
     {
-      "fname": "Renuka Kahane",
-      "email": "renuka@gmail.com",
-      "contact": "9898989898",
-      "org": "CDAC",
-      "queOne": "test1",
-      "queTwo": "test2",
-      "queThree": "test3",
-      "queFour": "test4",
-      "queFive": "test4",
-      "queSix": "test6",
+      "fname": "abc bcs",
+      "email": "ac@gmail.com",
+      "contact": "8888888888",
+      "org": "hemat",
+      "queOne": "test",
+      "queTwo": "testtststststs",
+      "queThree": "tsetsgsgsgsgsg",
+      "queFour": "ssdfdffdsfsdf",
+      "queFive": "ssdfdffdsfsdf",
+      "queSix": "sfsdfdsfsdfsfsf",
       "id": 21
     },
     {
-      "fname": "Test test",
-      "email": "test@gmail.com",
-      "contact": "9898000090",
-      "org": "Hematite",
-      "queOne": "test1",
-      "queTwo": "test2",
-      "queThree": "fdfdf",
-      "queFour": "df",
-      "queFive": "fdfdfsf",
-      "queSix": "fdfdfdf",
+      "fname": "abcdeee",
+      "email": "abc@gmail.com",
+      "contact": "8888888888",
+      "org": "hemmm",
+      "queOne": "asaasaasa",
+      "queTwo": "asasasasas",
+      "queThree": "asasasasas",
+      "queFour": "asasaasas",
+      "queFive": "asasaasas",
+      "queSix": "asasasasasas",
       "id": 22
     }
   ],
   "exams": [
     {
       "id": 1,
-      "code": "HI-1",
-      "examname": "Java",
-      "examstatus": true
+      "examName": "react",
+      "examCode": "E-1",
+      "examStatus": false
     },
     {
       "id": 2,
-      "code": "HI-2",
-      "examname": "Phython",
-      "examstatus": true
+      "examName": "python",
+      "examCode": "E-2",
+      "examStatus": false
     },
     {
       "id": 3,
-      "code": "HI-3",
-      "examname": "PHP",
-      "examstatus": true
+      "examCode": "ab-45",
+      "examName": "php+html",
+      "examStatus": false
     },
     {
       "id": 4,
-      "code": "HI-4",
-      "examname": "Angular",
-      "examstatus": true
+      "examCode": "ab-46",
+      "examName": "php",
+      "examStatus": false
     },
     {
       "id": 5,
-      "code": "HI-5",
-      "examname": "React",
-      "examstatus": true
-    },
-    {
-      "id": 6,
-      "code": "HI-6",
-      "examname": "Vuejss",
-      "examstatus": true
+      "examCode": "ab-45",
+      "examName": "angular",
+      "examStatus": true
     }
   ]
 }

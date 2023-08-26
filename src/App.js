@@ -13,7 +13,7 @@ import StudentDashboard from './component/student/StudentDashboard';
 import Vouchermodule from './pages/voucher/container/Vouchermodule';
 import Feedback from './pages/feedback/container/Feedback';
 import FeedbackModule from './component/feedback/FeedbackModule';
-import Exammodule from './pages/exam/container/Exammodule';
+import Exam from './pages/exam/container/Exam';
 
 function App() {
   return (
@@ -31,7 +31,6 @@ function App() {
               <Route path='question' element={<Question />} />
               <Route path='user' element={<User />} />
               <Route path='feedback' element={<Feedback/>} />
-              <Route path='exam' element={<Exammodule/>} />
             </Route>
             <Route path='/form' element={<FeedbackModule/>} />
           </Routes>

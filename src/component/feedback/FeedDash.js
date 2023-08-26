@@ -193,6 +193,7 @@ export class FeedDash extends Component {
 
                             {selectedFeedback && (
                                 <Table >
+                                    
                                     <TableRow>
                                         <TableCell>
                                             <strong>Student Name:</strong> </TableCell><TableCell>{selectedFeedback.fname}</TableCell>

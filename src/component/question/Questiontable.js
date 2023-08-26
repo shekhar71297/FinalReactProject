@@ -263,6 +263,7 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
 
   useEffect(() => {
     initexamRequest();
+    
 
     // axios.get(`http://localhost:8888/examData/`)
     //   .then(response => {

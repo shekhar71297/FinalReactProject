@@ -372,7 +372,9 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
                                   <label>{String.fromCharCode(97 + index)}.</label>
                                 )}
                                 <label>{option}</label>
+                              
                               </div>
+                              
                             ))}<br></br>
                             Answer :  {item.answer}
 

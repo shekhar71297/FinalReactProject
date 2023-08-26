@@ -17,6 +17,7 @@ import Alert from '@mui/material/Alert';
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+
 export class StudentResult extends Component {
   constructor(props) {
     super(props);
@@ -101,8 +102,8 @@ export class StudentResult extends Component {
     }
   };
   calculateStatus = (tmark, omark) => {
-    const result = (omark / tmark) * 50;
-    if (result >= 20) {
+    const result = (omark / tmark) * 100;
+    if (result >= 50) {
       return "pass"
     }
     else {
@@ -112,6 +113,7 @@ export class StudentResult extends Component {
   render() {
     const { searchQuery, page, rowsPerPage, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen } = this.state;
     const grade = this.calculateGrade(selectedRecord.TotalMark, selectedRecord.ObtainedMark);
+    const status = this.calculateStatus(selectedRecord.TotalMark, selectedRecord.ObtainedMark)
     const filteredResults = this.props.allresult.filter((val) => {
       const searchQuery = this.state.searchQuery;
       const studentNameIncludes = val.StudentName.toLowerCase().includes(searchQuery);
@@ -125,13 +127,12 @@ export class StudentResult extends Component {
     }
     );
     return (
-      <div >
+      <div > 
 
         {/* table pop up */}
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup} fullWidth maxWidth="md" PaperProps={{
           sx: {
-            width: '30%', // Adjust the width as needed
-            // Adjust the maximum height as needed
+            width: '30%', 
           },
         }}>
           <DialogTitle sx={{ backgroundColor: '#1976d2', color: 'white', fontSize: '28px' }}>Result Details</DialogTitle>
@@ -177,15 +178,15 @@ export class StudentResult extends Component {
                 <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
 
                   <span style={{ fontWeight: "bold" }}>  Status:</span>
-                  {selectedRecord.status} <br />
+                  {status} <br />
                 </Typography>{" "}
 
               </Typography>
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+              {/* <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
 
                 <span style={{ fontWeight: "bold" }}>   Grade:</span>
                 {grade} <br />
-              </Typography>{" "}
+              </Typography>{" "} */}
 
               <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
 

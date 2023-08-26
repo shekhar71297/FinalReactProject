@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import StartExam from './StartExam';
 import { useState } from 'react';
 
-export default function Instructions() {
+export default function Instructions({ selectedExam }) {
     const [showQuiz, setShowQuiz] = React.useState(false);
 
     const handleStartClick = () => {
@@ -16,7 +16,7 @@ export default function Instructions() {
   return (
     <div>
         {showQuiz ? (
-        <StartExam />
+        <StartExam selectedExam={selectedExam} />
       ) : (
         <>
          <Card sx={{ maxWidth: 345,margin:"auto",marginTop:20 }}>

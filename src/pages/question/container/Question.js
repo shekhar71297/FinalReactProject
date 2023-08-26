@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Questiontable from '../../../component/question/Questiontable';
-import * as actions from '../action'
+import * as actions from '../Action'
 import { connect } from 'react-redux';
 import * as exam from '../../exam/Action'
 

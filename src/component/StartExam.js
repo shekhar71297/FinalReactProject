@@ -12,6 +12,9 @@ import SubmitExam from './SubmitExam';
 import DialogBox from './common/DialogBox';
 import { BiSolidUserCircle } from 'react-icons/bi'
 import Chip from '@mui/material/Chip';
+import { connect } from 'react-redux';
+import * as action from '../pages/question/Action'
+import * as ResultAction from '../pages/result/Action'
 
 
 
@@ -22,7 +25,7 @@ class StartExam extends Component {
       timer: 3600,
       questions: [],
       selectedOptions: [],// Store selected options as objects: { questionIndex: 0, optionValue: 'optionA' }
-      count: 0,
+      ObtainedMark: 0,
       studentName: '',
       endpage: false,
       openDialog: false,
@@ -59,18 +62,39 @@ class StartExam extends Component {
     });
   };
 
-
+componentDidUpdate(prevProps){
+  const selectedExam = this.props.selectedExam;
+  if (prevProps.allquestions !== this.props.allquestions) {
+    const filterQuestion=this.props.allquestions && this.props.allquestions.filter((val)=>val.examId===selectedExam)
+      console.log(filterQuestion);
+      this.setState({questions:filterQuestion})
+  }
+}
   componentDidMount() {
     // Fetch student name from sessionStorage
+    const selectedExam = this.props.selectedExam;
+    console.log('Selected Exam:',selectedExam);
     const studentName = sessionStorage.getItem("studentName");
     if (studentName) {
       this.setState({ studentName });
     }
 
     // Fetch data from the server
-    axios.get("http://localhost:8888/react").then((res) => {
-      this.setState({ questions: res.data });
-    });
+      // this.props.initquestionrequest()
+      // axios.get("http://localhost:8888/questions").then((res) => {
+
+      // const selectedExam = this.props.selectedExam;
+      this.props.initquestionRequest()
+      // console.log(res.data);
+      // console.log('Selected Exam:',selectedExam);
+    // console.log(this.props.allquestions);
+    //   const filterQuestion=this.props.allquestions && this.props.allquestions.filter((val)=>val.examId===selectedExam)
+    //   console.log(filterQuestion);
+    //   this.setState({questions:filterQuestion})
+      
+  // })
+      
+    // });
 
     // Timer logic
     const intervalId = setInterval(() => {
@@ -89,6 +113,7 @@ class StartExam extends Component {
 
   componentWillUnmount() {
     // Remove the event listener when the component is unmounted
+
     window.removeEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     clearInterval(this.interval);
@@ -99,7 +124,7 @@ class StartExam extends Component {
     if (!this.state.endpage) {
       e.preventDefault();
       e.returnValue = ""; // This is required for some browsers to show a confirmation dialog
-      this.submitExam();
+      // this.submitExam();
     }
   };
 
@@ -107,7 +132,7 @@ class StartExam extends Component {
   handleVisibilityChange = () => {
     // Check if the tab is hidden
     if (document.visibilityState === "hidden" && !this.state.endpage) {
-      this.submitExam();
+      // this.submitExam();
     }
   };
   formatTimer = timer => {
@@ -145,9 +170,8 @@ class StartExam extends Component {
     this.setState({ openDialog: false });
   };
   submitExam = () => {
-    axios.get("http://localhost:8888/react").then((res) => {
-      console.log(res.data);
-      const questionsData = res.data;
+    this.props.initquestionRequest()
+      const questionsData = this.props.allquestions;
       const selectedOptions = this.state.selectedOptions;
       sessionStorage.removeItem("isLogin");
       sessionStorage.removeItem("studentName")
@@ -158,16 +182,18 @@ class StartExam extends Component {
       });
   
 
-      const count = correctAnswers.length; // Count of correct answers
+      const ObtainedMark = correctAnswers.length; // Count of correct answers
 
-      this.setState({ count, open: true });
+      this.setState({ ObtainedMark, open: true });
       this.setState({ endpage: true })
-      console.log(count);
-      axios.post("http://localhost:8888/examresult", {
-        studentName: this.state.studentName,
-        count: count,
-      });
-    })
+      console.log(ObtainedMark);
+      // const updateData= {
+      //   StudentName: this.state.studentName,
+      //   ObtainedMark: ObtainedMark,
+      //  }
+      // this.props.addResultRequest(updateData)
+     
+    
   }
 
 
@@ -177,7 +203,9 @@ class StartExam extends Component {
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
     const isExamSubmitted = this.state.endpage;
     return (
+      
       <>
+      
         {endpage ? (
           <SubmitExam />
         ) : (
@@ -305,5 +333,17 @@ class StartExam extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  allquestions: state.questionStore.allquestions,
+  allresult: state.resultStore.allresult,
 
-export default StartExam;
+
+});
+
+const mapDispatchToprops = (dispatch) => ({
+  initquestionRequest: () => dispatch(action.getAllQuestions()),
+  initResultRequest:()=>dispatch(ResultAction.getAllResult()),
+  addResultRequest:(data) =>dispatch(ResultAction.addResult(data))
+});
+
+export default connect(mapStateToProps,mapDispatchToprops) (StartExam);

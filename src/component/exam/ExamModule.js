@@ -235,7 +235,7 @@ export class ExamModule extends Component {
             recordToDeleteId: id,
         });
     };
- 
+
     closeConfirmDialog = () => {
         this.setState({
             confirmDialogOpen: false,
@@ -281,7 +281,6 @@ export class ExamModule extends Component {
             <div>
                 <Box sx={{ marginRight: "25px", marginTop: 7, position: "relative", right: 20 }}>
                     <Paper>
-
                         <TableContainer component={Paper}  >
                             <Table aria-label="simple table" sx={{}} >
                                 <TableHead >

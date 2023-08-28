@@ -551,7 +551,6 @@
       "ExamName": "React js",
       "TotalMark": 50
     }
-  
   ],
   "students": [
     {
@@ -1145,12 +1144,6 @@
       "examCode": "ab-45",
       "examName": "php",
       "examStatus": true
-    },
-    {
-      "id": 4,
-      "examCode": "ab-46",
-      "examName": "php+html",
-      "examStatus": false
     },
     {
       "id": 5,

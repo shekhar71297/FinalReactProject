@@ -1,9 +1,8 @@
+import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import * as Action from '../action'
 import StudentDashboard from '../../../component/student/StudentDashboard'
-import StudentLogin from '../../../component/student/StudentLogin'
-import React,{Component} from 'react'
-import NewStudentRegistration from '../../../component/student/NewStudentRegistration'
+
 export class Student extends Component {
   
     render() {
@@ -11,8 +10,7 @@ export class Student extends Component {
         return (
             <div>
           
-            
-            <StudentLogin {...this.props}/> 
+            <StudentDashboard {...this.props}/>
           
             </div>
         )

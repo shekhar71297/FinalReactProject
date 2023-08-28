@@ -16,6 +16,7 @@ import FeedbackModule from './component/feedback/FeedbackModule';
 import Exam from './pages/exam/container/Exam';
 import SelectExam from './component/SelectExam';
 import StartExam from './component/StartExam';
+import StudentLogin from './component/student/StudentLogin';
 
 function App() {
   return (
@@ -23,13 +24,14 @@ function App() {
       <div className="App">
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Student />} />
+          <Route path='/' element={<StudentLogin />} />
+            {/* <Route path='/' element={<Student />} /> */}
             <Route path='/select-exam' element={<SelectExam/>}/>
             <Route path='/start-exam:selectedExam' element={<StartExam/>}/>
             <Route path='/register' element={<NewStudentRegistration />} />
             <Route path='/admin' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />}>
-              <Route path='student' element={<StudentDashboard />} />
+              <Route path='student' element={<Student />} />
               <Route path='result' element={<Result />} />
               <Route path='voucher' element={<Vouchermodule />} />
               <Route path='question' element={<Question />} />

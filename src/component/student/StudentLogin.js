@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import IconButton from '@mui/material/IconButton';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 
 import Vouchervalidation from '../voucher/Vouchervalidation';
 
@@ -34,15 +35,16 @@ export class StudentLogin extends Component {
       snackbarMessage: '',
       severity: '',
       isLoggedIn: false,
+      showAlert: false,
+      alertMessage: '',
+      alertSeverity: 'info',
     }
   }
-  componentDidMount() {
-    // this.props.initStudentRequest();
-  }
+
 
   componentDidUpdate(prevProps) {
     if (prevProps.allstudent !== this.props.allstudent) {
-      // console.log("anmol updated")
+    
       const istrue = this.props.allstudent.some((d) =>
         this.state.email === d.email && this.state.dob === d.dob
       );
@@ -52,28 +54,21 @@ export class StudentLogin extends Component {
         const student = this.props.allstudent?.[0] && this.props.allstudent.find(
           (d) => this.state.email === d.email && this.state.dob === d.dob
         );
-
+            
         sessionStorage.setItem("isLogin", "true");
         sessionStorage.setItem("studentName", `${student?.firstname} ${student?.lastname}`); // Set student's full name
-        this.setState({
-          snackbarOpen: true,
-          snackbarMessage: 'Login successfully',
-          severity: 'success',
-        });
-
+        this.handleShowAlert(` Login Successfully`, 'success');
+        
         setTimeout(() => {
           this.setState({ snackbarOpen: false });
           this.setState({ isLoggedIn: true });
         }, 1000);
       } else {
-        this.setState({
-          snackbarOpen: true,
-          snackbarMessage: 'please check your registered email and dob',
-          severity: 'error'
-        });
+        this.handleShowAlert('Please Enter Correct Credentials', 'error');
+      
       }
     }
-    // this.props.initStudentRequest();
+  
   }
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -86,6 +81,20 @@ export class StudentLogin extends Component {
 
 
   }
+  handleShowAlert = (message, severity) => {
+    this.setState({
+      showAlert: true,
+      alertMessage: message,
+      alertSeverity: severity,
+    });
+  };
+
+  handleCloseAlert = () => {
+    this.setState({
+      showAlert: false,
+      alertMessage: '',
+    });
+  };
 
 
   render() {
@@ -197,16 +206,22 @@ export class StudentLogin extends Component {
               </Box>
 
             </Box>
-            <Snackbar
-              open={this.state.snackbarOpen}
-              autoHideDuration={3000} // You can adjust the duration as needed
-              onClose={() => this.setState({ snackbarOpen: false })}
-              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
-                {this.state.snackbarMessage}
-              </Alert>
-            </Snackbar>
+
+              <Snackbar
+          open={this.state.showAlert}
+          autoHideDuration={4000}
+          onClose={this.handleCloseAlert}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <MuiAlert
+            elevation={6}
+            variant="filled"
+            onClose={this.handleCloseAlert}
+            severity={this.state.alertSeverity}
+          >
+            {this.state.alertMessage}
+          </MuiAlert>
+        </Snackbar>
           </>
         )}
       </div>

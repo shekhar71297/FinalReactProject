@@ -23,13 +23,14 @@ import * as validation from '../../util/validation'
 import { TextFields } from '@mui/icons-material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 import Modal from '@mui/material/Modal';
 class NewStudentRegistration extends Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      students:[],
+      students: [],
       id: null,
       firstname: '',
       lastname: '',
@@ -38,8 +39,8 @@ class NewStudentRegistration extends Component {
       dob: '',
       gender: '',
       organization: '',
-      pnr:'',
-      branch:'',
+      pnr: '',
+      branch: '',
       term: false,
       open: false,
       isAddStudent: true,
@@ -49,12 +50,12 @@ class NewStudentRegistration extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
-      severity:'',
-      errors:{
-        fnameError:false,
-        lnameError:false,
-        emailError:false,
-        contactError:false
+      severity: '',
+      errors: {
+        fnameError: false,
+        lnameError: false,
+        emailError: false,
+        contactError: false
       }
 
     }
@@ -69,8 +70,8 @@ class NewStudentRegistration extends Component {
       this.state.errors.emailError ||
       this.state.errors.contactError ||
       this.state.errors.lnameError
-      
-      
+
+
     ) {
       // Display an error message or take any necessary action
       this.setState({
@@ -92,7 +93,6 @@ class NewStudentRegistration extends Component {
       term: false,
       branch: '',
       pnr: "",
-      showCdacTextField: false,
       isAddStudent: true,
       isDeletePopupOpen: false,
       deletingRecordId: null,
@@ -100,7 +100,7 @@ class NewStudentRegistration extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
-      severity:'success'
+      severity: 'success'
 
     })
 
@@ -112,22 +112,41 @@ class NewStudentRegistration extends Component {
       dob: this.state.dob,
       gender: this.state.gender,
       organization: this.state.organization,
-      pnr:this.state.pnr,
+      pnr: this.state.pnr,
       branch: this.state.branch === " " || this.state.organization === "cdac" ? "" : this.state.branch
     }
     this.props.addStudentRequest(payload)
-    this.setState({
-          snackbarOpen: true,
-          snackbarMessage: 'Student Registered successfully',
-          severity: 'success',
-        });
-         
+    this.handleShowAlert('Student Registered successfully', 'success');
+
+    // this.setState({
+    //       snackbarOpen: true,
+    //       snackbarMessage: 'Student Registered successfully',
+    //       severity: 'success',
+    //       variant:"filled"
+    //     });
+
     setTimeout(() => {
       this.props.router.navigate("/");
     }, 2000);
-    
+
   }
-  
+
+  handleShowAlert = (message, severity) => {
+    this.setState({
+      showAlert: true,
+      alertMessage: message,
+      alertSeverity: severity,
+    });
+  };
+
+  handleCloseAlert = () => {
+    this.setState({
+      showAlert: false,
+      alertMessage: '',
+    });
+  };
+
+
 
   resetStudentFormHandler = () => {
     this.setState({
@@ -138,65 +157,72 @@ class NewStudentRegistration extends Component {
       dob: (''),
       gender: (''),
       organization: (''),
-      pnr:(''),
-      branch:('')
+      pnr: (''),
+      branch: ('')
 
     })
-
   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    
-    if (name === 'organization') {
-      this.setState({
-        [name]: value,
-        showCdacTextField: value === 'cdac',
-      });
-    } else if (name === 'cdac') {
-      this.setState({
-        [name]: value,
-        showCdacTextField: true,
-      });
-    } else {
-      this.setState({
-        [name]: value,
-      });
-    }
+
+    this.setState({
+      [name]: value
+    }, () => {
+      if (this.state.organization === "hematite") {
+        this.setState({
+          branch: "",
+          pnr: ""
+        })
+      } else if (this.state.organization === "cdac") {
+        this.setState({
+          branch: "",
+        })
+      } else if (this.state.organization === "lighthouse") {
+        this.setState({
+          pnr: ""
+        })
+      }
+    });
+    // }
 
     this.setState({ [name]: value }, () => {
-      if(name === "firstname"){
+      if (name === "firstname") {
         const isFnameError = !(validation.isValidName(this.state[name]));
-        if(isFnameError){
-          this.setState({errors:{...this.state.errors,fnameError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,fnameError:false}})
-        }
+        this.setState({ errors: { ...this.state.errors, fnameError: isFnameError } })
+        // if (isFnameError) {
+        //   this.setState({ errors: { ...this.state.errors, fnameError: true } })
+        // } else {
+        //   this.setState({ errors: { ...this.state.errors, fnameError: false } })
+        // }
       }
-       if(name === "lastname"){
+      if (name === "lastname") {
         const isLnameError = !(validation.isValidName(this.state[name]));
-        if(isLnameError){
-          this.setState({errors:{...this.state.errors,lnameError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,lnameError:false}})
+        if (isLnameError) {
+          this.setState({ errors: { ...this.state.errors, lnameError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, lnameError: false } })
         }
       }
 
-      if(name === "email"){
+      if (name === "email") {
         const isEmailError = !(validation.isValidEmail(this.state[name]));
-        if(isEmailError){
-          this.setState({errors:{...this.state.errors,emailError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,emailError:false}})
+        if (isEmailError) {
+          this.setState({ errors: { ...this.state.errors, emailError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, emailError: false } })
         }
       }
+      if (name === "gender") {
+        this.setState({ gender: value });
+      }
 
-      if(name === "contact"){
+      if (name === "contact") {
         const isvalidContact = !(validation.isValidContact(this.state[name]));
-        if(isvalidContact){
-          this.setState({errors:{...this.state.errors,contactError:true}})
-        }else{
-          this.setState({errors:{...this.state.errors,contactError:false}})
+        if (isvalidContact) {
+          this.setState({ errors: { ...this.state.errors, contactError: true } })
+        } else {
+          this.setState({ errors: { ...this.state.errors, contactError: false } })
         }
       }
     });
@@ -205,8 +231,8 @@ class NewStudentRegistration extends Component {
 
 
   render() {
-    const { pnr, firstname, lastname, email, contact, dob, gender, organization,branch} = this.state;
-    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization  ;
+    const { pnr, firstname, lastname, email, contact, dob, gender, organization, branch } = this.state;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization;
     return (
       // <Modal
       //   open={open}
@@ -214,22 +240,22 @@ class NewStudentRegistration extends Component {
       //   aria-labelledby="modal-modal-title"
       //   aria-describedby="modal-modal-description">
       <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-          </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'left', fontWeight: 'bold', width: '100px' }}>
-            Hematite Infotech Online-Quiz
-          </Typography>
-        </Toolbar>
-      </AppBar>
-        
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'left', fontWeight: 'bold', width: '100px' }}>
+              Hematite Infotech Online-Quiz
+            </Typography>
+          </Toolbar>
+        </AppBar>
+
 
         <Box sx={{
           marginTop: 13,
@@ -242,12 +268,12 @@ class NewStudentRegistration extends Component {
           padding: "10px"
         }}  >
           <div >
-            <Typography component="h1" variant="h5" gutterBottom sx={{marginTop:8}}>
+            <Typography component="h1" variant="h5" gutterBottom sx={{ marginTop: 8 }}>
               New Register
             </Typography>
             <form onSubmit={this.addResgisterStudent} action={<Link to="" />}>
               <Stack spacing={2} direction="row" >
-              
+
                 <TextField
                   type="text"
                   variant='outlined'
@@ -258,10 +284,10 @@ class NewStudentRegistration extends Component {
                   name='firstname'
                   fullWidth
                   required
-                  error={this.state.errors.fnameError }
-                  helperText={this.state.errors.fnameError && validation.errorText ("Please enter a valid firstname")||"eg:John"}
+                  error={this.state.errors.fnameError}
+                  helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid firstname") || "eg:John"}
                 />
-                 
+
                 <TextField
                   type="text"
                   variant='outlined'
@@ -272,10 +298,10 @@ class NewStudentRegistration extends Component {
                   name='lastname'
                   fullWidth
                   required
-                  error={this.state.errors.lnameError }
-                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") ||'eg: Dev'}
+                  error={this.state.errors.lnameError}
+                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Dev'}
                 />
-                {/* {this.state.errors.lnameError &&(<span>Please enter a valid lastname</span>)} */}
+
               </Stack>
               <br />
               <TextField
@@ -290,9 +316,9 @@ class NewStudentRegistration extends Component {
                 required
                 sx={{ mb: 4 }}
                 error={this.state.errors.emailError}
-                helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email")||"eg:jhon@123"}
+                helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email") || "eg:jhon@123"}
               />
-                 {/* {this.state.errors.emailError &&(<span>Please enter a valid email</span>)} */}
+              {/* {this.state.errors.emailError &&(<span>Please enter a valid email</span>)} */}
               <TextField
                 type="tel"
                 variant='outlined'
@@ -305,7 +331,7 @@ class NewStudentRegistration extends Component {
                 required
                 sx={{ mb: 4 }}
                 error={this.state.errors.contactError}
-                helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact")||"eg:99223344222"}
+                helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact") || "eg:99223344222"}
               />
               <TextField
                 type="date"
@@ -324,7 +350,7 @@ class NewStudentRegistration extends Component {
                 <RadioGroup
                   aria-label='="gender'
                   name="gender"
-                  value={gender||" "}
+                  value={gender || " "}
                   onChange={this.handleChange}
                   row
                 >
@@ -356,7 +382,7 @@ class NewStudentRegistration extends Component {
                     onChange={this.handleChange}
                     aria-label='Choose branch'
                   >
-                    <MenuItem value=''aria-label='Choose branch'>Select Organizantion</MenuItem>
+                    <MenuItem value='' aria-label='Choose branch'>Select Organizantion</MenuItem>
                     <MenuItem value='Hadapsar'>Hadapsar</MenuItem>
                     <MenuItem value='Warje'>Warje</MenuItem>
                     <MenuItem value='Vadgoansheri'>Vadgoansheri</MenuItem>
@@ -365,13 +391,13 @@ class NewStudentRegistration extends Component {
                 }
 
 
-                {this.state.organization === 'cdac' && this.state.showCdacTextField && (
+                {this.state.organization === 'cdac' && (
                   <TextField
                     id="standard-basic"
                     variant="standard"
-                    name="pnr" 
+                    name="pnr"
                     placeholder="pnr"
-                    value={pnr} 
+                    value={pnr}
                     onChange={this.handleChange}
                   />
                 )}
@@ -384,40 +410,45 @@ class NewStudentRegistration extends Component {
 
           </div>
         </Box>
-        
+
 
 
         {/* footer */}
         <Box sx={{ flexGrow: 1, marginTop: 18 }}>
-            <AppBar position="static">
-              <Toolbar>
-                <IconButton
-                  size="large"
-                  edge="start"
-                  color="inherit"
-                  aria-label="menu"
-                  sx={{ mr: 2 }}
-                >
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+              >
 
-                </IconButton>
-                <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'right', fontWeight: 'bold', width: '100px', fontSize: '15px' }}>
-                  Designed And Developed By  Sujit Gaikwad
-                </Typography>
-              </Toolbar>
-            </AppBar>
-          </Box>
-          <Snackbar
-              open={this.state.snackbarOpen}
-              autoHideDuration={3000} // You can adjust the duration as needed
-              onClose={() => this.setState({ snackbarOpen: false })}
-              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-              variant="filled"
-            >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
-                {this.state.snackbarMessage}
-              </Alert>
-            </Snackbar>
+              </IconButton>
+              <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'right', fontWeight: 'bold', width: '100px', fontSize: '15px' }}>
+                Designed And Developed By  Sujit Gaikwad
+              </Typography>
+            </Toolbar>
+          </AppBar>
         </Box>
+
+        <Snackbar
+          open={this.state.showAlert}
+          autoHideDuration={4000}
+          onClose={this.handleCloseAlert}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        >
+          <MuiAlert
+            elevation={6}
+            variant="filled"
+            onClose={this.handleCloseAlert}
+            severity={this.state.alertSeverity}
+          >
+            {this.state.alertMessage}
+          </MuiAlert>
+        </Snackbar>
+      </Box>
 
       // </Modal>
 

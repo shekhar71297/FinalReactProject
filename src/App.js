@@ -22,10 +22,10 @@ function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        {/* <QuizzApp/> */}
+        <QuizzApp/>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Student />} />
+            {/* <Route path='/' element={<Student />} /> */}
             <Route path='/select-exam' element={<SelectExam/>}/>
             <Route path='/start-exam:selectedExam' element={<StartExam/>}/>
             <Route path='/register' element={<NewStudentRegistration />} />

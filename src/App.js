@@ -17,15 +17,16 @@ import Exam from './pages/exam/container/Exam';
 import SelectExam from './component/SelectExam';
 import StartExam from './component/StartExam';
 import StudentLogin from './component/student/StudentLogin';
+import QuizzApp from './component/QuizzApp';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        <QuizzApp/>
         <BrowserRouter>
           <Routes>
           <Route path='/' element={<StudentLogin />} />
-            {/* <Route path='/' element={<Student />} /> */}
             <Route path='/select-exam' element={<SelectExam/>}/>
             <Route path='/start-exam:selectedExam' element={<StartExam/>}/>
             <Route path='/register' element={<NewStudentRegistration />} />

@@ -20,6 +20,7 @@ import Alert from '@mui/material/Alert';
 import MuiAlert from '@mui/material/Alert';
 
 import Vouchervalidation from '../voucher/Vouchervalidation';
+import WithRouter from '../../util/WithRouter';
 
 const defaultTheme = createTheme();
 export class StudentLogin extends Component {
@@ -40,7 +41,10 @@ export class StudentLogin extends Component {
       alertSeverity: 'info',
     }
   }
-
+  componentDidMount() {
+    // this.props.initStudentRequest();
+    
+  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.allstudent !== this.props.allstudent) {
@@ -54,7 +58,8 @@ export class StudentLogin extends Component {
         const student = this.props.allstudent?.[0] && this.props.allstudent.find(
           (d) => this.state.email === d.email && this.state.dob === d.dob
         );
-            
+
+
         sessionStorage.setItem("isLogin", "true");
         sessionStorage.setItem("studentName", `${student?.firstname} ${student?.lastname}`); // Set student's full name
         this.handleShowAlert(` Login Successfully`, 'success');
@@ -69,6 +74,7 @@ export class StudentLogin extends Component {
       }
     }
   
+   
   }
   inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -103,7 +109,8 @@ export class StudentLogin extends Component {
 
       <div>
         {isLoggedIn ? (
-          <Vouchervalidation />
+          this.props.router.navigate('/quizapp/valid-voucher')
+
         ) : (
           <>
 
@@ -230,6 +237,7 @@ export class StudentLogin extends Component {
   }
 }
 
+
 const mapStateToProps = (state) => ({
   allstudent: state.studentStore.allstudent,
   singelStudent: state.studentStore.student
@@ -243,4 +251,4 @@ const mapDispatchToprops = (dispatch) => ({
   addStudentRequest: (data) => dispatch(Action.addAllStudent(data))
 })
 
-export default connect(mapStateToProps, mapDispatchToprops)(StudentLogin)
+export default connect(mapStateToProps, mapDispatchToprops)(WithRouter(StudentLogin))

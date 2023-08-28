@@ -475,7 +475,52 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "id": 12,
+      "StudentName": "sandeep thorat",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 13,
+      "StudentName": "om patil",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 19,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "id": 14,
+      "StudentName": "nitin pawar",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50,
+      "ObtainedMark": 25,
+      "Grade": "-",
+      "Date": "26/06/2023"
+    },
+    {
+      "StudentName": "anmol chaware",
+      "ObtainedMark": 9,
+      "Grade": "-",
+      "id": 15,
+      "Date": "26/06/2023",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50
     }
+  
   ],
   "students": [
     {
@@ -761,6 +806,30 @@
       "pnr": "007",
       "branch": "",
       "id": 54
+    },
+    {
+      "firstname": "asasaaass",
+      "lastname": "saasaa",
+      "email": "anmol@gmail.com",
+      "contact": "9999999999",
+      "dob": "1111-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 38
+    },
+    {
+      "firstname": "AaAAaAa",
+      "lastname": "aAa",
+      "email": "anmol@gmail.com",
+      "contact": "9999999999",
+      "dob": "1222-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 39
     }
   ],
   "examresult": [
@@ -1093,29 +1162,29 @@
       "id": 22
     },
     {
-      "fname": "sfdsf",
-      "email": "jhjh@gmail.com",
-      "contact": "9090999999",
-      "org": "jkjhkjhjkh",
-      "queOne": "hjhjkhkjhkj",
-      "queTwo": "hjkhkjhjkhjk",
-      "queThree": "hjkhjkh",
-      "queFour": "hhjhjh",
-      "queFive": "hhjkhjkh",
-      "queSix": "hjkhjkh",
+      "fname": "wewqe",
+      "email": "qweqewew@g.com",
+      "contact": "8888888888",
+      "org": "sasaa",
+      "queOne": "ADSDSDAASDADS",
+      "queTwo": "DSADADD",
+      "queThree": "DSAASDASDASDASD",
+      "queFour": "ADASDASDADASD",
+      "queFive": "DSDDAASDSDASD",
+      "queSix": "DASADADASDASDASDA",
       "id": 23
     },
     {
-      "fname": "jhehh",
-      "email": "hjkhhhj@gmail.com",
-      "contact": "9999999999",
-      "org": "hhjhjkh",
-      "queOne": "jhhjkhjk",
-      "queTwo": "hkjhjkhkjh",
-      "queThree": "jkhhjkhjk",
-      "queFour": "hjhjhjkhkjh",
-      "queFive": "hhkjhjkhkjh",
-      "queSix": "hjkhkjhkhkh",
+      "fname": "SDASSDADA",
+      "email": "ASAS@G.COM",
+      "contact": "8888888888",
+      "org": "vffdfdf",
+      "queOne": "dfdsfdfdsfdsfs",
+      "queTwo": "sdfdsfdsfdsff",
+      "queThree": "sfdfdssd",
+      "queFour": "sfsdfdf",
+      "queFive": "fsddfsf",
+      "queSix": "sfsfdfd",
       "id": 24
     }
   ],
@@ -1124,24 +1193,36 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 2,
       "examName": "python",
       "examCode": "E-2",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 3,
       "examCode": "ab-45",
-      "examName": "php+html",
+      "examName": "php",
       "examStatus": false
     },
     {
       "id": 4,
       "examCode": "ab-46",
-      "examName": "php",
+      "examName": "php+html",
+      "examStatus": true
+    },
+    {
+      "id": 5,
+      "examCode": "ab-45",
+      "examName": "angular",
+      "examStatus": false
+    },
+    {
+      "id": 6,
+      "examCode": "SH-77",
+      "examName": "dot net",
       "examStatus": false
     }
   ]

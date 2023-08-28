@@ -130,7 +130,7 @@ export class StudentLogin extends Component {
                   </Typography>
                 </Toolbar>
               </AppBar>
-              {/* Student Login */}
+            
               <ThemeProvider theme={defaultTheme}>
                 <Container component="main" maxWidth="xs">
                   <CssBaseline />

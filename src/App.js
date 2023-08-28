@@ -26,7 +26,7 @@ function App() {
         <QuizzApp/>
         <BrowserRouter>
           <Routes>
-          <Route path='/' element={<StudentLogin />} />
+          {/* <Route path='/' element={<StudentLogin />} /> */}
             <Route path='/select-exam' element={<SelectExam/>}/>
             <Route path='/start-exam:selectedExam' element={<StartExam/>}/>
             <Route path='/register' element={<NewStudentRegistration />} />

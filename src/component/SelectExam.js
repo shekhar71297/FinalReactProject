@@ -7,36 +7,44 @@ import Select from '@mui/material/Select';
 import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Instructions from './Instructions';
+import { connect } from 'react-redux';
+import * as examaction from '../pages/exam/Action'
+
 
 class SelectExam extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            exam: '',
+            examId: '',
             showInstruction:false,
         };
     }
 
     handleChange = (event) => {
         this.setState({
-            exam: event.target.value,
+            examId: parseInt(event.target.value, 10),
             
         });
     };
+    componentDidMount(){
+        this.props.initexamRequest()
+    }
 
     submitBtn = ()=>{
+
         this.setState({showInstruction:true})
         console.log(this.state.exam);
     }
 
     render() {
-        const { exam } = this.state;
+        const { allExam } = this.props;
+        const { examId } = this.state;
         const { showInstruction } = this.state
-
+        const activeExams = allExam.filter(exam => exam.examStatus);
         return (
             <div>
             {showInstruction ? (
-                <Instructions />
+                <Instructions selectedExam={examId} />
               ) : (
                 <>
             <Box sx={{
@@ -61,14 +69,16 @@ class SelectExam extends Component {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            value={exam}
+                            value={examId}
                             label="Exam"
                             name='exam'
                             onChange={this.handleChange}
                         >
-                            <MenuItem value="ReactJs">ReactJs</MenuItem>
-                            <MenuItem value="Php">Php</MenuItem>
-                            <MenuItem value="Python">Python</MenuItem>
+                            
+                            {activeExams.map(exam => (
+                                        <MenuItem key={exam.id} value={exam.id}>{exam.examName}</MenuItem>
+                                    ))}
+
                         </Select>
                     </FormControl>
                    
@@ -90,5 +100,13 @@ class SelectExam extends Component {
         );
     }
 }
+const mapStateToProps = (state) => ({
+    allExam: state.ExamStore.allExam,
+});
 
-export default SelectExam;
+const mapDispatchToprops = (dispatch) => ({
+    initexamRequest: () => dispatch(examaction.getAllExam()),
+   
+});
+
+export default  connect(mapStateToProps, mapDispatchToprops) (SelectExam);

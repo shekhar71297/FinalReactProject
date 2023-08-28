@@ -16,9 +16,8 @@ export class Exam extends Component {
 // redux code
 const mapStateToProps = (state) => ({
     allExam: state.ExamStore.allExam,
-    singelexam: state.ExamStore.student
 });
-
+ 
 const mapDispatchToprops = (dispatch) => ({
     initexamRequest: () => dispatch(examaction.getAllExam()),
     deleteexamRequest: (id) => dispatch(examaction.deleteExam(id)),

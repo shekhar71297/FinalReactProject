@@ -72,7 +72,7 @@ export class StudentLogin extends Component {
         });
       }
     }
-    // this.props.initStudentRequest();
+   
   }
   inputChangeHandler = (e) => {
     const { name, value } = e.target;

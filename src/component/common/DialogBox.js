@@ -6,11 +6,12 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 
-const DialogBox = ({ open, onClose, onConfirm, message }) => {
+const DialogBox = ({ open, onClose, onConfirm, message,title,content, submitLabel }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Confirmation</DialogTitle>
+      <DialogTitle>{title}</DialogTitle>
       <DialogContent>
+        {content}
         <DialogContentText>
           {message}
         </DialogContentText>
@@ -18,7 +19,7 @@ const DialogBox = ({ open, onClose, onConfirm, message }) => {
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
         <Button onClick={onConfirm} color="primary">
-          Submit
+        {submitLabel}
         </Button>
       </DialogActions>
     </Dialog>

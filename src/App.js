@@ -14,14 +14,20 @@ import Vouchermodule from './pages/voucher/container/Vouchermodule';
 import Feedback from './pages/feedback/container/Feedback';
 import FeedbackModule from './component/feedback/FeedbackModule';
 import Exam from './pages/exam/container/Exam';
+import SelectExam from './component/SelectExam';
+import StartExam from './component/StartExam';
+import QuizzApp from './component/QuizzApp';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
+        {/* <QuizzApp/> */}
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Student />} />
+            <Route path='/select-exam' element={<SelectExam/>}/>
+            <Route path='/start-exam:selectedExam' element={<StartExam/>}/>
             <Route path='/register' element={<NewStudentRegistration />} />
             <Route path='/admin' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />}>

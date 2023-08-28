@@ -349,7 +349,7 @@ export class FeedbackModule extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  allFeedback: state.feedbackStore.allFeedback,
+  // allFeedback: state.feedbackStore.allFeedback,
 })
 const mapDispatchToProps = (dispatch) => ({
   initFeedbackRequest: () => dispatch(Action.getAllFeedback()),

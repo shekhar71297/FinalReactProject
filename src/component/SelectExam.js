@@ -40,7 +40,7 @@ class SelectExam extends Component {
         const { allExam } = this.props;
         const { examId } = this.state;
         const { showInstruction } = this.state
-
+        const activeExams = allExam.filter(exam => exam.examStatus);
         return (
             <div>
             {showInstruction ? (
@@ -75,7 +75,7 @@ class SelectExam extends Component {
                             onChange={this.handleChange}
                         >
                             
-                            {allExam.map(exam => (
+                            {activeExams.map(exam => (
                                         <MenuItem key={exam.id} value={exam.id}>{exam.examName}</MenuItem>
                                     ))}
 

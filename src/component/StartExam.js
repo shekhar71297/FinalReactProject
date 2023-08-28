@@ -124,7 +124,7 @@ componentDidUpdate(prevProps){
     if (!this.state.endpage) {
       e.preventDefault();
       e.returnValue = ""; // This is required for some browsers to show a confirmation dialog
-      // this.submitExam();
+      this.submitExam();
     }
   };
 
@@ -132,7 +132,7 @@ componentDidUpdate(prevProps){
   handleVisibilityChange = () => {
     // Check if the tab is hidden
     if (document.visibilityState === "hidden" && !this.state.endpage) {
-      // this.submitExam();
+      this.submitExam();
     }
   };
   formatTimer = timer => {
@@ -326,6 +326,7 @@ componentDidUpdate(prevProps){
                 this.submitExam();
               }}
               message={`Are you sure you want to submit the exam?`}
+              title={`Confirmation`}
             />
           </div>
         )}

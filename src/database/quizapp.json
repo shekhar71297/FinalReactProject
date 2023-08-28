@@ -1120,12 +1120,6 @@
       "examCode": "ab-1012",
       "examName": "html+css+js+bootstarp",
       "examStatus": false
-    },
-    {
-      "id": 16,
-      "examCode": "c1-123",
-      "examName": "django+python",
-      "examStatus": false
     }
   ]
 }

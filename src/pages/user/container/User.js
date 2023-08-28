@@ -5,18 +5,18 @@ import { connect } from 'react-redux';
  
  
 
-export class User extends Component {
-  render() {
-    return (
-      <div>
+// export class User extends Component {
+//   render() {
+//     return (
+//       <div>
         
 
- <Usertable {...this.props}/>
-      </div>
-    )
-  }
+//  <Usertable {...this.props}/>
+//       </div>
+//     )
+//   }
 
-}
+// }
   const mapStateToProps = (state) => ({
     allUser: state.userStore.allUser,
     singleUser: state.userStore.user
@@ -35,4 +35,4 @@ export class User extends Component {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(User);
+export default connect(mapStateToProps, mapDispatchToProps)(Usertable);

@@ -13,6 +13,7 @@ import Alert from '@mui/material/Alert';
 import * as validation from '../../util/validation';
 import * as Action from '../../pages/feedback/Action';
 import Typography from '@mui/material/Typography';
+import { RESET_FEEDBACK_SUCCESS_RES } from '../../pages/feedback/constant';
 
 
 export class FeedbackModule extends Component {
@@ -59,12 +60,21 @@ export class FeedbackModule extends Component {
     this.setState({ [name]: value }, () => {
       if (name === "fname") {
         const isFnameError = !(validation.isValidFullName(this.state[name]));
-        if (isFnameError) {
-          this.setState({ errors: { ...this.state.errors, fnameError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, fnameError: false } })
-        }
+        // isFnameError
+        //   ? this.setState({ errors: { ...this.state.errors, fnameError: true } })
+        //   : this.setState({ errors: { ...this.state.errors, fnameError: false } })
+
+        this.setState({ errors: { ...this.state.errors, fnameError: isFnameError } })
+
+        // (isFnameError)?(this.setState({ errors: { ...this.state.errors, fnameError: true } })):(this.setState({ errors: { ...this.state.errors, fnameError: false } }))
+        // if (isFnameError) {
+        //   this.setState({ errors: { ...this.state.errors, fnameError: true } })
+        // } else {
+        //   this.setState({ errors: { ...this.state.errors, fnameError: false } })
+        // }
       }
+
+
 
       if (name === "org") {
         const isOrgError = !(validation.isValidFullName(this.state[name]));
@@ -151,16 +161,29 @@ export class FeedbackModule extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    
-    if (this.state.shouldRedirect && this.state.shouldRedirect !== prevState.shouldRedirect) {
-      window.location.href = '/';
+    if (prevProps.isFeedbackSuccessRes !== this.props.isFeedbackSuccessRes && this.props.isFeedbackSuccessRes === true) {
+      console.log("Thank You For Giving Feedback!!")
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Thank You For Giving Feedback!!",
+        severity: 'success',
+      });
+      this.props.resetIsFeedbackSuccessResponse()
     }
+    // if (this.state.shouldRedirect && this.state.shouldRedirect !== prevState.shouldRedirect) {
+    //   window.location.href = '/';
+    // }
+  }
+
+  componentWillUnmount() {
+
   }
 
   componentDidMount() {
-    this.props.initFeedbackRequest()
+    // this.props.initFeedbackRequest()
+    console.log(this.props)
   }
-  
+
   // Method to reset the form
   resetForm = () => {
     this.setState({
@@ -182,26 +205,26 @@ export class FeedbackModule extends Component {
   addfeedback = (event) => {
     event.preventDefault();
 
-  // Check for any validation errors before submitting
-  if (
-    this.state.errors.fnameError ||
-    this.state.errors.emailError ||
-    this.state.errors.contactError ||
-    this.state.errors.orgError ||
-    this.state.errors.queOneError ||
-    this.state.errors.queTwoError ||
-    this.state.errors.queThreeError ||
-    this.state.errors.queFourError ||
-    this.state.errors.queFiveError ||
-    this.state.errors.queSixError
-  ) {
-    this.setState({
-      snackbarOpen: true,
-      snackbarMessage: "Please enter valid data before submitting.",
-      severity: 'error',
-    });
-    return; // Prevent submission
-  }
+    // Check for any validation errors before submitting
+    if (
+      this.state.errors.fnameError ||
+      this.state.errors.emailError ||
+      this.state.errors.contactError ||
+      this.state.errors.orgError ||
+      this.state.errors.queOneError ||
+      this.state.errors.queTwoError ||
+      this.state.errors.queThreeError ||
+      this.state.errors.queFourError ||
+      this.state.errors.queFiveError ||
+      this.state.errors.queSixError
+    ) {
+      this.setState({
+        snackbarOpen: true,
+        snackbarMessage: "Please enter valid data before submitting.",
+        severity: 'error',
+      });
+      return; // Prevent submission
+    }
 
     const payload = {
       fname: this.state.fname,
@@ -218,20 +241,20 @@ export class FeedbackModule extends Component {
 
     this.props.addFeedbackRequest(payload)
 
-    this.setState({
-      snackbarOpen: true,
-      snackbarMessage: "Thank You For Giving Feedback!!",
-      severity: 'success',
-    });
+    // this.setState({
+    //   snackbarOpen: true,
+    //   snackbarMessage: "Thank You For Giving Feedback!!",
+    //   severity: 'success',
+    // });
 
-    setTimeout(()=>{
-      this.setState({shouldRedirect: true});
-    },2000)
+    // setTimeout(() => {
+    //   this.setState({ shouldRedirect: true });
+    // }, 2000)
 
-    setTimeout(() => {
-      this.setState({ snackbarOpen: false });
-    }, 2000);
-   
+    // setTimeout(() => {
+    //   this.setState({ snackbarOpen: false });
+    // }, 2000);
+
     this.resetForm();
   }
 
@@ -321,7 +344,7 @@ export class FeedbackModule extends Component {
                   />
 
                   <Stack spacing={2} direction="row" style={{ margin: 'auto' }}>
-                   
+
                     <Button type='submit' variant="contained" color="primary" disabled={isSubmitDisabled}>Submit</Button>
 
                     <Link to={'/'}>
@@ -349,10 +372,12 @@ export class FeedbackModule extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  allFeedback: state.feedbackStore.allFeedback,
+  // allFeedback: state.feedbackStore.allFeedback,
+  isFeedbackSuccessRes: state.feedbackStore.isFeedbackSuccessRes
 })
 const mapDispatchToProps = (dispatch) => ({
-  initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
-  addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data))
+  // initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
+  addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data)),
+  resetIsFeedbackSuccessResponse: () => dispatch(Action.resetIsFeedbackSuccessResponse)
 })
 export default connect(mapStateToProps, mapDispatchToProps)(FeedbackModule)

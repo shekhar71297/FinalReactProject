@@ -324,7 +324,7 @@ class NewStudentRegistration extends Component {
                 <RadioGroup
                   aria-label='="gender'
                   name="gender"
-                  value={gender}
+                  value={gender||" "}
                   onChange={this.handleChange}
                   row
                 >

@@ -30,10 +30,10 @@ function App() {
               <Route path='voucher' element={<Vouchermodule />} />
               <Route path='question' element={<Question />} />
               <Route path='user' element={<User />} />
-              <Route path='feedback' element={<Feedback/>} />
-              <Route  path='exam'  element={<Exam/>}         />
+              <Route path='feedback' element={<Feedback />} />
+              <Route path='exam' element={<Exam />} />
             </Route>
-            <Route path='/form' element={<FeedbackModule/>} />
+            <Route path='/form' element={<FeedbackModule />} />
           </Routes>
         </BrowserRouter>
       </div>

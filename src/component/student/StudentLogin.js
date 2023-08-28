@@ -48,12 +48,13 @@ export class StudentLogin extends Component {
       );
 
       if (istrue) {
-        const student = this.props.allstudent.find(
+        // Null check for array
+        const student = this.props.allstudent?.[0] && this.props.allstudent.find(
           (d) => this.state.email === d.email && this.state.dob === d.dob
         );
 
         sessionStorage.setItem("isLogin", "true");
-        sessionStorage.setItem("studentName", `${student.firstname} ${student.lastname}`); // Set student's full name
+        sessionStorage.setItem("studentName", `${student?.firstname} ${student?.lastname}`); // Set student's full name
         this.setState({
           snackbarOpen: true,
           snackbarMessage: 'Login successfully',
@@ -159,7 +160,7 @@ export class StudentLogin extends Component {
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
                       >
-                        Login In
+                        Login 
                       </Button>
 
                       <Grid container>

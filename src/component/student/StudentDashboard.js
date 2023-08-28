@@ -248,21 +248,36 @@ class StudentDashboard extends Component {
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'organization') {
+    // if (name === 'organization') {
+    //   this.setState({
+    //     [name]: value,
+    //     showCdacTextField: value === 'cdac',
+    //   });
+    // } else if (name === 'cdac') {
+    //   this.setState({
+    //     [name]: value,
+    //     showCdacTextField: true,
+    //   });
+    // } else {
       this.setState({
-        [name]: value,
-        showCdacTextField: value === 'cdac',
+        [name]: value
+      },() => {
+        if(this.state.organization === "hematite"){
+          this.setState({
+            branch:"",
+            pnr:""
+          })
+        }else if(this.state.organization === "cdac"){
+          this.setState({
+            branch:""
+          })
+        }else if(this.state.organization === "lighthouse"){
+          this.setState({
+            pnr:""
+          })
+        }
       });
-    } else if (name === 'cdac') {
-      this.setState({
-        [name]: value,
-        showCdacTextField: true,
-      });
-    } else {
-      this.setState({
-        [name]: value,
-      });
-    }
+    // }
 
     this.setState({ [name]: value }, () => {
       if (name === "firstname") {
@@ -609,7 +624,7 @@ class StudentDashboard extends Component {
                 }
 
 
-                {this.state.organization === 'cdac' && this.state.showCdacTextField && (
+                {this.state.organization === 'cdac' && (
                   <TextField
                     id="standard-basic"
                     variant="standard"

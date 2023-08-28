@@ -15,6 +15,7 @@ import Chip from '@mui/material/Chip';
 import { connect } from 'react-redux';
 import * as action from '../pages/question/Action'
 import * as ResultAction from '../pages/result/Action'
+import WithRouter from '../util/WithRouter';
 
 
 
@@ -63,7 +64,10 @@ class StartExam extends Component {
   };
 
 componentDidUpdate(prevProps){
-  const selectedExam = this.props.selectedExam;
+  const examId = sessionStorage.getItem('examId');
+  const parsedExamId = JSON.parse(examId);
+
+  const selectedExam = parsedExamId;
   if (prevProps.allquestions !== this.props.allquestions) {
     const filterQuestion=this.props.allquestions && this.props.allquestions.filter((val)=>val.examId===selectedExam)
       console.log(filterQuestion);
@@ -71,30 +75,20 @@ componentDidUpdate(prevProps){
   }
 }
   componentDidMount() {
+    
     // Fetch student name from sessionStorage
-    const selectedExam = this.props.selectedExam;
+    const examId = sessionStorage.getItem('examId');
+    const parsedExamId = JSON.parse(examId);
+    const selectedExam = parsedExamId;
     console.log('Selected Exam:',selectedExam);
     const studentName = sessionStorage.getItem("studentName");
     if (studentName) {
       this.setState({ studentName });
     }
 
-    // Fetch data from the server
-      // this.props.initquestionrequest()
-      // axios.get("http://localhost:8888/questions").then((res) => {
-
-      // const selectedExam = this.props.selectedExam;
+  
       this.props.initquestionRequest()
-      // console.log(res.data);
-      // console.log('Selected Exam:',selectedExam);
-    // console.log(this.props.allquestions);
-    //   const filterQuestion=this.props.allquestions && this.props.allquestions.filter((val)=>val.examId===selectedExam)
-    //   console.log(filterQuestion);
-    //   this.setState({questions:filterQuestion})
-      
-  // })
-      
-    // });
+
 
     // Timer logic
     const intervalId = setInterval(() => {
@@ -108,12 +102,14 @@ componentDidUpdate(prevProps){
     // Add an event listener for the beforeunload event
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+    
   }
 
 
   componentWillUnmount() {
     // Remove the event listener when the component is unmounted
-
+    clearInterval(this.state.intervalId);
     window.removeEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     clearInterval(this.interval);
@@ -130,9 +126,16 @@ componentDidUpdate(prevProps){
 
   // Event handler for the visibilitychange event
   handleVisibilityChange = () => {
-    // Check if the tab is hidden
-    if (document.visibilityState === "hidden" && !this.state.endpage) {
-      this.submitExam();
+    if (document.visibilityState === "hidden") {
+      clearInterval(this.state.intervalId); // Pause the timer
+    } else {
+      // Resume the timer
+      const intervalId = setInterval(() => {
+        this.setState(prevState => ({
+          timer: Math.max(0, prevState.timer - 1),
+        }));
+      }, 1000);
+      this.setState({ intervalId });
     }
   };
   formatTimer = timer => {
@@ -170,23 +173,24 @@ componentDidUpdate(prevProps){
     this.setState({ openDialog: false });
   };
   submitExam = () => {
+
     this.props.initquestionRequest()
       const questionsData = this.props.allquestions;
       const selectedOptions = this.state.selectedOptions;
       sessionStorage.removeItem("isLogin");
       sessionStorage.removeItem("studentName")
       sessionStorage.removeItem("Voucher")
+      sessionStorage.removeItem("examId")
       const correctAnswers = selectedOptions.filter(option => {
         const question = questionsData[option.questionIndex];
         return option.optionValue === question.answer;
       });
-  
-
+     
       const ObtainedMark = correctAnswers.length; // Count of correct answers
 
       this.setState({ ObtainedMark, open: true });
       this.setState({ endpage: true })
-      console.log(ObtainedMark);
+      // console.log(ObtainedMark);
       // const updateData= {
       //   StudentName: this.state.studentName,
       //   ObtainedMark: ObtainedMark,
@@ -207,7 +211,7 @@ componentDidUpdate(prevProps){
       <>
       
         {endpage ? (
-          <SubmitExam />
+          this.props.router.navigate('/quizapp/exam-submitted')
         ) : (
           <div>
             <Box sx={{}}>
@@ -327,6 +331,7 @@ componentDidUpdate(prevProps){
               }}
               message={`Are you sure you want to submit the exam?`}
               title={`Confirmation`}
+              submitLabel={`submit`}
             />
           </div>
         )}
@@ -347,4 +352,4 @@ const mapDispatchToprops = (dispatch) => ({
   addResultRequest:(data) =>dispatch(ResultAction.addResult(data))
 });
 
-export default connect(mapStateToProps,mapDispatchToprops) (StartExam);
+export default connect(mapStateToProps,mapDispatchToprops) (WithRouter(StartExam));

@@ -539,7 +539,19 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "StudentName": "anmol chaware",
+      "ObtainedMark": 9,
+      "Grade": "-",
+      "id": 15,
+      "Date": "26/06/2023",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50
     }
+  
   ],
   "students": [
     {

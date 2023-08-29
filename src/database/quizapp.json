@@ -355,7 +355,7 @@
   ],
   "vcodes": [
     {
-      "status": false,
+      "status": true,
       "id": 1,
       "Vcode": "7aqvnU"
     },
@@ -365,14 +365,14 @@
       "Vcode": "SZa8Qm"
     },
     {
-      "status": false,
+      "status": true,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
       "id": 4,
       "Vcode": "SgLBmw",
-      "status": false
+      "status": true
     },
     {
       "status": true,
@@ -561,7 +561,6 @@
       "ExamName": "React js",
       "TotalMark": 50
     }
-  
   ],
   "students": [
     {
@@ -1154,13 +1153,13 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 6,
       "examCode": "SH-77",
       "examName": "dot net",
-      "examStatus": false
+      "examStatus": true
     }
   ]
 }

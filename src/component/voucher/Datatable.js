@@ -33,7 +33,7 @@ export class Datatable extends Component {
     }
   }
   componentDidMount() {
-    this.props.initVoucherRequest()
+    this.props.initVoucherRequest()  
   }
 
 
@@ -60,7 +60,7 @@ export class Datatable extends Component {
   };
 
   render() {
-    const { page, rowsPerPage } = this.state;
+    const { page, rowsPerPage  } = this.state;
 
     return (
       <div className='container' style={{ marginRight: '25px' }} >
@@ -75,12 +75,12 @@ export class Datatable extends Component {
               <TableRow>
                 <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
                 <TableCell align="left" sx={{ fontWeight: "bold" }}>Voucher Code</TableCell>
-                <TableCell align="left" sx={{ fontWeight: "bold" }}>Action</TableCell>
+                <TableCell align="left" sx={{ fontWeight: "bold" }} >Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {
-                this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+             this.props.allvouchers && this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
                   const currentIndex = page * rowsPerPage + index + 1;
                   return (
                     <TableRow key={data.id}>
@@ -100,9 +100,10 @@ export class Datatable extends Component {
                 })
               }
             </TableBody>
-          </Table>
+          </Table> 
 
           <TablePagination
+
             rowsPerPageOptions={[5, 10, 25]}
             colSpan={6} // Adjust the colSpan value according to your table structure
             count={this.props.allvouchers.length}

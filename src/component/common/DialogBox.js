@@ -6,19 +6,20 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogActions from '@mui/material/DialogActions';
 import Button from '@mui/material/Button';
 
-const DialogBox = ({ open, onClose, onConfirm, message }) => {
+const DialogBox = ({ open, onClose, onConfirm, message,title,content, submitLabel,disable }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Confirmation</DialogTitle>
+      <DialogTitle>{title}</DialogTitle>
       <DialogContent>
+        {content}
         <DialogContentText>
           {message}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Cancel</Button>
-        <Button onClick={onConfirm} color="primary">
-          Submit
+        <Button onClick={onConfirm} color="primary" disabled={disable}>
+        {submitLabel}
         </Button>
       </DialogActions>
     </Dialog>

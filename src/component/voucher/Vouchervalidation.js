@@ -9,6 +9,7 @@ import axios from 'axios';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import SelectExam from '../SelectExam';
+import WithRouter from '../../util/WithRouter';
 
 const defaultTheme = createTheme();
 export class Vouchervalidation extends Component {
@@ -48,7 +49,6 @@ export class Vouchervalidation extends Component {
                     this.setState({ snackbarOpen: false });
                     this.setState({ isValid: true });
                 }, 1000);
-
             } else {
                 this.setState({
                     isSnackbarOpen: true,
@@ -126,4 +126,4 @@ export class Vouchervalidation extends Component {
     }
 }
 
-export default Vouchervalidation
+export default WithRouter(Vouchervalidation)

@@ -549,7 +549,19 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "StudentName": "anmol chaware",
+      "ObtainedMark": 9,
+      "Grade": "-",
+      "id": 15,
+      "Date": "26/06/2023",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50
     }
+  
   ],
   "students": [
     {
@@ -1085,6 +1097,32 @@
       "queFive": "asasaasas",
       "queSix": "asasasasasas",
       "id": 22
+    },
+    {
+      "fname": "wewqe",
+      "email": "qweqewew@g.com",
+      "contact": "8888888888",
+      "org": "sasaa",
+      "queOne": "ADSDSDAASDADS",
+      "queTwo": "DSADADD",
+      "queThree": "DSAASDASDASDASD",
+      "queFour": "ADASDASDADASD",
+      "queFive": "DSDDAASDSDASD",
+      "queSix": "DASADADASDASDASDA",
+      "id": 23
+    },
+    {
+      "fname": "SDASSDADA",
+      "email": "ASAS@G.COM",
+      "contact": "8888888888",
+      "org": "vffdfdf",
+      "queOne": "dfdsfdfdsfdsfs",
+      "queTwo": "sdfdsfdsfdsff",
+      "queThree": "sfdfdssd",
+      "queFour": "sfsdfdf",
+      "queFive": "fsddfsf",
+      "queSix": "sfsfdfd",
+      "id": 24
     }
   ],
   "exams": [
@@ -1103,20 +1141,26 @@
     {
       "id": 3,
       "examCode": "ab-45",
-      "examName": "php+html",
-      "examStatus": true
+      "examName": "php",
+      "examStatus": false
     },
     {
       "id": 4,
       "examCode": "ab-46",
-      "examName": "php",
+      "examName": "php+html",
       "examStatus": true
     },
     {
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": true
+      "examStatus": false
+    },
+    {
+      "id": 6,
+      "examCode": "SH-77",
+      "examName": "dot net",
+      "examStatus": false
     }
   ]
 }

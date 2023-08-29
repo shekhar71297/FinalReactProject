@@ -21,6 +21,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import * as validation from '../../util/validation';
+import DialogBox from '../common/DialogBox';
 
 export class ExamModule extends Component {
     constructor(props) {
@@ -43,7 +44,7 @@ export class ExamModule extends Component {
             toggle: [],
             examStatus: true,
 
-           
+
             selectedExam: {
                 id: null,
                 examCode: "",
@@ -51,15 +52,15 @@ export class ExamModule extends Component {
                 examStatus: false
             },
             errors: {
-               examCode:false
-              },
+                examCode: false
+            },
         };
 
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.allExam !== this.props.allExam) {
-            this.setState({ exams: this.props.allExam },() => console.log("updated",this.state.exams));
+            this.setState({ exams: this.props.allExam }, () => console.log("updated", this.state.exams));
             // console.log("updated all exam data", this.props.allExam);
         }
         if (prevProps.singleExam !== this.props.singleExam) {
@@ -87,10 +88,10 @@ export class ExamModule extends Component {
 
     handleExamChange = (event) => {
         const { name, value, type } = event.target;
-    
+
         // If the input type is radio, update the value based on the event
         const newValue = type === 'radio' ? (value === 'true') : value;
-    
+
         this.setState((prevState) => ({
             selectedExam: {
                 ...prevState.selectedExam,
@@ -108,17 +109,17 @@ export class ExamModule extends Component {
             }
         });
     };
-    
-    toggelChange = (index,newExamStatus) => {
-        const { page, rowsPerPage,exams } = this.state;
+
+    toggelChange = (index, newExamStatus) => {
+        const { page, rowsPerPage, exams } = this.state;
         // let exams = this.state.exams;
         const dataindex = page * rowsPerPage + index;
-       
+
         exams[dataindex].examStatus = newExamStatus
         console.log("updated exam", exams[dataindex]);
         this.setState({ exams: exams }, () => {
             const updatedExams = exams[dataindex];
-        this.props.updateexamRequest(updatedExams);
+            this.props.updateexamRequest(updatedExams);
         });
     };
 
@@ -150,40 +151,42 @@ export class ExamModule extends Component {
     updateExam = (event) => {
         event.preventDefault();
 
-        if (this.state.errors.examCode  ) {
-            this.setState({snackbarOpen:true,
-            snackbarMessage:"please fix validiation error before submiting", severity:"error"})
+        if (this.state.errors.examCode) {
+            this.setState({
+                snackbarOpen: true,
+                snackbarMessage: "please fix validiation error before submiting", severity: "error"
+            })
             return;
-          }
+        }
 
         const { id, examCode, examName, examStatus } = this.state.selectedExam;
-    
+
         const updatedExam = {
             id,
             examCode,
             examName,
             examStatus,
         };
-        const isAddDuplicate = this.state.exams.some(exam => exam.examName === examName || exam.examCode===examCode );
+        const isAddDuplicate = this.state.exams.some(exam => exam.examName === examName || exam.examCode === examCode);
 
         if (this.state.isAddExam) {
-            if(isAddDuplicate){
+            if (isAddDuplicate) {
                 this.setState({
                     snackbarOpen: true,
                     snackbarMessage: 'An exam with the same code already exists.',
                 });
             }
-            else{
+            else {
                 this.props.addexamRequest(updatedExam);
-            
+
                 this.setState({
                     snackbarOpen: true,
                     snackbarMessage: ' exam added successfully',
                 });
                 this.props.initexamRequest()
             }
-           
-            
+
+
         } else {
             this.props.initexamRequest()
             this.props.updateexamRequest(updatedExam);
@@ -340,13 +343,13 @@ export class ExamModule extends Component {
                                             const currentIndex = page * rowsPerPage + index;
                                             return (
                                                 <TableRow key={index}>
-                                                    <TableCell align='center'>{currentIndex+1}</TableCell>
+                                                    <TableCell align='center'>{currentIndex + 1}</TableCell>
                                                     <TableCell align='center'>{val.examCode}</TableCell>
                                                     <TableCell align='center'>{val.examName}</TableCell>
                                                     <TableCell align='center'>
                                                         <Switch
                                                             checked={val.examStatus}
-                                                            onChange={() => this.toggelChange(index,!val.examStatus)}
+                                                            onChange={() => this.toggelChange(index, !val.examStatus)}
                                                             inputProps={{ 'aria-label': 'controlled' }}
                                                         />
                                                     </TableCell>
@@ -366,12 +369,17 @@ export class ExamModule extends Component {
                                 </TableBody>
                             </Table>
                         </TableContainer>
-                        <Dialog open={open} onClose={this.handleClose}>
-                            <DialogTitle sx={{ backgroundColor: "#1976d2", color: "white", fontSize: "25px", textAlign: "start", fontWeight: "bolder" }}>
-                                {this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
-                            </DialogTitle>
-                            <form onSubmit={this.updateExam}>
-                                <DialogContent>
+                        <DialogBox
+                            open={open}
+                            onClose={this.handleClose}
+                            onConfirm={(event) => {
+                                this.handleClose()
+                                this.updateExam(event)
+
+                            }}
+                            message={`Are you sure you want to ${this.state.isAddExam ? 'add' : 'update'} this exam?`} title={this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
+                            content={
+                                <form onSubmit={(event) => this.updateExam(event)}>
                                     <Grid container spacing={2}>
                                         <Grid item xs={12} >
                                             <TextField
@@ -422,36 +430,28 @@ export class ExamModule extends Component {
                                             </FormControl>
                                         </Grid>
                                     </Grid>
-                                </DialogContent>
+                                </form>
+                            }
 
-                                <DialogActions>
-                                    <Button type="submit" variant="contained" color="primary">
-                                        {this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
-                                    </Button>
-                                   
-                                    <Button onClick={this.handleClose} variant="contained" color="primary">
-                                        Cancel
-                                    </Button>
-                                </DialogActions>
-                            </form>
-                        </Dialog>
-                        {/* Delete Popup Model */}
-                        <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
-                            <DialogTitle>Delete Record</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    Are you sure you want to delete this record?
-                                </DialogContentText>
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={this.closeDeletePopup} color="primary">
-                                    Cancel
-                                </Button>
-                                <Button onClick={this.handleDeleteConfirmed} color="primary" autoFocus>
-                                    Delete
-                                </Button>
-                            </DialogActions>
-                        </Dialog>
+                            submitLabel={this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
+
+
+                        />
+                        <DialogBox
+                            open={isDeletePopupOpen}
+                            onClose={this.closeDeletePopup}
+                            onConfirm={() => {
+                                this.closeDeletePopup();
+                                this.handleDeleteConfirmed();
+                            }}
+                            message={`Are you sure you want to delete this record?`}
+                            title={`Delete Record`}
+                            submitLabel={`Delete`}
+
+                        />
+
+
+
                         <Snackbar
                             open={this.state.snackbarOpen}
                             autoHideDuration={3000} // You can adjust the duration as needed

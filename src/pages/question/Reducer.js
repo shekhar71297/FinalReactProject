@@ -9,6 +9,7 @@ export const initialState = {
 export default function questionreducer(state = initialState, action) {
     switch (action.type) {
         case constant.GET_QUESTION_SUCCESS: {
+            console.log("Reducer: Got all questions");
 
             return { ...state, questions: {}, allquestions: action.payload };
         }

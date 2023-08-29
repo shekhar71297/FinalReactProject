@@ -75,6 +75,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
     setanswer('');
     setEditMode(false); // Reset edit mode
     setEditQuestionData({});
+    setFormVisible(false);
   };
 
   useEffect(() => {
@@ -352,7 +353,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
         <Box marginRight={10}>
           {selectedExam && (
             <div className='pull-left' >
-              <Button sx={{ marginTop: 5, marginBottom: 2 }} color='inherit' variant='contained' type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined />}>Create</Button>
+              <Button sx={{ marginTop: 5, marginBottom: 2 }} color='inherit' variant='contained' type='button' onClick={() =>{ handleClearForm(); setEditMode(false); setFormVisible(true)}} endIcon={<CreateNewFolderOutlined />}>Create</Button>
             </div>
           )}
           <TableContainer component={Paper}  >

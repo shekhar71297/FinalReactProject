@@ -402,6 +402,7 @@ const Dashboard = () => {
           sessionStorage.removeItem("user");
           navigate("/admin");
         }}
+        title={`Confirmation`}
         message={alertMessage}
         submitLabel={`Logout`}
       />

@@ -533,6 +533,30 @@
       ],
       "answer": "uf",
       "examId": 3
+    },
+    {
+      "question": "fuf",
+      "options": [
+        "ufu",
+        "fu",
+        "f",
+        "uf"
+      ],
+      "answer": "uf",
+      "examId": 3,
+      "id": 45
+    },
+    {
+      "question": "  AngularJS is a ____",
+      "options": [
+        "Java framework",
+        "Javascript framework",
+        "HTML framework",
+        "SQL framework"
+      ],
+      "answer": "b",
+      "examId": 5,
+      "id": 46
     }
   ],
   "vcodes": [

@@ -30,6 +30,21 @@ export default function resultreducer(state = initialstate, action) {
             let allresult = state.allresult.filter((d) => d.id !== action.payload)
             return { ...state, allresult: allresult };
         }
+        // update
+        case constant.UPDATE_RESULT_SUCCESS: {
+            const draft = state;
+            const index = draft.allresult.findIndex((d) => d.id === action.payload.id) || -1
+            draft.allresult[index] = action.payload
+            return draft;
+
+        }
+        // single recoord
+        case constant.GET_SINGLE_RESULT: {
+
+            const index = state.allresult.findIndex(d => d.id === action.payload);
+            const user = state.allresult[index];
+            return { ...state, user: user };
+        }
 
         default:
             return state;

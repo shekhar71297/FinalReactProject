@@ -17,6 +17,8 @@ import Alert from '@mui/material/Alert';
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import DialogBox from '../common/DialogBox';
+import MuiAlert from '@mui/material/Alert';
 
 export class StudentResult extends Component {
   constructor(props) {
@@ -114,95 +116,76 @@ export class StudentResult extends Component {
     const { searchQuery, page, rowsPerPage, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen } = this.state;
     const grade = this.calculateGrade(selectedRecord.TotalMark, selectedRecord.ObtainedMark);
     const status = this.calculateStatus(selectedRecord.TotalMark, selectedRecord.ObtainedMark)
-    const filteredResults = this.props.allresult.filter((val) => {
+    const filteredResults = this.props.allresult && this.props.allresult.filter((val) => {
       const searchQuery = this.state.searchQuery;
-      const studentNameIncludes = val.StudentName.toLowerCase().includes(searchQuery);
-      const organizationIncludes = val.Orgnization.toLowerCase().includes(searchQuery);
-      const examNameIncludes = val.ExamName.toLowerCase().includes(searchQuery);
-      const statusIncludes = val.status.toLowerCase().includes(searchQuery);
-      const branchIncludes = val.Branch.toLowerCase().includes(searchQuery);
-      const dateIncludes = val.Date.toLowerCase().includes(searchQuery);
+      const studentNameIncludes = val.StudentName && val.StudentName.toLowerCase().includes(searchQuery);
+      const organizationIncludes = val.Orgnization && val.Orgnization.toLowerCase().includes(searchQuery);
+      const examNameIncludes = val.ExamName && val.ExamName.toLowerCase().includes(searchQuery);
+      const statusIncludes = val.status && val.status.toLowerCase().includes(searchQuery);
+      const branchIncludes = val.Branch && val.Branch.toLowerCase().includes(searchQuery);
+      const dateIncludes = val.Date && val.Date.toLowerCase().includes(searchQuery);
       return studentNameIncludes || organizationIncludes || examNameIncludes || branchIncludes ||
         dateIncludes || statusIncludes
     }
     );
     return (
-      <div > 
+      <div >
 
         {/* table pop up */}
-        <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup} fullWidth maxWidth="md" PaperProps={{
-          sx: {
-            width: '30%', 
-          },
-        }}>
-          <DialogTitle sx={{ backgroundColor: '#1976d2', color: 'white', fontSize: '28px' }}>Result Details</DialogTitle>
-          {selectedRecord && (
-            <DialogContent sx={{ fontSize: '23px' , marginTop:"7px" }} >
-              {/* Show the details of the selected record here */}
-              <Typography  >
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' , }} >
-                  <span style={{ fontWeight: "bold" }}> Student Name:</span>
-                  {selectedRecord.StudentName} <br />
-                </Typography>{" "}
-
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                  <span style={{ fontWeight: "bold" }}> Organization :</span>
-                  {selectedRecord.Orgnization} <br />
-                </Typography>{" "}
-
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                  <span style={{ fontWeight: "bold" }}> Branch:</span>
-                  {selectedRecord.Branch} <br />
-                </Typography>{" "}
-
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                  <span style={{ fontWeight: "bold" }}>   Exam Name:</span>
-                  {selectedRecord.ExamName} <br />
-                </Typography>{" "}
-
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                  <span style={{ fontWeight: "bold" }}>   Total mark:</span>
-                  {selectedRecord.TotalMark} <br />
-                </Typography>{" "}
-
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                  <span style={{ fontWeight: "bold" }}>  ObtaineMark:</span>
-                  {selectedRecord.ObtainedMark} <br />
-                </Typography>{" "}
-
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                  <span style={{ fontWeight: "bold" }}>  Status:</span>
-                  {status} <br />
-                </Typography>{" "}
-
-              </Typography>
-              {/* <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                <span style={{ fontWeight: "bold" }}>   Grade:</span>
-                {grade} <br />
-              </Typography>{" "} */}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-
-                <span style={{ fontWeight: "bold" }}>  Date:</span>
-                {selectedRecord.Date} <br />
-              </Typography>{" "}
-
-            </DialogContent>
-          )}
-          <DialogActions>
-            <Button onClick={this.closeDetailsPopup} color="primary" sx={{ fontSize: "23px" }}>
+       
+         <DialogBox
+  open={isDetailsPopupOpen}
+  onClose={this.closeDetailsPopup}
+  title="Result Details"
+  content={
+    selectedRecord && (
+      <>
+      <Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Student Name:</span>
+          {selectedRecord.StudentName} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Organization:</span>
+          {selectedRecord.Orgnization} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Branch:</span>
+          {selectedRecord.Branch} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Exam Name:</span>
+          {selectedRecord.ExamName} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Total mark:</span>
+          {selectedRecord.TotalMark} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Obtained Mark:</span>
+          {selectedRecord.ObtainedMark} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Status:</span>
+          {status} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Grade:</span>
+          {grade} <br />
+        </Typography>
+        <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+          <span style={{ fontWeight: 'bold' }}> Date:</span>
+          {selectedRecord.Date} <br />
+        </Typography>
+      </Typography>
+      {/* <Button onClick={this.closeDetailsPopup} color="primary" sx={{ fontSize: "px" }}>
               Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-        {/* start table */}
+            </Button> */}
+      </>
+    )
+  }
+/>
+  {/* start table */}
         <Box sx={{ marginRight: "25px", marginTop: 5, position: "relative", right: 20 }}>
           <Paper>
             <TableContainer >
@@ -212,7 +195,7 @@ export class StudentResult extends Component {
                     <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
-                        Manage Result 
+                          Manage Result
                         </Grid>
                         <Grid item>
 
@@ -263,7 +246,7 @@ export class StudentResult extends Component {
                       </TableCell>
                     </TableRow>
                   ) : (
-                    filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
+                    filteredResults && filteredResults.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
                       const status = this.calculateStatus(val.TotalMark, val.ObtainedMark)
                       const currentIndex = page * rowsPerPage + index + 1;
                       return (
@@ -289,31 +272,32 @@ export class StudentResult extends Component {
               </Table>
             </TableContainer>
             {/* Delete Popup Model */}
-            <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
-              <DialogTitle>Delete Record</DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  Are you sure you want to delete this record?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={this.closeDeletePopup} color="primary">
-                  Cancel
-                </Button>
-                <Button onClick={this.handleDeleteConfirmed} color="primary" autoFocus>
-                  Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
+
+            <DialogBox
+              open={isDeletePopupOpen}
+              onClose={this.closeDeletePopup}
+              onConfirm={() => {
+                this.closeDeletePopup();
+                this.handleDeleteConfirmed();
+              }}
+              message={`Are you sure you want to delete this record?`}
+              title={`Delete Record`}
+              submitLabel={`Delete`}
+            />
             <Snackbar
               open={this.state.snackbarOpen}
               autoHideDuration={3000} // You can adjust the duration as needed
               onClose={() => this.setState({ snackbarOpen: false })}
               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
+              <MuiAlert
+                onClose={() => this.setState({ snackbarOpen: false })}
+                severity="error"
+                
+                sx={{ width: '100%' }}
+              >
                 {this.state.snackbarMessage}
-              </Alert>
+              </MuiAlert>
             </Snackbar>
             {/* table pagination */}
 

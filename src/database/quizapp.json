@@ -89,6 +89,16 @@
       "gender": "male",
       "contact": "9898989898",
       "id": 15
+    },
+    {
+      "email": "ompacharne9@gmail.com",
+      "fname": "Om",
+      "lname": "Pacharne",
+      "password": "Om@112233",
+      "role": "admin",
+      "gender": "male",
+      "contact": 7028340777,
+      "id": 16
     }
   ],
   "react": [
@@ -481,7 +491,7 @@
         "g",
         "i"
       ],
-      "answer": "go",
+      "answer": "gi",
       "examId": 1,
       "id": 41
     },
@@ -510,6 +520,7 @@
       "id": 43
     },
     {
+      "id": 44,
       "question": "vjvujvf",
       "options": [
         "uf",
@@ -517,9 +528,8 @@
         "f",
         "uf"
       ],
-      "answer": "u",
-      "examId": 3,
-      "id": 44
+      "answer": "uf",
+      "examId": 3
     }
   ],
   "vcodes": [
@@ -1321,25 +1331,32 @@
       "queFive": "jjkjkjkjk",
       "queSix": "jjjjkjjkjkj",
       "id": 25
+    },
+    {
+      "fname": "abc abc",
+      "email": "abc123@gmail.com",
+      "contact": "9909090909",
+      "org": "Hematite",
+      "queOne": "jkjkjkj",
+      "queTwo": "jjkjkjk",
+      "queThree": "jjkjkjkjkjkj",
+      "queFour": "kjkjkjkj",
+      "queFive": "jkjjkjk",
+      "queSix": "wjkjkjjj",
+      "id": 26
     }
   ],
   "exams": [
     {
       "id": 1,
-      "examCode": "110",
-      "examName": "Python",
-      "examStatus": false
+      "examName": "react",
+      "examCode": "E-1",
+      "examStatus": true
     },
     {
       "id": 2,
-      "examCode": "101",
-      "examName": "c++",
-      "examStatus": false
-    },
-    {
-      "id": 2,
-      "examName": "python",
       "examCode": "E-2",
+      "examName": "python",
       "examStatus": true
     },
     {
@@ -1349,76 +1366,16 @@
       "examStatus": false
     },
     {
-      "id": 5,
-      "examCode": "104",
-      "examName": "css+sass+",
-      "examStatus": false
+      "id": 4,
+      "examCode": "ab-46",
+      "examName": "php+html",
+      "examStatus": true
     },
     {
       "id": 6,
       "examCode": "105",
       "examName": "angular",
-      "examStatus": false
-    },
-    {
-      "id": 7,
-      "examCode": "106",
-      "examName": "c",
-      "examStatus": false
-    },
-    {
-      "id": 8,
-      "examCode": "107",
-      "examName": "sql",
-      "examStatus": false
-    },
-    {
-      "id": 9,
-      "examCode": "108",
-      "examName": "swift",
-      "examStatus": false
-    },
-    {
-      "id": 10,
-      "examCode": "109",
-      "examName": "next js",
-      "examStatus": false
-    },
-    {
-      "id": 11,
-      "examCode": "111",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 12,
-      "examCode": "112",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 13,
-      "examCode": "245",
-      "examName": "java",
-      "examStatus": false
-    },
-    {
-      "id": 14,
-      "examCode": "h1",
-      "examName": "R language",
-      "examStatus": false
-    },
-    {
-      "id": 15,
-      "examCode": "ab-1012",
-      "examName": "html+css+js+bootstarp",
-      "examStatus": false
-    },
-    {
-      "id": 16,
-      "examCode": "c1-123",
-      "examName": "django+python",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 6,

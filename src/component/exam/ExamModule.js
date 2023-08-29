@@ -14,9 +14,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import { Box } from '@mui/material';
 import { TextField, Button, Grid, Container, Radio, RadioGroup, FormControlLabel, FormControl, FormLabel, Typography } from '@mui/material';
-import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
 import * as TablePaginationActions from "../common/TablePaginationActions";
@@ -43,8 +42,6 @@ export class ExamModule extends Component {
             searchQuery: '',
             toggle: [],
             examStatus: true,
-
-
             selectedExam: {
                 id: null,
                 examCode: "",
@@ -123,7 +120,6 @@ export class ExamModule extends Component {
         });
     };
 
-
     // delete action 
     // Function to open the delete popup model
     openDeletePopup = (id) => {
@@ -144,6 +140,7 @@ export class ExamModule extends Component {
         this.setState({
             snackbarOpen: true,
             snackbarMessage: 'exam deleted successfully',
+            severity: "error"
         });
     };
 
@@ -174,6 +171,7 @@ export class ExamModule extends Component {
                 this.setState({
                     snackbarOpen: true,
                     snackbarMessage: 'An exam with the same code already exists.',
+                    severity: "error"
                 });
             }
             else {
@@ -182,17 +180,20 @@ export class ExamModule extends Component {
                 this.setState({
                     snackbarOpen: true,
                     snackbarMessage: ' exam added successfully',
+                    severity: "success"
                 });
                 this.props.initexamRequest()
             }
 
-
         } else {
+
+
             this.props.initexamRequest()
             this.props.updateexamRequest(updatedExam);
             this.setState({
                 snackbarOpen: true,
                 snackbarMessage: 'exam update successfully',
+                severity: "success"
             });
         }
         this.handleClose();
@@ -269,19 +270,23 @@ export class ExamModule extends Component {
     };
     render() {
 
-        const { isDeletePopupOpen, open, rowsPerPage, page, searchQuery, } = this.state
+        const { isDeletePopupOpen, open, rowsPerPage, page, searchQuery, examCode, examName } = this.state
         const filteredexam = this.props.allExam && this.props.allExam.filter((val) => {
             const searchQuery = this.state.searchQuery;
             const codeIncludes = val.examCode.toLowerCase().includes(searchQuery);
             const nameludes = val.examName.toLowerCase().includes(searchQuery);
-
             return codeIncludes || nameludes
         }) || [];
+
+        const isSubmitDisabled = !this.state.selectedExam.examCode ||
+            !this.state.selectedExam.examName ||
+            this.state.errors.codeError ||
+            this.state.errors.examnameError;
+
         return (
             <div>
                 <Box sx={{ marginRight: "25px", marginTop: 7, position: "relative", right: 20 }}>
                     <Paper>
-
                         <TableContainer component={Paper}  >
                             <Table aria-label="simple table" sx={{}} >
                                 <TableHead >
@@ -370,6 +375,7 @@ export class ExamModule extends Component {
                             </Table>
                         </TableContainer>
                         <DialogBox
+                    
                             open={open}
                             onClose={this.handleClose}
                             onConfirm={(event) => {
@@ -380,7 +386,7 @@ export class ExamModule extends Component {
                             message={`Are you sure you want to ${this.state.isAddExam ? 'add' : 'update'} this exam?`} title={this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
                             content={
                                 <form onSubmit={(event) => this.updateExam(event)}>
-                                    <Grid container spacing={2}>
+                                    <Grid container spacing={2} sx={{marginTop:2}}>
                                         <Grid item xs={12} >
                                             <TextField
                                                 required
@@ -432,10 +438,8 @@ export class ExamModule extends Component {
                                     </Grid>
                                 </form>
                             }
-
+                            disable={isSubmitDisabled}
                             submitLabel={this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
-
-
                         />
                         <DialogBox
                             open={isDeletePopupOpen}
@@ -449,19 +453,18 @@ export class ExamModule extends Component {
                             submitLabel={`Delete`}
 
                         />
-
-
-
                         <Snackbar
                             open={this.state.snackbarOpen}
                             autoHideDuration={3000} // You can adjust the duration as needed
                             onClose={() => this.setState({ snackbarOpen: false })}
                             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                         >
-                            <Alert onClose={this.closeSnackbar}>
-
+                            <MuiAlert onClose={this.closeSnackbar}
+                               severity={this.state.severity}
+                                variant="filled"
+                                sx={{ width: '100%' }}>
                                 {this.state.snackbarMessage}
-                            </Alert>
+                            </MuiAlert>
                         </Snackbar>
                         {/* table pagination */}
 

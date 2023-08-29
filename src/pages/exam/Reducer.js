@@ -37,23 +37,35 @@ export default function examReducer(state = initialState , action){
             
         }
 
-        case constant.DELETE_EXAM_SUCCESS:{
-            // const draft = state;
-            let allExam = state.allExams.filter((d)=>d.id!==action.payload)
-            return {...state,allExams:allExam};
-            
-        }
-
-        case constant.SINGLE_EXAM_SUCCESS:{
-            // const draft = state;
-            // const index = draft.allProducts.findIndex((d)=>d.id===action.payload) || -1
-            // draft.product=draft.allProducts[index]
-            // return draft;
-            const index =state.allExams.findIndex(d=>d.id===action.payload);
-            const exams=state.allExams[index];
-            return{...state,exams:exams};
-            
-        }
+            // update EXAM
+           
+            case constant.UPDATE_EXAM_SUCCESS:{
+                const draft = state;
+                const index = draft.allExam.findIndex((d)=>d.id===action.payload.id) || -1
+                draft.allExam[index]=action.payload
+                return draft;
+                
+            }
+            // delete exam
+            case constant.DELETE_EXAM_SUCCESS:{
+               
+            let allExam =state.allExam.filter((d)=>d.id !== action.payload)
+            return {...state,allExam:allExam};
+            }
+            // edit Exam
+            case constant.GET_SINGLE_EXAM:{
+          
+            const index = state.allExam.findIndex(d=> d.id === action.payload);
+            const exam = state.allExam[index];
+            return {...state,exam:exam}
+            }
+       // single recoord
+            case constant.GET_SINGLE_EXAM:{
+               
+                const index =state.allExam.findIndex(d=>d.id===action.payload);
+                const user=state.allExam[index];
+                return{...state,user:user};   
+            }
         default:
             return state;
     }

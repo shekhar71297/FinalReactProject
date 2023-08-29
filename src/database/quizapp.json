@@ -51,16 +51,6 @@
       "id": 8
     },
     {
-      "email": "sujitg1999@gmail.com",
-      "fname": "sujit",
-      "lname": "gaikwad",
-      "password": "123456",
-      "role": "admin",
-      "gender": "male",
-      "contact": "9322403669",
-      "id": 9
-    },
-    {
       "email": "anmol123@gmail.com",
       "fname": "rushi",
       "lname": "kakde",
@@ -89,6 +79,16 @@
       "gender": "female",
       "contact": "9975218190",
       "id": 14
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "sujit@123",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9898989898",
+      "id": 15
     }
   ],
   "questions": [
@@ -710,17 +710,6 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "StudentName": "anmol chaware",
-      "ObtainedMark": 9,
-      "Grade": "-",
-      "id": 15,
-      "Date": "26/06/2023",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50
     }
   ],
   "students": [
@@ -1007,6 +996,18 @@
       "organization": "cdac",
       "pnr": "777-Hello",
       "branch": ""
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "aaaa",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "3444-12-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "900900",
+      "branch": "",
+      "id": 58
     }
   ],
   "examresult": [

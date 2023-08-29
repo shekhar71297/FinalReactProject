@@ -121,12 +121,6 @@ class NewStudentRegistration extends Component {
     this.props.addStudentRequest(payload)
     this.handleShowAlert('Student Registered successfully', 'success');
 
-    // this.setState({
-    //       snackbarOpen: true,
-    //       snackbarMessage: 'Student Registered successfully',
-    //       severity: 'success',
-    //       variant:"filled"
-    //     });
 
     setTimeout(() => {
       this.props.router.navigate("/");
@@ -229,7 +223,7 @@ class NewStudentRegistration extends Component {
 
   render() {
     const { pnr, firstname, lastname, email, contact, dob, gender, organization, branch } = this.state;
-    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !branch && !pnr && !organization;
     return (
       // <Modal
       //   open={open}
@@ -296,7 +290,7 @@ class NewStudentRegistration extends Component {
                   fullWidth
                   required
                   error={this.state.errors.lnameError}
-                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Dev'}
+                  helperText={this.state.errors.lnameError && validation.errorText("Please enter a valid last name") || 'eg: Doe'}
                 />
 
               </Stack>
@@ -397,7 +391,7 @@ class NewStudentRegistration extends Component {
                     value={pnr}
                     onChange={this.handleChange}
                     error={this.state.errors.pnrError}
-                    helperText={this.state.errors.pnrError && validation.errorText("Please enter a valid Pnr") || "eg:YvwQZT-77"}
+                    helperText={this.state.errors.pnrError && validation.errorText("Please enter a valid Pnr") || "eg:Hello-77"}
                   />
                 )}
 

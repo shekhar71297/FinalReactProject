@@ -475,18 +475,6 @@
       "id": 38
     },
     {
-      "question": "hv",
-      "options": [
-        "hv",
-        "jhv",
-        "h",
-        "jv"
-      ],
-      "answer": "v",
-      "examId": 2,
-      "id": 40
-    },
-    {
       "question": "gig",
       "options": [
         "i",
@@ -497,30 +485,6 @@
       "answer": "gi",
       "examId": 1,
       "id": 41
-    },
-    {
-      "question": "fy",
-      "options": [
-        "y",
-        "y",
-        "c",
-        "fufu"
-      ],
-      "answer": "jv",
-      "examId": 2,
-      "id": 42
-    },
-    {
-      "question": "gig",
-      "options": [
-        "ig",
-        "ig",
-        "ogoi",
-        ""
-      ],
-      "answer": "goi",
-      "examId": 2,
-      "id": 43
     },
     {
       "id": 44,
@@ -557,6 +521,18 @@
       "answer": "b",
       "examId": 5,
       "id": 46
+    },
+    {
+      "question": "A variable which is declared inside a method is called a________variable?",
+      "options": [
+        "Serial ",
+        "Local ",
+        "Private",
+        "Static"
+      ],
+      "answer": "b",
+      "examId": 6,
+      "id": 47
     }
   ],
   "vcodes": [

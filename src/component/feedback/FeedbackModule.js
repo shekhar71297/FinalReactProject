@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 import * as validation from '../../util/validation';
 import * as Action from '../../pages/feedback/Action';
 import Typography from '@mui/material/Typography';
@@ -60,105 +61,57 @@ export class FeedbackModule extends Component {
     this.setState({ [name]: value }, () => {
       if (name === "fname") {
         const isFnameError = !(validation.isValidFullName(this.state[name]));
-        // isFnameError
-        //   ? this.setState({ errors: { ...this.state.errors, fnameError: true } })
-        //   : this.setState({ errors: { ...this.state.errors, fnameError: false } })
-
         this.setState({ errors: { ...this.state.errors, fnameError: isFnameError } })
-
-        // (isFnameError)?(this.setState({ errors: { ...this.state.errors, fnameError: true } })):(this.setState({ errors: { ...this.state.errors, fnameError: false } }))
-        // if (isFnameError) {
-        //   this.setState({ errors: { ...this.state.errors, fnameError: true } })
-        // } else {
-        //   this.setState({ errors: { ...this.state.errors, fnameError: false } })
-        // }
       }
-
-
 
       if (name === "org") {
         const isOrgError = !(validation.isValidFullName(this.state[name]));
-        if (isOrgError) {
-          this.setState({ errors: { ...this.state.errors, orgError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, orgError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, orgError: isOrgError } })
       }
 
       if (name === "email") {
         const isEmailError = !(validation.isValidEmail(this.state[name]));
-        if (isEmailError) {
-          this.setState({ errors: { ...this.state.errors, emailError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, emailError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, emailError: isEmailError } })
       }
 
       if (name === "contact") {
         const isContactError = !(validation.isValidContact(this.state[name]));
-        if (isContactError) {
-          this.setState({ errors: { ...this.state.errors, contactError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, contactError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, contactError: isContactError } })
       }
 
       if (name === "queOne") {
         const isQueError = !(validation.isValidQue(this.state[name]));
-        if (isQueError) {
-          this.setState({ errors: { ...this.state.errors, queOneError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, queOneError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, queOneError: isQueError } })
       }
 
       if (name === "queTwo") {
         const isQueError = !(validation.isValidQue(this.state[name]));
-        if (isQueError) {
-          this.setState({ errors: { ...this.state.errors, queTwoError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, queTwoError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, queTwoError: isQueError } })
       }
 
       if (name === "queThree") {
         const isQueError = !(validation.isValidQue(this.state[name]));
-        if (isQueError) {
-          this.setState({ errors: { ...this.state.errors, queThreeError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, queThreeError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, queThreeError: isQueError } })
       }
 
       if (name === "queFour") {
         const isQueError = !(validation.isValidQue(this.state[name]));
-        if (isQueError) {
-          this.setState({ errors: { ...this.state.errors, queFiveError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, queFourError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, queFourError: isQueError } })
       }
 
       if (name === "queFive") {
         const isQueError = !(validation.isValidQue(this.state[name]));
-        if (isQueError) {
-          this.setState({ errors: { ...this.state.errors, queFiveError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, queFiveError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, queFiveError: isQueError } })
       }
 
       if (name === "queSix") {
         const isQueError = !(validation.isValidQue(this.state[name]));
-        if (isQueError) {
-          this.setState({ errors: { ...this.state.errors, queSixError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, queSixError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, queSixError: isQueError } })
       }
 
     });
   };
+
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.isFeedbackSuccessRes !== this.props.isFeedbackSuccessRes && this.props.isFeedbackSuccessRes === true) {
@@ -361,9 +314,14 @@ export class FeedbackModule extends Component {
             onClose={() => this.setState({ snackbarOpen: false })}
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
-            <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
+           <MuiAlert
+              elevation={6}
+              variant="filled"
+              onClose={() => this.setState({ snackbarOpen: false })}
+              severity={this.state.severity}
+            >
               {this.state.snackbarMessage}
-            </Alert>
+            </MuiAlert>
           </Snackbar>
         </div>
       </div >

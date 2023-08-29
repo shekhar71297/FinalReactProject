@@ -55,7 +55,8 @@ class NewStudentRegistration extends Component {
         fnameError: false,
         lnameError: false,
         emailError: false,
-        contactError: false
+        contactError: false,
+        pnrError: false
       }
 
     }
@@ -69,13 +70,15 @@ class NewStudentRegistration extends Component {
       this.state.errors.fname ||
       this.state.errors.emailError ||
       this.state.errors.contactError ||
-      this.state.errors.lnameError
+      this.state.errors.lnameError ||
+      this.state.error.pnrError
 
 
     ) {
       // Display an error message or take any necessary action
       this.setState({
         snackbarOpen: true,
+        variant: "filled",
         snackbarMessage: "Please fix the validation errors before submitting.",
         severity: 'error',
       });
@@ -190,40 +193,34 @@ class NewStudentRegistration extends Component {
       if (name === "firstname") {
         const isFnameError = !(validation.isValidName(this.state[name]));
         this.setState({ errors: { ...this.state.errors, fnameError: isFnameError } })
-        // if (isFnameError) {
-        //   this.setState({ errors: { ...this.state.errors, fnameError: true } })
-        // } else {
-        //   this.setState({ errors: { ...this.state.errors, fnameError: false } })
-        // }
+
       }
       if (name === "lastname") {
         const isLnameError = !(validation.isValidName(this.state[name]));
-        if (isLnameError) {
-          this.setState({ errors: { ...this.state.errors, lnameError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, lnameError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, lnameError: isLnameError } })
+
       }
 
       if (name === "email") {
         const isEmailError = !(validation.isValidEmail(this.state[name]));
-        if (isEmailError) {
-          this.setState({ errors: { ...this.state.errors, emailError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, emailError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, emailError: isEmailError } })
+
       }
       if (name === "gender") {
         this.setState({ gender: value });
       }
 
       if (name === "contact") {
-        const isvalidContact = !(validation.isValidContact(this.state[name]));
-        if (isvalidContact) {
-          this.setState({ errors: { ...this.state.errors, contactError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, contactError: false } })
-        }
+        const isContactError = !(validation.isValidContact(this.state[name]));
+        this.setState({ errors: { ...this.state.errors, contactError: isContactError } })
+
+      }
+
+
+      if (name === "pnr") {
+        const isPnrError = !(validation.isValidPnr(this.state[name]));
+        this.setState({ errors: { ...this.state.errors, pnrError: isPnrError } })
+
       }
     });
   };
@@ -399,6 +396,8 @@ class NewStudentRegistration extends Component {
                     placeholder="pnr"
                     value={pnr}
                     onChange={this.handleChange}
+                    error={this.state.errors.pnrError}
+                    helperText={this.state.errors.pnrError && validation.errorText("Please enter a valid Pnr") || "eg:YvwQZT-77"}
                   />
                 )}
 
@@ -462,10 +461,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToprops = (dispatch) => ({
-  initStudentRequest: () => dispatch(Action.getAllStudent()),
-  deleteStudentRequest: (id) => dispatch(Action.deleteAllStudent(id)),
-  updateStudentRequest: (id) => dispatch(Action.updateAllStudent(id)),
-  getSingleStudentRequest: (id) => dispatch(Action.getsingleStudent(id)),
   addStudentRequest: (data) => dispatch(Action.addAllStudent(data))
 })
 

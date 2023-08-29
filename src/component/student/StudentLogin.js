@@ -41,11 +41,7 @@ export class StudentLogin extends Component {
       alertSeverity: 'info',
     }
   }
-  componentDidMount() {
-    // this.props.initStudentRequest();
-    
-  }
-
+  
   componentDidUpdate(prevProps) {
     if (prevProps.allstudent !== this.props.allstudent) {
     
@@ -184,7 +180,7 @@ export class StudentLogin extends Component {
                           <Link to='/form'><p>Feedback Form</p></Link>
                         </Grid>
                         <Grid item>
-                          <Link to='/register'>  <p>New Student ? Register here</p></Link>
+                          <Link to='/quizapp/register'>  <p>New Student ? Register here</p></Link>
                         </Grid>
                       </Grid>
                     </Box>
@@ -245,10 +241,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToprops = (dispatch) => ({
   initStudentRequest: () => dispatch(Action.getAllStudent()),
-  deleteStudentRequest: (id) => dispatch(Action.deleteAllStudent(id)),
-  updateStudentRequest: (id) => dispatch(Action.updateAllStudent(id)),
-  getSingleStudentRequest: (id) => dispatch(Action.getsingleStudent(id)),
-  addStudentRequest: (data) => dispatch(Action.addAllStudent(data))
+ 
 })
 
 export default connect(mapStateToProps, mapDispatchToprops)(WithRouter(StudentLogin))

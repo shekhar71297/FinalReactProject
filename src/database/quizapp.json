@@ -520,7 +520,6 @@
       "ExamName": "React js",
       "TotalMark": 50
     }
-  
   ],
   "students": [
     {
@@ -616,30 +615,6 @@
       "branch": ""
     },
     {
-      "firstname": "Renuka",
-      "lastname": "Kahane",
-      "email": "renukakahane@gmail.com",
-      "contact": "9322403669",
-      "dob": "2000-05-09",
-      "gender": "Female",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 38
-    },
-    {
-      "firstname": "Om",
-      "lastname": "pacharne",
-      "email": "om3@gmail.com",
-      "contact": "9322403669",
-      "dob": "1999-12-12",
-      "gender": "Male",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 39
-    },
-    {
       "firstname": "Suhas",
       "lastname": "Kawale",
       "email": "suhaskawale@gmail.com",
@@ -724,7 +699,8 @@
       "id": 46
     },
     {
-      "firstname": "Sujit",
+      "id": 47,
+      "firstname": "some",
       "lastname": "test",
       "email": "sujitg1999@gmail.com",
       "contact": "9898989898",
@@ -732,8 +708,7 @@
       "gender": "Male",
       "organization": "cdac",
       "pnr": "234567",
-      "branch": "",
-      "id": 47
+      "branch": ""
     },
     {
       "firstname": "Sujit",
@@ -760,18 +735,6 @@
       "id": 49
     },
     {
-      "firstname": "   qssasas",
-      "lastname": "asasasas",
-      "email": "ashok123@gmail.com",
-      "contact": "9322403669",
-      "dob": "5678-04-23",
-      "gender": "Male",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 50
-    },
-    {
       "id": 52,
       "firstname": "Sujit",
       "lastname": "Gaikwad",
@@ -796,40 +759,52 @@
       "id": 53
     },
     {
-      "firstname": "xyz",
-      "lastname": "xyz",
-      "email": "sujitg1999@gmail.com",
+      "firstname": "Rutuja",
+      "lastname": "Sawant",
+      "email": "rutuja32sawant@gmail.com",
       "contact": "9322403669",
-      "dob": "2023-08-18",
-      "gender": "Male",
-      "organization": "cdac",
-      "pnr": "007",
-      "branch": "",
+      "dob": "1999-02-23",
+      "gender": "Female",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": "Warje",
       "id": 54
     },
     {
-      "firstname": "asasaaass",
-      "lastname": "saasaa",
-      "email": "anmol@gmail.com",
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "akash2001@gmail.com",
       "contact": "9999999999",
-      "dob": "1111-12-12",
+      "dob": "2001-12-29",
       "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
-      "id": 38
+      "id": 55
     },
     {
-      "firstname": "AaAAaAa",
-      "lastname": "aAa",
-      "email": "anmol@gmail.com",
-      "contact": "9999999999",
-      "dob": "1222-12-12",
+      "firstname": "Anmol",
+      "lastname": "Chaware",
+      "email": "anmol123@gmail.com",
+      "contact": "9322403669",
+      "dob": "1993-11-11",
       "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
-      "id": 39
+      "id": 56
+    },
+    {
+      "id": 57,
+      "firstname": "Shekhar",
+      "lastname": "Pawar",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1998-11-21",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "777-Hello",
+      "branch": ""
     }
   ],
   "examresult": [
@@ -1186,6 +1161,19 @@
       "queFive": "fsddfsf",
       "queSix": "sfsfdfd",
       "id": 24
+    },
+    {
+      "fname": "jahdjshasadashddjna",
+      "email": "fjgfjgjgjhg@gmail.com",
+      "contact": "9999999999",
+      "org": "hksahdsahldhljlKJSlk",
+      "queOne": "dhjkdhaskwuqheku",
+      "queTwo": "agdjagdkhashk",
+      "queThree": "deudhkuhdkuhash",
+      "queFour": "dkqwkdhuwiuqwebsgdgwbksgduygs",
+      "queFive": "gduggydg",
+      "queSix": "dgfgdtfggdkLY",
+      "id": 25
     }
   ],
   "exams": [

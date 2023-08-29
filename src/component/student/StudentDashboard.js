@@ -24,7 +24,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import Dialog from '@mui/material/Dialog';
+import Dialog from '../common/DialogBox';
 import * as validation from '../../util/validation'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -96,9 +96,9 @@ class StudentDashboard extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.singelStudent !== this.props.singelStudent) {
-      const { id, firstname, lastname, email, contact, dob, gender, organization,branch,pnr} = this.props.singelStudent;
+      const { id, firstname, lastname, email, contact, dob, gender, organization, branch, pnr } = this.props.singelStudent;
       this.setState({
-        id, firstname, lastname, email, contact, dob, gender, organization,branch,pnr
+        id, firstname, lastname, email, contact, dob, gender, organization, branch, pnr
       })
     }
 
@@ -164,7 +164,8 @@ class StudentDashboard extends Component {
     this.setState({
       snackbarOpen: true,
       snackbarMessage: 'Student deleted successfully',
-      severity:'error'
+      severity: 'error',
+      variant: "filled"
     });
 
 
@@ -224,7 +225,8 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student added successfully',
-        severity: 'success'
+        severity: 'success',
+        variant: "filled"
       });
       this.props.initStudentRequest();
 
@@ -236,7 +238,8 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student updated successfully',
-        severity: 'success'
+        severity: 'success',
+        variant: "filled"
       });
 
     }
@@ -250,17 +253,6 @@ class StudentDashboard extends Component {
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    // if (name === 'organization') {
-    //   this.setState({
-    //     [name]: value,
-    //     showCdacTextField: value === 'cdac',
-    //   });
-    // } else if (name === 'cdac') {
-    //   this.setState({
-    //     [name]: value,
-    //     showCdacTextField: true,
-    //   });
-    // } else {
     this.setState({
       [name]: value
     }, () => {
@@ -285,30 +277,18 @@ class StudentDashboard extends Component {
       if (name === "firstname") {
         const isFnameError = !(validation.isValidName(this.state[name]));
         this.setState({ errors: { ...this.state.errors, fnameError: isFnameError } })
-        // if (isFnameError) {
-        //   this.setState({ errors: { ...this.state.errors, fnameError: true } })
-        // } else {
-        //   this.setState({ errors: { ...this.state.errors, fnameError: false } })
-        // }
+
       }
       if (name === "lastname") {
         const isLnameError = !(validation.isValidName(this.state[name]));
         this.setState({ errors: { ...this.state.errors, lnameError: isLnameError } })
-        // if (isLnameError) {
-        //   this.setState({ errors: { ...this.state.errors, lnameError: true } })
-        // } else {
-        //   this.setState({ errors: { ...this.state.errors, lnameError: false } })
-        // }
+
       }
 
       if (name === "email") {
         const isEmailError = !(validation.isValidEmail(this.state[name]));
-        // this.setState({ errors: { ...this.state.errors, emailError: isEmailError } })
-        if (isEmailError) {
-          this.setState({ errors: { ...this.state.errors, emailError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, emailError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, emailError: isEmailError } })
+
       }
       if (name === "gender") {
         this.setState({ gender: value });
@@ -317,12 +297,7 @@ class StudentDashboard extends Component {
       if (name === "contact") {
         const isvalidContact = !(validation.isValidContact(this.state[name]));
         this.setState({ errors: { ...this.state.errors, contactError: isvalidContact } })
-        
-      //   if (isvalidContact) {
-      //     this.setState({ errors: { ...this.state.errors, contactError: true } })
-      //   } else {
-      //     this.setState({ errors: { ...this.state.errors, contactError: false } })
-      //   }
+
       }
     });
   };
@@ -366,9 +341,9 @@ class StudentDashboard extends Component {
       const organizationIncludes = data.organization && data.organization.toLowerCase().includes(searchQuery);
       const contactIncludes = data.contact && data.contact.toLowerCase().includes(searchQuery);
       const dobIncludes = data.dob && data.dob.toLowerCase().includes(searchQuery);
-      // const genderIncludes = data.gender && data.gender.toLowerCase().includes(searchQuery);
 
-      return firstnameIncludes || lastnameIncludes || emailIncludes || organizationIncludes || contactIncludes || dobIncludes ;
+
+      return firstnameIncludes || lastnameIncludes || emailIncludes || organizationIncludes || contactIncludes || dobIncludes;
     }) || [];
 
 
@@ -570,9 +545,11 @@ class StudentDashboard extends Component {
             autoHideDuration={3000} // You can adjust the duration as needed
             onClose={() => this.setState({ snackbarOpen: false })}
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+
           >
-            <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
+            <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} variant="filled" sx={{ width: '100%' }}>
               {this.state.snackbarMessage}
+
             </Alert>
           </Snackbar>
           <TablePagination

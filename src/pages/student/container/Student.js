@@ -3,19 +3,7 @@ import { connect } from 'react-redux'
 import * as Action from '../action'
 import StudentDashboard from '../../../component/student/StudentDashboard'
 
-export class Student extends Component {
-  
-    render() {
-  
-        return (
-            <div>
-          
-            <StudentDashboard {...this.props}/>
-          
-            </div>
-        )
-    }
-}
+
 
 const mapStateToProps = (state) => ({
     allstudent: state.studentStore.allstudent,
@@ -31,4 +19,4 @@ const mapStateToProps = (state) => ({
   })
   
 
-export default connect(mapStateToProps,mapDispatchToprops) (Student)
+export default connect(mapStateToProps,mapDispatchToprops) (StudentDashboard)

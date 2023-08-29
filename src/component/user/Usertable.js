@@ -124,7 +124,7 @@ class Usertable extends Component {
     });
 
   }
-// to popup user details
+  // to popup user details
   handleopenDetails = (record) => {
     this.setState({ isDetailsPopup: true, selectedUserdetail: record });
   };
@@ -385,7 +385,7 @@ class Usertable extends Component {
         </Box>
 
         {/* popup update and add  */}
-        
+
         <DialogBox
           open={open}
           onClose={this.handleClose}
@@ -552,8 +552,8 @@ class Usertable extends Component {
           anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
           <MuiAlert
-           elevation={6}
-           variant="filled"
+            elevation={6}
+            variant="filled"
             onClose={this.closeSnackbar}
             severity={this.state.severity}
             sx={{ width: '100%' }}
@@ -561,17 +561,16 @@ class Usertable extends Component {
             {this.state.snackbarMessage}
           </MuiAlert>
         </Snackbar>
-        <Dialog
+
+        <DialogBox
           open={this.state.isDetailsPopup}
           onClose={this.handlecloseDetails}
-          aria-labelledby="dialog-title"
-          maxWidth="xs"
-          fullWidth
-        >
-          <DialogTitle id="dialog-title" sx={{ color: "white", backgroundColor: "#1976d2", fontWeight: "bolder" }}>User Details</DialogTitle>
-          {selectedUserdetail && (
-            <DialogContent sx={{ fontSize: '23px', marginTop: "7px" }} >
-              {/* Show the details of the selected record here */}
+          onConfirm={(event) => {
+            this.handlecloseDetails()
+          }}
+          title={"User Details"}
+          content={
+            selectedUserdetail && (
               <Typography  >
                 <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px', }} >
                   <span style={{ fontWeight: "bold" }}> First Name:</span>
@@ -608,14 +607,10 @@ class Usertable extends Component {
                   {selectedUserdetail.password} <br />
                 </Typography>{" "}
               </Typography>
-            </DialogContent>
-          )}
-          <DialogActions>
-            <Button onClick={this.handlecloseDetails} color="primary" sx={{ fontSize: "23px" }}>
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
+            )
+          }
+
+        />
       </div >
     )
   }

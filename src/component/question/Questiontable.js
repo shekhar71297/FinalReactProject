@@ -45,6 +45,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
 
   const handleEdit = (itemId) => {
     const questionToEdit = questions.find(item => item.id === itemId);
+    handleClearForm();
     setEditQuestionData(questionToEdit);
     setEditMode(true);
     setFormVisible(true);
@@ -73,6 +74,8 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
       { id: 4, text: '' },
     ]);
     setanswer('');
+    setEditMode(false); // Reset edit mode
+    setEditQuestionData({});
   };
 
   useEffect(() => {
@@ -94,17 +97,20 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
   const handleAdd = (e) => {
     if (!(selectedExam) || !(question) || !(options[0].text) || !(options[1].text) || !answer) {
       return;
+      
     }
+    setFormVisible(true);
+    
     const newQuestion = {
       question,
       options: options.map((option) => option.text),
       answer,
       examId: selectedExam,
     };
-    
+
     addQuestionRequest(newQuestion)
     setquestions(prevQuestions => [...prevQuestions, newQuestion]);
-        setOptions(
+    setOptions(
       allquestions.options && allquestions.options.map((text, index) => ({
         id: index + 1,
         text,
@@ -143,7 +149,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
 
   const renderAddQueForm = () => {
     return (
-      <Dialog open={isFormVisible} onClose={() => setFormVisible(false)}>
+      <Dialog open={isFormVisible} onClose={() => setFormVisible()}>
         <DialogContent>
           <Box
             component="form"
@@ -372,18 +378,20 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
                                   <label>{String.fromCharCode(97 + index)}.</label>
                                 )}
                                 <label>{option}</label>
-                              
+
                               </div>
-                              
+
                             ))}<br></br>
+                            <div>
                             Answer :  {item.answer}
 
-                            <Grid marginLeft={100} item xs={4}>
-                              <Button onClick={() => handleDelete(item.id)}>
+                            {/* <Grid marginLeft={100} item xs={4}> */}
+                              <Button className='pull-right' onClick={() => handleDelete(item.id)}>
                                 <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
-                              <Button onClick={() => handleEdit(item.id)}>
+                              <Button className='pull-right' onClick={() => handleEdit(item.id)}>
                                 <EditNoteSharp sx={{ color: dark[500] }} /></Button>
-                            </Grid>
+                            {/* </Grid> */}
+                            </div>
 
 
                           </TableCell>

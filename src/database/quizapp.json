@@ -231,7 +231,7 @@
         "64",
         "None of these above"
       ],
-      "answer": "d",
+      "answer": "Non of these above",
       "examId": 2
     },
     {
@@ -497,6 +497,42 @@
       "answer": "go",
       "examId": 1,
       "id": 41
+    },
+    {
+      "question": "fy",
+      "options": [
+        "y",
+        "y",
+        "c",
+        "fufu"
+      ],
+      "answer": "jv",
+      "examId": 2,
+      "id": 42
+    },
+    {
+      "question": "gig",
+      "options": [
+        "ig",
+        "ig",
+        "ogoi",
+        ""
+      ],
+      "answer": "goi",
+      "examId": 2,
+      "id": 43
+    },
+    {
+      "question": "vjvujvf",
+      "options": [
+        "uf",
+        "u",
+        "f",
+        "uf"
+      ],
+      "answer": "u",
+      "examId": 3,
+      "id": 44
     }
   ],
   "vcodes": [

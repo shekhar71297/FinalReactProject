@@ -474,17 +474,6 @@
       "ObtainedMark": 10,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "id": 9,
-      "StudentName": "Mayuri kakde",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "C++",
-      "TotalMark": 50,
-      "ObtainedMark": 30,
-      "Grade": "C",
-      "Date": "26/06/2023"
     }
   ],
   "students": [
@@ -1066,31 +1055,25 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 2,
       "examName": "python",
       "examCode": "E-2",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 3,
       "examCode": "ab-45",
       "examName": "php",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
       "examStatus": false
-    },
-    {
-      "id": 6,
-      "examCode": "SH-77",
-      "examName": "dot net",
-      "examStatus": true
     }
   ]
 }

@@ -1,9 +1,8 @@
 // import axios from 'axios'
 import * as actiontype from "./Constant"
 import * as constants from '../../util/Constant';
-import { Get, Delete,Post } from '../../util/HttpService'
-
-
+import { Get, Delete,Post ,Put} from '../../util/HttpService'
+ 
 export function getAllResult() {
     return (dispatch) => {
         const url = `${constants.baseURL}/StudentResult`
@@ -36,6 +35,7 @@ export function getResulterror(payload) {
     return { type: actiontype.GET_RESULT_ERROR, payload }
 }
 
+// DELETE
 export function deleteAllResult(id) {
     const url = `${constants.baseURL}/StudentResult/${id}`
     return (dispatch) => {
@@ -72,4 +72,24 @@ export function addResultSuccess(payload) {
 export function addResultError(payload) {
     return { type: actiontype.ADD_RESULT_ERROR, payload }
 }
+// UPDATE
+export function updateResult(data) {
 
+    return (dispatch) => {
+        const url = `${constants.baseURL}/StudentResult/${data.id}`
+        Put(url, data)
+            .then(response => dispatch(updateResultsuccess(data)))
+            .catch(error => dispatch(updateResulterror(error.response.data)))
+    }
+}
+export function updateResultsuccess(payload) {
+    return { type: actiontype.UPDATE_RESULT_SUCCESS, payload }
+}
+export function updateResulterror(payload) {
+    return { type: actiontype.UPDATE_RESULT_ERROR, payload }
+}
+
+export function getsingleexam(id) {
+
+    return { type: actiontype.GET_SINGLE_RESULT, payload: id }
+}

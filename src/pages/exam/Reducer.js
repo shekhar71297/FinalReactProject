@@ -1,72 +1,89 @@
-import * as constant from "./Constant";
+// import axios from 'axios'
+import * as constant from './Constant'
+import * as Constant from '../../util/Constant'
+import { Delete, Get, Post, Put } from '../../util/HttpService'
 
-export const  initialState={
-    allExams:[],
-    exams:{},
-    error:null
+
+export function getAllExam() {
+    return (dispatch) => {
+        const url = `${Constant.baseURL}/exams`;
+
+        Get(url).then(response => {
+            const reversedexam = response.data.reverse(); // Reverse the array of users
+            dispatch(getExamsuccess(reversedexam));
+        })
+            .catch(error => dispatch(getExamerror(error.response.data)));
+    };
 }
 
-export default function examReducer(state = initialState , action){
+export function getExamsuccess(payload) {
+    return { type: constant.GET_EXAM_SUCCESS, payload }
+}
 
-    switch (action.type) {
-        case constant.GET_EXAM_SUCCESS:{
-            
-            return{...state,exams:{},allExams:action.payload};
-            
-        }
-    
-        case constant.GET_EXAM_ERROR,
-         constant.ADD_EXAM_ERROR,
-         constant.UPDATE_EXAM_ERROR,
-         constant.DELETE_EXAM_ERROR:{
-            return{...state,exams:{},error:action.payload};
-         }
+export function getExamerror(payload) {
+    return { type: constant.GET_EXAM_ERROR, payload }
+}
 
-        case constant.ADD_EXAM_SUCCESS:{
-             
-            let allExams=state.allExams;
-            allExams.push(action.payload);
-            return{...state,exams:{},allExams:allExams};
-        }
+// post data
 
-        case constant.UPDATE_EXAM_SUCCESS:{
-            const draft = state;
-            const index = draft.allExams.findIndex((d)=>d.id===action.payload.id) || -1
-            draft.allExams[index]=action.payload
-            return draft;
-            
-        }
+export function addexam(data) {
 
-            // update EXAM
-           
-            case constant.UPDATE_EXAM_SUCCESS:{
-                const draft = state;
-                const index = draft.allExam.findIndex((d)=>d.id===action.payload.id) || -1
-                draft.allExam[index]=action.payload
-                return draft;
-                
-            }
-            // delete exam
-            case constant.DELETE_EXAM_SUCCESS:{
-               
-            let allExam =state.allExam.filter((d)=>d.id !== action.payload)
-            return {...state,allExam:allExam};
-            }
-            // edit Exam
-            case constant.GET_SINGLE_EXAM:{
-          
-            const index = state.allExam.findIndex(d=> d.id === action.payload);
-            const exam = state.allExam[index];
-            return {...state,exam:exam}
-            }
-       // single recoord
-            case constant.GET_SINGLE_EXAM:{
-               
-                const index =state.allExam.findIndex(d=>d.id===action.payload);
-                const user=state.allExam[index];
-                return{...state,user:user};   
-            }
-        default:
-            return state;
+    return (dispatch) => {
+        const url = `${Constant.baseURL}/exams`
+        Post(url, data).then(response => dispatch(addexamsuccess(data)))
+            .catch(error => dispatch(addexamterror(error.response.data)))
+
     }
+
+}
+
+export function addexamsuccess(payload) {
+    return { type: constant.ADD_EXAM_SUCCESS, payload }
+}
+
+export function addexamterror(payload) {
+    return { type: constant.ADD_EXAM_ERROR, payload }
+}
+
+
+// update data
+export function updateExam(data) {
+
+    return (dispatch) => {
+        const url = `${Constant.baseURL}/exams/${data.id}`
+        Put(url, data)
+            .then(response => dispatch(updateExamsuccess(data)))
+            .catch(error => dispatch(updateExamerror(error.response.data)))
+    }
+}
+export function updateExamsuccess(payload) {
+    return { type: constant.UPDATE_EXAM_SUCCESS, payload }
+}
+export function updateExamerror(payload) {
+    return { type: constant.UPDATE_EXAM_ERROR, payload }
+}
+// delete exam
+export function deleteExam(id) {
+
+    return (dispatch) => {
+        const url = `${Constant.baseURL}/exams/${id}`
+        Delete(url)
+            .then(response => dispatch(deleteExamsuccess(id)))
+            .catch(error => dispatch(deleteExamerror(error.response.data)))
+
+    }
+}
+export function deleteExamsuccess(payload) {
+    return { type: constant.DELETE_EXAM_SUCCESS, payload }
+}
+
+export function deleteExamerror(payload) {
+    return { type: constant.DELETE_EXAM_ERROR, payload }
+}
+
+// get single exam
+
+export function getsingleexam(id) {
+
+    return { type: constant.GET_SINGLE_EXAM, payload: id }
 }

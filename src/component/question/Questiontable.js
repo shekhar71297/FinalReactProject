@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import TextField from '@mui/material/TextField';
 import { Box, Button, MenuItem, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
@@ -17,10 +16,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import * as TablePaginationActions from "../common/TablePaginationActions";
-import * as action from "../../pages/exam/Action"
 
 
-const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, deletequestionrequest, initexamRequest, initquestionrequest, allExam }) => {
+const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest, deletequestionrequest, initexamRequest, initquestionrequest, allExam }) => {
   const [data, setData] = useState([]);
   const [isFormVisible, setFormVisible] = useState(false);
   const [selectedOption, setSelectedOption] = useState({});
@@ -36,7 +34,6 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
   const [successMessage, setSuccessMessage] = useState('');
   const [answer, setanswer] = useState('');
   const [options, setOptions] = useState([
-
     { id: 1, text: '' },
     { id: 2, text: '' },
     { id: 3, text: '' },
@@ -48,9 +45,10 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
 
   const handleEdit = (itemId) => {
     const questionToEdit = questions.find(item => item.id === itemId);
+    handleClearForm();
     setEditQuestionData(questionToEdit);
     setEditMode(true);
-    setFormVisible(true); // Show the form when editing
+    setFormVisible(true);
   };
 
   const handleOptionChange = (e, optionIndex) => {
@@ -60,6 +58,10 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
         index === optionIndex ? { ...option, text: newText } : option
       )
     );
+  };
+
+  const resetPage = () => {
+    setPage(0);
   };
 
 
@@ -72,9 +74,9 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
       { id: 4, text: '' },
     ]);
     setanswer('');
+    setEditMode(false); // Reset edit mode
+    setEditQuestionData({});
   };
-
-
 
   useEffect(() => {
     if (isEditMode) {
@@ -95,7 +97,10 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
   const handleAdd = (e) => {
     if (!(selectedExam) || !(question) || !(options[0].text) || !(options[1].text) || !answer) {
       return;
+      
     }
+    setFormVisible(true);
+    
     const newQuestion = {
       question,
       options: options.map((option) => option.text),
@@ -103,30 +108,23 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
       examId: selectedExam,
     };
 
-    const showSnackbar = (message) => {
-      setSuccessMessage(message);
-      setShowSuccessSnackbar(true);
-    };
-
     addQuestionRequest(newQuestion)
-      setquestion({ question: allquestions })
-      setOptions(
-        allquestions.options && allquestions.options.map((text, index) => ({
-          id: index + 1,
-          text,
-        }))
-      );
-      showSnackbar('Question added successfully');
-      setanswer(allquestions.answer);
-      handleClearForm();
-    
+    setquestions(prevQuestions => [...prevQuestions, newQuestion]);
+    setOptions(
+      allquestions.options && allquestions.options.map((text, index) => ({
+        id: index + 1,
+        text,
+      }))
+    );
+    showSnackbar('Question added successfully');
+    setanswer(allquestions.answer);
+    handleClearForm();
 
     setFormVisible(false);
   };
 
 
   const handleUpdate = () => {
-    console.log("update call");
     const updatedQuestion = {
       id: editQuestionData.id,
       question,
@@ -134,18 +132,15 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
       answer,
       examId: selectedExam,
     };
-    const showSnackbar = (message) => {
-      setSuccessMessage(message);
-      setShowSuccessSnackbar(true);
-    };
-    updatequestionrequest(updatedQuestion)
-    // axios.put(`http://localhost:8888/questions/${updatedQuestion.id}`, updatedQuestion)
-    //   .then(response => 
-        showSnackbar('Question updated successfully');
-        setFormVisible(false);
-        setEditMode(false);
-      
 
+
+    updatequestionrequest(updatedQuestion)
+    setquestions(prevQuestions =>
+      prevQuestions.map(q => q.id === editQuestionData.id ? updatedQuestion : q)
+    );
+    showSnackbar('Question updated successfully');
+    setFormVisible(false);
+    setEditMode(false);
 
   }
 
@@ -154,7 +149,7 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
 
   const renderAddQueForm = () => {
     return (
-      <Dialog open={isFormVisible} onClose={() => setFormVisible(false)}>
+      <Dialog open={isFormVisible} onClose={() => setFormVisible()}>
         <DialogContent>
           <Box
             component="form"
@@ -263,30 +258,24 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
 
   useEffect(() => {
     initexamRequest();
-
-    // axios.get(`http://localhost:8888/examData/`)
-    //   .then(response => {
     const examData = allExam;
     setData(examData);
-    //   })
-    //   .catch(error => {
-    //     console.error('Error fetching exam data:', error);
-    //   });
-  }, [initexamRequest]);
+  }, []);
 
   useEffect(() => {
     if (selectedExam) {
       initquestionrequest()
-      // axios.get(`http://localhost:8888/questions`)
-      //   .then(response => {
+
+    }
+  }, [selectedExam]);
+
+  useEffect(() => {
+    if (Array.isArray(allquestions)) {
+      // initquestionrequest()
       const questions = allquestions && allquestions.filter((item) => item.examId === selectedExam);
       setquestions(questions);
-      //   })
-      //   .catch(error => {
-      //     console.error('Error fetching exam data:', error);
-      //   });
     }
-  }, [selectedExam, initquestionrequest]);
+  }, [allquestions]);
 
 
   const handleDelete = (itemId) => {
@@ -298,28 +287,13 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
     setShowSuccessSnackbar(true);
   };
 
-  
-    const confirmDelete = () => {
-      console.log(selectedItemForDeletion)
-      deletequestionrequest(selectedItemForDeletion)
-      showSnackbar('Question deleted successfully');
-      setSelectedItemForDeletion(null);
-      
 
-
-    };
-
-
-  // useEffect(() => {
-  //   const data = allquestions && allquestions.length > 0 ? allquestions : [];
-  //   setData(data);
-  // },[]);
-
-  // useEffect(() => {
-  //   const data = allquestions && allquestions.length > 0 ? allquestions : [];
-  //   setData(data);
-
-  // },[allquestions])
+  const confirmDelete = () => {
+    console.log(selectedItemForDeletion)
+    deletequestionrequest(selectedItemForDeletion)
+    showSnackbar('Question deleted successfully');
+    setSelectedItemForDeletion(null);
+  };
 
 
   const handleCollapseToggle = (itemId) => {
@@ -338,12 +312,18 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
     setPage(0);
   };
 
+
+
   const handleDropdownChange = (event) => {
     setSelectedOption({})
     const selectedExam = event.target.value;
     setExam(selectedExam);
 
-  }
+    if (selectedExam === "") {
+      resetPage(0); // Reset the page to 0 when "None" is selected
+    }
+
+  };
 
   /* QUESTION TABLE CODE */
 
@@ -398,20 +378,22 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
                                   <label>{String.fromCharCode(97 + index)}.</label>
                                 )}
                                 <label>{option}</label>
-                              
+
                               </div>
-                              
+
                             ))}<br></br>
+                            <div>
                             Answer :  {item.answer}
-                            <Grid marginLeft={100} item xs={4}>
-                                <Button onClick={() => handleDelete(item.id)}>
-                                  <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
-                                <Button onClick={() => handleEdit(item.id)}>
-                                  <EditNoteSharp sx={{ color: dark[500] }} /></Button>
-                              </Grid>
-                            
-                              
-                          
+
+                            {/* <Grid marginLeft={100} item xs={4}> */}
+                              <Button className='pull-right' onClick={() => handleDelete(item.id)}>
+                                <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
+                              <Button className='pull-right' onClick={() => handleEdit(item.id)}>
+                                <EditNoteSharp sx={{ color: dark[500] }} /></Button>
+                            {/* </Grid> */}
+                            </div>
+
+
                           </TableCell>
                         </TableRow>
                       )}
@@ -449,7 +431,7 @@ const Questiontable = ({ allquestions,updatequestionrequest,addQuestionRequest, 
       </div>
       <Snackbar
         open={showSuccessSnackbar}
-        autoHideDuration={2000} // Adjust the duration as needed
+        autoHideDuration={2000}
         onClose={() => setShowSuccessSnackbar(false)}
         anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
       >

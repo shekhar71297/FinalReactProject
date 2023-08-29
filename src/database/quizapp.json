@@ -231,7 +231,7 @@
         "64",
         "None of these above"
       ],
-      "answer": "None of these above",
+      "answer": "d",
       "examId": 2
     },
     {
@@ -463,18 +463,6 @@
       "id": 33
     },
     {
-      "question": "iv",
-      "options": [
-        "uivu",
-        "ju",
-        "j",
-        "i"
-      ],
-      "answer": "i",
-      "examId": 3,
-      "id": 37
-    },
-    {
       "question": "vhc",
       "options": [
         "yc",
@@ -485,18 +473,6 @@
       "answer": "c",
       "examId": 2,
       "id": 38
-    },
-    {
-      "question": "bjkbjb",
-      "options": [
-        "jb",
-        "jb",
-        "jb",
-        "jb"
-      ],
-      "answer": "jb",
-      "examId": 1,
-      "id": 39
     },
     {
       "question": "hv",
@@ -511,15 +487,15 @@
       "id": 40
     },
     {
-      "question": "ugtugu",
+      "question": "gig",
       "options": [
-        "ug",
-        "ui",
-        "gu",
-        "gu"
+        "i",
+        "gi",
+        "g",
+        "i"
       ],
-      "answer": "jugj",
-      "examId": 3,
+      "answer": "go",
+      "examId": 1,
       "id": 41
     }
   ],
@@ -720,7 +696,6 @@
       "Grade": "-",
       "Date": "26/06/2023"
     }
-
   ],
   "students": [
     {

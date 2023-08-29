@@ -103,8 +103,8 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
     };
     
     addQuestionRequest(newQuestion)
-    setquestion({ question: allquestions })
-    setOptions(
+    setquestions(prevQuestions => [...prevQuestions, newQuestion]);
+        setOptions(
       allquestions.options && allquestions.options.map((text, index) => ({
         id: index + 1,
         text,

@@ -1,4 +1,4 @@
-import *  as constant from './ActionType'
+import *  as constant from './actiontype'
 
 export const initialState = {
     allquestions: [],
@@ -24,10 +24,7 @@ export default function questionreducer(state = initialState, action) {
 
         // add question 
         
-        // case constant.ADD_QUESTION_SUCCESS: {
-        //     let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
-        //     return { ...state, allquestions: allquestions,newQuestion };
-        // }
+        
         case constant.ADD_QUESTION_SUCCESS: {
             const newQuestion = action.payload;
             return { ...state, allquestions: [...state.allquestions, newQuestion] };
@@ -35,11 +32,7 @@ export default function questionreducer(state = initialState, action) {
 
         // put question 
 
-        // case constant.UPDATE_QUESTION_SUCCESS: {
-        //     let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
-        //     return { ...state, allquestions: state.allquestions.map((q) =>
-        //         q.id === updatedQuestion.id ? updatedQuestion : q), };
-        // }
+        
         case constant.UPDATE_QUESTION_SUCCESS: {
             const updatedQuestion = action.payload;
             return {
@@ -52,10 +45,7 @@ export default function questionreducer(state = initialState, action) {
     
         // delete question
 
-        // case constant.DELETE_QUESTION_SUCCESS: {
-        //     let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
-        //     return { ...state, allquestions: allquestions };
-        // }
+        
         case constant.DELETE_QUESTION_SUCCESS: {
             const deletedQuestionId = action.payload;
             return {

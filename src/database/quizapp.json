@@ -551,7 +551,6 @@
       "ExamName": "React js",
       "TotalMark": 50
     }
-  
   ],
   "students": [
     {
@@ -1162,7 +1161,7 @@
       "id": 6,
       "examCode": "SH-77",
       "examName": "dot net",
-      "examStatus": false
+      "examStatus": true
     }
   ]
 }

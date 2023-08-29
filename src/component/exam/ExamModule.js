@@ -140,6 +140,7 @@ export class ExamModule extends Component {
         this.setState({
             snackbarOpen: true,
             snackbarMessage: 'exam deleted successfully',
+            severity: "error"
         });
     };
 
@@ -170,6 +171,7 @@ export class ExamModule extends Component {
                 this.setState({
                     snackbarOpen: true,
                     snackbarMessage: 'An exam with the same code already exists.',
+                    severity: "error"
                 });
             }
             else {
@@ -178,6 +180,7 @@ export class ExamModule extends Component {
                 this.setState({
                     snackbarOpen: true,
                     snackbarMessage: ' exam added successfully',
+                    severity: "success"
                 });
                 this.props.initexamRequest()
             }
@@ -190,6 +193,7 @@ export class ExamModule extends Component {
             this.setState({
                 snackbarOpen: true,
                 snackbarMessage: 'exam update successfully',
+                severity: "success"
             });
         }
         this.handleClose();
@@ -371,6 +375,7 @@ export class ExamModule extends Component {
                             </Table>
                         </TableContainer>
                         <DialogBox
+                    
                             open={open}
                             onClose={this.handleClose}
                             onConfirm={(event) => {
@@ -381,7 +386,7 @@ export class ExamModule extends Component {
                             message={`Are you sure you want to ${this.state.isAddExam ? 'add' : 'update'} this exam?`} title={this.state.isAddExam ? 'Add Exam' : 'Update Exam'}
                             content={
                                 <form onSubmit={(event) => this.updateExam(event)}>
-                                    <Grid container spacing={2}>
+                                    <Grid container spacing={2} sx={{marginTop:2}}>
                                         <Grid item xs={12} >
                                             <TextField
                                                 required
@@ -455,7 +460,7 @@ export class ExamModule extends Component {
                             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
                         >
                             <MuiAlert onClose={this.closeSnackbar}
-                                severity="error"
+                               severity={this.state.severity}
                                 variant="filled"
                                 sx={{ width: '100%' }}>
                                 {this.state.snackbarMessage}

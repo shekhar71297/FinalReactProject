@@ -121,12 +121,6 @@ class NewStudentRegistration extends Component {
     this.props.addStudentRequest(payload)
     this.handleShowAlert('Student Registered successfully', 'success');
 
-    // this.setState({
-    //       snackbarOpen: true,
-    //       snackbarMessage: 'Student Registered successfully',
-    //       severity: 'success',
-    //       variant:"filled"
-    //     });
 
     setTimeout(() => {
       this.props.router.navigate("/");

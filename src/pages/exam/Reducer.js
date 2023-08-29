@@ -30,15 +30,7 @@ export default function ExamReducer(state = initialstate, action) {
             }
 
             // update EXAM
-            // case constant.UPDATE_EXAM_SUCCESS:{
-            // const draft=state
-            // const index = state.allExam.findIndex((d)=>d.id===action.payload.id) || -1
-    
-            // // draft.allExam[index]=action.payload
-            // // let allExam = state.allExam;
-            // draft.allExam.splice(index , 1,action.payload);
-             // return draft
-            // }
+           
             case constant.UPDATE_EXAM_SUCCESS:{
                 const draft = state;
                 const index = draft.allExam.findIndex((d)=>d.id===action.payload.id) || -1
@@ -46,10 +38,6 @@ export default function ExamReducer(state = initialstate, action) {
                 return draft;
                 
             }
-    
-
-
-
             // delete exam
             case constant.DELETE_EXAM_SUCCESS:{
                
@@ -63,7 +51,7 @@ export default function ExamReducer(state = initialstate, action) {
             const exam = state.allExam[index];
             return {...state,exam:exam}
             }
-// single recoord
+       // single recoord
             case constant.GET_SINGLE_EXAM:{
                
                 const index =state.allExam.findIndex(d=>d.id===action.payload);

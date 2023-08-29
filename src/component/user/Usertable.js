@@ -616,60 +616,6 @@ class Usertable extends Component {
             </Button>
           </DialogActions>
         </Dialog>
-        {/* <DialogBox
-          open={this.state.isDetailsPopup}
-          onClose={this.handlecloseDetails}
-          onConfirm={
-            this.handlecloseDetails()
-            // this.updateExam(event)
-
-          }
-          // message={`Are you sure you want to ${this.state.isAddExam ? 'add' : 'update'} this exam?`} 
-          title={'User Details'}
-          content={
-             <Typography  >
-
-
-              < Typography component="span" variant="subtitle1" sx={{ fontSize: '23px', }} >
-                <span style={{ fontWeight: "bold" }}> First Name:</span>
-                {selectedUserdetail.fname} <br />
-              </Typography>{" "}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-                <span style={{ fontWeight: "bold" }}> Last Name :</span>
-                {selectedUserdetail.lname} <br />
-              </Typography>{" "}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-                <span style={{ fontWeight: "bold" }}> Email:</span>
-                {selectedUserdetail.email} <br />
-              </Typography>{" "}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-                <span style={{ fontWeight: "bold" }}>   Contact:</span>
-                {selectedUserdetail.contact} <br />
-              </Typography>{" "}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-                <span style={{ fontWeight: "bold" }}>  Role:</span>
-                {selectedUserdetail.role} <br />
-              </Typography>{" "}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-                <span style={{ fontWeight: "bold" }}>  Gender:</span>
-                {selectedUserdetail.gender} <br />
-              </Typography>{" "}
-
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
-                <span style={{ fontWeight: "bold" }}>  Password:</span>
-                {selectedUserdetail.password} <br />
-              </Typography>{" "}
-
-            </Typography>
-          
-   }
-          submitLabel={"cancel"}
-        /> */}
       </div >
     )
   }

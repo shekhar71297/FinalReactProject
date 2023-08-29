@@ -40,9 +40,6 @@ export class Login extends Component {
     }
   }
 
-  componentDidMount() {
-    // this.props.initUserRequest();
-  }
 
   componentDidUpdate(prevProps) {
     if (prevProps.allUser !== this.props.allUser) {
@@ -110,8 +107,6 @@ export class Login extends Component {
   submitBtn = (e) => {
     e.preventDefault();
     this.props.initUserRequest();
-
-
   }
 
 
@@ -147,6 +142,7 @@ export class Login extends Component {
                   autoFocus
                   onChange={this.inputChangeHandler}
                 />
+
                 <TextField
                   margin="normal"
                   required
@@ -177,7 +173,6 @@ export class Login extends Component {
                     ),
                   }}
                 />
-                                
 
                 <TextField
                   select
@@ -194,8 +189,6 @@ export class Login extends Component {
                   <MenuItem value="trainer">Trainer</MenuItem>
                   <MenuItem value="counsellor">Counsellor</MenuItem>
                 </TextField>
-
-
 
                 <Button
                   type="submit"
@@ -231,16 +224,10 @@ export class Login extends Component {
 
 const mapStateToProps = (state) => ({
   allUser: state.userStore.allUser,
-  singleUser: state.userStore.user
 });
 
 const mapDispatchToProps = (dispatch) => ({
   initUserRequest: () => dispatch(useraction.getAlluser()),
-  updateUserRequest: (id) => dispatch(useraction.updateUser(id)),
-  addUserRequest: (data) => dispatch(useraction.addUser(data)),
-  deleteUserRequest: (id) => dispatch(useraction.deleteUser(id)),
-  getSingleUserRequest: (id) => dispatch(useraction.getSingleuser(id))
-
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(WithRouter(Login))

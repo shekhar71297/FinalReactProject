@@ -182,11 +182,11 @@ export class StudentResult extends Component {
                 </Typography>{" "}
 
               </Typography>
-              <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+              {/* <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
 
                 <span style={{ fontWeight: "bold" }}>   Grade:</span>
                 {grade} <br />
-              </Typography>{" "}
+              </Typography>{" "} */}
 
               <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
 

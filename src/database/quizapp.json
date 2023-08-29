@@ -15,7 +15,7 @@
       "fname": "panchashil",
       "lname": "wankhade",
       "password": "panchshil45",
-      "role": "trainer",
+      "role": "admin",
       "gender": "male",
       "contact": 8735412345,
       "id": 2
@@ -51,26 +51,6 @@
       "id": 8
     },
     {
-      "email": "sujitg1999@gmail.com",
-      "fname": "sujit",
-      "lname": "gaikwad",
-      "password": "123456aa",
-      "role": "admin",
-      "gender": "male",
-      "contact": "9322403669",
-      "id": 9
-    },
-    {
-      "email": "sa@gmail.com",
-      "fname": "samruddhi",
-      "lname": "vaidya",
-      "password": "sam24566",
-      "role": "admin",
-      "gender": "female",
-      "contact": "8907654321",
-      "id": 11
-    },
-    {
       "email": "anmol123@gmail.com",
       "fname": "rushi",
       "lname": "kakde",
@@ -81,14 +61,34 @@
       "id": 12
     },
     {
-      "email": "sujit@gmail.com",
+      "email": "sujitg1999@gmail.com",
       "fname": "Sujit",
       "lname": "Gaikwad",
-      "password": "Sujit@1233234",
+      "password": "sujit123",
       "role": "admin",
       "gender": "male",
       "contact": "9999998585",
       "id": 13
+    },
+    {
+      "email": "rutusawant1011@gmail.com",
+      "fname": "Rutuja",
+      "lname": "Sawant",
+      "password": "rutuja123",
+      "role": "counsellor",
+      "gender": "female",
+      "contact": "9975218190",
+      "id": 14
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "sujit@123",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9898989898",
+      "id": 15
     }
   ],
   "react": [
@@ -213,7 +213,8 @@
         "64",
         "None of these above"
       ],
-      "answer": "None of these above"
+      "answer": "None of these above",
+      "examId": 2
     },
     {
       "id": 2,
@@ -317,7 +318,19 @@
       "answer": " C is the correct option. AngularJS is a JavaScript framework."
     },
     {
-      "id": 2,
+      "id": 20,
+      "question": "Which of the following statement is correct for AngularJS?",
+      "options": [
+        "AngularJS is an HTML framework",
+        "AngularJS is a Java framework",
+        "AngularJS is a JavaScript framework",
+        "AngularJS is a SQL framework"
+      ],
+      "answer": "AngularJS is a JavaScript framework",
+      "examId": 3
+    },
+    {
+      "id": 21,
       "question": " On which of the Architectural pattern AngularJS is based?",
       "options": [
         "Observer Pattern",
@@ -325,10 +338,11 @@
         "MVC Architecture pattern",
         "MVVM Architectural pattern"
       ],
-      "answer": "D is the correct option. AngularJS is based on MVVM Architectural pattern."
+      "answer": "AngularJS is based on MVVM Architectural pattern.",
+      "examId": 3
     },
     {
-      "id": 3,
+      "id": 22,
       "question": "AngularJS is perfect for?",
       "options": [
         "SPAs",
@@ -336,10 +350,11 @@
         "DPAs",
         "CPAs"
       ],
-      "answer": " A is the correct option. AngularJS is perfect for Single Page Applications (SPAs)."
+      "answer": " AngularJS is perfect for Single Page Applications (SPAs).",
+      "examId": 3
     },
     {
-      "id": 4,
+      "id": 23,
       "question": "Which of the following directive is used to bind the application data to the HTML view in AngularJS?",
       "options": [
         "ng-app directive",
@@ -347,10 +362,11 @@
         "ng-bind directive",
         "ng-init directive"
       ],
-      "answer": "ng-bind directive"
+      "answer": "ng-bind directive",
+      "examId": 3
     },
     {
-      "id": 5,
+      "id": 24,
       "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
       "options": [
         "Constructor",
@@ -358,29 +374,174 @@
         "Both A and B.",
         "Object"
       ],
-      "answer": "class"
+      "answer": "class",
+      "examId": 3
+    },
+    {
+      "id": 26,
+      "question": "Which of the following function is used to sort an array in descending order?",
+      "options": [
+        "sort()",
+        "asrot()",
+        "dsort()",
+        "rsort()"
+      ],
+      "answer": "d",
+      "examId": 3
+    },
+    {
+      "id": 29,
+      "question": "Which of the following is the default file extension of PHP?",
+      "options": [
+        ".php",
+        ".hphp",
+        ".xml",
+        ".html"
+      ],
+      "answer": "a",
+      "examId": 3
+    },
+    {
+      "id": 30,
+      "question": " Which of the following is the use of strlen() function in PHP?",
+      "options": [
+        "The strlen() function returns the type of string",
+        "The strlen() function returns the length of string",
+        "The strlen() function returns the value of string",
+        "The strlen() function returns both value and type of string"
+      ],
+      "answer": "b",
+      "examId": 3
+    },
+    {
+      "question": "What is the order of precedence in python?",
+      "options": [
+        "Observer Pattern",
+        "Decorator pattern",
+        "MVC Architecture pattern",
+        "MVVM Architectural pattern"
+      ],
+      "answer": "d",
+      "examId": 2,
+      "id": 31
+    },
+    {
+      "question": "Which of the following is used to end a statement in PHP?",
+      "options": [
+        ". (dot)",
+        "; (semicolon)",
+        "! (exclamation)",
+        "/ (slash)"
+      ],
+      "answer": "b",
+      "examId": 3,
+      "id": 32
+    },
+    {
+      "question": "String values in PHP must be enclosed within -  ",
+      "options": [
+        "Double Quotes",
+        "Single Quotes",
+        "Both (a) and (b)",
+        "Non of the above"
+      ],
+      "answer": "c Both (a) and (b)",
+      "examId": 3,
+      "id": 33
+    },
+    {
+      "question": "vhc",
+      "options": [
+        "yc",
+        "hc",
+        "jcj",
+        "cj"
+      ],
+      "answer": "c",
+      "examId": 2,
+      "id": 38
+    },
+    {
+      "question": "hv",
+      "options": [
+        "hv",
+        "jhv",
+        "h",
+        "jv"
+      ],
+      "answer": "v",
+      "examId": 2,
+      "id": 40
+    },
+    {
+      "question": "gig",
+      "options": [
+        "i",
+        "gi",
+        "g",
+        "i"
+      ],
+      "answer": "go",
+      "examId": 1,
+      "id": 41
+    },
+    {
+      "question": "fy",
+      "options": [
+        "y",
+        "y",
+        "c",
+        "fufu"
+      ],
+      "answer": "jv",
+      "examId": 2,
+      "id": 42
+    },
+    {
+      "question": "gig",
+      "options": [
+        "ig",
+        "ig",
+        "ogoi",
+        ""
+      ],
+      "answer": "goi",
+      "examId": 2,
+      "id": 43
+    },
+    {
+      "question": "vjvujvf",
+      "options": [
+        "uf",
+        "u",
+        "f",
+        "uf"
+      ],
+      "answer": "u",
+      "examId": 3,
+      "id": 44
     }
   ],
   "vcodes": [
     {
-      "status": true,
+      "status": false,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": true,
+      "status": false,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": false,
       "id": 4,
-      "Vcode": "SgLBmw"
+      "Vcode": "SgLBmw",
+      "status": true
     },
     {
       "status": false,
@@ -388,7 +549,7 @@
       "Vcode": "TZkSCK"
     },
     {
-      "status": false,
+      "status": true,
       "id": 6,
       "Vcode": "rEOHy9"
     },
@@ -439,17 +600,6 @@
     }
   ],
   "StudentResult": [
-    {
-      "id": 1,
-      "StudentName": "sainath tayade",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
     {
       "id": 2,
       "StudentName": "amol pawar",
@@ -538,38 +688,6 @@
       "organization": "hematite"
     },
     {
-      "id": 2,
-      "firstname": "Om",
-      "lastname": "Pacharne",
-      "email": "ompacharne9@gmail.com",
-      "contact": "9421688541",
-      "dob": "1994-03-11",
-      "gender": "Male",
-      "organization": "hematite"
-    },
-    {
-      "id": 5,
-      "firstname": "Akash",
-      "lastname": "Gaikwad",
-      "email": "sujit@gmail.com",
-      "contact": "9322403669",
-      "dob": "1992-04-23",
-      "gender": "Male",
-      "organization": "Hadapsar"
-    },
-    {
-      "id": 22,
-      "firstname": "Sujit",
-      "lastname": "Gaikwad",
-      "email": "sujitg1313@gmail.com",
-      "contact": "9322403669",
-      "dob": "1999-05-18",
-      "gender": "Male",
-      "organization": "cdac",
-      "pnr": "qaaass",
-      "branch": "Hadapsar"
-    },
-    {
       "firstname": "rushikesh",
       "lastname": "kakde",
       "email": "rushikakdeforever@gmail.com",
@@ -580,42 +698,6 @@
       "pnr": "",
       "branch": "",
       "id": 24
-    },
-    {
-      "firstname": "Komal",
-      "lastname": "Tamane",
-      "email": "komal123@gmail.com",
-      "contact": "9898989898",
-      "dob": "2023-08-18",
-      "gender": "Female",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 25
-    },
-    {
-      "firstname": "Sammrudhi",
-      "lastname": "Divase",
-      "email": "sam123@gmail.com",
-      "contact": "9899867844",
-      "dob": "2023-08-27",
-      "gender": "Female",
-      "organization": "hematite",
-      "pnr": "",
-      "branch": "",
-      "id": 26
-    },
-    {
-      "firstname": "Sanjana",
-      "lastname": "Jha",
-      "email": "sujitg1999@gmail.com",
-      "contact": "8995947489",
-      "dob": "2023-08-11",
-      "gender": "Female",
-      "organization": "lighthouse",
-      "pnr": "",
-      "branch": "Hadapsar",
-      "id": 27
     },
     {
       "firstname": "Sujit",
@@ -630,26 +712,6 @@
       "id": 28
     },
     {
-      "firstname": "Kaka",
-      "lastname": "Mama",
-      "email": "kaka122@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-23",
-      "gender": "Male",
-      "organization": "cdac",
-      "id": 29
-    },
-    {
-      "firstname": "Kala",
-      "lastname": "Pila",
-      "email": "kaala123@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-07",
-      "gender": "Male",
-      "organization": "cdac",
-      "id": 30
-    },
-    {
       "id": 31,
       "firstname": "Alia",
       "lastname": "Bhatt",
@@ -659,19 +721,7 @@
       "gender": "Female",
       "organization": "lighthouse",
       "pnr": "",
-      "branch": ""
-    },
-    {
-      "firstname": "Nila",
-      "lastname": "pila",
-      "email": "nila123@gmail.com",
-      "contact": "9322403669",
-      "dob": "2023-08-19",
-      "gender": "Female",
-      "organization": "cdac",
-      "pnr": "3456",
-      "branch": "",
-      "id": 32
+      "branch": "Hadapsar"
     },
     {
       "firstname": "Ruyuja",
@@ -698,16 +748,220 @@
       "id": 36
     },
     {
-      "firstname": "aditya",
-      "lastname": "kamble",
-      "email": "kambleadity749@gmail.com",
-      "contact": "9168548429",
-      "dob": "2002-06-19",
+      "id": 37,
+      "firstname": "Rahul",
+      "lastname": "Pawar",
+      "email": "rahul123@gmail.com",
+      "contact": "9191919191",
+      "dob": "2000-01-01",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "12345",
+      "branch": ""
+    },
+    {
+      "firstname": "Suhas",
+      "lastname": "Kawale",
+      "email": "suhaskawale@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-12-12",
       "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
-      "id": 37
+      "id": 40
+    },
+    {
+      "firstname": "Ravi",
+      "lastname": "Patil",
+      "email": "ravi.patil@gmail.com",
+      "contact": "7876665444",
+      "dob": "1992-01-01",
+      "gender": "Male",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": "Hadapsar",
+      "id": 41
+    },
+    {
+      "id": 42,
+      "firstname": "Shubhangi",
+      "lastname": "Meshram",
+      "email": "shubhangi456@gmail.com",
+      "contact": "9898989898",
+      "dob": "1991-01-01",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "h-1234",
+      "branch": ""
+    },
+    {
+      "id": 43,
+      "firstname": "Renuka",
+      "lastname": "Kahane",
+      "email": "renuka@gmal.com",
+      "contact": "9090909090",
+      "dob": "2000-05-09",
+      "gender": "Female",
+      "organization": "cdac",
+      "pnr": "234567",
+      "branch": ""
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9898989898",
+      "dob": "1111-11-11",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "900900",
+      "branch": "",
+      "id": 44
+    },
+    {
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "12221-12-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "23456789",
+      "branch": "",
+      "id": 45
+    },
+    {
+      "firstname": "test",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "56789-04-23",
+      "gender": "Male",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": "Vadgoansheri",
+      "id": 46
+    },
+    {
+      "id": 47,
+      "firstname": "some",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9898989898",
+      "dob": "56789-04-23",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "234567",
+      "branch": ""
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9898989898",
+      "dob": "275760-03-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "3333333",
+      "branch": "",
+      "id": 48
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-05-18",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "34567890-",
+      "branch": "",
+      "id": 49
+    },
+    {
+      "id": 52,
+      "firstname": "Sujit",
+      "lastname": "Gaikwad",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "4567-03-12",
+      "gender": "Male",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": "Vadgoansheri"
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "test",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "0678-05-31",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "77777",
+      "branch": "",
+      "id": 53
+    },
+    {
+      "firstname": "Rutuja",
+      "lastname": "Sawant",
+      "email": "rutuja32sawant@gmail.com",
+      "contact": "9322403669",
+      "dob": "1999-02-23",
+      "gender": "Female",
+      "organization": "lighthouse",
+      "pnr": "",
+      "branch": "Warje",
+      "id": 54
+    },
+    {
+      "firstname": "Akash",
+      "lastname": "Gaikwad",
+      "email": "akash2001@gmail.com",
+      "contact": "9999999999",
+      "dob": "2001-12-29",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 55
+    },
+    {
+      "firstname": "Anmol",
+      "lastname": "Chaware",
+      "email": "anmol123@gmail.com",
+      "contact": "9322403669",
+      "dob": "1993-11-11",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 56
+    },
+    {
+      "id": 57,
+      "firstname": "Shekhar",
+      "lastname": "Pawar",
+      "email": "sujitg1999@gmail.com",
+      "contact": "9322403669",
+      "dob": "1998-11-21",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "777-Hello",
+      "branch": ""
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "aaaa",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "3444-12-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "900900",
+      "branch": "",
+      "id": 58
     }
   ],
   "examresult": [
@@ -991,43 +1245,82 @@
       "id": 19
     },
     {
-      "fname": "Shruti Kahane",
-      "email": "shruti16@gmail.com",
-      "contact": "9876543212",
-      "org": "Lighthouse",
-      "queOne": "test1",
-      "queTwo": "test1",
-      "queThree": "test1",
-      "queFour": "test1",
-      "queFive": "test1",
-      "queSix": "test1",
-      "id": 20
-    },
-    {
-      "fname": "Renuka Kahane",
-      "email": "renuka@gmail.com",
-      "contact": "9898989898",
-      "org": "CDAC",
+      "fname": "abc abc",
+      "email": "abc12@gmai.com",
+      "contact": "9090909090",
+      "org": "abc",
       "queOne": "test1",
       "queTwo": "test2",
       "queThree": "test3",
       "queFour": "test4",
-      "queFive": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
+      "id": 20
+    },
+    {
+      "fname": "Vishakha Mankar",
+      "email": "vishakha@gmail.com",
+      "contact": "9090909090",
+      "org": "Hematite",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
       "queSix": "test6",
       "id": 21
     },
     {
-      "fname": "Test test",
+      "fname": "fdjs",
+      "email": "fs@gmail.com",
+      "contact": "9090909090",
+      "org": "heajkjk",
+      "queOne": "hhjhhjhj",
+      "queTwo": "hhjhjhjh",
+      "queThree": "jhjhjhj",
+      "queFour": "hjhjhjkhj",
+      "queFive": "hjhjkhjkhj",
+      "queSix": "hjhjjhjkhjk",
+      "id": 22
+    },
+    {
+      "fname": "test test",
       "email": "test@gmail.com",
-      "contact": "9898000090",
-      "org": "Hematite",
+      "contact": "8888888888",
+      "org": "test",
       "queOne": "test1",
       "queTwo": "test2",
-      "queThree": "fdfdf",
-      "queFour": "df",
-      "queFive": "fdfdfsf",
-      "queSix": "fdfdfdf",
-      "id": 22
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
+      "id": 23
+    },
+    {
+      "fname": "test test",
+      "email": "test@gmail.com",
+      "contact": "8989898989",
+      "org": "test",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
+      "id": 24
+    },
+    {
+      "fname": "abc abc",
+      "email": "abc123@gmail.com",
+      "contact": "9999999999",
+      "org": "test",
+      "queOne": "jjkjkjj",
+      "queTwo": "jkjjjkjk",
+      "queThree": "jkjkjkjjjkj",
+      "queFour": "jjkjjkj",
+      "queFive": "jjkjkjkjk",
+      "queSix": "jjjjkjjkjkj",
+      "id": 25
     }
   ],
   "exams": [
@@ -1044,15 +1337,15 @@
       "examStatus": false
     },
     {
-      "id": 3,
-      "examCode": "102",
-      "examName": "java",
-      "examStatus": false
+      "id": 2,
+      "examName": "python",
+      "examCode": "E-2",
+      "examStatus": true
     },
     {
-      "id": 4,
-      "examCode": "103",
-      "examName": "html",
+      "id": 3,
+      "examCode": "ab-45",
+      "examName": "php",
       "examStatus": false
     },
     {
@@ -1126,6 +1419,12 @@
       "examCode": "c1-123",
       "examName": "django+python",
       "examStatus": false
+    },
+    {
+      "id": 6,
+      "examCode": "SH-77",
+      "examName": "dot net",
+      "examStatus": true
     }
   ]
 }

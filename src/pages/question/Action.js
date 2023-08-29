@@ -1,6 +1,6 @@
 import * as constants from '../../util/Constant';
 import { Get, Post, Put,Delete } from '../../util/HttpService';
-import * as actionTypes from './ActionType'
+import * as actionTypes from './actiontype'
 
 /////get method CRUD
 
@@ -82,8 +82,4 @@ export function deleteQuestionerror(payload){
     return { type: actionTypes.DELETE_QUESTION_ERROR ,payload}
 }
 
-export function getSingleQuestion(id) {
-    console.log(id);
-    return { type: actionTypes.GET_SINGLE_QUESTION ,payload:id}
 
-}

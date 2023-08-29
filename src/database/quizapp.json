@@ -51,16 +51,6 @@
       "id": 8
     },
     {
-      "email": "sujitg1999@gmail.com",
-      "fname": "sujit",
-      "lname": "gaikwad",
-      "password": "123456",
-      "role": "admin",
-      "gender": "male",
-      "contact": "9322403669",
-      "id": 9
-    },
-    {
       "email": "anmol123@gmail.com",
       "fname": "rushi",
       "lname": "kakde",
@@ -77,8 +67,28 @@
       "password": "sujit123",
       "role": "admin",
       "gender": "male",
-      "contact": "9898989898",
+      "contact": "9999998585",
+      "id": 13
+    },
+    {
+      "email": "rutusawant1011@gmail.com",
+      "fname": "Rutuja",
+      "lname": "Sawant",
+      "password": "rutuja123",
+      "role": "counsellor",
+      "gender": "female",
+      "contact": "9975218190",
       "id": 14
+    },
+    {
+      "email": "sujitg1999@gmail.com",
+      "fname": "Sujit",
+      "lname": "Gaikwad",
+      "password": "sujit@123",
+      "role": "admin",
+      "gender": "male",
+      "contact": "9898989898",
+      "id": 15
     }
   ],
   "questions": [
@@ -517,24 +527,24 @@
   ],
   "vcodes": [
     {
-      "status": true,
+      "status": false,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": true,
+      "status": false,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": true,
       "id": 4,
-      "Vcode": "SgLBmw"
+      "Vcode": "SgLBmw",
+      "status": true
     },
     {
       "status": true,
@@ -542,7 +552,7 @@
       "Vcode": "TZkSCK"
     },
     {
-      "status": false,
+      "status": true,
       "id": 6,
       "Vcode": "rEOHy9"
     },
@@ -700,17 +710,6 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
-    },
-    {
-      "StudentName": "anmol chaware",
-      "ObtainedMark": 9,
-      "Grade": "-",
-      "id": 15,
-      "Date": "26/06/2023",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50
     }
   ],
   "students": [
@@ -997,6 +996,18 @@
       "organization": "cdac",
       "pnr": "777-Hello",
       "branch": ""
+    },
+    {
+      "firstname": "Sujit",
+      "lastname": "aaaa",
+      "email": "sujitg1313@gmail.com",
+      "contact": "9322403669",
+      "dob": "3444-12-12",
+      "gender": "Male",
+      "organization": "cdac",
+      "pnr": "900900",
+      "branch": "",
+      "id": 58
     }
   ],
   "examresult": [
@@ -1329,42 +1340,42 @@
       "id": 22
     },
     {
-      "fname": "wewqe",
-      "email": "qweqewew@g.com",
+      "fname": "test test",
+      "email": "test@gmail.com",
       "contact": "8888888888",
-      "org": "sasaa",
-      "queOne": "ADSDSDAASDADS",
-      "queTwo": "DSADADD",
-      "queThree": "DSAASDASDASDASD",
-      "queFour": "ADASDASDADASD",
-      "queFive": "DSDDAASDSDASD",
-      "queSix": "DASADADASDASDASDA",
+      "org": "test",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
       "id": 23
     },
     {
-      "fname": "SDASSDADA",
-      "email": "ASAS@G.COM",
-      "contact": "8888888888",
-      "org": "vffdfdf",
-      "queOne": "dfdsfdfdsfdsfs",
-      "queTwo": "sdfdsfdsfdsff",
-      "queThree": "sfdfdssd",
-      "queFour": "sfsdfdf",
-      "queFive": "fsddfsf",
-      "queSix": "sfsfdfd",
+      "fname": "test test",
+      "email": "test@gmail.com",
+      "contact": "8989898989",
+      "org": "test",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
       "id": 24
     },
     {
-      "fname": "jahdjshasadashddjna",
-      "email": "fjgfjgjgjhg@gmail.com",
+      "fname": "abc abc",
+      "email": "abc123@gmail.com",
       "contact": "9999999999",
-      "org": "hksahdsahldhljlKJSlk",
-      "queOne": "dhjkdhaskwuqheku",
-      "queTwo": "agdjagdkhashk",
-      "queThree": "deudhkuhdkuhash",
-      "queFour": "dkqwkdhuwiuqwebsgdgwbksgduygs",
-      "queFive": "gduggydg",
-      "queSix": "dgfgdtfggdkLY",
+      "org": "test",
+      "queOne": "jjkjkjj",
+      "queTwo": "jkjjjkjk",
+      "queThree": "jkjkjkjjjkj",
+      "queFour": "jjkjjkj",
+      "queFive": "jjkjkjkjk",
+      "queSix": "jjjjkjjkjkj",
       "id": 25
     }
   ],
@@ -1397,7 +1408,7 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 6,

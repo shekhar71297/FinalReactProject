@@ -21,10 +21,10 @@ import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import { DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
+import { Dialog,DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import Dialog from '../common/DialogBox';
+import DialogBox from '../common/DialogBox';
 import * as validation from '../../util/validation'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -522,24 +522,20 @@ class StudentDashboard extends Component {
               </TableBody>
             </Table>
           </TableContainer>
-          {/* Delete Popup Model */}
-          <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
-            <DialogTitle>Delete Record</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Are you sure you want to delete this record?
-              </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={this.closeDeletePopup} color="primary">
-                Cancel
-              </Button>
-              <Button onClick={this.handleDeleteConfirmed} color="primary" autoFocus>
-                Delete
-              </Button>
-            </DialogActions>
-          </Dialog>
+          <DialogBox
+                            open={isDeletePopupOpen}
+                            onClose={this.closeDeletePopup}
+                            onConfirm={() => {
+                                this.closeDeletePopup();
+                                this.handleDeleteConfirmed();
+                            }}
+                            message={`Are you sure you want to delete this record?`}
+                            title={`Delete Record`}
+                            submitLabel={`Delete`}
 
+                        />
+
+         
           <Snackbar
             open={this.state.snackbarOpen}
             autoHideDuration={3000} // You can adjust the duration as needed

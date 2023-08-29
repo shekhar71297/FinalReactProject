@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import TablePagination from '@mui/material/TablePagination';
 import { DeleteOutlineSharp, EditNoteSharp } from '@mui/icons-material';
-import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
 import Alert from '@mui/material/Alert';
 import Dialog from '@mui/material/Dialog';
@@ -76,6 +75,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
     setanswer('');
     setEditMode(false); // Reset edit mode
     setEditQuestionData({});
+    setFormVisible(false);
   };
 
   useEffect(() => {
@@ -353,7 +353,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
         <Box marginRight={10}>
           {selectedExam && (
             <div className='pull-left' >
-              <Button sx={{ marginTop: 5, marginBottom: 2 }} color='inherit' variant='contained' type='button' onClick={() => setFormVisible(true)} endIcon={<CreateNewFolderOutlined />}>Create</Button>
+              <Button sx={{ marginTop: 5, marginBottom: 2 }} color='inherit' variant='contained' type='button' onClick={() =>{ handleClearForm(); setEditMode(false); setFormVisible(true)}} endIcon={<CreateNewFolderOutlined />}>Create</Button>
             </div>
           )}
           <TableContainer component={Paper}  >
@@ -385,12 +385,10 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
                             <div>
                             Answer :  {item.answer}
 
-                            {/* <Grid marginLeft={100} item xs={4}> */}
                               <Button className='pull-right' onClick={() => handleDelete(item.id)}>
                                 <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
                               <Button className='pull-right' onClick={() => handleEdit(item.id)}>
                                 <EditNoteSharp sx={{ color: dark[500] }} /></Button>
-                            {/* </Grid> */}
                             </div>
 
 

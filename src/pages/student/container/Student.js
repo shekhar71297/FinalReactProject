@@ -1,23 +1,9 @@
+import React,{Component} from 'react'
 import { connect } from 'react-redux'
 import * as Action from '../action'
 import StudentDashboard from '../../../component/student/StudentDashboard'
-import StudentLogin from '../../../component/student/StudentLogin'
-import React,{Component} from 'react'
-import NewStudentRegistration from '../../../component/student/NewStudentRegistration'
-export class Student extends Component {
-  
-    render() {
-  
-        return (
-            <div>
-          
-            
-            <StudentLogin {...this.props}/> 
-          
-            </div>
-        )
-    }
-}
+
+
 
 const mapStateToProps = (state) => ({
     allstudent: state.studentStore.allstudent,
@@ -33,4 +19,4 @@ const mapStateToProps = (state) => ({
   })
   
 
-export default connect(mapStateToProps,mapDispatchToprops) (Student)
+export default connect(mapStateToProps,mapDispatchToprops) (StudentDashboard)

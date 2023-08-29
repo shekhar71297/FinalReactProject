@@ -1,4 +1,4 @@
-import *  as constant from './actiontype'
+import *  as constant from './ActionType'
 
 export const initialState = {
     allquestions: [],

@@ -15,6 +15,7 @@ export default function questionreducer(state = initialState, action) {
         }
         
         case constant.GET_QUESTION_ERROR,
+
             constant.DELETE_QUESTION_ERROR: {
 
                 return { ...state, questions: {}, error: action.payload };
@@ -23,33 +24,45 @@ export default function questionreducer(state = initialState, action) {
 
         // add question 
         
+        // case constant.ADD_QUESTION_SUCCESS: {
+        //     let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
+        //     return { ...state, allquestions: allquestions,newQuestion };
+        // }
         case constant.ADD_QUESTION_SUCCESS: {
-            let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
-            return { ...state, allquestions: allquestions };
-        }
+            const newQuestion = action.payload;
+            return { ...state, allquestions: [...state.allquestions, newQuestion] };
+          }
 
         // put question 
 
+        // case constant.UPDATE_QUESTION_SUCCESS: {
+        //     let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
+        //     return { ...state, allquestions: state.allquestions.map((q) =>
+        //         q.id === updatedQuestion.id ? updatedQuestion : q), };
+        // }
         case constant.UPDATE_QUESTION_SUCCESS: {
-            let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
-            return { ...state, allquestions: allquestions };
-        }
+            const updatedQuestion = action.payload;
+            return {
+              ...state,
+              allquestions: state.allquestions.map((q) =>
+                q.id === updatedQuestion.id ? updatedQuestion : q
+              ),
+            };
+          }
     
         // delete question
 
+        // case constant.DELETE_QUESTION_SUCCESS: {
+        //     let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
+        //     return { ...state, allquestions: allquestions };
+        // }
         case constant.DELETE_QUESTION_SUCCESS: {
-            let allquestions = state.allquestions.filter((d) => d.id !== action.payload)
-            return { ...state, allquestions: allquestions };
-        }
-
-        
-        // Edit Question
-
-        case constant.GET_SINGLE_QUESTION: {
-            const index = state.allquestions.findIndex(d => d.id === action.payload );
-            const question =state.allquestions[index];
-            return {...state,questions:question}
-        }
+            const deletedQuestionId = action.payload;
+            return {
+              ...state,
+              allquestions: state.allquestions.filter((q) => q.id !== deletedQuestionId),
+            };
+          }
 
         default:
             return state;

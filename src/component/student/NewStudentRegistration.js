@@ -71,7 +71,7 @@ class NewStudentRegistration extends Component {
       this.state.errors.emailError ||
       this.state.errors.contactError ||
       this.state.errors.lnameError ||
-      this.state.error.pnrError
+      this.state.errors.pnrError
 
 
     ) {

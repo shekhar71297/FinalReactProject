@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 const DialogBox = ({ open, onClose, onConfirm, message,title,content, submitLabel,disable }) => {
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>{title}</DialogTitle>
+      <DialogTitle sx={{ backgroundColor: '#1976d2', color: 'white', fontSize: '28px' }}>{title}</DialogTitle>
       <DialogContent>
         {content}
         <DialogContentText>

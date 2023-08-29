@@ -21,7 +21,7 @@ import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import { Dialog,DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
+import { Dialog, DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import DialogBox from '../common/DialogBox';
@@ -85,7 +85,8 @@ class StudentDashboard extends Component {
         fnameError: false,
         lnameError: false,
         emailError: false,
-        contactError: false
+        contactError: false,
+        pnrError: false
       }
 
 
@@ -195,7 +196,8 @@ class StudentDashboard extends Component {
       this.state.errors.fname ||
       this.state.errors.emailError ||
       this.state.errors.contactError ||
-      this.state.errors.lnameError
+      this.state.errors.lnameError ||
+      this.state.errors.pnrError
 
 
     ) {
@@ -297,6 +299,12 @@ class StudentDashboard extends Component {
       if (name === "contact") {
         const isvalidContact = !(validation.isValidContact(this.state[name]));
         this.setState({ errors: { ...this.state.errors, contactError: isvalidContact } })
+
+      }
+
+      if (name === "pnr") {
+        const isPnrError = !(validation.isValidPnr(this.state[name]));
+        this.setState({ errors: { ...this.state.errors, pnrError: isPnrError } })
 
       }
     });
@@ -523,19 +531,19 @@ class StudentDashboard extends Component {
             </Table>
           </TableContainer>
           <DialogBox
-                            open={isDeletePopupOpen}
-                            onClose={this.closeDeletePopup}
-                            onConfirm={() => {
-                                this.closeDeletePopup();
-                                this.handleDeleteConfirmed();
-                            }}
-                            message={`Are you sure you want to delete this record?`}
-                            title={`Delete Record`}
-                            submitLabel={`Delete`}
+            open={isDeletePopupOpen}
+            onClose={this.closeDeletePopup}
+            onConfirm={() => {
+              this.closeDeletePopup();
+              this.handleDeleteConfirmed();
+            }}
+            message={`Are you sure you want to delete this record?`}
+            title={`Delete Record`}
+            submitLabel={`Delete`}
 
-                        />
+          />
 
-         
+
           <Snackbar
             open={this.state.snackbarOpen}
             autoHideDuration={3000} // You can adjust the duration as needed
@@ -702,6 +710,8 @@ class StudentDashboard extends Component {
                     placeholder="pnr"
                     value={pnr}
                     onChange={this.handleChange}
+                    error={this.state.errors.pnrError}
+                    helperText={this.state.errors.pnrError && validation.errorText("Please enter a valid Pnr") || "eg:Hello-77"}
                   />
                 )}
 

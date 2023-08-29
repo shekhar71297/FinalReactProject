@@ -9,13 +9,11 @@ import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 import MuiAlert from '@mui/material/Alert';
 import * as validation from '../../util/validation';
 import * as Action from '../../pages/feedback/Action';
 import Typography from '@mui/material/Typography';
-import { RESET_FEEDBACK_SUCCESS_RES } from '../../pages/feedback/constant';
-
+import WithRouter from '../../util/WithRouter';
 
 export class FeedbackModule extends Component {
   constructor(props) {
@@ -108,33 +106,11 @@ export class FeedbackModule extends Component {
         const isQueError = !(validation.isValidQue(this.state[name]));
         this.setState({ errors: { ...this.state.errors, queSixError: isQueError } })
       }
-
     });
   };
 
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.isFeedbackSuccessRes !== this.props.isFeedbackSuccessRes && this.props.isFeedbackSuccessRes === true) {
-      console.log("Thank You For Giving Feedback!!")
-      this.setState({
-        snackbarOpen: true,
-        snackbarMessage: "Thank You For Giving Feedback!!",
-        severity: 'success',
-      });
-      this.props.resetIsFeedbackSuccessResponse()
-    }
-    // if (this.state.shouldRedirect && this.state.shouldRedirect !== prevState.shouldRedirect) {
-    //   window.location.href = '/';
-    // }
-  }
-
-  componentWillUnmount() {
-
-  }
-
   componentDidMount() {
-    // this.props.initFeedbackRequest()
-    console.log(this.props)
+    this.props.initFeedbackRequest()
   }
 
   // Method to reset the form
@@ -194,28 +170,30 @@ export class FeedbackModule extends Component {
 
     this.props.addFeedbackRequest(payload)
 
-    // this.setState({
-    //   snackbarOpen: true,
-    //   snackbarMessage: "Thank You For Giving Feedback!!",
-    //   severity: 'success',
-    // });
+    this.setState({
+      snackbarOpen: true,
+      snackbarMessage: "Thank You For Giving Feedback!!",
+      severity: 'success',
+    });
 
-    // setTimeout(() => {
-    //   this.setState({ shouldRedirect: true });
-    // }, 2000)
+    setTimeout(() => {
+    }, 2000);
 
-    // setTimeout(() => {
-    //   this.setState({ snackbarOpen: false });
-    // }, 2000);
+    setTimeout(() => {
+      this.setState({ snackbarOpen: false });
+      this.props.router.navigate("/");
+    }, 2000);
 
     this.resetForm();
   }
 
 
   render() {
-    const { fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix } = this.state;
+    const { fname, contact, email, org, queOne, queTwo, queThree, queFour, queFive, queSix} = this.state;
 
-    const isSubmitDisabled = !fname || !email || !contact || !org || !queOne || !queTwo || !queThree || !queFour || !queFive || !queSix;
+    const { fnameError,emailError,contactError,orgError,queOneError,queTwoError,queThreeError,queFourError,queFiveError,queSixError} = this.state.errors;
+
+    const isSubmitDisabled = !fname || !email || !contact || !org || !queOne || !queTwo || !queThree || !queFour || !queFive || !queSix || fnameError || emailError || contactError || orgError || queOneError || queTwoError || queThreeError || queFourError || queFiveError || queSixError;
 
     return (
       <div>
@@ -231,69 +209,155 @@ export class FeedbackModule extends Component {
                   noValidate
                   autoComplete="off"
                 >
-                  <TextField id="fullname" type='text' label='Name' name='fname' variant="standard"
-                    required placeholder='Enter Name' multiline
-                    rows={1} onChange={this.handleChange} value={fname} error={this.state.errors.fnameError} helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid fullname")} />
+                  <TextField
+                    id="fullname"
+                    type='text'
+                    label='Name'
+                    name='fname'
+                    variant="standard"
+                    required
+                    placeholder='Enter Name'
+                    multiline
+                    rows={1}
+                    onChange={this.handleChange}
+                    value={fname}
+                    error={this.state.errors.fnameError}
+                    helperText={this.state.errors.fnameError && validation.errorText("Please enter a valid fullname")} />
 
-                  <TextField id="email" type='email' name='email' label="Email" variant="standard"
-                    required placeholder='Enter Email' multiline
-                    rows={1} onChange={this.handleChange} value={email} error={this.state.errors.emailError} helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email")}
+                  <TextField
+                    id="email"
+                    type='email'
+                    name='email'
+                    label="Email"
+                    variant="standard"
+                    required
+                    placeholder='Enter Email'
+                    multiline
+                    rows={1}
+                    onChange={this.handleChange}
+                    value={email}
+                    error={this.state.errors.emailError}
+                    helperText={this.state.errors.emailError && validation.errorText("Please enter a valid email")}
                   />
 
-                  <TextField id="contact" type='tel' name='contact' label="Contact" variant="standard"
-                    required placeholder='Enter Contact' multiline
-                    rows={1} onChange={this.handleChange} value={contact} error={this.state.errors.contactError} helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact")} />
+                  <TextField
+                    id="contact"
+                    type='tel'
+                    name='contact'
+                    label="Contact"
+                    variant="standard"
+                    required
+                    placeholder='Enter Contact'
+                    multiline
+                    rows={1}
+                    onChange={this.handleChange}
+                    value={contact}
+                    error={this.state.errors.contactError}
+                    helperText={this.state.errors.contactError && validation.errorText("Please enter a valid contact")} />
 
 
-                  <TextField id="organization" type='text' name='org' label="Organization" variant="standard"
-                    required placeholder='Enter Organization' multiline
-                    rows={1} onChange={this.handleChange} value={org} error={this.state.errors.orgError} helperText={this.state.errors.orgError && validation.errorText("Please enter a valid Organization")} />
+                  <TextField
+                    id="organization"
+                    type='text'
+                    name='org'
+                    label="Organization"
+                    variant="standard"
+                    required
+                    placeholder='Enter Organization'
+                    multiline
+                    rows={1}
+                    onChange={this.handleChange}
+                    value={org}
+                    error={this.state.errors.orgError}
+                    helperText={this.state.errors.orgError && validation.errorText("Please enter a valid Organization")} />
 
                   <TextField
                     name="queOne"
                     type='text'
                     label="1. What did you enjoy the most about the trainning?"
-                    variant="standard" required placeholder='Enter your comment here' multiline
-                    rows={3} onChange={this.handleChange} value={queOne} error={this.state.errors.queOneError} helperText={this.state.errors.queOneError && validation.errorText("Please enter a valid answser")}
+                    variant="standard"
+                    required
+                    placeholder='Enter your comment here'
+                    multiline
+                    rows={3}
+                    onChange={this.handleChange}
+                    value={queOne}
+                    error={this.state.errors.queOneError}
+                    helperText={this.state.errors.queOneError && validation.errorText("Please enter a valid answser")}
                   />
 
                   <TextField
                     name="queTwo"
                     type='text'
                     label="2. How would you rate the quality of instruction provided by the faculty?"
-                    variant="standard" required placeholder='Enter your comment here' multiline
-                    rows={3} onChange={this.handleChange} value={queTwo} error={this.state.errors.queTwoError} helperText={this.state.errors.queTwoError && validation.errorText("Please enter a valid answer")}
+                    variant="standard"
+                    required
+                    placeholder='Enter your comment here'
+                    multiline
+                    rows={3}
+                    onChange={this.handleChange}
+                    value={queTwo}
+                    error={this.state.errors.queTwoError}
+                    helperText={this.state.errors.queTwoError && validation.errorText("Please enter a valid answer")}
                   />
 
                   <TextField
                     name="queThree"
                     label="3. Was there any subject matter that you found confusing? If so, please provide specific examples."
-                    variant="standard" required placeholder='Enter your comment here' multiline
-                    rows={3} onChange={this.handleChange} value={queThree} error={this.state.errors.queThreeError} helperText={this.state.errors.queThreeError && validation.errorText("Please enter a valid answer")}
+                    variant="standard"
+                    required
+                    placeholder='Enter your comment here'
+                    multiline
+                    rows={3}
+                    onChange={this.handleChange}
+                    value={queThree}
+                    error={this.state.errors.queThreeError}
+                    helperText={this.state.errors.queThreeError && validation.errorText("Please enter a valid answer")}
                   />
 
                   <TextField
                     name="queFour"
                     type='text'
                     label="4. What is the most valuable thing you learned in course (knowledge or skills)?"
-                    variant="standard" required placeholder='Enter your comment here' multiline
-                    rows={3} onChange={this.handleChange} value={queFour} error={this.state.errors.queFourError} helperText={this.state.errors.queFourError && validation.errorText("Please enter a valid answer")}
+                    variant="standard"
+                    required
+                    placeholder='Enter your comment here'
+                    multiline
+                    rows={3}
+                    onChange={this.handleChange}
+                    value={queFour}
+                    error={this.state.errors.queFourError}
+                    helperText={this.state.errors.queFourError && validation.errorText("Please enter a valid answer")}
                   />
 
                   <TextField
                     name="queFive"
                     type='text'
                     label="5. Overall how is the faculty feedback? Any specific comments about faculty?"
-                    variant="standard" required placeholder='Enter your comment here' multiline
-                    rows={3} onChange={this.handleChange} value={queFive} error={this.state.errors.queFiveError} helperText={this.state.errors.queFiveError && validation.errorText("Please enter a valid answer")}
+                    variant="standard"
+                    required
+                    placeholder='Enter your comment here'
+                    multiline
+                    rows={3}
+                    onChange={this.handleChange}
+                    value={queFive}
+                    error={this.state.errors.queFiveError}
+                    helperText={this.state.errors.queFiveError && validation.errorText("Please enter a valid answer")}
                   />
 
                   <TextField
                     name="queSix"
                     type='text'
                     label="6. Any additional comments you wish to share?"
-                    variant="standard" required placeholder='Enter your comment here' multiline
-                    rows={3} onChange={this.handleChange} value={queSix} error={this.state.errors.queSixError} helperText={this.state.errors.queSixError && validation.errorText("Please enter a valid answer")}
+                    variant="standard"
+                    required
+                    placeholder='Enter your comment here'
+                    multiline
+                    rows={3}
+                    onChange={this.handleChange}
+                    value={queSix}
+                    error={this.state.errors.queSixError}
+                    helperText={this.state.errors.queSixError && validation.errorText("Please enter a valid answer")}
                   />
 
                   <Stack spacing={2} direction="row" style={{ margin: 'auto' }}>
@@ -314,7 +378,7 @@ export class FeedbackModule extends Component {
             onClose={() => this.setState({ snackbarOpen: false })}
             anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
           >
-           <MuiAlert
+            <MuiAlert
               elevation={6}
               variant="filled"
               onClose={() => this.setState({ snackbarOpen: false })}
@@ -331,11 +395,9 @@ export class FeedbackModule extends Component {
 
 const mapStateToProps = (state) => ({
   // allFeedback: state.feedbackStore.allFeedback,
-  isFeedbackSuccessRes: state.feedbackStore.isFeedbackSuccessRes
 })
 const mapDispatchToProps = (dispatch) => ({
-  // initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
-  addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data)),
-  resetIsFeedbackSuccessResponse: () => dispatch(Action.resetIsFeedbackSuccessResponse)
+  initFeedbackRequest: ()=> dispatch(Action.getAllFeedback()),
+  addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data))
 })
-export default connect(mapStateToProps, mapDispatchToProps)(FeedbackModule)
+export default connect(mapStateToProps, mapDispatchToProps)(WithRouter(FeedbackModule))

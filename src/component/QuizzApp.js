@@ -7,6 +7,7 @@ import StudentLogin from './student/StudentLogin';
 import NewStudentRegistration from '../component/student/NewStudentRegistration';
 import StartExam from './StartExam';
 import SubmitExam from './SubmitExam';
+import FeedbackModule from './feedback/FeedbackModule';
 
 
 
@@ -15,6 +16,7 @@ function QuizzApp() {
         <div>
             <BrowserRouter>
                 <Routes>
+                    <Route path="/quizapp/feedback" element={<FeedbackModule/>}/>
                     <Route path="/" element={<StudentLogin />} />
                     <Route path='/quizapp/register' element={<NewStudentRegistration />} />
                     <Route path='/quizapp/valid-voucher' element={<Vouchervalidation />} />

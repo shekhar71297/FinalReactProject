@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -23,6 +22,7 @@ export class Datatable extends Component {
       rowsPerPage: 5,
 
     };
+
     this.handleChangePage = this.handleChangePage.bind(this);
     this.handleChangeRowsPerPage = this.handleChangeRowsPerPage.bind(this);
   }
@@ -33,10 +33,9 @@ export class Datatable extends Component {
     }
   }
   componentDidMount() {
-
-    this.props.initVoucherRequest()
-    
+    this.props.initVoucherRequest()  
   }
+
 
   handleChange = (index, status, event) => {
     const { page, rowsPerPage } = this.state;
@@ -51,8 +50,6 @@ export class Datatable extends Component {
     });
 
   };
-
-
   // pagination function
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
@@ -63,12 +60,10 @@ export class Datatable extends Component {
   };
 
   render() {
-    const { page, rowsPerPage, vcodes } = this.state;
+    const { page, rowsPerPage  } = this.state;
 
     return (
       <div className='container' style={{ marginRight: '25px' }} >
-
-
         <hr />
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
@@ -78,14 +73,14 @@ export class Datatable extends Component {
                   Manage Voucher</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell>ID</TableCell>
-                <TableCell align="left">Voucher Code</TableCell>
-                <TableCell align="left">Action</TableCell>
+                <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
+                <TableCell align="left" sx={{ fontWeight: "bold" }}>Voucher Code</TableCell>
+                <TableCell align="left" sx={{ fontWeight: "bold" }} >Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {
-                this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
+             this.props.allvouchers && this.props.allvouchers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((data, index) => {
                   const currentIndex = page * rowsPerPage + index + 1;
                   return (
                     <TableRow key={data.id}>
@@ -99,10 +94,7 @@ export class Datatable extends Component {
                           onChange={(e) => this.handleChange(index, data.status)}
                           inputProps={{ 'aria-label': 'controlled' }}
                         />
-
-
                       </TableCell>
-
                     </TableRow>
                   )
                 })

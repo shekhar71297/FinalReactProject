@@ -58,8 +58,6 @@ export class Vouchervalidation extends Component {
             }
         })
     }
-
-
     render() {
         const { isSnackbarOpen, snackbarSeverity, snackbarMessage } = this.state;
         const { isValid } = this.state;
@@ -67,8 +65,7 @@ export class Vouchervalidation extends Component {
 
             <div>
                 {isValid ? (
-                    this.props.router.navigate('/quizapp/select-exam')
-
+                    <SelectExam />
                 ) : (
                     <>
                         <ThemeProvider theme={defaultTheme}>
@@ -99,23 +96,17 @@ export class Vouchervalidation extends Component {
                                             autoFocus
                                             onChange={this.inputChangeHandler}
                                         />
-
-
-
                                         <Button
                                             type="submit"
                                             fullWidth
                                             variant="contained"
                                             sx={{ mt: 3, mb: 2 }}
-
-                                            onClick={this.submitBtn}
-                                        >
+                                            onClick={this.submitBtn}  >
                                             submit
                                         </Button>
 
                                     </Box>
                                 </Box>
-
                             </Container>
                         </ThemeProvider>
                         {/* Snackbar */}
@@ -123,8 +114,7 @@ export class Vouchervalidation extends Component {
                             open={isSnackbarOpen}
                             autoHideDuration={3000} // You can adjust the duration as needed
                             onClose={() => this.setState({ isSnackbarOpen: false })}
-                            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-                        >
+                            anchorOrigin={{ vertical: 'top', horizontal: 'center' }} >
                             <Alert onClose={() => this.setState({ isSnackbarOpen: false })} severity={snackbarSeverity} sx={{ width: '100%' }}>
                                 {snackbarMessage}
                             </Alert>

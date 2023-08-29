@@ -77,7 +77,17 @@
       "password": "sujit123",
       "role": "admin",
       "gender": "male",
-      "contact": "9898989898",
+      "contact": "9999998585",
+      "id": 13
+    },
+    {
+      "email": "rutusawant1011@gmail.com",
+      "fname": "Rutuja",
+      "lname": "Sawant",
+      "password": "rutuja123",
+      "role": "counsellor",
+      "gender": "female",
+      "contact": "9975218190",
       "id": 14
     }
   ],
@@ -517,24 +527,24 @@
   ],
   "vcodes": [
     {
-      "status": true,
+      "status": false,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": true,
+      "status": false,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-      "status": true,
       "id": 4,
-      "Vcode": "SgLBmw"
+      "Vcode": "SgLBmw",
+      "status": true
     },
     {
       "status": true,
@@ -542,7 +552,7 @@
       "Vcode": "TZkSCK"
     },
     {
-      "status": false,
+      "status": true,
       "id": 6,
       "Vcode": "rEOHy9"
     },
@@ -1397,7 +1407,7 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 6,

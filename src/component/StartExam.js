@@ -12,6 +12,10 @@ import SubmitExam from './SubmitExam';
 import DialogBox from './common/DialogBox';
 import { BiSolidUserCircle } from 'react-icons/bi'
 import Chip from '@mui/material/Chip';
+import { connect } from 'react-redux';
+import * as action from '../pages/question/Action'
+import * as ResultAction from '../pages/result/Action'
+import WithRouter from '../util/WithRouter';
 
 
 
@@ -22,7 +26,7 @@ class StartExam extends Component {
       timer: 3600,
       questions: [],
       selectedOptions: [],// Store selected options as objects: { questionIndex: 0, optionValue: 'optionA' }
-      count: 0,
+      ObtainedMark: 0,
       studentName: '',
       endpage: false,
       openDialog: false,
@@ -59,18 +63,32 @@ class StartExam extends Component {
     });
   };
 
+componentDidUpdate(prevProps){
+  const examId = sessionStorage.getItem('examId');
+  const parsedExamId = JSON.parse(examId);
 
+  const selectedExam = parsedExamId;
+  if (prevProps.allquestions !== this.props.allquestions) {
+    const filterQuestion=this.props.allquestions && this.props.allquestions.filter((val)=>val.examId===selectedExam)
+      console.log(filterQuestion);
+      this.setState({questions:filterQuestion})
+  }
+}
   componentDidMount() {
+    
     // Fetch student name from sessionStorage
+    const examId = sessionStorage.getItem('examId');
+    const parsedExamId = JSON.parse(examId);
+    const selectedExam = parsedExamId;
+    console.log('Selected Exam:',selectedExam);
     const studentName = sessionStorage.getItem("studentName");
     if (studentName) {
       this.setState({ studentName });
     }
 
-    // Fetch data from the server
-    axios.get("http://localhost:8888/react").then((res) => {
-      this.setState({ questions: res.data });
-    });
+  
+      this.props.initquestionRequest()
+
 
     // Timer logic
     const intervalId = setInterval(() => {
@@ -84,11 +102,14 @@ class StartExam extends Component {
     // Add an event listener for the beforeunload event
     window.addEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
+    
   }
 
 
   componentWillUnmount() {
     // Remove the event listener when the component is unmounted
+    clearInterval(this.state.intervalId);
     window.removeEventListener("beforeunload", this.handleBeforeUnload);
     document.addEventListener("visibilitychange", this.handleVisibilityChange);
     clearInterval(this.interval);
@@ -105,9 +126,16 @@ class StartExam extends Component {
 
   // Event handler for the visibilitychange event
   handleVisibilityChange = () => {
-    // Check if the tab is hidden
-    if (document.visibilityState === "hidden" && !this.state.endpage) {
-      this.submitExam();
+    if (document.visibilityState === "hidden") {
+      clearInterval(this.state.intervalId); // Pause the timer
+    } else {
+      // Resume the timer
+      const intervalId = setInterval(() => {
+        this.setState(prevState => ({
+          timer: Math.max(0, prevState.timer - 1),
+        }));
+      }, 1000);
+      this.setState({ intervalId });
     }
   };
   formatTimer = timer => {
@@ -145,29 +173,31 @@ class StartExam extends Component {
     this.setState({ openDialog: false });
   };
   submitExam = () => {
-    axios.get("http://localhost:8888/react").then((res) => {
-      console.log(res.data);
-      const questionsData = res.data;
+
+    this.props.initquestionRequest()
+      const questionsData = this.props.allquestions;
       const selectedOptions = this.state.selectedOptions;
       sessionStorage.removeItem("isLogin");
       sessionStorage.removeItem("studentName")
       sessionStorage.removeItem("Voucher")
+      sessionStorage.removeItem("examId")
       const correctAnswers = selectedOptions.filter(option => {
         const question = questionsData[option.questionIndex];
         return option.optionValue === question.answer;
       });
-  
+     
+      const ObtainedMark = correctAnswers.length; // Count of correct answers
 
-      const count = correctAnswers.length; // Count of correct answers
-
-      this.setState({ count, open: true });
+      this.setState({ ObtainedMark, open: true });
       this.setState({ endpage: true })
-      console.log(count);
-      axios.post("http://localhost:8888/examresult", {
-        studentName: this.state.studentName,
-        count: count,
-      });
-    })
+      // console.log(ObtainedMark);
+      // const updateData= {
+      //   StudentName: this.state.studentName,
+      //   ObtainedMark: ObtainedMark,
+      //  }
+      // this.props.addResultRequest(updateData)
+     
+    
   }
 
 
@@ -177,9 +207,11 @@ class StartExam extends Component {
     const isLastQuestion = currentQuestionIndex === questions.length - 1;
     const isExamSubmitted = this.state.endpage;
     return (
+      
       <>
+      
         {endpage ? (
-          <SubmitExam />
+          this.props.router.navigate('/quizapp/exam-submitted')
         ) : (
           <div>
             <Box sx={{}}>
@@ -298,6 +330,8 @@ class StartExam extends Component {
                 this.submitExam();
               }}
               message={`Are you sure you want to submit the exam?`}
+              title={`Confirmation`}
+              submitLabel={`submit`}
             />
           </div>
         )}
@@ -305,5 +339,17 @@ class StartExam extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  allquestions: state.questionStore.allquestions,
+  allresult: state.resultStore.allresult,
 
-export default StartExam;
+
+});
+
+const mapDispatchToprops = (dispatch) => ({
+  initquestionRequest: () => dispatch(action.getAllQuestions()),
+  initResultRequest:()=>dispatch(ResultAction.getAllResult()),
+  addResultRequest:(data) =>dispatch(ResultAction.addResult(data))
+});
+
+export default connect(mapStateToProps,mapDispatchToprops) (WithRouter(StartExam));

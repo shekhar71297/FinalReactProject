@@ -51,9 +51,8 @@ export class FeedDash extends Component {
 
     componentDidMount() {
         this.props.initFeedbackRequest()
-        // console.log(this.props)
     }
-    componentDidUpdate(){
+    componentDidUpdate() {
         this.props.initFeedbackRequest()
     }
 
@@ -123,7 +122,6 @@ export class FeedDash extends Component {
                                                 value={searchQuery}
                                                 onChange={this.handleSearchChange}
                                                 placeholder="Search feedback"
-                                                // label="Search Result"
 
                                                 variant="standard"
                                                 sx={{
@@ -187,16 +185,16 @@ export class FeedDash extends Component {
                         aria-describedby="modal-modal-description"
                     >
                         <Box sx={style}>
-                        <TableRow>
-                                        <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
-                                            <Grid item>
-                                                Feedback Details
-                                            </Grid></TableCell>
-                                    </TableRow>
+                            <TableRow>
+                                <TableCell align="center" container colSpan={7} sx={{ backgroundColor: '#1976d2', fontSize: "20px", fontWeight: "bolder", color: "white", width: "500px" }} >
+                                    <Grid item>
+                                        Feedback Details
+                                    </Grid></TableCell>
+                            </TableRow>
 
                             {selectedFeedback && (
                                 <Table >
-                                    
+
                                     <TableRow>
                                         <TableCell>
                                             <strong>Student Name:</strong> </TableCell><TableCell>{selectedFeedback.fname}</TableCell>

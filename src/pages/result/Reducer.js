@@ -17,8 +17,15 @@ export default function resultreducer(state = initialstate, action) {
                 return { ...state, result: {}, error: action.payload };
 
             }
+        //Add Result
+        case constant.ADD_RESULT_SUCCESS: {
 
-        // delete ptoduct
+            let allresult = state.allresult;
+            allresult.push(action.payload);
+            return { ...state, result: {}, allresult: allresult };
+        }
+
+        // delete Result
         case constant.DELETE_RESULT_SUCCESS: {
             let allresult = state.allresult.filter((d) => d.id !== action.payload)
             return { ...state, allresult: allresult };

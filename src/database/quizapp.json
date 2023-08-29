@@ -539,6 +539,17 @@
       "ObtainedMark": 25,
       "Grade": "-",
       "Date": "26/06/2023"
+    },
+    {
+      "StudentName": "anmol chaware",
+      "ObtainedMark": 9,
+      "Grade": "-",
+      "id": 15,
+      "Date": "26/06/2023",
+      "Orgnization": "Hematite",
+      "Branch": "Chandannagar",
+      "ExamName": "React js",
+      "TotalMark": 50
     }
   ],
   "students": [
@@ -735,16 +746,28 @@
       "id": 37
     },
     {
-      "firstname": "Renuka",
-      "lastname": "Kahane",
-      "email": "renukakahane9@gmail.com",
-      "contact": "9898989898",
-      "dob": "2000-05-09",
-      "gender": "Female",
+      "firstname": "asasaaass",
+      "lastname": "saasaa",
+      "email": "anmol@gmail.com",
+      "contact": "9999999999",
+      "dob": "1111-12-12",
+      "gender": "Male",
       "organization": "hematite",
       "pnr": "",
       "branch": "",
       "id": 38
+    },
+    {
+      "firstname": "AaAAaAa",
+      "lastname": "aAa",
+      "email": "anmol@gmail.com",
+      "contact": "9999999999",
+      "dob": "1222-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 39
     }
   ],
   "examresult": [
@@ -1054,69 +1077,43 @@
       "id": 21
     },
     {
-      "fname": "DQWHRkjahdukhARJKHASUKDK",
-      "email": "sujit@123.cojm",
-      "contact": "9898989898",
-      "org": "asdrfhukwaehrnhlewifyalweern",
-      "queOne": "haeljfdskfldfshlfk",
-      "queTwo": "jhdslfhjlktnahsjldj",
-      "queThree": "ksuhfasjkrfhdlu",
-      "queFour": "kuffasyhdrkuwejhfdsku",
-      "queFive": "jkhdgfukjwesbdfku",
-      "queSix": "wurhykaewurhukwerhl",
+      "fname": "test test",
+      "email": "test@gmail.com",
+      "contact": "9999999999",
+      "org": "test",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test5",
       "id": 22
     },
     {
-      "fname": "dlajrkljsdlflksadjrkl",
-      "email": "jfilsejrlksejflkwe@gmail.com",
-      "contact": "7878888777",
-      "org": "jdwheoh",
-      "queOne": "idjujakdlja",
-      "queTwo": "dhakdhaksj",
-      "queThree": "ahdaskjdhjka",
-      "queFour": "hdjashdkasjh",
-      "queFive": "jkashdasjh",
-      "queSix": "sjdkfhjkdsh",
+      "fname": "test test",
+      "email": "test@gmail.com",
+      "contact": "8888888888",
+      "org": "test",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
       "id": 23
     },
     {
-      "fname": "ffffffff",
-      "email": "sujit123@gmail.com",
-      "contact": "9898989898",
-      "org": "hjeldfuaslkfuj",
-      "queOne": "aehrkdasjldkal",
-      "queTwo": "djashdjkashjkl",
-      "queThree": "ACJKDDHLSJ",
-      "queFour": "WJADHAUSKJEH",
-      "queFive": "KJASHDJKASDSAJ",
-      "queSix": "AJKSDHAJKSD",
+      "fname": "test test",
+      "email": "test@gmail.com",
+      "contact": "8989898989",
+      "org": "test",
+      "queOne": "test1",
+      "queTwo": "test2",
+      "queThree": "test3",
+      "queFour": "test4",
+      "queFive": "test5",
+      "queSix": "test6",
       "id": 24
-    },
-    {
-      "fname": "Sujit",
-      "email": "sujit123@gmail.com",
-      "contact": "9889898899",
-      "org": "Hematite",
-      "queOne": "okaydd",
-      "queTwo": "sfsdfsf",
-      "queThree": "ddfsdfsd",
-      "queFour": "gkhgkjkj",
-      "queFive": "kjkjjkjkjk",
-      "queSix": "kkhkjk",
-      "id": 25
-    },
-    {
-      "fname": "ghjf",
-      "email": "rjjkjkj@gmail.com",
-      "contact": "9999999999",
-      "org": "njjjjkljkj",
-      "queOne": "jkjkjj",
-      "queTwo": "jjkjkjkj",
-      "queThree": "jkjkjkj",
-      "queFour": "jkjkjkj",
-      "queFive": "jjkjkj",
-      "queSix": "jkjkljlj",
-      "id": 26
     }
   ],
   "exams": [
@@ -1124,31 +1121,37 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 2,
       "examName": "python",
       "examCode": "E-2",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 3,
       "examCode": "ab-45",
-      "examName": "php+html",
+      "examName": "php",
       "examStatus": false
     },
     {
       "id": 4,
       "examCode": "ab-46",
-      "examName": "php",
-      "examStatus": false
+      "examName": "php+html",
+      "examStatus": true
     },
     {
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": true
+      "examStatus": false
+    },
+    {
+      "id": 6,
+      "examCode": "SH-77",
+      "examName": "dot net",
+      "examStatus": false
     }
   ]
 }

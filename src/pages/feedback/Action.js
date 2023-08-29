@@ -41,3 +41,7 @@ export function addFeedbackSuccess(payload){
 export function addFeedbackError(payload){
     return{ type: constant.ADD_FEEDBACK_ERROR , payload }
 }
+
+export function resetIsFeedbackSuccessResponse(){
+    return { type: constant.RESET_FEEDBACK_SUCCESS_RES}
+}

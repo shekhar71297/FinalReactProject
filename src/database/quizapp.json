@@ -485,71 +485,6 @@
       "ObtainedMark": 30,
       "Grade": "C",
       "Date": "26/06/2023"
-    },
-    {
-      "id": 10,
-      "StudentName": "pawan jadhav",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 45,
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 11,
-      "StudentName": "ravindra patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 10,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 12,
-      "StudentName": "sandeep thorat",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 25,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 13,
-      "StudentName": "om patil",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 19,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "id": 14,
-      "StudentName": "nitin pawar",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50,
-      "ObtainedMark": 25,
-      "Grade": "-",
-      "Date": "26/06/2023"
-    },
-    {
-      "StudentName": "anmol chaware",
-      "ObtainedMark": 9,
-      "Grade": "-",
-      "id": 15,
-      "Date": "26/06/2023",
-      "Orgnization": "Hematite",
-      "Branch": "Chandannagar",
-      "ExamName": "React js",
-      "TotalMark": 50
     }
   ],
   "students": [
@@ -1155,7 +1090,7 @@
       "id": 6,
       "examCode": "SH-77",
       "examName": "dot net",
-      "examStatus": false
+      "examStatus": true
     }
   ]
 }

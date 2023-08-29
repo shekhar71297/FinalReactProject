@@ -17,6 +17,8 @@ import Alert from '@mui/material/Alert';
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import DialogBox from '../common/DialogBox';
+import MuiAlert from '@mui/material/Alert';
 
 export class StudentResult extends Component {
   constructor(props) {
@@ -127,20 +129,20 @@ export class StudentResult extends Component {
     }
     );
     return (
-      <div > 
+      <div >
 
         {/* table pop up */}
         <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup} fullWidth maxWidth="md" PaperProps={{
           sx: {
-            width: '30%', 
+            width: '30%',
           },
         }}>
           <DialogTitle sx={{ backgroundColor: '#1976d2', color: 'white', fontSize: '28px' }}>Result Details</DialogTitle>
           {selectedRecord && (
-            <DialogContent sx={{ fontSize: '23px' , marginTop:"7px" }} >
+            <DialogContent sx={{ fontSize: '23px', marginTop: "7px" }} >
               {/* Show the details of the selected record here */}
               <Typography  >
-                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' , }} >
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px', }} >
                   <span style={{ fontWeight: "bold" }}> Student Name:</span>
                   {selectedRecord.StudentName} <br />
                 </Typography>{" "}
@@ -212,7 +214,7 @@ export class StudentResult extends Component {
                     <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
                       <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
                         <Grid item>
-                        Manage Result 
+                          Manage Result
                         </Grid>
                         <Grid item>
 
@@ -289,31 +291,32 @@ export class StudentResult extends Component {
               </Table>
             </TableContainer>
             {/* Delete Popup Model */}
-            <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
-              <DialogTitle>Delete Record</DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  Are you sure you want to delete this record?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={this.closeDeletePopup} color="primary">
-                  Cancel
-                </Button>
-                <Button onClick={this.handleDeleteConfirmed} color="primary" autoFocus>
-                  Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
+          
+            <DialogBox
+              open={isDeletePopupOpen}
+              onClose={this.closeDeletePopup}
+              onConfirm={() => {
+                this.closeDeletePopup();
+                this.handleDeleteConfirmed();
+              }}
+              message={`Are you sure you want to delete this record?`}
+              title={`Delete Record`}
+              submitLabel={`Delete`}
+
+            />
             <Snackbar
               open={this.state.snackbarOpen}
               autoHideDuration={3000} // You can adjust the duration as needed
               onClose={() => this.setState({ snackbarOpen: false })}
               anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
             >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity="success" sx={{ width: '100%' }}>
-                {this.state.snackbarMessage}
-              </Alert>
+               <MuiAlert
+          onClose={() => this.setState({ snackbarOpen: false })}
+          severity="error" 
+          sx={{ width: '100%' }}
+        >
+          {this.state.snackbarMessage}
+        </MuiAlert>
             </Snackbar>
             {/* table pagination */}
 

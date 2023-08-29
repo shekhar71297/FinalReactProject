@@ -3,7 +3,7 @@ import * as constant from './constant.js'
 export const initialState = {
     allFeedback: [],
     feedBack: {},
-    error: null
+    error: null,
 }
 
 export default function feedbackReducer(state = initialState, action) {

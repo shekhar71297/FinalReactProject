@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
-import { Box,  Grid, Paper } from '@mui/material';
+import { Box, Grid, Paper } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Radio from '@mui/material/Radio';
@@ -21,10 +21,10 @@ import Modal from '@mui/material/Modal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
-import { DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
+import { Dialog,DialogTitle, DialogContent, DialogContentText, DialogActions, Typography } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import Dialog from '@mui/material/Dialog';
+import DialogBox from '../common/DialogBox';
 import * as validation from '../../util/validation'
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
@@ -33,6 +33,7 @@ import './studentdashboard.css'
 import * as TablePaginationActions from "../common/TablePaginationActions";
 import SearchIcon from '@mui/icons-material/Search';
 import InputAdornment from '@mui/material/InputAdornment';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 
 
@@ -66,8 +67,8 @@ class StudentDashboard extends Component {
       dob: '',
       gender: '',
       organization: '',
-      pnr:'',
-      branch:'',
+      pnr: '',
+      branch: '',
       open: false,
       page: 0,
       rowsPerPage: 5,
@@ -79,7 +80,7 @@ class StudentDashboard extends Component {
       selectedRecord: "",
       snackbarOpen: false,
       snackbarMessage: '',
-      severity:'',
+      severity: '',
       errors: {
         fnameError: false,
         lnameError: false,
@@ -95,9 +96,9 @@ class StudentDashboard extends Component {
 
   componentDidUpdate(prevProps) {
     if (prevProps.singelStudent !== this.props.singelStudent) {
-      const { id, firstname, lastname, email, contact, dob, gender, organization } = this.props.singelStudent;
+      const { id, firstname, lastname, email, contact, dob, gender, organization, branch, pnr } = this.props.singelStudent;
       this.setState({
-        id, firstname, lastname, email, contact, dob, gender, organization
+        id, firstname, lastname, email, contact, dob, gender, organization, branch, pnr
       })
     }
 
@@ -118,7 +119,7 @@ class StudentDashboard extends Component {
 
 
   handleOpen = (id = null) => {
-    
+
 
     if (id !== null) {
       this.getSingleRecord(id);
@@ -163,6 +164,8 @@ class StudentDashboard extends Component {
     this.setState({
       snackbarOpen: true,
       snackbarMessage: 'Student deleted successfully',
+      severity: 'error',
+      variant: "filled"
     });
 
 
@@ -171,19 +174,19 @@ class StudentDashboard extends Component {
 
   resetStudentFormHandler = () => {
 
-      this.setState({
-        firstname: (''),
-        lastname: (''),
-        email: (''),
-        contact: (''),
-        dob: (''),
-        gender: (''),
-        organization: (''),
-        pnr:(''),
-        branch:('')
-  
-      })
-  
+    this.setState({
+      firstname: (''),
+      lastname: (''),
+      email: (''),
+      contact: (''),
+      dob: (''),
+      gender: (''),
+      organization: (''),
+      pnr: (''),
+      branch: ('')
+
+    })
+
   }
 
   updateStudent = (event) => {
@@ -193,8 +196,8 @@ class StudentDashboard extends Component {
       this.state.errors.emailError ||
       this.state.errors.contactError ||
       this.state.errors.lnameError
-      
-      
+
+
     ) {
       // Display an error message or take any necessary action
       this.setState({
@@ -213,8 +216,8 @@ class StudentDashboard extends Component {
       dob: this.state.dob,
       gender: this.state.gender,
       organization: this.state.organization,
-      pnr:this.state.pnr,
-      branch:this.state.branch
+      pnr: this.state.pnr,
+      branch: this.state.branch
 
     }
     if (this.state.isAddStudent) {
@@ -222,10 +225,11 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student added successfully',
-        severity:'success'
+        severity: 'success',
+        variant: "filled"
       });
       this.props.initStudentRequest();
-     
+
     } else {
       sObj['id'] = this.state.id;
       this.props.addStudentRequest(sObj);
@@ -234,7 +238,8 @@ class StudentDashboard extends Component {
       this.setState({
         snackbarOpen: true,
         snackbarMessage: 'Student updated successfully',
-        severity:'success'
+        severity: 'success',
+        variant: "filled"
       });
 
     }
@@ -248,59 +253,51 @@ class StudentDashboard extends Component {
   handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'organization') {
-      this.setState({
-        [name]: value,
-        showCdacTextField: value === 'cdac',
-      });
-    } else if (name === 'cdac') {
-      this.setState({
-        [name]: value,
-        showCdacTextField: true,
-      });
-    } else {
-      this.setState({
-        [name]: value,
-      });
-    }
+    this.setState({
+      [name]: value
+    }, () => {
+      if (this.state.organization === "hematite") {
+        this.setState({
+          branch: "",
+          pnr: ""
+        })
+      } else if (this.state.organization === "cdac") {
+        this.setState({
+          branch: ""
+        })
+      } else if (this.state.organization === "lighthouse") {
+        this.setState({
+          pnr: ""
+        })
+      }
+    });
+    // }
 
     this.setState({ [name]: value }, () => {
       if (name === "firstname") {
         const isFnameError = !(validation.isValidName(this.state[name]));
-        if (isFnameError) {
-          this.setState({ errors: { ...this.state.errors, fnameError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, fnameError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, fnameError: isFnameError } })
+
       }
       if (name === "lastname") {
         const isLnameError = !(validation.isValidName(this.state[name]));
-        if (isLnameError) {
-          this.setState({ errors: { ...this.state.errors, lnameError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, lnameError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, lnameError: isLnameError } })
+
       }
 
       if (name === "email") {
         const isEmailError = !(validation.isValidEmail(this.state[name]));
-        if (isEmailError) {
-          this.setState({ errors: { ...this.state.errors, emailError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, emailError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, emailError: isEmailError } })
+
       }
-      if(name==="gender"){
-        this.setState({gender:value});
+      if (name === "gender") {
+        this.setState({ gender: value });
       }
 
       if (name === "contact") {
         const isvalidContact = !(validation.isValidContact(this.state[name]));
-        if (isvalidContact) {
-          this.setState({ errors: { ...this.state.errors, contactError: true } })
-        } else {
-          this.setState({ errors: { ...this.state.errors, contactError: false } })
-        }
+        this.setState({ errors: { ...this.state.errors, contactError: isvalidContact } })
+
       }
     });
   };
@@ -317,10 +314,22 @@ class StudentDashboard extends Component {
     this.setState({ searchQuery: event.target.value, page: 0 });
   }
 
+  openDetailsPopup = (record) => {
+    this.setState({ isDetailsPopupOpen: true, selectedRecord: record });
+  };
+  // Function to close the table
+  closeDetailsPopup = () => {
+    this.setState({ isDetailsPopupOpen: false, selectedRecord: "" });
+  };
+
+
+
+
+
   render() {
 
-    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen ,branch,pnr,email,contact,dob} = this.state;
-    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !organization  ;
+    const { id, students, firstname, lastname, open, gender, organization, isDeletePopupOpen, selectedRecord, isDetailsPopupOpen, branch, pnr, email, contact, dob } = this.state;
+    const isSubmitDisabled = !firstname || !lastname || !email || !contact || !dob || !gender || !branch && !pnr && !organization;
     const { searchQuery, page, rowsPerPage } = this.state;
     const filteredStudents = this.props.allstudent && this.props.allstudent.filter((data) => {
       const searchQuery = this.state.searchQuery.toLowerCase();
@@ -330,155 +339,231 @@ class StudentDashboard extends Component {
       const lastnameIncludes = data.lastname && data.lastname.toLowerCase().includes(searchQuery);
       const emailIncludes = data.email && data.email.toLowerCase().includes(searchQuery);
       const organizationIncludes = data.organization && data.organization.toLowerCase().includes(searchQuery);
+      const contactIncludes = data.contact && data.contact.toLowerCase().includes(searchQuery);
+      const dobIncludes = data.dob && data.dob.toLowerCase().includes(searchQuery);
 
-      return firstnameIncludes || lastnameIncludes || emailIncludes || organizationIncludes;
+
+      return firstnameIncludes || lastnameIncludes || emailIncludes || organizationIncludes || contactIncludes || dobIncludes;
     }) || [];
 
 
     return (
       <div className='container' style={{ marginRight: '25px', marginLeft: "-25px" }}>
-        
 
+        <Dialog open={isDetailsPopupOpen} onClose={this.closeDetailsPopup} fullWidth maxWidth="md" PaperProps={{
+          sx: {
+            width: '30%',
+          },
+        }}>
+          <DialogTitle sx={{ backgroundColor: '#1976d2', color: 'white', fontSize: '28px' }}>Student Details</DialogTitle>
+          {selectedRecord && (
+            <DialogContent sx={{ fontSize: '23px', marginTop: "7px" }} >
+              {/* Show the details of the selected record here */}
+              <Typography  >
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px', }} >
+                  <span style={{ fontWeight: "bold" }}> Student Name:</span>
+                  {selectedRecord.firstname} {selectedRecord.lastname} <br />
+                </Typography>{" "}
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}> Email :</span>
+                  {selectedRecord.email} <br />
+                </Typography>{" "}
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}> Contact:</span>
+                  {selectedRecord.contact} <br />
+                </Typography>{" "}
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>  DOB:</span>
+                  {selectedRecord.dob} <br />
+                </Typography>{" "}
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>   Gender:</span>
+                  {selectedRecord.gender} <br />
+                </Typography>{" "}
+
+                <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+
+                  <span style={{ fontWeight: "bold" }}>  Organizantion:</span>
+                  {selectedRecord.organization} <br />
+                </Typography>{" "}
+
+
+              </Typography>
+
+              <Typography>
+
+
+                {selectedRecord.organization === 'cdac' ? (
+                  // Display Pnr if the organization is cdac
+                  <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+                    <span style={{ fontWeight: "bold" }}>Pnr:</span>
+                    {selectedRecord.pnr} <br />
+                  </Typography>
+                ) : selectedRecord.organization === 'lighthouse' ? (
+                  // Display Branch if the organization is lighthouse
+                  <Typography component="span" variant="subtitle1" sx={{ fontSize: '23px' }}>
+                    <span style={{ fontWeight: "bold" }}>Branch:</span>
+                    {selectedRecord.branch} <br />
+                  </Typography>
+                ) : null}
+
+
+              </Typography>
+            </DialogContent>
+          )}
+          <DialogActions>
+            <Button onClick={this.closeDetailsPopup} color="primary" sx={{ fontSize: "23px" }}>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
 
         <Box sx={{ height: 100 }}>
           {/* <Paper className='paper'> */}
-            <TableContainer component={Paper} sx={{ marginTop: 5 }} >
+          <TableContainer component={Paper} sx={{ marginTop: 5 }} >
 
-              <Table aria-label="simple table">
-                <TableHead>
+            <Table aria-label="simple table">
+              <TableHead>
 
-                  <TableRow >
+                <TableRow >
 
                   <TableCell align="center" colSpan={10} sx={{ backgroundColor: '#1976d2', fontSize: "25px", fontWeight: "bolder", color: "white" }}>
-                      <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
-                        <Grid item>
-                          Manage  Student
-                        </Grid>
-                        <Grid item>
-
-                          <TextField
-                            className='searchinput'
-                            type="text"
-                            value={searchQuery}
-                            onChange={this.handleSearchChange}
-                            placeholder="Search Student"
-                            // label="Search Result"
-
-                            variant="standard"
-                            sx={{
-                              backgroundColor: 'white',
-                              padding: "2px 3px",
-                              borderRadius: "4px",
-                              width: "auto",
-
-                            }}
-                            InputProps={{
-                              startAdornment: (
-                                <InputAdornment position="end">
-                                  <SearchIcon />
-                                </InputAdornment>
-                              ),
-                            }}
-
-                          />
-                        </Grid>
+                    <Grid className='resultheader' container alignItems="center" justifyContent="space-between" style={{ position: 'relative', overflow: "auto", top: 0, zIndex: 1, }}>
+                      <Grid item>
+                        Manage  Student
                       </Grid>
+                      <Grid item>
+
+                        <TextField
+                          className='searchinput'
+                          type="text"
+                          value={searchQuery}
+                          onChange={this.handleSearchChange}
+                          placeholder="Search Student"
+                          // label="Search Result"
+
+                          variant="standard"
+                          sx={{
+                            backgroundColor: 'white',
+                            padding: "2px 3px",
+                            borderRadius: "4px",
+                            width: "auto",
+
+                          }}
+                          InputProps={{
+                            startAdornment: (
+                              <InputAdornment position="end">
+                                <SearchIcon />
+                              </InputAdornment>
+                            ),
+                          }}
+
+                        />
+                      </Grid>
+                    </Grid>
+                  </TableCell>
+                </TableRow>
+
+                <Button variant="contained" color="primary" sx={{ marginTop: 2, marginLeft: 2 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
+                <TableRow>
+                  <TableCell align='center'><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
+                  <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Student's Name</Typography></TableCell>
+                  {/* <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Last Name</Typography></TableCell> */}
+                  <TableCell align="center" ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Email</Typography></TableCell>
+                  <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Contact</Typography></TableCell>
+                  {/* <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Dob</Typography></TableCell> */}
+                  {/* <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Gender</Typography></TableCell> */}
+                  <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Organization</Typography></TableCell>
+                  <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+
+                {filteredStudents.length === 0 ? (
+                  <TableRow>
+                    <TableCell colSpan={8} align='center'>
+                      <strong style={{ fontSize: "34px" }}>No data found</strong>
+
                     </TableCell>
                   </TableRow>
-                
-                  <Button variant="contained" color="primary" sx={{ marginTop: 2,marginLeft:2 }} size="small" type="button" onClick={() => (this.handleOpen())}><AddIcon />Student</Button>
-                  <TableRow>
-                    <TableCell align='center'><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>SrNo</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>First Name</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Last Name</Typography></TableCell>
-                    <TableCell align="center" ><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Email</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Contact</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Dob</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Gender</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Organization</Typography></TableCell>
-                    <TableCell align="center"><Typography component="span" variant="subtitle1" sx={{ fontWeight: 'bold' }}>Action</Typography></TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
+                ) : (
 
-                  {filteredStudents.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={8} align='center'>
-                        <strong style={{ fontSize: "34px" }}>No data found</strong>
 
+
+                  filteredStudents && filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
+                    const currentIndex = page * rowsPerPage + index + 1;
+                    return <TableRow key={val.id}>
+                      <TableCell align='center' component="th" scope="row">{currentIndex}</TableCell>
+                      <TableCell align='center' >{val.firstname} {val.lastname}</TableCell >
+                      {/* <TableCell align='center'>{val.lastname}</TableCell > */}
+                      <TableCell align='center'>{val.email}</TableCell>
+                      <TableCell align='center'>{val.contact}</TableCell>
+                      {/* <TableCell align='center' >{val.dob}</TableCell> */}
+                      {/* <TableCell align='center' >{val.gender}</TableCell> */}
+                      <TableCell align='center' >{val.organization}</TableCell>
+
+                      <TableCell align="center" style={{ fontSize: '5px' }}>
+                        <Button onClick={() => this.openDetailsPopup(val)} align="cnter"><VisibilityIcon /></Button>
+                        <Button onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>
+                        <Button onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
                       </TableCell>
                     </TableRow>
-                  ) : (
 
+                  }) || [])}
 
+              </TableBody>
+            </Table>
+          </TableContainer>
+          <DialogBox
+                            open={isDeletePopupOpen}
+                            onClose={this.closeDeletePopup}
+                            onConfirm={() => {
+                                this.closeDeletePopup();
+                                this.handleDeleteConfirmed();
+                            }}
+                            message={`Are you sure you want to delete this record?`}
+                            title={`Delete Record`}
+                            submitLabel={`Delete`}
 
-                    filteredStudents && filteredStudents.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((val, index) => {
-                      const currentIndex = page * rowsPerPage + index + 1;
-                      return <TableRow key={val.id}>
-                        <TableCell align='center' component="th" scope="row">{currentIndex}</TableCell>
-                        <TableCell align='center' >{val.firstname}</TableCell >
-                        <TableCell align='center'>{val.lastname}</TableCell >
-                        <TableCell align='center'>{val.email}</TableCell>
-                        <TableCell align='center'>{val.contact}</TableCell>
-                        <TableCell align='center' >{val.dob}</TableCell>
-                        <TableCell align='center' >{val.gender}</TableCell>
-                        <TableCell align='center' >{val.organization}</TableCell>
+                        />
 
-                        <TableCell  align="center" style={{fontSize:'5px'}}>
-                          <Button onClick={() => this.handleOpen(val.id)} color="primary" ><EditIcon /></Button>
-                          <Button onClick={() => this.deletedata(val.id)} color="primary"  ><DeleteIcon /></Button>
-                        </TableCell>
-                      </TableRow>
+         
+          <Snackbar
+            open={this.state.snackbarOpen}
+            autoHideDuration={3000} // You can adjust the duration as needed
+            onClose={() => this.setState({ snackbarOpen: false })}
+            anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
 
-                    }) || [])}
+          >
+            <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} variant="filled" sx={{ width: '100%' }}>
+              {this.state.snackbarMessage}
 
-                </TableBody>
-              </Table>
-            </TableContainer>
-            {/* Delete Popup Model */}
-            <Dialog open={isDeletePopupOpen} onClose={this.closeDeletePopup}>
-              <DialogTitle>Delete Record</DialogTitle>
-              <DialogContent>
-                <DialogContentText>
-                  Are you sure you want to delete this record?
-                </DialogContentText>
-              </DialogContent>
-              <DialogActions>
-                <Button onClick={this.closeDeletePopup} color="primary">
-                  Cancel
-                </Button>
-                <Button onClick={this.handleDeleteConfirmed} color="primary" autoFocus>
-                  Delete
-                </Button>
-              </DialogActions>
-            </Dialog>
-
-            <Snackbar
-              open={this.state.snackbarOpen}
-              autoHideDuration={3000} // You can adjust the duration as needed
-              onClose={() => this.setState({ snackbarOpen: false })}
-              anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-            >
-              <Alert onClose={() => this.setState({ snackbarOpen: false })} severity={this.state.severity} sx={{ width: '100%' }}>
-                {this.state.snackbarMessage}
-              </Alert>
-            </Snackbar>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25]}
-              colSpan={7} // Adjust the colSpan value according to your table structure
-              count={filteredStudents.length}
-              rowsPerPage={rowsPerPage}
-              page={page}
-              SelectProps={{
-                inputProps: {
-                  'aria-label': 'rows per page',
-                },
-                native: true,
-              }}
-              onPageChange={this.handleChangePage}
-              onRowsPerPageChange={this.handleChangeRowsPerPage}
-              ActionsComponent={TablePaginationActions.default} // Imported component
-            />
+            </Alert>
+          </Snackbar>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            colSpan={7} // Adjust the colSpan value according to your table structure
+            count={filteredStudents.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            SelectProps={{
+              inputProps: {
+                'aria-label': 'rows per page',
+              },
+              native: true,
+            }}
+            onPageChange={this.handleChangePage}
+            onRowsPerPageChange={this.handleChangeRowsPerPage}
+            ActionsComponent={TablePaginationActions.default} // Imported component
+          />
           {/* </Paper> */}
         </Box>
 
@@ -577,7 +662,7 @@ class StudentDashboard extends Component {
               </FormControl>
 
 
-              
+
               <FormControl fullWidth>
                 <p style={{ marginLeft: "-450px" }}>Select Organization</p>
                 <InputLabel id="demo-simple-select-label"></InputLabel>
@@ -609,13 +694,13 @@ class StudentDashboard extends Component {
                 }
 
 
-                {this.state.organization === 'cdac' && this.state.showCdacTextField && (
+                {this.state.organization === 'cdac' && (
                   <TextField
                     id="standard-basic"
                     variant="standard"
-                    name="pnr" 
+                    name="pnr"
                     placeholder="pnr"
-                    value={pnr} 
+                    value={pnr}
                     onChange={this.handleChange}
                   />
                 )}
@@ -624,7 +709,7 @@ class StudentDashboard extends Component {
 
 
               <Button style={{ marginTop: "20px", marginRight: "15px" }} variant="contained" color="primary" type="submit" disabled={isSubmitDisabled}>Submit</Button>
-              <Button style={{ marginTop: "20px", marginRight: "-352px" }} onClick={this.resetStudentFormHandler}  variant="contained" color="secondary" type="button">Clear</Button>
+              <Button style={{ marginTop: "20px", marginRight: "-352px" }} onClick={this.resetStudentFormHandler} variant="contained" color="secondary" type="button">Clear</Button>
             </form>
           </Box>
         </Modal>
@@ -635,18 +720,5 @@ class StudentDashboard extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  allstudent: state.studentStore.allstudent,
-  singelStudent: state.studentStore.student
-})
 
-const mapDispatchToprops = (dispatch) => ({
-  initStudentRequest: () => dispatch(Action.getAllStudent()),
-  deleteStudentRequest: (id) => dispatch(Action.deleteAllStudent(id)),
-  updateStudentRequest: (id) => dispatch(Action.updateAllStudent(id)),
-  getSingleStudentRequest: (id) => dispatch(Action.getsingleStudent(id)),
-  addStudentRequest: (data) => dispatch(Action.addAllStudent(data))
-})
-
-
-export default connect(mapStateToProps, mapDispatchToprops)(StudentDashboard);  
+export default StudentDashboard;  

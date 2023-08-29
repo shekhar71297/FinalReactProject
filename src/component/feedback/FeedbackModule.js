@@ -397,7 +397,7 @@ const mapStateToProps = (state) => ({
   // allFeedback: state.feedbackStore.allFeedback,
 })
 const mapDispatchToProps = (dispatch) => ({
-  initFeedbackRequest: () => dispatch(Action.getAllFeedback()),
+  initFeedbackRequest: ()=> dispatch(Action.getAllFeedback()),
   addFeedbackRequest: (data) => dispatch(Action.addFeedBack(data))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(WithRouter(FeedbackModule))

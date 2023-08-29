@@ -27,9 +27,6 @@ export function getFeedbackError(payload){
 //add feedback
 export function addFeedBack(data){
     return (dispatch) =>{
-        // axios.post("http://localhost:8888/feedback",data)
-        // .then(response => dispatch(addFeedbackSuccess(data)))
-        // .catch(error => dispatch(addFeedbackError(error.response.data)))
         const url=`${Constants.baseURL}/feedback` 
         Post(url,data).then(response => dispatch(addFeedbackSuccess(data)))
         .catch(error => dispatch(addFeedbackError(error.response.data)) )

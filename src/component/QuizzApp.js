@@ -4,6 +4,7 @@ import Vouchervalidation from './voucher/Vouchervalidation';
 import SelectExam from './SelectExam';
 import Instructions from './Instructions';
 import StudentLogin from './student/StudentLogin';
+import NewStudentRegistration from '../component/student/NewStudentRegistration';
 import StartExam from './StartExam';
 import SubmitExam from './SubmitExam';
 import FeedbackModule from './feedback/FeedbackModule';
@@ -15,8 +16,9 @@ function QuizzApp() {
         <div>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<StudentLogin />} />
                     <Route path="/quizapp/feedback" element={<FeedbackModule/>}/>
+                    <Route path="/" element={<StudentLogin />} />
+                    <Route path='/quizapp/register' element={<NewStudentRegistration />} />
                     <Route path='/quizapp/valid-voucher' element={<Vouchervalidation />} />
                     <Route path='/quizapp/select-exam' element={<SelectExam />} />
                     <Route path='/quizapp/instruction/:examId' element={<Instructions />} />

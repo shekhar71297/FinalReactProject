@@ -6,7 +6,6 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import TablePagination from '@mui/material/TablePagination';
 import { DeleteOutlineSharp, EditNoteSharp } from '@mui/icons-material';
-import Grid from '@mui/material/Grid';
 import { dark } from '@mui/material/styles/createPalette';
 import Alert from '@mui/material/Alert';
 import Dialog from '@mui/material/Dialog';
@@ -385,12 +384,10 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
                             <div>
                             Answer :  {item.answer}
 
-                            {/* <Grid marginLeft={100} item xs={4}> */}
                               <Button className='pull-right' onClick={() => handleDelete(item.id)}>
                                 <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>
                               <Button className='pull-right' onClick={() => handleEdit(item.id)}>
                                 <EditNoteSharp sx={{ color: dark[500] }} /></Button>
-                            {/* </Grid> */}
                             </div>
 
 

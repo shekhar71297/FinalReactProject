@@ -23,12 +23,10 @@ class Question extends Component {
 const mapStateToProps = (state) => ({
   allExam: state.ExamStore.allExam,
   allquestions: state.questionStore.allquestions,
-  singlequestion: state.questionStore.questions
 })
 const mapDispatchToProps = (dispatch) => ({
   initexamRequest: () => dispatch(exam.getAllExam()),
   addQuestionRequest:(data)=>dispatch(actions.addQuestions(data)),
-  getSinglequestionrequest:(id) => dispatch(actions.getSingleQuestion(id)),
   updatequestionrequest:(data) => dispatch(actions.updateQuestion(data)),
   deletequestionrequest:(id) => dispatch(actions.deleteAllQuestions(id)),
   initquestionrequest:(selectedExam) => dispatch(actions.getAllQuestions(selectedExam)),

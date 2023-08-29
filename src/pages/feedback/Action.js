@@ -1,7 +1,7 @@
 import axios from 'axios'
 import * as Constants from '../../util/Constant'
 import * as constant from './constant.js'
-import {Get,Post} from '../../util/HttpService.js'
+import {Get,Post,Put,Delete} from '../../util/HttpService.js'
   
 export function getAllFeedback() {
     return (dispatch) => {
@@ -40,4 +40,43 @@ export function addFeedbackSuccess(payload){
 
 export function addFeedbackError(payload){
     return{ type: constant.ADD_FEEDBACK_ERROR , payload }
+}
+
+// UPDATE feedback
+export function updateFeedback(data) {
+
+    return (dispatch) => {
+        const url = `${Constants.baseURL}/feedback/${data.id}`
+         Put(url, data).then(response => dispatch(updatefeedbacksuccess(data)))
+            .catch(error => dispatch(updatefeedbackerror(error.response.data)))
+    }
+}
+
+export function updatefeedbacksuccess(payload) {
+    return { type: constant.UPDATE_FEEDBACK_SUCCESS, payload }//action object
+}
+
+export function updatefeedbackerror(payload) {
+    return { type: constant.UPDATE_FEEDBACK_ERROR, payload }
+}
+
+// DELETE feedback
+export function deleteFeedback(id) {
+    return (dispatch) => {
+        const url = `${Constants.baseURL}/feedback/${id}`
+         Delete(url).then(response => dispatch(deletefeedbacksuccess(id)))
+            .catch(error => dispatch(deletefeedbackError(error.response.data)))
+    }
+}
+
+export function deletefeedbacksuccess(payload) {
+    return { type: constant.DELETE_FEEDBACK_SUCCESS, payload }//action object
+}
+
+export function deletefeedbackError(payload) {
+    return { type: constant.DELETE_FEEDBACK_ERROR, payload }
+}
+
+export function getSinglefeedback(id) {
+    return { type: constant.GET_SINGLE_FEEDBACK, payload: id }//action object
 }

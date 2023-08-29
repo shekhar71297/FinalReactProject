@@ -99,6 +99,16 @@
       "gender": "male",
       "contact": "9999998585",
       "id": 13
+    },
+    {
+      "email": "rutusawant1011@gmail.com",
+      "fname": "Rutuja",
+      "lname": "Sawant",
+      "password": "rutuja123",
+      "role": "counsellor",
+      "gender": "female",
+      "contact": "9975218190",
+      "id": 14
     }
   ],
   "questions": [
@@ -231,7 +241,7 @@
         "64",
         "None of these above"
       ],
-      "answer": "None of these above",
+      "answer": "d",
       "examId": 2
     },
     {
@@ -345,25 +355,24 @@
   ],
   "vcodes": [
     {
-      "status": true,
+      "status": false,
       "id": 1,
       "Vcode": "7aqvnU"
     },
     {
-      "status": true,
+      "status": false,
       "id": 2,
       "Vcode": "SZa8Qm"
     },
     {
-      "status": true,
+      "status": false,
       "id": 3,
       "Vcode": "yUapUy"
     },
     {
-    
       "id": 4,
       "Vcode": "SgLBmw",
-      "status": true
+      "status": false
     },
     {
       "status": true,
@@ -371,7 +380,7 @@
       "Vcode": "TZkSCK"
     },
     {
-      "status": false,
+      "status": true,
       "id": 6,
       "Vcode": "rEOHy9"
     },
@@ -396,7 +405,7 @@
       "Vcode": "aaaaa"
     },
     {
-      "status": true,
+      "status": false,
       "id": 11,
       "Vcode": "wU4NOp"
     },
@@ -734,6 +743,18 @@
       "pnr": "",
       "branch": "",
       "id": 37
+    },
+    {
+      "firstname": "Rutuja",
+      "lastname": "sawant",
+      "email": "rutujasawant1011@gmail.com",
+      "contact": "9975218190",
+      "dob": "1998-10-11",
+      "gender": "Female",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 38
     }
   ],
   "examresult": [
@@ -1071,25 +1092,25 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 2,
       "examName": "python",
       "examCode": "E-2",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 3,
       "examCode": "ab-45",
       "examName": "php+html",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 4,
       "examCode": "ab-46",
       "examName": "php",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 5,

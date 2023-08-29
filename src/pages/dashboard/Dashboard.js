@@ -400,9 +400,10 @@ const Dashboard = () => {
           setShowAlert(false);
           sessionStorage.removeItem(isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor");
           sessionStorage.removeItem("user");
-          navigate("/");
+          navigate("/admin");
         }}
         message={alertMessage}
+        submitLabel={`Logout`}
       />
       </>
     );

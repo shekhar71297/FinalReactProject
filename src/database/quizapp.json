@@ -1211,7 +1211,7 @@
       "id": 6,
       "examCode": "SH-77",
       "examName": "dot net",
-      "examStatus": false
+      "examStatus": true
     }
   ]
 }

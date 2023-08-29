@@ -1,11 +1,11 @@
 import axios from 'axios'
-import * as constants from '../../util/Constant'
+import * as Constants from '../../util/Constant'
 import * as constant from './constant.js'
-import {Get} from '../../util/HttpService.js'
-
+import {Get,Post} from '../../util/HttpService.js'
+  
 export function getAllFeedback() {
     return (dispatch) => {
-        const url = `${constants.baseURL}/feedback`;
+        const url = `${Constants.baseURL}/feedback`;
 
         Get(url)
             .then(response => {
@@ -21,16 +21,19 @@ export function getFeedbackSuccess(payload){
 }
 
 export function getFeedbackError(payload){
-    return { type: constant.GET_FEEDBACK_ERROR , payload}
+    return { type: constant.GET_FEEDBACK_ERROR , payload}//catch error
 }
-
 
 //add feedback
 export function addFeedBack(data){
     return (dispatch) =>{
-        axios.post("http://localhost:8888/feedback",data)
-        .then(response => dispatch(addFeedbackSuccess(data)))
-        .catch(error => dispatch(addFeedbackError(error.response.data)))
+        // axios.post("http://localhost:8888/feedback",data)
+        // .then(response => dispatch(addFeedbackSuccess(data)))
+        // .catch(error => dispatch(addFeedbackError(error.response.data)))
+        const url=`${Constants.baseURL}/feedback` 
+        Post(url,data).then(response => dispatch(addFeedbackSuccess(data)))
+        .catch(error => dispatch(addFeedbackError(error.response.data)) )
+    
     }
 }
 

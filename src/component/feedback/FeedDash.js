@@ -53,6 +53,9 @@ export class FeedDash extends Component {
         this.props.initFeedbackRequest()
         // console.log(this.props)
     }
+    componentDidUpdate(){
+        this.props.initFeedbackRequest()
+    }
 
     //to get data from server
     fetchData = () => {
@@ -91,9 +94,9 @@ export class FeedDash extends Component {
 
         const filteredFeedback = this.props.allFeedback && this.props.allFeedback.filter((val) => {
             const searchQuery = this.state.searchQuery;
-            const fNameIncludes = val.fname.toLowerCase().includes(searchQuery);
-            const orgIncludes = val.org.toLowerCase().includes(searchQuery);
-            const contactIncludes = val.contact.toLowerCase().includes(searchQuery);
+            const fNameIncludes = val.fname && val.fname.toLowerCase().includes(searchQuery);
+            const orgIncludes = val.org && val.org.toLowerCase().includes(searchQuery);
+            const contactIncludes = val.contact && val.contact.toLowerCase().includes(searchQuery);
 
             return fNameIncludes || orgIncludes || contactIncludes
         }) || [];

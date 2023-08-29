@@ -12,3 +12,4 @@ export const errorText = (message) => {
       <ErrorOutlineIcon /> <span style={{'paddingLeft':'5px'}}>{message}</span>
     </span>)
   }
+  

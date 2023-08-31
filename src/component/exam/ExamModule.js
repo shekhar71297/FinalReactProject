@@ -147,25 +147,31 @@ export class ExamModule extends Component {
     // for add-update onchange method
     updateExam = (event) => {
         event.preventDefault();
-
-        if (this.state.errors.examCode) {
+    
+        if (this.state.errors.examCode || this.state.errors.examnameError) {
             this.setState({
                 snackbarOpen: true,
-                snackbarMessage: "please fix validiation error before submiting", severity: "error"
-            })
+                snackbarMessage: "Please fix validation errors before submitting.",
+                severity: "error"
+            });
             return;
         }
-
+    
         const { id, examCode, examName, examStatus } = this.state.selectedExam;
-
+    
         const updatedExam = {
             id,
             examCode,
             examName,
             examStatus,
         };
+    
         const isAddDuplicate = this.state.exams.some(exam => exam.examName === examName || exam.examCode === examCode);
 
+
+       
+        const isUpdateDuplicate = this.state.exams.some(exam => exam.examName === examName && exam.id !== id);
+    
         if (this.state.isAddExam) {
             if (isAddDuplicate) {
                 this.setState({
@@ -173,32 +179,37 @@ export class ExamModule extends Component {
                     snackbarMessage: 'An exam with the same code already exists.',
                     severity: "error"
                 });
-            }
-            else {
+            } else {
                 this.props.addexamRequest(updatedExam);
-
+    
                 this.setState({
                     snackbarOpen: true,
-                    snackbarMessage: ' exam added successfully',
+                    snackbarMessage: 'Exam added successfully.',
                     severity: "success"
                 });
-                this.props.initexamRequest()
+                this.props.initexamRequest();
             }
-
         } else {
-
-
-            this.props.initexamRequest()
-            this.props.updateexamRequest(updatedExam);
-            this.setState({
-                snackbarOpen: true,
-                snackbarMessage: 'exam update successfully',
-                severity: "success"
-            });
+            if (isUpdateDuplicate) {
+                this.setState({
+                    snackbarOpen: true,
+                    snackbarMessage: 'An exam with the same name already exists.',
+                    severity: "error"
+                });
+            } else {
+                this.props.initexamRequest();
+                this.props.updateexamRequest(updatedExam);
+                this.setState({
+                    snackbarOpen: true,
+                    snackbarMessage: 'Exam updated successfully.',
+                    severity: "success"
+                });
+            }
         }
         this.handleClose();
-        this.props.initexamRequest()
+        this.props.initexamRequest();
     };
+    
     // validation for exam code 
     handleClose = () => {
         this.props.initexamRequest()
@@ -273,8 +284,8 @@ export class ExamModule extends Component {
         const { isDeletePopupOpen, open, rowsPerPage, page, searchQuery, examCode, examName } = this.state
         const filteredexam = this.props.allExam && this.props.allExam.filter((val) => {
             const searchQuery = this.state.searchQuery;
-            const codeIncludes = val.examCode.toLowerCase().includes(searchQuery);
-            const nameludes = val.examName.toLowerCase().includes(searchQuery);
+            const codeIncludes =val.examCode && val.examCode.toLowerCase().includes(searchQuery);
+            const nameludes =val.examName && val.examName.toLowerCase().includes(searchQuery);
             return codeIncludes || nameludes
         }) || [];
 

@@ -223,114 +223,6 @@
       "examId": 1
     },
     {
-      "id": 11,
-      "question": "What is the maximum possible length of an identifier?",
-      "options": [
-        "16",
-        " 32",
-        "64",
-        "None of these above"
-      ],
-      "answer": "Non of these above",
-      "examId": 2
-    },
-    {
-      "id": 12,
-      "question": " Who developed the Python language?",
-      "options": [
-        "Zim Den",
-        "Guido van Rossum",
-        "Niene Stom",
-        "Wick van Rossum"
-      ],
-      "answer": "Guido van Rossum",
-      "examId": 2
-    },
-    {
-      "id": 13,
-      "question": "A class is a type of function, but instead of using the keyword function to initiate it, which keyword do we use?",
-      "options": [
-        "Constructor",
-        "Class",
-        "Both A and B.",
-        "Object"
-      ],
-      "answer": "Class",
-      "examId": 2
-    },
-    {
-      "id": 14,
-      "question": "Which one of the following is not a keyword in Python language?",
-      "options": [
-        "Pass",
-        "Eval",
-        "Asert",
-        "Nonlocal"
-      ],
-      "answer": " Eval",
-      "examId": 2
-    },
-    {
-      "id": 15,
-      "question": " Which of the following character is used to give single-line comments in Python?",
-      "options": [
-        "//",
-        "#",
-        "!",
-        "/*"
-      ],
-      "answer": "#",
-      "examId": 2
-    },
-    {
-      "id": 16,
-      "question": "Which keyword is used for function in Python language?",
-      "options": [
-        "Function",
-        "def",
-        "Fun ",
-        "define"
-      ],
-      "answer": "def",
-      "examId": 2
-    },
-    {
-      "id": 17,
-      "question": "Which of the following functions can help us to find the version of python that we are currently working on?",
-      "options": [
-        "sys.version(1)",
-        "sys.version(0)",
-        "sys.version()",
-        "sys.version"
-      ],
-      "answer": "sys.version",
-      "examId": 2
-    },
-    {
-      "id": 18,
-      "question": "What does pip stand for python??",
-      "options": [
-        "Pip Installs Python",
-        "Pip Installs Packages",
-        "Preferred Installer Program",
-        "All of the mentioned"
-      ],
-      "answer": "Preferred Installer Program",
-      "examId": 2
-    },
-    {
-      "id": 19,
-      "question": "Which of the following functions is a built-in function in python?",
-      "options": [
-        "factorial()",
-        "print()",
-        " seed()",
-        "sqrt()"
-      ],
-      "answer": "print()",
-      "examId": 2
-    },
-    {
       "id": 20,
       "question": "Which of the following statement is correct for AngularJS?",
       "options": [
@@ -427,18 +319,6 @@
       "examId": 3
     },
     {
-      "question": "What is the order of precedence in python?",
-      "options": [
-        "Exponential, Parentheses, Multiplication, Division, Addition, Subtraction",
-        "Exponential, Parentheses, Division, Multiplication, Addition, Subtraction",
-        "Parentheses, Exponential, Multiplication, Division, Subtraction, Addition",
-        " Parentheses, Exponential, Multiplication, Division, Addition, Subtraction"
-      ],
-      "answer": "d",
-      "examId": 2,
-      "id": 31
-    },
-    {
       "question": "Which of the following is used to end a statement in PHP?",
       "options": [
         ". (dot)",
@@ -463,30 +343,6 @@
       "id": 33
     },
     {
-      "question": "vhc",
-      "options": [
-        "yc",
-        "hc",
-        "jcj",
-        "cj"
-      ],
-      "answer": "c",
-      "examId": 2,
-      "id": 38
-    },
-    {
-      "question": "hv",
-      "options": [
-        "hv",
-        "jhv",
-        "h",
-        "jv"
-      ],
-      "answer": "v",
-      "examId": 2,
-      "id": 40
-    },
-    {
       "question": "gig",
       "options": [
         "i",
@@ -497,30 +353,6 @@
       "answer": "gi",
       "examId": 1,
       "id": 41
-    },
-    {
-      "question": "fy",
-      "options": [
-        "y",
-        "y",
-        "c",
-        "fufu"
-      ],
-      "answer": "jv",
-      "examId": 2,
-      "id": 42
-    },
-    {
-      "question": "gig",
-      "options": [
-        "ig",
-        "ig",
-        "ogoi",
-        ""
-      ],
-      "answer": "goi",
-      "examId": 2,
-      "id": 43
     },
     {
       "id": 44,
@@ -1410,21 +1242,16 @@
       "examStatus": true
     },
     {
-      "id": 2,
-      "examCode": "E-2",
-      "examStatus": false
-    },
-    {
       "id": 3,
       "examCode": "ab-45",
       "examName": "php",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 6,

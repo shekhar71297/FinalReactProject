@@ -1388,8 +1388,7 @@
     {
       "id": 2,
       "examCode": "E-2",
-      "examName": "python",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 3,
@@ -1401,7 +1400,13 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
+    },
+    {
+      "id": 6,
+      "examCode": "SH-77",
+      "examName": "dot net",
+      "examStatus": true
     }
   ]
 }

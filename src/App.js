@@ -16,29 +16,26 @@ import FeedbackModule from './component/feedback/FeedbackModule';
 import Exam from './pages/exam/container/Exam';
 import SelectExam from './component/SelectExam';
 import StartExam from './component/StartExam';
-import StudentLogin from './component/student/StudentLogin';
 import QuizzApp from './component/QuizzApp';
+import PrivateRoute from './component/PrivateRoute';
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        <QuizzApp/>
+       <QuizzApp/>
         <BrowserRouter>
           <Routes>
-            <Route path='/select-exam' element={<SelectExam/>}/>
-            <Route path='/start-exam:selectedExam' element={<StartExam/>}/>
             <Route path='/admin' element={<Login />} />
-            <Route path='/dashboard' element={<Dashboard />}>
-              <Route path='student' element={<Student />} />
-              <Route path='result' element={<Result />} />
-              <Route path='voucher' element={<Vouchermodule />} />
-              <Route path='question' element={<Question />} />
-              <Route path='user' element={<User />} />
-              <Route path='feedback' element={<Feedback />} />
-              <Route path='exam' element={<Exam />} />
+            <Route path='/dashboard' element={<PrivateRoute><Dashboard /></PrivateRoute>}>
+              <Route path='student' element={<PrivateRoute><Student /></PrivateRoute>} />
+              <Route path='result' element={<PrivateRoute><Result /></PrivateRoute>} />
+              <Route path='voucher' element={<PrivateRoute><Vouchermodule /></PrivateRoute>} />
+              <Route path='question' element={<PrivateRoute><Question /></PrivateRoute>} />
+              <Route path='user' element={<PrivateRoute><User /></PrivateRoute>} />
+              <Route path='feedback' element={<PrivateRoute><Feedback /></PrivateRoute>} />
+              <Route path='exam' element={<PrivateRoute><Exam /></PrivateRoute>} />
             </Route>
-            <Route path='/form' element={<FeedbackModule />} />
           </Routes>
         </BrowserRouter>
       </div>

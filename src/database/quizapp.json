@@ -1407,13 +1407,13 @@
       "id": 1,
       "examName": "react",
       "examCode": "E-1",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 2,
       "examName": "python",
       "examCode": "E-2",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 3,
@@ -1425,13 +1425,13 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": true
+      "examStatus": false
     },
     {
       "id": 6,
       "examCode": "SH-77",
       "examName": "dot net",
-      "examStatus": true
+      "examStatus": false
     }
   ]
 }

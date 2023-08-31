@@ -273,8 +273,8 @@ export class ExamModule extends Component {
         const { isDeletePopupOpen, open, rowsPerPage, page, searchQuery, examCode, examName } = this.state
         const filteredexam = this.props.allExam && this.props.allExam.filter((val) => {
             const searchQuery = this.state.searchQuery;
-            const codeIncludes = val.examCode.toLowerCase().includes(searchQuery);
-            const nameludes = val.examName.toLowerCase().includes(searchQuery);
+            const codeIncludes = val.examCode && val.examCode.toLowerCase().includes(searchQuery);
+            const nameludes = val.examName && val.examName.toLowerCase().includes(searchQuery);
             return codeIncludes || nameludes
         }) || [];
 

@@ -97,10 +97,10 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
   const handleAdd = (e) => {
     if (!(selectedExam) || !(question) || !(options[0].text) || !(options[1].text) || !answer) {
       return;
-      
+
     }
     setFormVisible(true);
-    
+
     const newQuestion = {
       question,
       options: options.map((option) => option.text),
@@ -330,37 +330,46 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
   return (
 
     <div className='question'>
-      <FormControl variant="standard" sx={{ m: 3, marginLeft: 70, minWidth: 160 }}>
-        <InputLabel id="demo-simple-select-standard-label">Select Exam</InputLabel>
-        <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
-          value={selectedExam}
-          onChange={(e) => handleDropdownChange(e)}
-          label="Select Exam"
-        >
-          <MenuItem value="">
-            <em>None</em>
-          </MenuItem>
-          {allExam.map(exam => (
-            <MenuItem key={exam.id} value={exam.id}>
-              {exam.examName}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+
       <div>
         <Box marginRight={10}>
-          {selectedExam && (
-            <div className='pull-left' >
-              <Button sx={{ marginTop: 5, marginBottom: 2 }} color='inherit' variant='contained' type='button' onClick={() =>{ handleClearForm(); setEditMode(false); setFormVisible(true)}} endIcon={<CreateNewFolderOutlined />}>Create</Button>
-            </div>
-          )}
-          <TableContainer component={Paper}  >
+
+          <TableContainer component={Paper} sx={{ marginTop: 5 }} >
             <Table stickyHeader aria-label="sticky table"  >
 
-              <TableHead sx={{ color: 'white', backgroundColor: '#1976d2', fontSize: 40, height: 60 }}   >
-                Questions
+              <TableHead sx={{  backgroundColor: '#1976d2', height: 20 }}   >
+    
+                
+                <InputLabel sx={{marginTop:1 ,fontSize: 30,color: 'white',fontWeight:'bold'}}>Manage Question</InputLabel>
+                <TableRow>
+                      <TableCell sx={{height:30}}>
+                {selectedExam && (
+                  <div className='pull-left' >
+                    <Button sx={{marginLeft:10 }} color='inherit' variant='contained' type='button' onClick={() => { handleClearForm(); setEditMode(false); setFormVisible(true) }} endIcon={<CreateNewFolderOutlined />}>Create</Button>
+                  </div>
+                )}
+                <FormControl variant="standard" sx={{ marginLeft: 90, minWidth: 160 }}>
+                  <InputLabel id="demo-simple-select-standard-label">Select Exam</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-standard-label"
+                    id="demo-simple-select-standard"
+                    value={selectedExam}
+                    onChange={(e) => handleDropdownChange(e)}
+                    label="Select Exam"
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    {allExam.map(exam => (
+                      <MenuItem key={exam.id} value={exam.id}>
+                        {exam.examName}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+                </TableCell>
+
+                </TableRow>
               </TableHead>
               <TableBody color='secondary-color'>
                 {selectedExam && questions.length > 0 ? (
@@ -383,7 +392,7 @@ const Questiontable = ({ allquestions, updatequestionrequest, addQuestionRequest
 
                             ))}<br></br>
                             <div>
-                            Answer :  {item.answer}
+                              Answer :  {item.answer}
 
                               <Button className='pull-right' onClick={() => handleDelete(item.id)}>
                                 <DeleteOutlineSharp sx={{ color: dark[500] }} /></Button>

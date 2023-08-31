@@ -52,9 +52,9 @@ export class FeedDash extends Component {
     componentDidMount() {
         this.props.initFeedbackRequest()
     }
-    componentDidUpdate() {
-        this.props.initFeedbackRequest()
-    }
+    // componentDidUpdate() {
+    //     this.props.initFeedbackRequest()
+    // }
 
     //to get data from server
     fetchData = () => {

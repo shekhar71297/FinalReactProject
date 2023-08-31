@@ -12,7 +12,9 @@ const PrivateRoute = ({ children }) => {
     useEffect(() => {
         if (!istrue && isUserLogin==false) {
             navigate('/');
-        }else if(!isUserLogin && istrue==false){
+        }
+    
+        if(!isUserLogin && istrue==false){
             navigate('/admin')
         }
 

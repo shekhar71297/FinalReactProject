@@ -1425,7 +1425,13 @@
       "id": 5,
       "examCode": "ab-45",
       "examName": "angular",
-      "examStatus": false
+      "examStatus": true
+    },
+    {
+      "id": 6,
+      "examCode": "hj-56",
+      "examName": "view js",
+      "examStatus": true
     }
   ]
 }

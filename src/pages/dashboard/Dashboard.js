@@ -108,22 +108,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
- const handleShowAlert = (message, severity) => {
-    this.setState({
-      showAlert: true,
-      alertMessage: message,
-      alertSeverity: severity,
-    });
-  };
-
- const handleCloseAlert = () => {
-    this.setState({
-      showAlert: false,
-      alertMessage: '',
-    });
-  };
-
-
   const handleDrawerClose = () => {
     setOpen(false);
   };
@@ -143,6 +127,7 @@ const Dashboard = () => {
   const handleLogout = () => {
   if (isAdminLog || isTrainerLog || isCounsellorLog) {
     const role = isAdminLog ? "admin" : isTrainerLog ? "trainer" : "counsellor";
+    sessionStorage.removeItem("user");
     sessionStorage.removeItem("admin");
     sessionStorage.removeItem("trainer");
     sessionStorage.removeItem("counsellor");

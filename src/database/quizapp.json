@@ -91,7 +91,7 @@
       "id": 15
     },
     {
-      "email": "ompacharne9@gmail.com",
+      "email": "ompacharne91@gmail.com",
       "fname": "Om",
       "lname": "Pacharne",
       "password": "Om@112233",
@@ -850,6 +850,18 @@
       "pnr": "900900",
       "branch": "",
       "id": 58
+    },
+    {
+      "firstname": "manju",
+      "lastname": "manju",
+      "email": "anmol123@gmail.com",
+      "contact": "7777777777",
+      "dob": "1993-12-12",
+      "gender": "Male",
+      "organization": "hematite",
+      "pnr": "",
+      "branch": "",
+      "id": 59
     }
   ],
   "examresult": [
@@ -1245,7 +1257,7 @@
       "id": 3,
       "examCode": "ab-45",
       "examName": "php",
-      "examStatus": false
+      "examStatus": true
     },
     {
       "id": 5,
@@ -1257,7 +1269,7 @@
       "id": 6,
       "examCode": "SH-77",
       "examName": "dot net",
-      "examStatus": true
+      "examStatus": false
     }
   ]
 }

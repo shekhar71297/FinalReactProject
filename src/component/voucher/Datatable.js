@@ -63,8 +63,8 @@ export class Datatable extends Component {
     const { page, rowsPerPage  } = this.state;
 
     return (
-      <div className='container' style={{ marginRight: '25px' }} >
-        <hr />
+      <div className='container' style={{ marginRight: '25px',marginTop:40 }} >
+    
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
             <TableHead>
@@ -73,9 +73,9 @@ export class Datatable extends Component {
                   Manage Voucher</TableCell>
               </TableRow>
               <TableRow>
-                <TableCell sx={{ fontWeight: "bold" }}>ID</TableCell>
-                <TableCell align="left" sx={{ fontWeight: "bold" }}>Voucher Code</TableCell>
-                <TableCell align="left" sx={{ fontWeight: "bold" }} >Action</TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>ID</TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }}>Voucher Code</TableCell>
+                <TableCell align="center" sx={{ fontWeight: "bold" }} >Action</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -84,10 +84,10 @@ export class Datatable extends Component {
                   const currentIndex = page * rowsPerPage + index + 1;
                   return (
                     <TableRow key={data.id}>
-                      <TableCell component="th" scope="row">{currentIndex}</TableCell>
+                      <TableCell align="center" component="th" scope="row">{currentIndex}</TableCell>
 
-                      <TableCell>{data.Vcode}</TableCell>
-                      <TableCell>
+                      <TableCell align="center">{data.Vcode}</TableCell>
+                      <TableCell align="center">
                         <Switch
                           key={index}
                           checked={data.status}

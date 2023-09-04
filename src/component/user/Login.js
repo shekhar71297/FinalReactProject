@@ -18,6 +18,9 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import { MenuItem } from '@mui/material';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+
 
 const defaultTheme = createTheme();
 export class Login extends Component {
@@ -113,6 +116,21 @@ export class Login extends Component {
   render() {
     return (
       <div>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'left', fontWeight: 'bold', width: '100px' }}>
+              Hematite Infotech Online-Quiz
+            </Typography>
+          </Toolbar>
+        </AppBar>
         <ThemeProvider theme={defaultTheme}>
           <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -202,6 +220,24 @@ export class Login extends Component {
             </Box>
           </Container>
         </ThemeProvider>
+        <Box sx={{ flexGrow: 1, marginTop: 8 }}>
+                <AppBar position="static">
+                  <Toolbar>
+                    <IconButton
+                      size="large"
+                      edge="start"
+                      color="inherit"
+                      aria-label="menu"
+                      sx={{ mr: 2 }}
+                    >
+
+                    </IconButton>
+                    <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ textAlign: 'right', fontWeight: 'bold', width: '100px', fontSize: '15px' }}>
+                      Designed And Developed By Sujit Gaikwad
+                    </Typography>
+                  </Toolbar>
+                </AppBar>
+              </Box>
         <Snackbar
           open={this.state.showAlert}
           autoHideDuration={4000}
@@ -217,6 +253,7 @@ export class Login extends Component {
             {this.state.alertMessage}
           </MuiAlert>
         </Snackbar>
+        
       </div>
     )
   }

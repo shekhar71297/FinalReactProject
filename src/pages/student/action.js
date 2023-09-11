@@ -1,12 +1,6 @@
-import axios from 'axios'
 import * as constant from './constant'
 import * as Constant from '../../util/Constant'
 import { Delete, Get, Post, Put } from '../../util/HttpService'
-
-
-
-
-
 
 
    export function getAllStudent() {

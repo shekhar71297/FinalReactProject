@@ -52,9 +52,9 @@ export class FeedDash extends Component {
     componentDidMount() {
         this.props.initFeedbackRequest()
     }
-    componentDidUpdate() {
-        this.props.initFeedbackRequest()
-    }
+    // componentDidUpdate() {
+    //     this.props.initFeedbackRequest()
+    // }
 
     //to get data from server
     fetchData = () => {
@@ -177,7 +177,22 @@ export class FeedDash extends Component {
                             )}
                         </TableBody>
                     </Table>
-
+                    <TablePagination
+                    rowsPerPageOptions={[5, 10, 25]}
+                    colSpan={7} // Adjust the colSpan value according to your table structure
+                    count={filteredFeedback.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    SelectProps={{
+                        inputProps: {
+                            'aria-label': 'rows per page',
+                        },
+                        native: true,
+                    }}
+                    onPageChange={this.handleChangePage}
+                    onRowsPerPageChange={this.handleChangeRowsPerPage}
+                    ActionsComponent={TablePaginationActions.default} // Imported component
+                />
                     <Modal
                         open={open}
                         onClose={this.handleClose}
@@ -238,26 +253,12 @@ export class FeedDash extends Component {
                             <Stack spacing={2} direction="row">
                                 <Button onClick={this.handleClose} style={{ marginLeft: '370px', marginTop: '10px', }} variant='contained'>Close</Button>
                             </Stack>
+                           
                         </Box>
                     </Modal>
                 </TableContainer>
 
-                <TablePagination
-                    rowsPerPageOptions={[5, 10, 25]}
-                    colSpan={7} // Adjust the colSpan value according to your table structure
-                    count={filteredFeedback.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    SelectProps={{
-                        inputProps: {
-                            'aria-label': 'rows per page',
-                        },
-                        native: true,
-                    }}
-                    onPageChange={this.handleChangePage}
-                    onRowsPerPageChange={this.handleChangeRowsPerPage}
-                    ActionsComponent={TablePaginationActions.default} // Imported component
-                />
+            
             </div>
         );
     }

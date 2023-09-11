@@ -20,6 +20,8 @@ export class Datatable extends Component {
       vcodes: [],
       page: 0,
       rowsPerPage: 5,
+      randomVoucherCode: this.generateRandomVoucherCode(),
+      selectedId: null, 
 
     };
 
@@ -32,8 +34,60 @@ export class Datatable extends Component {
       this.setState({ vcodes: this.props.allvouchers });
     }
   }
+  // componentDidMount() {
+  //   this.props.initVoucherRequest() 
+  //   this.randomCodeInterval = setInterval(() => {
+  //     this.updateRandomVoucherCode();
+  //   }, 1000); 
+  // }
   componentDidMount() {
-    this.props.initVoucherRequest()  
+    this.props.initVoucherRequest();
+    
+
+    // Set up an interval to check and generate a new voucher code every hour
+    this.randomCodeInterval = setInterval(() => {
+      if (!this.state.status && this.state.selectedId !== null) {
+        // Generate a new voucher code when the switch is off and a selection is made
+        const newRandomCode = this.generateRandomVoucherCode();
+        this.updateVoucherCodeInDatabase(this.state.selectedId, newRandomCode);
+      }
+    }, 3600000); // 3600000 milliseconds = 1 hour
+  }
+  componentWillUnmount() {
+    // Clear the interval when the component is unmounted
+    clearInterval(this.randomCodeInterval);
+  }
+
+  generateRandomVoucherCode() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let voucherCode = '';
+    for (let i = 0; i < 6; i++) {
+      voucherCode += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return voucherCode;
+  }
+ 
+  updateVoucherCodeInDatabase(id, newCode) {
+    // Simulate updating the voucher code in the JSON database
+    const updatedVcodes = [...this.state.vcodes];
+    const voucherIndex = updatedVcodes.findIndex((voucher) => voucher.id === id);
+
+    if (voucherIndex !== -1) {
+      updatedVcodes[voucherIndex].Vcode = newCode;
+      this.setState({ vcodes: updatedVcodes });
+    }
+  }
+
+    // Simulate writing the updated data back to the database
+  //   this.setState({ vcodes: updatedVouchers });
+  // }
+
+  updateRandomVoucherCode() {
+    const newRandomCode = this.generateRandomVoucherCode();
+    this.setState({ randomVoucherCode: newRandomCode });
+
+    // Call the function to update the code in the database
+    this.updateRandomVoucherCodeInDatabase(newRandomCode);
   }
 
 
@@ -43,13 +97,23 @@ export class Datatable extends Component {
     const dataIndex = page * rowsPerPage + index;
     // console.log("before",vcodes,index,vcodes[index]);
     vcodes[dataIndex].status = !status;
+    if (!vcodes[dataIndex].status) {
+      //       // Generate a new voucher code when the switch is turned on
+            const newRandomCode = this.generateRandomVoucherCode();
+            this.state.vcodes[dataIndex].Vcode = newRandomCode;
+            this.state.vcodes[dataIndex].status = vcodes[dataIndex].status;
+          }
     // console.log("after",vcodes);
     this.setState({ vcodes: vcodes }, () => {
-      console.log(this.state.vcodes[dataIndex])
+      // console.log(this.state.vcodes[dataIndex])
       this.props.updateVoucherRequest(this.state.vcodes[dataIndex]);
     });
 
   };
+  
+
+  
+  
   // pagination function
   handleChangePage = (event, newPage) => {
     this.setState({ page: newPage });
@@ -60,7 +124,7 @@ export class Datatable extends Component {
   };
 
   render() {
-    const { page, rowsPerPage  } = this.state;
+    const { page, rowsPerPage } = this.state;
 
     return (
       <div className='container' style={{ marginRight: '25px',marginTop:40 }} >

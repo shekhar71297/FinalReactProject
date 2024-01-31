@@ -2,17 +2,18 @@
 import * as constant from './Constant'
 import * as Constant from '../../util/Constant'
 import { Delete, Get, Post, Put } from '../../util/HttpService'
+import { urls } from '../../util/urls';
 
 
 export function getAllExam() {
     return (dispatch) => {
-        const url = `${Constant.baseURL}/exams`;
+        // const url = `${Constant.baseURL}/exams`;
 
-        Get(url).then(response => {
-            const reversedexam = response.data.reverse(); // Reverse the array of users
+        Get(urls.exams).then(response => {
+            const reversedexam = response.reverse(); // Reverse the array of users
             dispatch(getExamsuccess(reversedexam));
         })
-            .catch(error => dispatch(getExamerror(error.response.data)));
+            .catch(error => dispatch(getExamerror(error.response)));
     };
 }
 
@@ -29,9 +30,9 @@ export function getExamerror(payload) {
 export function addexam(data) {
 
     return (dispatch) => {
-        const url = `${Constant.baseURL}/exams`
-        Post(url, data).then(response => dispatch(addexamsuccess(data)))
-            .catch(error => dispatch(addexamterror(error.response.data)))
+        // const url = `${Constant.baseURL}/exams`
+        Post(urls.exams, data).then(response => dispatch(addexamsuccess(data)))
+            .catch(error => dispatch(addexamterror(error.response)))
 
     }
 
@@ -50,10 +51,10 @@ export function addexamterror(payload) {
 export function updateExam(data) {
 
     return (dispatch) => {
-        const url = `${Constant.baseURL}/exams/${data.id}`
-        Put(url, data)
+        // const url = `${Constant.baseURL}/exams/${data.id}`
+        Put(`${urls.exams}/${data.id}`, data)
             .then(response => dispatch(updateExamsuccess(data)))
-            .catch(error => dispatch(updateExamerror(error.response.data)))
+            .catch(error => dispatch(updateExamerror(error.response)))
     }
 }
 export function updateExamsuccess(payload) {
@@ -66,10 +67,10 @@ export function updateExamerror(payload) {
 export function deleteExam(id) {
 
     return (dispatch) => {
-        const url = `${Constant.baseURL}/exams/${id}`
-        Delete(url)
+        // const url = `${Constant.baseURL}/exams/${id}`
+        Delete(`${urls.exams}/${id}`)
             .then(response => dispatch(deleteExamsuccess(id)))
-            .catch(error => dispatch(deleteExamerror(error.response.data)))
+            .catch(error => dispatch(deleteExamerror(error.response)))
 
     }
 }

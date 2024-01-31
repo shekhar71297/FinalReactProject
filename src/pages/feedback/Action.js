@@ -2,17 +2,18 @@ import axios from 'axios'
 import * as Constants from '../../util/Constant'
 import * as constant from './constant.js'
 import {Get,Post,Put,Delete} from '../../util/HttpService.js'
+import { urls } from '../../util/urls.js'
   
 export function getAllFeedback() {
     return (dispatch) => {
-        const url = `${Constants.baseURL}/feedback`;
+        // const url = `${Constants.baseURL}/feedback`;
 
-        Get(url)
+        Get(`${urls.feedback}`)
             .then(response => {
-                const reversedFeedback = response.data.reverse(); // Reverse the array of feedback
+                const reversedFeedback = response.reverse(); // Reverse the array of feedback
                 dispatch(getFeedbackSuccess(reversedFeedback));
             })
-            .catch(error => dispatch(getFeedbackError(error.response.data)));
+            .catch(error => dispatch(getFeedbackError(error.response)));
     };
 }
 
@@ -27,9 +28,9 @@ export function getFeedbackError(payload){
 //add feedback
 export function addFeedBack(data){
     return (dispatch) =>{
-        const url=`${Constants.baseURL}/feedback` 
-        Post(url,data).then(response => dispatch(addFeedbackSuccess(data)))
-        .catch(error => dispatch(addFeedbackError(error.response.data)) )
+        // const url=`${Constants.baseURL}/feedback` 
+        Post(urls.feedback,data).then(response => dispatch(addFeedbackSuccess(data)))
+        .catch(error => dispatch(addFeedbackError(error.response)) )
     
     }
 }
@@ -46,9 +47,9 @@ export function addFeedbackError(payload){
 export function updateFeedback(data) {
 
     return (dispatch) => {
-        const url = `${Constants.baseURL}/feedback/${data.id}`
-         Put(url, data).then(response => dispatch(updatefeedbacksuccess(data)))
-            .catch(error => dispatch(updatefeedbackerror(error.response.data)))
+        // const url = `${Constants.baseURL}/feedback/${data.id}`
+         Put(`${urls.feedback}/${data.id}`, data).then(response => dispatch(updatefeedbacksuccess(data)))
+            .catch(error => dispatch(updatefeedbackerror(error.response)))
     }
 }
 
@@ -64,8 +65,8 @@ export function updatefeedbackerror(payload) {
 export function deleteFeedback(id) {
     return (dispatch) => {
         const url = `${Constants.baseURL}/feedback/${id}`
-         Delete(url).then(response => dispatch(deletefeedbacksuccess(id)))
-            .catch(error => dispatch(deletefeedbackError(error.response.data)))
+         Delete(`${urls.feedback}/${id}`).then(response => dispatch(deletefeedbacksuccess(id)))
+            .catch(error => dispatch(deletefeedbackError(error.response)))
     }
 }
 

@@ -2,13 +2,14 @@
 import * as actiontype from "./Constant"
 import * as constants from '../../util/Constant';
 import { Get, Delete,Post ,Put} from '../../util/HttpService'
+import { urls } from "../../util/urls";
  
 export function getAllResult() {
     return (dispatch) => {
-        const url = `${constants.baseURL}/StudentResult`
-        Get(url).then(response => {
+        // const url = `${constants.baseURL}/StudentResult`
+        Get(urls.StudentResult).then(response => {
             let results = [];
-            response.data.forEach((item,) => {
+            response.forEach((item,) => {
                 let result = { ...item };
                 // result['srno'] = index + 1;
                 const { ObtainedMark, TotalMark } = result;
@@ -25,7 +26,7 @@ export function getAllResult() {
             results.reverse();
             dispatch(getResultsuccess(results))
         })
-            .catch(error => dispatch(getResulterror(error.response.data)))
+            .catch(error => dispatch(getResulterror(error.response)))
     }
 }
 export function getResultsuccess(payload) {
@@ -37,11 +38,11 @@ export function getResulterror(payload) {
 
 // DELETE
 export function deleteAllResult(id) {
-    const url = `${constants.baseURL}/StudentResult/${id}`
+    // const url = `${constants.baseURL}/StudentResult/${id}`
     return (dispatch) => {
-        Delete(url)
+        Delete(`${urls.StudentResult}/${id}`)
             .then(response => dispatch(deleteResultsuccess(id)))
-            .catch(error => dispatch(deleteResulterror(error.response.data)))
+            .catch(error => dispatch(deleteResulterror(error.response)))
 
     }
 }
@@ -57,9 +58,9 @@ export function deleteResulterror(payload) {
 export function addResult(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/StudentResult`
-        Post(url, data).then(response => dispatch(addResultSuccess(data)))
-            .catch(error => dispatch(addResultError(error.response.data)))
+        // const url = `${constants.baseURL}/StudentResult`
+        Post(urls.StudentResult, data).then(response => dispatch(addResultSuccess(data)))
+            .catch(error => dispatch(addResultError(error.response)))
 
     }
 
@@ -76,10 +77,10 @@ export function addResultError(payload) {
 export function updateResult(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/StudentResult/${data.id}`
-        Put(url, data)
+        // const url = `${constants.baseURL}/StudentResult/${data.id}`
+        Put(`${urls.StudentResult}/${data.id}`, data)
             .then(response => dispatch(updateResultsuccess(data)))
-            .catch(error => dispatch(updateResulterror(error.response.data)))
+            .catch(error => dispatch(updateResulterror(error.response)))
     }
 }
 export function updateResultsuccess(payload) {

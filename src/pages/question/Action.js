@@ -1,14 +1,15 @@
 import * as constants from '../../util/Constant';
 import { Get, Post, Put,Delete } from '../../util/HttpService';
 import * as actionTypes from './ActionType'
+import { urls } from '../../util/urls';
 
 /////get method CRUD
 
 export function getAllQuestions() {
     return (dispatch) => {
-        const url = `${constants.baseURL}/questions`
-        Get(url).then(response => dispatch(getQuestionSuccess(response.data)))
-            .catch(error => dispatch(getQuestionError(error.response.data)))
+        // const url = `${constants.baseURL}/questions`
+        Get(urls.questions).then(response => dispatch(getQuestionSuccess(response)))
+            .catch(error => dispatch(getQuestionError(error.response)))
     }
 }
 
@@ -25,9 +26,9 @@ export function getQuestionError(payload) {
 export function addQuestions(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/questions`
-        Post(url, data).then(response => dispatch(addQuestionsuccess(data)))
-            .catch(error => dispatch(addQuestionerror(error.response.data)))
+        // const url = `${constants.baseURL}/questions`
+        Post(urls.questions, data).then(response => dispatch(addQuestionsuccess(data)))
+            .catch(error => dispatch(addQuestionerror(error.response)))
 
     }
 
@@ -47,9 +48,9 @@ export function addQuestionerror(payload) {
 export function updateQuestion(data) {
 
     return (dispatch) => {
-        const url = `${constants.baseURL}/questions/${data.id}`
-        Put(url, data).then(response => dispatch(updateQuestionSuccess(data)))
-            .catch(error => dispatch(updateQuestionError(error.response.data)))
+        // const url = `${constants.baseURL}/questions/${data.id}`
+        Put(`${urls.questions}/${data.id}`, data).then(response => dispatch(updateQuestionSuccess(data)))
+            .catch(error => dispatch(updateQuestionError(error.response)))
     }
 
 }
@@ -66,10 +67,10 @@ export function updateQuestionError(payload) {
 export function deleteAllQuestions(id){
 
     return (dispatch)=>{  
-        const url=`${constants.baseURL}/questions/${id}`
-       Delete(url)
+        // const url=`${constants.baseURL}/questions/${id}`
+       Delete(`${urls.questions}/${id}`)
        .then(response => dispatch(deleteQuestionsuccess(id)))
-       .catch(error => dispatch(deleteQuestionerror(error.response.data)) )
+       .catch(error => dispatch(deleteQuestionerror(error.response)) )
    
     }
    }

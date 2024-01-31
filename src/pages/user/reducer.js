@@ -10,7 +10,7 @@ export default function userReducer(state = initialState , action){
 
     switch (action.type) {
         case constant.GET_USER_SUCCESS:{
-            
+            console.log('inside the user');
             return{...state,user:{},allUser:action.payload};
             
         }
@@ -45,10 +45,7 @@ export default function userReducer(state = initialState , action){
         }
 
         case constant.SINGLE_USER_SUCCESS:{
-            // const draft = state;
-            // const index = draft.allProducts.findIndex((d)=>d.id===action.payload) || -1
-            // draft.product=draft.allProducts[index]
-            // return draft;
+           
             const index =state.allUser.findIndex(d=>d.id===action.payload);
             const user=state.allUser[index];
             return{...state,user:user};

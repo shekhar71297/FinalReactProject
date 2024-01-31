@@ -1,17 +1,18 @@
 import * as constant from './constant'
 import * as Constant from '../../util/Constant'
 import { Delete, Get, Post, Put } from '../../util/HttpService'
+import { urls } from '../../util/urls';
 
 
    export function getAllStudent() {
     return (dispatch) => {
-        const url = `${Constant.baseURL}/students`;
+        // const url = `${Constant.baseURL}/students`;
 
-        Get(url).then(response => {
-                const reversedStudent = response.data.reverse(); // Reverse the array of users
+        Get(urls.students).then(response => {
+                const reversedStudent = response.reverse(); // Reverse the array of users
                 dispatch(getStudentsuccess(reversedStudent));
             })
-            .catch(error => dispatch(getStudenterror(error.response.data)));
+            .catch(error => dispatch(getStudenterror(error.response)));
     };
 }
 
@@ -28,9 +29,9 @@ export function getStudenterror(payload){
 export function addAllStudent(data){
 
     return (dispatch)=>{ 
-        const url=`${Constant.baseURL}/students` 
-       Post(url,data).then(response => dispatch(addStudentsuccess(data)))
-       .catch(error => dispatch(addStudenterror(error.response.data)) )
+        // const url=`${Constant.baseURL}/students` 
+       Post(urls.students,data).then(response => dispatch(addStudentsuccess(data)))
+       .catch(error => dispatch(addStudenterror(error.response)) )
    
     }
    
@@ -49,10 +50,10 @@ export function addStudenterror(payload){
 export function updateAllStudent(data){
 
     return (dispatch)=>{  
-        const url=`${Constant.baseURL}/students/${data.id}`
-       Put(url,data)
+        // const url=`${Constant.baseURL}/students/${data.id}`
+       Put(`${urls.students}/${data.id}`,data)
        .then(response => dispatch(updateStudentsuccess(data)))
-       .catch(error => dispatch(updateStudenterror(error.response.data)) )
+       .catch(error => dispatch(updateStudenterror(error.response)) )
     }
    }
 export function updateStudentsuccess(payload){
@@ -65,10 +66,10 @@ export function updateStudenterror(payload){
 export function deleteAllStudent(id){
 
     return (dispatch)=>{  
-        const url=`${Constant.baseURL}/students/${id}`
-       Delete(url)
+        // const url=`${Constant.baseURL}/students/${id}`
+       Delete(`${urls.students}/${id}`)
        .then(response => dispatch(deleteStudentsuccess(id)))
-       .catch(error => dispatch(deleteStudenterror(error.response.data)) )
+       .catch(error => dispatch(deleteStudenterror(error.response)) )
    
     }
    }
